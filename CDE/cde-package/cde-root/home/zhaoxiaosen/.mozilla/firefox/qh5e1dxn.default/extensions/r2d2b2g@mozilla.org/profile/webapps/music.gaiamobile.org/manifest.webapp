@@ -1,0 +1,96 @@
+{
+  "activities": {
+    "open": {
+      "href": "/open.html", 
+      "returnValue": true, 
+      "disposition": "inline", 
+      "filters": {
+        "type": [
+          "audio/mpeg", 
+          "audio/ogg", 
+          "audio/mp4"
+        ]
+      }
+    }, 
+    "pick": {
+      "href": "/index.html#pick", 
+      "returnValue": true, 
+      "disposition": "inline", 
+      "filters": {
+        "type": [
+          "audio/*", 
+          "audio/mpeg", 
+          "audio/ogg", 
+          "audio/mp4"
+        ]
+      }
+    }
+  }, 
+  "name": "Music", 
+  "default_locale": "en-US", 
+  "icons": {
+    "120": "/style/icons/Music.png", 
+    "60": "/style/icons/60/Music.png"
+  }, 
+  "orientation": "portrait-primary", 
+  "description": "Gaia Music", 
+  "launch_path": "/index.html#mix", 
+  "permissions": {
+    "audio-channel-content": {}, 
+    "device-storage:music": {
+      "access": "readwrite"
+    }, 
+    "deprecated-hwvideo": {}, 
+    "storage": {}, 
+    "settings": {
+      "access": "readonly"
+    }
+  }, 
+  "type": "certified", 
+  "locales": {
+    "fr": {
+      "name": "Musique", 
+      "description": "Lecteur audio de Gaia"
+    }, 
+    "de": {
+      "name": "Musik", 
+      "description": "Musik f\u00fcr Gaia"
+    }, 
+    "hr": {
+      "name": "Glazba", 
+      "description": "Gaia glazba"
+    }, 
+    "zh-TW": {
+      "name": "\u97f3\u6a02\u5eab", 
+      "description": "Gaia \u97f3\u6a02\u5eab"
+    }, 
+    "en-US": {
+      "name": "Music", 
+      "description": "Gaia Music"
+    }, 
+    "hu": {
+      "name": "Zene", 
+      "description": "Gaia zene"
+    }, 
+    "ar": {
+      "name": "\u0645\u0648\u0633\u064a\u0642\u0649", 
+      "description": "Gaia \u0645\u0648\u0633\u064a\u0642\u0649"
+    }, 
+    "pt-BR": {
+      "name": "M\u00fasicas", 
+      "description": "Reprodutor de m\u00fasicas do Gaia"
+    }, 
+    "es": {
+      "name": "M\u00fasica", 
+      "description": "M\u00fasica de Gaia"
+    }, 
+    "pl": {
+      "name": "Muzyka", 
+      "description": "Gaia Music"
+    }
+  }, 
+  "developer": {
+    "url": "https://github.com/mozilla-b2g/gaia", 
+    "name": "The Gaia Team"
+  }
+}

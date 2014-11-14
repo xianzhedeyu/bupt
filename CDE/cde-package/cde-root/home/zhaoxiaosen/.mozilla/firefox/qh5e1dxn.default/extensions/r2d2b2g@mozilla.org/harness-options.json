@@ -1,0 +1,313 @@
+{
+ "enable_e10s": false, 
+ "is-sdk-bundled": true, 
+ "jetpackID": "r2d2b2g@mozilla.org", 
+ "loader": "addon-sdk/lib/sdk/loader/cuddlefish.js", 
+ "main": "main", 
+ "mainPath": "r2d2b2g/main", 
+ "manifest": {
+  "gcli/gcli": {
+   "docsSHA256": null, 
+   "jsSHA256": "a32a42feddfe1c139999664d6e761b0ddc5278ce70ceabe9973cbfcaf5e23e59", 
+   "moduleName": "gcli", 
+   "packageName": "gcli", 
+   "requirements": {
+    "chrome": "chrome", 
+    "unload": "sdk/system/unload"
+   }, 
+   "sectionName": "lib"
+  }, 
+  "jsonlint/jsonlint": {
+   "docsSHA256": null, 
+   "jsSHA256": "12ec437d2a63ce8517bebbb984b57730bed462420337246855c9fa46fc6afd29", 
+   "moduleName": "jsonlint", 
+   "packageName": "jsonlint", 
+   "requirements": {}, 
+   "sectionName": "lib"
+  }, 
+  "menuitems/menuitems": {
+   "docsSHA256": "58ad1ff182b33d89a46eb8e0b4847ff84f5403840ddbd03b017a4a855d2008fc", 
+   "jsSHA256": "aa7b5f6c0868b7a257ce886b208f93f154a3e6bfabf749da5aaead5497d99c7a", 
+   "moduleName": "menuitems", 
+   "packageName": "menuitems", 
+   "requirements": {
+    "namespace": "sdk/core/namespace", 
+    "sdk/core/heritage": "sdk/core/heritage", 
+    "sdk/deprecated/api-utils": "sdk/deprecated/api-utils", 
+    "sdk/deprecated/window-utils": "sdk/deprecated/window-utils", 
+    "sdk/event/core": "sdk/event/core", 
+    "sdk/event/target": "sdk/event/target", 
+    "sdk/window/utils": "sdk/window/utils", 
+    "unload+": "vold-utils/unload+"
+   }, 
+   "sectionName": "lib"
+  }, 
+  "r2d2b2g/adb": {
+   "docsSHA256": null, 
+   "jsSHA256": "83a1f58eac52bc1d5b76f0ec321d8bca791e259ee9d4fe01f4c5afe5c668dd9c", 
+   "moduleName": "adb", 
+   "packageName": "r2d2b2g", 
+   "requirements": {
+    "api-utils/environment": "sdk/system/environment", 
+    "chrome": "chrome", 
+    "file": "sdk/io/file", 
+    "runtime": "sdk/system/runtime", 
+    "self": "sdk/self", 
+    "subprocess": "subprocess/subprocess"
+   }, 
+   "sectionName": "lib"
+  }, 
+  "r2d2b2g/debugger": {
+   "docsSHA256": null, 
+   "jsSHA256": "4aaefcb12560dd75bc106a1a77871d3684183acc83a1a1013e99fffe6d37ea2d", 
+   "moduleName": "debugger", 
+   "packageName": "r2d2b2g", 
+   "requirements": {
+    "chrome": "chrome", 
+    "sdk/timers": "sdk/timers"
+   }, 
+   "sectionName": "lib"
+  }, 
+  "r2d2b2g/main": {
+   "docsSHA256": null, 
+   "jsSHA256": "85952e369cdb63bce3d49aa50e56a0f9761bccda1d393af1ed76cf0fb03f1500", 
+   "moduleName": "main", 
+   "packageName": "r2d2b2g", 
+   "requirements": {
+    "chrome": "chrome", 
+    "context-menu": "sdk/context-menu", 
+    "gcli": "gcli/gcli", 
+    "menuitems": "menuitems/menuitems", 
+    "page-mod": "sdk/page-mod", 
+    "preferences-service": "sdk/preferences/service", 
+    "request": "sdk/request", 
+    "sdk/util/uuid": "sdk/util/uuid", 
+    "self": "sdk/self", 
+    "simple-storage": "sdk/simple-storage", 
+    "simulator.js": "r2d2b2g/simulator", 
+    "tabs": "sdk/tabs", 
+    "url": "sdk/url"
+   }, 
+   "sectionName": "lib"
+  }, 
+  "r2d2b2g/remote-simulator-client": {
+   "docsSHA256": null, 
+   "jsSHA256": "08401c2cf60059eb4b3d292b5914502e442aa1e57d1c1b673707fd3b93051562", 
+   "moduleName": "remote-simulator-client", 
+   "packageName": "r2d2b2g", 
+   "requirements": {
+    "@loader/options": "@loader/options", 
+    "chrome": "chrome", 
+    "runtime": "sdk/system/runtime", 
+    "sdk/core/heritage": "sdk/core/heritage", 
+    "sdk/event/core": "sdk/event/core", 
+    "sdk/event/target": "sdk/event/target", 
+    "sdk/system/environment": "sdk/system/environment", 
+    "sdk/timers": "sdk/timers", 
+    "self": "sdk/self", 
+    "subprocess": "subprocess/subprocess", 
+    "url": "sdk/url"
+   }, 
+   "sectionName": "lib"
+  }, 
+  "r2d2b2g/request": {
+   "docsSHA256": null, 
+   "jsSHA256": "d3af3de0ac2f19650db2242aad6b2115ef0523ab06078a861d969b3b14bbf1b1", 
+   "moduleName": "request", 
+   "packageName": "r2d2b2g", 
+   "requirements": {
+    "querystring": "sdk/querystring", 
+    "sdk/core/heritage": "sdk/core/heritage", 
+    "sdk/core/namespace": "sdk/core/namespace", 
+    "sdk/deprecated/api-utils": "sdk/deprecated/api-utils", 
+    "sdk/event/core": "sdk/event/core", 
+    "sdk/event/target": "sdk/event/target", 
+    "sdk/net/xhr": "sdk/net/xhr", 
+    "sdk/util/object": "sdk/util/object"
+   }, 
+   "sectionName": "lib"
+  }, 
+  "r2d2b2g/simulator": {
+   "docsSHA256": null, 
+   "jsSHA256": "39a3445f6a33047862e2a4bc0b10b70b54b052323e092992a1c91ef9d3dd5bff", 
+   "moduleName": "simulator.js", 
+   "packageName": "r2d2b2g", 
+   "requirements": {
+    "./request": "r2d2b2g/request", 
+    "./validator": "r2d2b2g/validator", 
+    "@loader/options": "@loader/options", 
+    "adb": "r2d2b2g/adb", 
+    "chrome": "chrome", 
+    "debugger": "r2d2b2g/debugger", 
+    "file": "sdk/io/file", 
+    "jsonlint/jsonlint": "jsonlint/jsonlint", 
+    "preferences-service": "sdk/preferences/service", 
+    "remote-simulator-client": "r2d2b2g/remote-simulator-client", 
+    "runtime": "sdk/system/runtime", 
+    "sdk/core/promise": "sdk/core/promise", 
+    "sdk/system/xul-app": "sdk/system/xul-app", 
+    "sdk/util/uuid": "sdk/util/uuid", 
+    "sdk/windows": "sdk/windows", 
+    "self": "sdk/self", 
+    "simple-storage": "sdk/simple-storage", 
+    "tabs": "sdk/tabs", 
+    "timer": "sdk/timers", 
+    "url": "sdk/url", 
+    "window/utils": "sdk/window/utils"
+   }, 
+   "sectionName": "lib"
+  }, 
+  "r2d2b2g/validator": {
+   "docsSHA256": null, 
+   "jsSHA256": "766eb300be46e39c3257681b1abec66fc22afb61077319d4357c4c598fdf17c3", 
+   "moduleName": "validator", 
+   "packageName": "r2d2b2g", 
+   "requirements": {
+    "chrome": "chrome", 
+    "sdk/core/promise": "sdk/core/promise"
+   }, 
+   "sectionName": "lib"
+  }, 
+  "subprocess/subprocess": {
+   "docsSHA256": null, 
+   "jsSHA256": "a7f4183e92ca5ca43e53c58f1820cc1ff1ecb1073e042db09e7861442fdf99dc", 
+   "moduleName": "subprocess", 
+   "packageName": "subprocess", 
+   "requirements": {
+    "api-utils/environment": "sdk/system/environment", 
+    "api-utils/runtime": "sdk/system/runtime", 
+    "chrome": "chrome", 
+    "subprocess_worker_unix.js": "subprocess/subprocess_worker_unix", 
+    "subprocess_worker_win.js": "subprocess/subprocess_worker_win"
+   }, 
+   "sectionName": "lib"
+  }, 
+  "subprocess/subprocess_worker_unix": {
+   "docsSHA256": null, 
+   "jsSHA256": "cceb2207437b1d1b356ccf576a1409cd217918ef27ad042860f108d687342793", 
+   "moduleName": "subprocess_worker_unix.js", 
+   "packageName": "subprocess", 
+   "requirements": {}, 
+   "sectionName": "lib"
+  }, 
+  "subprocess/subprocess_worker_win": {
+   "docsSHA256": null, 
+   "jsSHA256": "9fc302d69507e0d55499b06309da10df5fd4371b1f9a8690015bf857a9069f16", 
+   "moduleName": "subprocess_worker_win.js", 
+   "packageName": "subprocess", 
+   "requirements": {}, 
+   "sectionName": "lib"
+  }, 
+  "vold-utils/unload+": {
+   "docsSHA256": "465618992a8bbf3da6425fd79aaec54b92db0353d9670d8dcc1373d14c25b69b", 
+   "jsSHA256": "c5a87edc89216ff6af5d20e3c6a2b0542befee64fba5ea275d38368d9545baf6", 
+   "moduleName": "unload+", 
+   "packageName": "vold-utils", 
+   "requirements": {
+    "sdk/core/heritage": "sdk/core/heritage", 
+    "sdk/core/namespace": "sdk/core/namespace", 
+    "unload": "sdk/system/unload"
+   }, 
+   "sectionName": "lib"
+  }
+ }, 
+ "metadata": {
+  "addon-sdk": {
+   "description": "Add-on development made easy.", 
+   "keywords": [
+    "javascript", 
+    "engine", 
+    "addon", 
+    "extension", 
+    "xulrunner", 
+    "firefox", 
+    "browser"
+   ], 
+   "license": "MPL 2.0", 
+   "name": "addon-sdk"
+  }, 
+  "gcli": {
+   "license": "MPL 2.0", 
+   "name": "gcli", 
+   "version": "0.1"
+  }, 
+  "jsonlint": {
+   "author": "Zach Carter <zach@carter.name> (http://zaa.ch)", 
+   "description": "Validate JSON - jsonlint package loadable as addon-sdk module", 
+   "homepage": "http://zaach.github.com/jsonlint/", 
+   "keywords": [
+    "json", 
+    "validation", 
+    "lint", 
+    "jsonlint"
+   ], 
+   "main": "lib/jsonlint.js", 
+   "name": "jsonlint", 
+   "version": "1.5.1"
+  }, 
+  "menuitems": {
+   "author": "Erik Vold (http://erikvold.com/) <erikvvold@gmail.com>", 
+   "description": "Menuitems for Jetpacks", 
+   "keywords": [
+    "menu", 
+    "menuitems", 
+    "button", 
+    "ui"
+   ], 
+   "license": "MPL 2.0", 
+   "name": "menuitems", 
+   "version": "1.1.1"
+  }, 
+  "r2d2b2g": {
+   "author": "Myk Melez (https://github.com/mykmelez)", 
+   "contributors": [
+    "Alexandre Poirot (https://github.com/ochameau)", 
+    "Anant Narayanan (https://github.com/anantn)", 
+    "Brandon Kase (https://github.com/bkase)", 
+    "Breck Yunits (https://github.com/breck7)", 
+    "David Gomes (https://github.com/davidgomes)", 
+    "Fabrice Desr\u00e9 (https://github.com/fabricedesre)", 
+    "Harald Kirschner (https://github.com/digitarald)", 
+    "J\u00e9r\u00e9mie Patonnier (https://github.com/JeremiePat)", 
+    "Kan-Ru Chen (\u9673\u4f83\u5982) (https://github.com/kanru)", 
+    "Louis Stowasser (https://github.com/louisstow)", 
+    "Luca Greco (https://github.com/rpl)", 
+    "Matthew Claypotch (https://github.com/potch)", 
+    "Matthew Riley MacPherson (https://github.com/tofumatt)", 
+    "Nick Desaulniers (https://github.com/nickdesaulniers)", 
+    "Soumen Ganguly (https://github.com/SoumenG)", 
+    "Sudheesh Singanamalla (https://github.com/sudheesh001)", 
+    "Victor Bjelkholm (https://github.com/VictorBjelkholm)"
+   ], 
+   "description": "a Firefox OS simulator", 
+   "license": "MPL 2.0", 
+   "main": "main", 
+   "name": "r2d2b2g", 
+   "permissions": {
+    "private-browsing": true
+   }, 
+   "version": "4.0"
+  }, 
+  "subprocess": {
+   "author": "Alexandre Poirot", 
+   "contributors": [
+    "Patrick Brunschwig (author of almost all code!) <patrick@mozilla-enigmail.org>", 
+    "Ramalingam Saravanan (from enigmail team) <svn@xmlterm.org>"
+   ], 
+   "description": "Addon-sdk package for subprocess xpcom components from enigmail. Allow to run process, manipulate stdin/out and kill it.", 
+   "license": "MPL 1.1/GPL 2.0/LGPL 2.1", 
+   "name": "subprocess", 
+   "version": "0.1.1"
+  }, 
+  "vold-utils": {
+   "author": "Erik Vold (http://erikvold.com/) <erikvvold@gmail.com>", 
+   "description": "Utilitys for Jetpacks", 
+   "name": "vold-utils", 
+   "version": "1.1"
+  }
+ }, 
+ "name": "r2d2b2g", 
+ "sdkVersion": "1.14", 
+ "staticArgs": {}, 
+ "verbose": false
+}

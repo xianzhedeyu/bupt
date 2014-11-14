@@ -1,0 +1,27 @@
+# pippki.manifest
+content pippki jar:pippki.jar!/content/pippki/
+
+# toolkit.manifest
+content xbl-marquee jar:toolkit.jar!/content/xbl-marquee/
+skin mozapps classic/1.0 jar:toolkit.jar!/skin/classic/mozapps/ os=WINNT osversion<6
+content global jar:toolkit.jar!/content/global/ contentaccessible=yes
+skin global classic/1.0 jar:toolkit.jar!/skin/classic/global/ os!=WINNT
+content mozapps jar:toolkit.jar!/content/mozapps/
+skin mozapps classic/1.0 jar:toolkit.jar!/skin/classic/mozapps/ os!=WINNT
+content global-region jar:toolkit.jar!/content/global-region/
+content cookie jar:toolkit.jar!/content/cookie/
+content passwordmgr jar:toolkit.jar!/content/passwordmgr/
+override chrome://global/content/nsTransferable.js chrome://global/content/nsDragAndDrop.js
+content global-platform jar:toolkit.jar!/content/global-platform/ platform
+resource gre-resources jar:toolkit.jar!/res/
+content satchel jar:toolkit.jar!/content/satchel/
+skin global classic/1.0 jar:toolkit.jar!/skin/classic/global/ os=WINNT osversion<6
+
+# chrome.manifest
+content branding jar:chrome.jar!/content/branding/
+override chrome://global/skin/media/videocontrols.css chrome://browser/content/touchcontrols.css
+override chrome://global/content/netError.xhtml chrome://browser/content/netError.xhtml
+override chrome://global/content/aboutCertError.xhtml chrome://browser/content/aboutCertError.xhtml
+content browser jar:chrome.jar!/content/
+override chrome://global/skin/netError.css chrome://browser/content/netError.css
+

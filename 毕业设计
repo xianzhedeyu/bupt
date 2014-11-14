@@ -1,0 +1,14 @@
+　　架构中有三个Nginx图像服务器提供本地图像缓存，用户上载图 像到一个中央文件服务器。当向这三个Nginx之一中请求图像时，如果服务器本地中没有存在该图像，则从中央文件服务器下载到该服务器上作缓存并提供服 务。这种负载均衡的分布式图像服务器架构设计可以减轻主要存储设备的负载。
+http://blog.xxtime.com/?tag=erlang
+
+ANNOUNCE %s RTSP/1.0\r\n 
+CSeq: %d\r\n"
+Require: com.comcast.ngod.s6\r\n
+Session: %llu\r\n
+Notice: %s event-date=%s npt=%s\r\n
+OnDemandSessionId: %s\r\n\r\n"
+
+RTSP/1.0 %d OK\r\n"
+CSeq: %d\r\n
+Session: %llu\r\n
+OnDemandSessionId: %s\r\n\r\n

@@ -1,0 +1,6 @@
+GET_PARAMETER rtsp://172.2.2.2/123 RTSP/1.0\r\n
+CSeq: 130\r\n
+Require: ermi\r\n
+Content-length: 14\r\n
+Content-type: text/parameters\r\n\r\n
+session_list\r\n

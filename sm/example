@@ -1,0 +1,501 @@
+#include "sm_rtsp_s1_msg_process.h"
+#include "sm_rtsp_s3_msg_process.h"
+#include "sm_rtsp_s6_msg_process.h"
+
+
+int main()
+{
+//S6消息测试
+ {
+        /*
+        //测试积极模式下或悲观模式下创建SM发给ERM的SETUP信息
+        	S6_SETUP_MSG msg;
+        	msg.cseq = 1;
+        	strcpy(msg.require,"com.comcast.ngod.s6");
+        	strcpy(msg.session_group,"Chicago.SouthBend.SM1");
+        	strcpy(msg.encryption_type,"Session");
+        	strcpy(msg.cas_id,"0x1234");
+        	strcpy(msg.encrypt_control,"block_stream_until_encrypted=\"false\";encryption_scheme=\"AES\";key_length=128.");
+        	strcpy(msg.ondemandsessionid,"be074250-cc5a-11d9-8cd5-0800200c9a66");
+        	strcpy(msg.policy,"priority=1");
+        	strcpy(msg.inband_marker,"type=4;pidType=A;pidValue=01EE;dataType=T;insertDuration=10000;data=4002003030…");
+
+        	msg.qam_num = 2;
+        	msg.qam_info[0].bandwidth = 2700000;
+        	strcpy(msg.qam_info[0].qam_name,"Chicago.SouthBend.5");
+        	strcpy(msg.qam_info[0].client,"00AF123456DE");
+        	strcpy(msg.qam_info[0].modulation,"qam64");
+        	msg.qam_info[1].bandwidth = 2700000;
+        	strcpy(msg.qam_info[1].qam_name,"Chicago.SouthBend.10");
+        	strcpy(msg.qam_info[1].client,"00AF123456DE");
+        	strcpy(msg.qam_info[1].modulation,"qam64");
+        	char setup_msg[1024];
+        	rtsp_s6_setup_msg_encode(msg,setup_msg);
+        	printf("%s",setup_msg);
+        */
+        /*
+        //测试parse_url
+        	char *url = "rtsp://192.168.10.208";
+        	char ip[40] = "";
+        	int port = 0;
+        	char dir[256] = "";
+        	parse_url(url,ip,&port,dir);
+        */
+        /*
+        //测试悲观模式下解析ERM作为RTSP代理向SM发送的SETUP消息
+
+        	char *str = "SETUP rtsp://192.168.10.208 RTSP/1.0\r\n"
+        				 "CSeq: 413\r\n"
+        				 "Require: com.comcast.ngod.s6\r\n"
+                         "SessionGroup: Chicago.SouthBend.SM1\r\n"
+                         "Transport:"
+                         "MP2T/DVBC/UDP;unicast;destination=192.26.13.1;"
+                         "client_port=4588;client=00AF123456DE,"
+                         "MP2T/DVBC/UDP;unicast;destination=192.26.14.1;"
+                         "client_port=4000;client=00AF123456DE\r\n"
+                         "OnDemandSessionId: be074250-cc5a-11d9-8cd5-0800200c9a66\r\n"
+                         "Policy: priority=1\r\n\r\n";
+            S6_SETUP_MSG1 msg1;
+            memset(&msg1,0x00,sizeof(msg1));
+        	int i = rtsp_s6_pes_setup_msg_parse(str,&msg1);
+        	printf("%d\n",i);
+        	printf("cseq:%d\nrequire:%s\nsession_group:%s\nondemandsessionid:%s\npolicy:%s\n",msg1.cseq,msg1.require,msg1.session_group,msg1.ondemandsessionid,msg1.policy);
+        	//printf("\n\naaa%s\n",msg1.qam_info1[0].destination);
+        */
+        /*
+        //悲观模式下SM向ERM发送的Response消息
+            S6_SETUP_RESPONSE1 res1;
+            res1.err_code = 678;
+            res1.cseq = 1;
+            res1.session = 3500123;
+            strcpy(res1.destination,"192.26.14.1");
+            res1.client_port = 4000;
+            strcpy(res1.source,"192.26.18.1");
+            res1.server_port = 625;
+            strcpy(res1.client,"00AF123456DE");
+            strcpy(res1.embedded_encryptor,"Yes");
+            strcpy(res1.ondemandsessionid,"be074250-cc5a-11d9-8cd5-0800200c9a66");
+            char res_msg[1024];
+            rtsp_s6_pes_setup_response_msg_encode(res1,res_msg);
+            printf("%s",res_msg);
+        */
+
+        /*
+        //积极模式下或悲观模式下解析ERM向SM发送的Response消息
+        char *str = "RTSP/1.0 200 OK\r\n"
+                    "CSeq: 313\r\n"
+                    "Session: 47112344\r\n"
+                    "Transport:"
+                        "MP2T/DVBC/UDP;unicast;client=00AF123456DE;"
+                        "destination=192.26.14.1;client_port=4000;"
+                        "qam_destination=550000000.15;"
+                        "qam_name=Chicago.SouthBend.5;"
+                        "qam_group=Chicago.SouthBend.QG001;"
+                        "edge_input_group=Chicago.SouthBend.S101\r\n"
+                    "EmbeddedEncryptor: Yes\r\n"
+                    "OnDemandSessionId: be074250-cc5a-11d9-8cd5-0800200c9a66\r\n\r\n";
+            S6_SETUP_RESPONSE res;
+            memset(&res,0x00,sizeof(res));
+        	rtsp_s6_seup_response_msg_parse(str,&res);
+            //printf("cseq:%d\n",res.cseq);
+            //printf("cseq:%d\nsession:%llu\n\nclient:%s\ndestination:%s\nclient_port:%d\nqam_destination:%s\nqam_name:%s\nqam_group:%s\nedge_input_group:%s\nembedded__encryptor:%s\nondemandsessionid:%s\n",res.cseq,res.session,res.destination,res.client_port,res.qam_destination,res.qam_name,res.qam_group,res.edge_input_group,res.embedded_encryptor,res.ondemandsessionid);
+        */
+        /*
+        //创建SM向ERM发送的TEARDOWN消息
+           S6_TEARDOWN_MSG1 msg1;
+           strcpy(msg1.rtsp_ip,"192.168.10.208");
+           msg1.cseq = 200;
+           msg1.reason = 200;
+           msg1.session = 43343434;
+           strcpy(msg1.ondemandsessionid,"fsfsfsfsfsfsd");
+           char tear_msg[1024];
+           rtsp_s6_teardown_msg_encode(msg1,tear_msg);
+           printf("%s",tear_msg);
+        */
+        /*
+        //解析ERM作为代理向SM发送的TEARDOWN消息
+        	char *tear_msg = "TEARDOWN rtsp://srm1.net RTSP/1.0\r\n"
+        					 "CSeq: 414\r\n"
+        					 "Require: com.comcast.ngod.s6\r\n"
+        					 "Reason: 200 \"User stop\"\r\n"
+        					 "Session: 3500123\r\n"
+        					 "OnDemandSessionId: be074250-cc5a-11d9-8cd5-0800200c9a66\r\n";
+
+        	S6_TEARDOWN_MSG2 msg2;
+
+        	rtsp_s6_teardown_msg_parse(tear_msg,&msg2);
+        */
+        /*
+        //创建SM发给ERM的Teardown Response
+        	char tear_res[1024] = "";
+        	S6_TEARDOWN_RES1 res1;
+        	res1.err_code = 200;
+        	res1.cseq = 99;
+        	res1.session = 323232;
+        	strcpy(res1.ondemandsessionid,"fsfsfsdfsdfsdfsddf");
+        	rtsp_s6_teardown_res_encode(res1,tear_res);
+        	printf("%s",tear_res);
+        */
+        /*
+        //解析ERM发给SM的Teardown Response
+        	char *tear_res = "RTSP/1.0 200 OK\r\n"
+        					"CSeq: 314\r\n"
+        					"Session: 47112344\r\n"
+        					"OnDemandSessionId: be074250-cc5a-11d9-8cd5-0800200c9a66\r\n\r\n";
+        	S6_TEARDOWN_RES2 res2;
+
+        	rtsp_s6_teardown_res_parse(tear_res,&res2);
+        */
+        /*
+        //解析ERM向SM发送的ANNOUNCE消息
+            char *announce = "ANNOUNCE rtsp://srm1.net RTSP/1.0\r\n"
+                            "CSeq: 415\r\n"
+                             "Require: com.comcast.ngod.s6\r\n"
+                             "Session: 47112344\r\n"
+                             "Notice: 5401 \"Downstream Failure\" "
+                             "event-date=19930316T064707.735Z npt=\r\n"
+                             "OnDemandSessionId: be074250-cc5a-11d9-8cd5-0800200c9a66\r\n\r\n";
+            S6_ANNOUNCE_MSG ann;
+            rtsp_s6_announce_msg_parse(announce,&ann);
+        */
+        /*
+        //创建SM向ERM发送的ANNOUNCE RESPONSE消息
+            S6_ANNOUNCE_RES res;
+            res.err_code = 200;
+            res.cseq = 120;
+            res.session = 3232;
+            strcpy(res.ondemandsessionid,"fsfsdf33");
+            char ann_res[1024] = "";
+            rtsp_s6_announce_response_res_encode(res,ann_res);
+            printf("%s",ann_res);
+        */
+
+    }
+
+//S1消息测试
+    {
+//解析STB发送给SM的SETUP消息
+        
+        char *str = "SETUP rtsp://sessionmanager2.comcast.com:554/;"
+        			"purchaseToken=c0c2d8b0-cc82-11d9-8cd50-800200c9a66;serverID=1.1.1.1 RTSP/1.0\r\n"
+          			"CSeq: 123\r\n"
+        			"Require: com.comcast.ngod.s1\r\n"
+        			"Transport:"
+          				"MP2T/DVBC/QAM;unicast;client=00AF123456DE;"
+          				"qam_name=Chicago.Southbend.5,"
+          				"MP2T/DVBC/QAM;unicast;client=00AF123456DE;"
+          				"qam_name=Chicago.Southbend.10\r\n"
+        			"ClientSessionId: 00AF123456DE00000001\r\n\r\n";
+        S1_SETUP_MSG msg;
+        rtsp_s1_setup_msg_parse(str,&msg);
+        
+//创建SM发给STB的SETUP RESPONSE消息
+        /*
+        char setup_res[2048] = "";
+        S1_SETUP_RES res;
+
+        res.cseq = 123;
+        res.session = 716195834;
+        strcpy(res.destination,"24000000.23");
+        strcpy(res.ondemand_session_id,"be074250-cc5a-11d9-8cd5-0800200c9a66");
+        strcpy(res.client_session_id,"00AF123456DE00000001");
+        strcpy(res.emm_data,"40203F21A5");
+
+        res.sdp_version = 0;
+        strcpy(res.email_add,"-");
+        res.ss_session = 777;
+        strcpy(res.npt,"2890842817");
+        strcpy(res.add_type,"IN");
+        strcpy(res.ip_version,"IP4");
+        strcpy(res.ss_ip,"1.2.3.4");
+        strcpy(res.s," ");
+        res.time[0] = 0;
+        res.time[1] = 0;
+        strcpy(res.protocol,"rtsp");
+        strcpy(res.host,"videoserver234.comcast.com");
+        res.port = 554;
+        res.stream_handle = 9876;
+        strcpy(res.c,"IN IP4 0.0.0.0");
+        strcpy(res.m,"video 0 udp MP2T");
+
+
+        rtsp_s1_setup_res_encode(res,setup_res);
+        printf("%s",setup_res);
+        */
+
+//解析STB发给SM的TEARDOWN消息
+        /*
+        char *tear_msg = "TEARDOWN rtsp://sessionmanager2.comcast.com:554 RTSP/1.0\r\n"
+        				"CSeq: 789\r\n"
+        				"Require: com.comcast.ngod.s1\r\n"
+        				"Reason: 200 \"user pressed stop\"\r\n"
+        				"Session: 98765\r\n"
+        				"OnDemandSessionId: be074250-cc5a-11d9-8cd5-0800200c9a66\r\n"
+        				"ClientSessionId: 00AF123456DE00000001\r\n\r\n";
+        S1_TEARDOWN_MSG tear;
+        rtsp_s1_teardown_msg_parse(tear_msg,&tear);
+        */
+
+//创建SM发给STB的TEARDOWN RESPONSE消息
+        /*
+        S1_TEARDOWN_RES res;
+        char tear_res[1024] = "";
+
+        res.err_code = 200;
+        res.cseq = 123;
+        res.session = 3232323;
+        strcpy(res.ondemand_session_id,"fsfsdfsdfsdfsdfsdfd");
+        strcpy(res.client_session_id,"fgfgfgfgfhg");
+
+        rtsp_s1_teardown_res_encode(res,tear_res);
+        printf("%s",tear_res);
+        */
+//创建SM发给STB的ANNOUNCE消息
+        /*
+        S1_ANNOUNCE_MSG ann;
+        char ann_msg[1024];
+
+        strcpy(ann.sm_ip,"sessionmanager2.comcast.com");
+        ann.sm_port = 554;
+        ann.cseq  = 123;
+        strcpy(ann.require,"com.comcast.ngod.s1");
+        ann.session = 1212121;
+        ann.notice = 5401;
+        strcpy(ann.event_date,"19930310T023735.013Z");
+        strcpy(ann.npt,"342554");
+        strcpy(ann.ondemand_session_id,"be074250-cc5a-11d9-8cd5-0800200c9a66");
+
+        rtsp_s1_announce_msg_encode(ann,ann_msg);
+        printf("%s",ann_msg);
+        */
+
+//解析STB发给SM的Announce Response消息
+        /*
+        char *ann_res = "RTSP/1.0 200 OK\r\n"
+        				"CSeq: 3\r\n"
+        				"Session: 94155497\r\n"
+        				"OnDemandSessionId: be074250-cc5a-11d9-8cd5-0800200c9a66\r\n\r\n";
+        S1_ANNOUNCE_RES ann;
+
+        rtsp_s1_announce_res_parse(ann_res,&ann);
+        */
+
+//解析STB发给SM的PING消息
+        /*
+        char *ping_msg = "PING rtsp://sessionmanager2.comcast.com:554 RTSP/1.0\r\n"
+        				"CSeq: 123\r\n"
+        				"Require: com.comcast.ngod.s1\r\n"
+        				"Session:12345678\r\n"
+        				"OnDemandSessionId: be074250-cc5a-11d9-8cd5-0800200c9a66\r\n\r\n";
+        S1_PING_MSG ping;
+
+        rtsp_s1_ping_msg_parse(ping_msg,&ping);
+        */
+//创建SM发给STB的Ping Response消息
+        /*
+        char ping_res[1024] = "";
+        S1_PING_RES ping = {200,123,12345678,"be074250-cc5a-11d9-8cd5-0800200c9a66"};
+
+        rtsp_s1_ping_res_encode(ping,ping_res);
+        printf("%s",ping_res);
+        */
+
+
+
+    }
+//S3消息测试
+    {
+//创建SM发给ODRM的SETUP信息
+        /*
+        S3_SETUP_MSG msg;
+        char setup_msg[2048] = "";
+        memset(&msg,0x00,sizeof(S3_SETUP_MSG));
+
+        strcpy(msg.odrm_ip,"192.168.0.208");
+        msg.odrm_port = 554;
+        msg.cseq = 124;
+        strcpy(msg.require,"com.comcast.ngod.s3");
+        strcpy(msg.ondemand_session_id,"be074250-cc5a-11d9-8cd5-0800200c9a66");
+
+        strcpy(msg.sop_group[0],"boston.spg1");
+        strcpy(msg.sop_group[1],"boston.spg2");
+
+        msg.qam_num = 2;
+        strcpy(msg.qam[0].client,"00AF123456DE");
+        strcpy(msg.qam[0].destination,"1.1.1.1");
+        msg.qam[0].client_port = 23;
+        msg.qam[0].bandwidth = 2920263;
+        strcpy(msg.qam[1].client,"00AF123456DE");
+        strcpy(msg.qam[1].destination,"1.1.1.1");
+        msg.qam[1].client_port = 23;
+        msg.qam[1].bandwidth = 2920263;
+
+        strcpy(msg.session_group,"SM1");
+        msg.start_point_slot = 1;
+        strcpy(msg.start_point_npt,"3000");
+        strcpy(msg.policy,"priority=1");
+        strcpy(msg.inband_marker,"type=4;pidType=A;pidValue=01EE;dataType=T;insertDuration=10000;data=4002003030");
+
+        msg.sdp_version = 0;
+        strcpy(msg.email_add,"-");
+        strcpy(msg.ntp,"2890842817");
+        strcpy(msg.add_type,"IN");
+        strcpy(msg.ip_version,"IP4");
+        strcpy(msg.sm_ip,"1.2.3.4");
+        strcpy(msg.s," ");
+        msg.time[0] = 0;
+        msg.time[1] = 0;
+        strcpy(msg.provider_id,"comcast.com");
+        strcpy(msg.asset_id,"abcd1234567890123456");
+        msg.start_npt = 1000;
+        msg.stop_npt = 6000;
+
+        strcpy(msg.c,"IN IP4 0.0.0.0");
+        strcpy(msg.m,"video 0 udp MP2T");
+
+        rtsp_s3_setup_msg_encode(msg,setup_msg);
+        printf("%s",setup_msg);
+        */
+
+//创建ODRM发给SM的SETUP RESPONSE消息
+        /*
+        S3_SETUP_RES res;
+        memset(&res,0x00,sizeof(res));
+        char *setup_res = "RTSP/1.0 200 OK\r\n"
+        				  "CSeq: 896\r\n"
+        				  "Session: 17513\r\n"
+        				  "OnDemandSessionId: be074250-cc5a-11d9-8cd5-0800200c9a66\r\n"
+        				  "SopGroup: boston.spg1\r\n"
+                          "Sop: boston.ss1.123\r\n"
+        				  "Transport:"
+         					 "MP2T/DVBC/UDP;unicast;client=00AF123456DE;"
+         					 "destination=2.2.2.2;client_port=45;"
+         					 "source=1.2.3.4;"
+         					 "server_port=123;"
+         					 "bandwidth=2920263\r\n"
+        				  "Content-type: application/sdp\r\n"
+        				  "Content-length: 149\r\n\r\n"
+        				  "v=0\r\n"
+        				  "o=- 17513 2890842817 IN IP4 1.2.3.4\r\n"
+        			   	  "s= \r\n"
+        				  "t=0 0\r\n"
+        				  "a=control:lscp://videoserver234.comcast.com:554/9876\r\n"
+        				  "c=IN IP4 2.2.2.2\r\n"
+        				  "m=video 45 udp MP2T\r\n";
+        rtsp_s3_setup_res_parse(setup_res,&res);
+        */
+
+//创建SM发给ODRM的TEARDOWN消息
+        /*
+        S3_TEARDOWN_MSG tear;
+        char tear_msg[1024];
+
+        strcpy(tear.odrm_ip,"192.168.10.208");
+        tear.odrm_port = 554;
+        tear.cseq = 123;
+        tear.reason = 200;
+        tear.session = 98765;
+        strcpy(tear.ondemand_session_id,"be074250-cc5a-11d9-8cd5-0800200c9a66");
+
+        rtsp_s3_teardown_msg_encode(tear,tear_msg);
+
+        printf("%s",tear_msg);
+        */
+
+//解析ODRM发给SM的TEARDDOWN RESPONSE消息
+        /*
+        S3_TEARDOWN_RES res;
+        char *tear_res = "RTSP/1.0 200 OK\r\n"
+        				 "CSeq: 789\r\n"
+        				 "Session: 98765\r\n"
+        				 "OnDemandSessionId: be074250-cc5a-11d9-8cd5-0800200c9a66\r\n"
+        				 "StopPoint: 1 4500\r\n\r\n";
+
+        rtsp_s3_teardown_res_parse(tear_res,&res);
+        */
+
+//解析ERM向SM发送的ANNOUNCE消息
+/*
+        S3_ANNOUNCE_MSG ann;
+        char * announce = "ANNOUNCE rtsp://sm2.comcast.com:554  RTSP/1.0\r\n"
+                "CSeq: 3\r\n"
+                "Require: com.comcast.ngod.s3\r\n"
+                "Session: 94155497\r\n"
+                "Notice: 5402 \"Client Session Terminated\" event-date=19930310T023735.013Z npt=342554\r\n"
+                "OnDemandSessionId: be074250-cc5a-11d9-8cd5-0800200c9a66\r\n\r\n";
+
+        rtsp_s3_announce_msg_parse(announce,&ann);
+*/
+
+//创建SM向ERM发送的ANNOUNCE RESPONSE消息
+/*
+char ann_res[1024] = "";
+S3_ANNOUNCE_RES res;
+res.err_code = 200;
+res.cseq = 123;
+res.session = 123456;
+strcpy(res.ondemand_session_id,"be074250-cc5a-11d9-8cd5-0800200c9a66");
+
+rtsp_s3_announce_res_encode(res,ann_res);
+
+printf("%s",ann_res);
+*/
+
+//创建SM向ODRM发送的GET PARAMETER消息
+/*
+char get_parameter[1024] = "";
+S3_GET_PARAMETER_MSG msg;
+strcpy(msg.odrm_ip,"1.1.1.1");
+msg.odrm_port = 554;
+msg.cseq = 123;
+msg.session = 123456;
+strcpy(msg.parameter,"connection_timeout");
+strcpy(msg.content_type,"text/parameters");
+
+rtsp_s3_get_parameter_msg_encode(msg,get_parameter);
+
+printf("%s",get_parameter);
+*/
+
+//解析ODRM发给SM的GET_PARAMETER RESPONSE消息
+/*
+S3_GET_PARAMETER_RES res;
+char *get_parameter_res = "RTSP/1.0 200 OK\r\n"
+						  "CSeq: 36393\r\n"
+						  "Session: 1231796058\r\n"
+						  "Content-Type: text/parameters\r\n"
+						  "Content-Length: 23\r\n\r\n"
+						  "connection_timeout: 300\r\n";
+
+rtsp_s3_get_parameter_res_parse(get_parameter_res,&res);
+*/
+
+//创建SM向ODRM发送的SET PARAMETER消息
+/*
+char set_parameter[1024] = "";
+S3_SET_PARAMETER_MSG msg;
+strcpy(msg.odrm_ip,"1.1.1.1");
+msg.odrm_port = 554;
+msg.cseq = 123;
+strcpy(msg.content,"session_groups: SM1.SG1 SM1.SG2 SM1.SG3");
+strcpy(msg.content_type,"text/parameters");
+
+rtsp_s3_set_parameter_msg_encode(msg,set_parameter);
+
+printf("%s",set_parameter);
+*/
+
+//解析ODRM发给SM的SET_PARAMETER RESPONSE消息
+/*
+S3_SET_PARAMETER_RES res;
+char *set_parameter_res = "RTSP/1.0 200 OK\r\n"
+						  "CSeq: 36393\r\n\r\n";
+
+rtsp_s3_set_parameter_res_parse(set_parameter_res,&res);
+*/
+    }
+
+    return 0;
+}
+
+

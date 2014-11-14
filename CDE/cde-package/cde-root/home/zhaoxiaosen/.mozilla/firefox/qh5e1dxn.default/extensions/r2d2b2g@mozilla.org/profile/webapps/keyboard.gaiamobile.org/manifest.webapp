@@ -1,0 +1,54 @@
+{
+  "name": "Keyboard", 
+  "default_locale": "en-US", 
+  "description": "Gaia Keyboard", 
+  "developer": {
+    "url": "https://github.com/mozilla-b2g/gaia", 
+    "name": "The Gaia Team"
+  }, 
+  "type": "certified", 
+  "locales": {
+    "fr": {
+      "name": "Clavier", 
+      "description": "Clavier de Gaia"
+    }, 
+    "de": {
+      "name": "Tastatur", 
+      "description": "Tastatur f\u00fcr Gaia"
+    }, 
+    "hr": {
+      "name": "Tipkovnica", 
+      "description": "Gaia tipkovnica"
+    }, 
+    "zh-TW": {
+      "name": "\u9375\u76e4", 
+      "description": "Gaia \u9375\u76e4"
+    }, 
+    "en-US": {
+      "name": "Keyboard", 
+      "description": "Gaia Keyboard"
+    }, 
+    "hu": {
+      "name": "Billenty\u0171zet", 
+      "description": "Gaia billenty\u0171zet"
+    }, 
+    "pt-BR": {
+      "name": "Teclado", 
+      "description": "Teclado do Gaia"
+    }, 
+    "es": {
+      "name": "Teclado", 
+      "description": "Teclado de gaia"
+    }, 
+    "pl": {
+      "name": "Klawiatura", 
+      "description": "Klawiatura \u201eGaia\u201d"
+    }
+  }, 
+  "permissions": {
+    "keyboard": {}, 
+    "settings": {
+      "access": "readwrite"
+    }
+  }
+}

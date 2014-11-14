@@ -1,0 +1,4 @@
+SETUP rtsp://172.2.2.2/123 RTSP/1.0\r\n
+CSeq: 101\r\n
+Require: ermi\r\n
+Transport:DOCSIS/QAM;unicast;bit_rate=38000000;qam_id=123;depi_mode=docsis_mpt\r\n\r\n

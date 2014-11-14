@@ -1,0 +1,113 @@
+{
+  "activities": {
+    "configure": {
+      "disposition": "window", 
+      "filters": {
+        "target": "device"
+      }
+    }
+  }, 
+  "name": "Settings", 
+  "default_locale": "en-US", 
+  "icons": {
+    "120": "/style/icons/Settings.png", 
+    "60": "/style/icons/60/Settings.png"
+  }, 
+  "orientation": "portrait-primary", 
+  "description": "Gaia Settings", 
+  "messages": [
+    "bluetooth-requestconfirmation", 
+    "bluetooth-requestpasskey", 
+    "bluetooth-requestpincode", 
+    "bluetooth-authorize", 
+    "bluetooth-cancel", 
+    "bluetooth-pairedstatuschanged", 
+    "bluetooth-hfp-status-changed"
+  ], 
+  "launch_path": "/index.html#root", 
+  "permissions": {
+    "device-storage:pictures": {
+      "access": "readonly"
+    }, 
+    "attention": {}, 
+    "desktop-notification": {}, 
+    "power": {}, 
+    "wifi-manage": {}, 
+    "device-storage:apps": {
+      "access": "readonly"
+    }, 
+    "device-storage:videos": {
+      "access": "readonly"
+    }, 
+    "voicemail": {}, 
+    "settings": {
+      "access": "readwrite"
+    }, 
+    "storage": {}, 
+    "device-storage:sdcard": {
+      "access": "readonly"
+    }, 
+    "bluetooth": {}, 
+    "telephony": {}, 
+    "device-storage:music": {
+      "access": "readonly"
+    }, 
+    "idle": {}, 
+    "audio-channel-notification": {}, 
+    "time": {}, 
+    "mobileconnection": {}, 
+    "webapps-manage": {}, 
+    "permissions": {}
+  }, 
+  "type": "certified", 
+  "locales": {
+    "fr": {
+      "name": "Param\u00e8tres", 
+      "description": "Param\u00e8tres de Gaia"
+    }, 
+    "de": {
+      "name": "Einstellungen", 
+      "description": "Einstellungen f\u00fcr Gaia"
+    }, 
+    "hr": {
+      "name": "Postavke", 
+      "description": "Gaia postavke"
+    }, 
+    "zh-TW": {
+      "name": "\u8a2d\u5b9a", 
+      "description": "Gaia \u8a2d\u5b9a"
+    }, 
+    "en-US": {
+      "name": "Settings", 
+      "description": "Gaia Settings"
+    }, 
+    "tr": {
+      "name": "Ayarlar", 
+      "description": "Gaia Ayarlar\u0131"
+    }, 
+    "hu": {
+      "name": "Be\u00e1ll\u00edt\u00e1sok", 
+      "description": "Gaia be\u00e1ll\u00edt\u00e1sok"
+    }, 
+    "ar": {
+      "name": "\u0627\u0644\u0636\u0628\u0637", 
+      "description": "Gaia \u0627\u0644\u0636\u0628\u0637"
+    }, 
+    "pt-BR": {
+      "name": "Configura\u00e7\u00f5es", 
+      "description": "Configura\u00e7\u00f5es do Gaia"
+    }, 
+    "es": {
+      "name": "Ajustes", 
+      "description": "Ajustes de Gaia"
+    }, 
+    "pl": {
+      "name": "Ustawienia", 
+      "description": "Gaia Settings"
+    }
+  }, 
+  "developer": {
+    "url": "https://github.com/mozilla-b2g/gaia", 
+    "name": "The Gaia Team"
+  }
+}

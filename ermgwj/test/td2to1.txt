@@ -1,0 +1,3 @@
+RTSP/1.0 200 OK\r\n
+CSeq: 316\r\n
+Session: 47223344\r\n\r\n

@@ -1,0 +1,5 @@
+RTSP/1.0 200 OK\r\n
+CSeq: 130\r\n
+Content-length: 31\r\n
+Content-type: text/parameters\r\n\r\n 
+session_list: 1234567 1234568\r\n

@@ -1,0 +1,65 @@
+{
+  "name": "FM Radio", 
+  "default_locale": "en-US", 
+  "icons": {
+    "128": "/style/icons/Fm.png", 
+    "60": "/style/icons/60/Fm.png"
+  }, 
+  "orientation": "portrait-primary", 
+  "description": "Gaia FM Radio", 
+  "launch_path": "/index.html", 
+  "permissions": {
+    "fmradio": {}, 
+    "storage": {}, 
+    "settings": {
+      "access": "readonly"
+    }
+  }, 
+  "type": "certified", 
+  "locales": {
+    "fr": {
+      "name": "Radio FM", 
+      "description": "Radio FM de Gaia"
+    }, 
+    "de": {
+      "name": "UKW-Radio", 
+      "description": "UKW-Radio f\u00fcr Gaia"
+    }, 
+    "hr": {
+      "name": "FM radio", 
+      "description": "Gaia FM radio"
+    }, 
+    "zh-TW": {
+      "name": "FM \u6536\u97f3\u6a5f", 
+      "description": "Gaia FM \u6536\u97f3\u6a5f"
+    }, 
+    "en-US": {
+      "name": "FM Radio", 
+      "description": "Gaia FM Radio"
+    }, 
+    "hu": {
+      "name": "FM r\u00e1di\u00f3", 
+      "description": "Gaia FM r\u00e1di\u00f3"
+    }, 
+    "ar": {
+      "name": "FM Radio", 
+      "description": "Gaia FM Radio"
+    }, 
+    "pt-BR": {
+      "name": "R\u00e1dio FM", 
+      "description": "R\u00e1dio FM do Gaia"
+    }, 
+    "es": {
+      "name": "Radio FM", 
+      "description": "Radio FM de Gaia"
+    }, 
+    "pl": {
+      "name": "Radio", 
+      "description": "Gaia radio"
+    }
+  }, 
+  "developer": {
+    "url": "https://github.com/mozilla-b2g/gaia", 
+    "name": "The Gaia Team"
+  }
+}

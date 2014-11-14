@@ -1,0 +1,65 @@
+{
+  "activities": {
+    "share": {
+      "href": "/transfer.html", 
+      "returnValue": true, 
+      "disposition": "inline"
+    }
+  }, 
+  "name": "Send To Bluetooth Device", 
+  "orientation": "portrait-primary", 
+  "description": "Gaia Bluetooth Transfer", 
+  "launch_path": "/transfer.html", 
+  "permissions": {
+    "device-storage:sdcard": {
+      "access": "readonly"
+    }, 
+    "settings": {
+      "access": "readwrite"
+    }, 
+    "bluetooth": {}
+  }, 
+  "type": "certified", 
+  "locales": {
+    "fr": {
+      "name": "Transfert Bluetooth", 
+      "description": "Transfert Bluetooth de Gaia"
+    }, 
+    "de": {
+      "name": "Bluetooth-Dateitransfer", 
+      "description": "Bluetooth-Dateitransfer f\u00fcr Gaia"
+    }, 
+    "hr": {
+      "name": "Bluetooth prijenos", 
+      "description": "Gaia Bluetooth prijenos"
+    }, 
+    "zh-TW": {
+      "name": "\u85cd\u7259\u50b3\u8f38", 
+      "description": "Gaia \u85cd\u7259\u50b3\u8f38"
+    }, 
+    "en-US": {
+      "name": "Bluetooth Transfer", 
+      "description": "Gaia Bluetooth Transfer"
+    }, 
+    "hu": {
+      "name": "Bluetooth adat\u00e1tvitel", 
+      "description": "Gaia Bluetooth adat\u00e1tvitel"
+    }, 
+    "pt-BR": {
+      "name": "Transfer\u00eancia Bluetooth", 
+      "description": "Transfer\u00eancia Bluetooth do Gaia"
+    }, 
+    "es": {
+      "name": "Transferencia Bluetooth", 
+      "description": "Transferencia Bluetooth de Gaia"
+    }, 
+    "pl": {
+      "name": "Transfer Bluetooth", 
+      "description": "Gaia Bluetooth Transfer"
+    }
+  }, 
+  "developer": {
+    "url": "https://github.com/mozilla-b2g/gaia", 
+    "name": "The Gaia Team"
+  }
+}

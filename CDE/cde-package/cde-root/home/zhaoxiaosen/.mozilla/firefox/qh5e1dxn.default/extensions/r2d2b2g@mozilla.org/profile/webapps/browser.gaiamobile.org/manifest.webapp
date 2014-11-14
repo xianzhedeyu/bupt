@@ -1,0 +1,87 @@
+{
+  "activities": {
+    "view": {
+      "filters": {
+        "url": {
+          "regexp": "/^https?:.{1,16384}$/i", 
+          "required": true
+        }, 
+        "type": "url"
+      }
+    }
+  }, 
+  "name": "Browser", 
+  "default_locale": "en-US", 
+  "icons": {
+    "120": "/shared/resources/branding/Browser.png", 
+    "60": "/shared/resources/branding/Browser.png"
+  }, 
+  "description": "Gaia Web Browser", 
+  "launch_path": "/index.html", 
+  "permissions": {
+    "geolocation": {}, 
+    "device-storage:pictures": {
+      "access": "readwrite"
+    }, 
+    "desktop-notification": {}, 
+    "settings": {
+      "access": "readonly"
+    }, 
+    "device-storage:videos": {
+      "access": "readwrite"
+    }, 
+    "storage": {}, 
+    "device-storage:music": {
+      "access": "readwrite"
+    }, 
+    "systemXHR": {}, 
+    "browser": {}
+  }, 
+  "type": "certified", 
+  "locales": {
+    "fr": {
+      "name": "Navigateur", 
+      "description": "Navigateur web de Gaia"
+    }, 
+    "de": {
+      "name": "Browser", 
+      "description": "Internet-Browser f\u00fcr Gaia"
+    }, 
+    "hr": {
+      "name": "Browser", 
+      "description": "Gaia Web Browser"
+    }, 
+    "zh-TW": {
+      "name": "\u700f\u89bd\u5668", 
+      "description": "Gaia \u7db2\u9801\u700f\u89bd\u5668"
+    }, 
+    "en-US": {
+      "name": "Browser", 
+      "description": "Gaia Web Browser"
+    }, 
+    "hu": {
+      "name": "Webb\u00f6ng\u00e9sz\u0151", 
+      "description": "Gaia webb\u00f6g\u00e9sz\u0151"
+    }, 
+    "ar": {
+      "name": "\u0627\u0644\u0645\u062a\u0635\u0641\u062d", 
+      "description": "Gaia \u0645\u062a\u0635\u0641\u062d \u0627\u0644\u0648\u064a\u0628"
+    }, 
+    "pt-BR": {
+      "name": "Navegador", 
+      "description": "Navegador da Web do Gaia"
+    }, 
+    "es": {
+      "name": "Navegador", 
+      "description": "Navegador web de Gaia"
+    }, 
+    "pl": {
+      "name": "Przegl\u0105darka", 
+      "description": "Gaia Web Browser"
+    }
+  }, 
+  "developer": {
+    "url": "https://github.com/mozilla-b2g/gaia", 
+    "name": "The Gaia Team"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "name": "Clock", 
+  "default_locale": "en-US", 
+  "icons": {
+    "120": "/style/icons/Clock.png", 
+    "60": "/style/icons/60/Clock.png"
+  }, 
+  "orientation": "portrait-primary", 
+  "description": "Gaia Clock", 
+  "messages": [
+    {
+      "alarm": "/index.html"
+    }
+  ], 
+  "launch_path": "/index.html", 
+  "permissions": {
+    "alarms": {}, 
+    "attention": {}, 
+    "storage": {}, 
+    "audio-channel-alarm": {}, 
+    "settings": {
+      "access": "readwrite"
+    }
+  }, 
+  "type": "certified", 
+  "locales": {
+    "fr": {
+      "name": "Horloge", 
+      "description": "Horloge de Gaia"
+    }, 
+    "de": {
+      "name": "Uhr", 
+      "description": "Uhr f\u00fcr Gaia"
+    }, 
+    "hr": {
+      "name": "Sat", 
+      "description": "Gaia sat"
+    }, 
+    "zh-TW": {
+      "name": "\u6642\u9418", 
+      "description": "Gaia \u6642\u9418"
+    }, 
+    "en-US": {
+      "name": "Clock", 
+      "description": "Gaia Clock"
+    }, 
+    "hu": {
+      "name": "\u00d3ra", 
+      "description": "Gaia \u00f3ra"
+    }, 
+    "ar": {
+      "name": "\u0627\u0644\u0633\u0627\u0639\u0629", 
+      "description": "Gaia \u0627\u0644\u0633\u0627\u0639\u0629"
+    }, 
+    "pt-BR": {
+      "name": "Rel\u00f3gio", 
+      "description": "Rel\u00f3gio do Gaia"
+    }, 
+    "es": {
+      "name": "Reloj", 
+      "description": "Reloj de Gaia"
+    }, 
+    "pl": {
+      "name": "Zegar", 
+      "description": "Gaia Clock"
+    }
+  }, 
+  "developer": {
+    "url": "https://github.com/mozilla-b2g/gaia", 
+    "name": "The Gaia Team"
+  }
+}

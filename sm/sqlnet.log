@@ -1,0 +1,266 @@
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(CONNECT_DATA=(SERVICE_NAME=smora)(CID=(PROGRAM=)(HOST=bupt)(USER=oracle)))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.10.183)(PORT=1521)))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 10.1.0.3.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 10.1.0.3.0 - Production
+  Time: 08-JUN-2011 16:37:16
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 113
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(CONNECT_DATA=(SERVICE_NAME=smora)(CID=(PROGRAM=)(HOST=bupt)(USER=oracle)))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.10.183)(PORT=1521)))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 10.1.0.3.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 10.1.0.3.0 - Production
+  Time: 08-JUN-2011 16:38:05
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 113
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(CONNECT_DATA=(SERVICE_NAME=smora)(CID=(PROGRAM=)(HOST=bupt)(USER=oracle)))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.10.183)(PORT=1521)))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 10.1.0.3.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 10.1.0.3.0 - Production
+  Time: 08-NOV-2011 09:38:13
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 113
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(CONNECT_DATA=(SERVICE_NAME=smora)(CID=(PROGRAM=)(HOST=bupt)(USER=oracle)))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.10.183)(PORT=1521)))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 10.1.0.3.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 10.1.0.3.0 - Production
+  Time: 08-NOV-2011 09:41:06
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 113
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(CONNECT_DATA=(SERVICE_NAME=smora)(CID=(PROGRAM=)(HOST=bupt)(USER=oracle)))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.10.183)(PORT=1521)))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 10.1.0.3.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 10.1.0.3.0 - Production
+  Time: 08-NOV-2011 09:41:58
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 113
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(CONNECT_DATA=(SERVICE_NAME=smora)(CID=(PROGRAM=)(HOST=bupt)(USER=oracle)))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.10.183)(PORT=1521)))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 10.1.0.3.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 10.1.0.3.0 - Production
+  Time: 08-NOV-2011 10:05:39
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 113
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(CONNECT_DATA=(SERVICE_NAME=smora)(CID=(PROGRAM=)(HOST=bupt)(USER=oracle)))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.10.183)(PORT=1521)))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 10.1.0.3.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 10.1.0.3.0 - Production
+  Time: 08-NOV-2011 10:16:26
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 113
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(CONNECT_DATA=(SERVICE_NAME=smora)(CID=(PROGRAM=)(HOST=bupt)(USER=oracle)))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.10.183)(PORT=1521)))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 10.1.0.3.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 10.1.0.3.0 - Production
+  Time: 08-NOV-2011 10:20:00
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 113
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(CONNECT_DATA=(SERVICE_NAME=smora)(CID=(PROGRAM=)(HOST=bupt)(USER=oracle)))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.10.183)(PORT=1521)))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 10.1.0.3.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 10.1.0.3.0 - Production
+  Time: 08-NOV-2011 13:36:37
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 113
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(CONNECT_DATA=(SERVICE_NAME=smora)(CID=(PROGRAM=)(HOST=bupt)(USER=oracle)))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.10.183)(PORT=1521)))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 10.1.0.3.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 10.1.0.3.0 - Production
+  Time: 08-NOV-2011 13:44:33
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 113
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(CONNECT_DATA=(SERVICE_NAME=smora)(CID=(PROGRAM=)(HOST=bupt)(USER=oracle)))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.10.183)(PORT=1521)))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 10.1.0.3.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 10.1.0.3.0 - Production
+  Time: 08-NOV-2011 13:49:10
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 113
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(CONNECT_DATA=(SERVICE_NAME=smora)(CID=(PROGRAM=)(HOST=bupt)(USER=oracle)))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.10.183)(PORT=1521)))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 10.1.0.3.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 10.1.0.3.0 - Production
+  Time: 08-NOV-2011 14:03:36
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 113
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(CONNECT_DATA=(SERVICE_NAME=smora)(CID=(PROGRAM=)(HOST=bupt)(USER=oracle)))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.10.183)(PORT=1521)))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 10.1.0.3.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 10.1.0.3.0 - Production
+  Time: 08-NOV-2011 14:05:04
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 530
+    TNS-00530: Protocol adapter error
+    nt secondary err code: 113
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12170.
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 10.1.0.3.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 10.1.0.3.0 - Production
+  Time: 08-NOV-2011 14:29:48
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 110
+    nt OS err code: 0
+  Client address: <unknown>

@@ -1,0 +1,84 @@
+{
+  "activities": {
+    "save-bookmark": {
+      "returnValue": true, 
+      "href": "/save-bookmark.html", 
+      "disposition": "inline", 
+      "filters": {
+        "url": {
+          "regexp": "/^https?:/", 
+          "required": true
+        }, 
+        "type": "url"
+      }
+    }
+  }, 
+  "name": "Homescreen", 
+  "default_locale": "en-US", 
+  "icons": {
+    "30": "/style/icons/HomeScreen.png"
+  }, 
+  "orientation": "portrait-primary", 
+  "description": "Gaia Homescreen", 
+  "launch_path": "/index.html#root", 
+  "permissions": {
+    "geolocation": {}, 
+    "device-storage:pictures": {
+      "access": "readonly"
+    }, 
+    "open-remote-window": {}, 
+    "settings": {
+      "access": "readwrite"
+    }, 
+    "storage": {}, 
+    "systemXHR": {}, 
+    "webapps-manage": {}
+  }, 
+  "type": "certified", 
+  "locales": {
+    "fr": {
+      "name": "\u00c9cran d\u2019accueil", 
+      "description": "\u00c9cran d\u2019accueil de Gaia"
+    }, 
+    "de": {
+      "name": "Startbildschirm", 
+      "description": "Startbildschirm f\u00fcr Gaia"
+    }, 
+    "hr": {
+      "name": "Po\u010detni zaslon", 
+      "description": "Gaia po\u010detni zaslon"
+    }, 
+    "zh-TW": {
+      "name": "\u4e3b\u756b\u9762", 
+      "description": "Gaia \u4e3b\u756b\u9762"
+    }, 
+    "en-US": {
+      "name": "Homescreen", 
+      "description": "Gaia Homescreen"
+    }, 
+    "hu": {
+      "name": "Kezd\u0151k\u00e9perny\u0151", 
+      "description": "Gaia kezd\u0151k\u00e9perny\u0151"
+    }, 
+    "ar": {
+      "name": "\u0627\u0644\u0634\u0627\u0634\u0629 \u0627\u0644\u0631\u0626\u064a\u0633\u064a\u0629", 
+      "description": "Gaia \u0627\u0644\u0634\u0627\u0634\u0629 \u0627\u0644\u0631\u0626\u064a\u0633\u064a\u0629"
+    }, 
+    "pt-BR": {
+      "name": "Tela inicial", 
+      "description": "Tela inicial do Gaia"
+    }, 
+    "es": {
+      "name": "Pantalla de inicio", 
+      "description": "Pantalla de inicio de Gaia"
+    }, 
+    "pl": {
+      "name": "Ekran g\u0142\u00f3wny", 
+      "description": "Gaia, ekran g\u0142\u00f3wny"
+    }
+  }, 
+  "developer": {
+    "url": "https://github.com/andreasgal/gaia", 
+    "name": "The Gaia Team"
+  }
+}

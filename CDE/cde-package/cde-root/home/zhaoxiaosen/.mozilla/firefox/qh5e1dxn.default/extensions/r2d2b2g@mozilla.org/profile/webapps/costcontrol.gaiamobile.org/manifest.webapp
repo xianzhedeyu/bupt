@@ -1,0 +1,97 @@
+{
+  "activities": {
+    "costcontrol/balance": {
+      "disposition": "window", 
+      "filters": {}
+    }, 
+    "costcontrol/telephony": {
+      "disposition": "window", 
+      "filters": {}
+    }, 
+    "costcontrol/data_usage": {
+      "disposition": "window", 
+      "filters": {}
+    }
+  }, 
+  "name": "Usage", 
+  "default_locale": "en-US", 
+  "icons": {
+    "120": "/style/icons/cost-control.png", 
+    "60": "/style/icons/60/cost-control.png"
+  }, 
+  "orientation": "portrait-primary", 
+  "description": "Usage application to see credit and data usage statistics", 
+  "messages": [
+    {
+      "sms-received": "/message_handler.html"
+    }, 
+    {
+      "alarm": "/message_handler.html"
+    }, 
+    {
+      "sms-sent": "/message_handler.html"
+    }, 
+    {
+      "telephony-call-ended": "/message_handler.html"
+    }, 
+    {
+      "notification": "/index.html"
+    }
+  ], 
+  "launch_path": "/index.html", 
+  "permissions": {
+    "desktop-notification": {}, 
+    "settings": {
+      "access": "readonly"
+    }, 
+    "storage": {}, 
+    "sms": {}, 
+    "telephony": {}, 
+    "alarms": {}, 
+    "mobileconnection": {}, 
+    "networkstats-manage": {}
+  }, 
+  "type": "certified", 
+  "locales": {
+    "fr": {
+      "name": "Suivi conso", 
+      "description": "L\u2019application Suivi conso affiche le cr\u00e9dit et les statistiques d\u2019utilisation des donn\u00e9es"
+    }, 
+    "de": {
+      "name": "Verbrauch", 
+      "description": "App zur Anzeige von Guthaben und Datenverbrauchsstatistiken"
+    }, 
+    "hr": {
+      "name": "Kontrola potro\u0161nje", 
+      "description": "Aplikacija za pra\u0107enje potro\u0161nje glasovnih i podatkovnih usluga."
+    }, 
+    "zh-TW": {
+      "name": "\u7528\u91cf", 
+      "description": "\u7528\u91cf\u61c9\u7528\u7a0b\u5f0f\u53ef\u67e5\u770b\u9918\u984d\u8207\u6578\u64da\u7528\u91cf\u7d71\u8a08\u8cc7\u6599"
+    }, 
+    "en-US": {
+      "name": "Usage", 
+      "description": "Usage application to see credit and data usage statistics"
+    }, 
+    "hu": {
+      "name": "K\u00f6lts\u00e9gek", 
+      "description": "A K\u00f6lts\u00e9gek appban megtekintheti a p\u00e9nz\u00fcgyi \u00e9s az adatkapcsolati statisztik\u00e1kat"
+    }, 
+    "pt-BR": {
+      "name": "Cost Control", 
+      "description": "Permite consultar seu saldo e estat\u00edsticas de uso de dados"
+    }, 
+    "es": {
+      "name": "Consumos", 
+      "description": "Control de consumos para ver el cr\u00e9dito y las estad\u00edsticas de uso de datos"
+    }, 
+    "pl": {
+      "name": "Koszty", 
+      "description": "Usage application to see credit and data usage statistics"
+    }
+  }, 
+  "developer": {
+    "url": "https://github.com/mozilla-b2g/gaia", 
+    "name": "The Gaia Team"
+  }
+}

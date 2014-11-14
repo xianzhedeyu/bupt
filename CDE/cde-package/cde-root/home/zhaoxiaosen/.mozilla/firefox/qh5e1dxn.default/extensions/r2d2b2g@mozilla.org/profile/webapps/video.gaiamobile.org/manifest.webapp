@@ -1,0 +1,117 @@
+{
+  "fullscreen": true, 
+  "name": "Video", 
+  "default_locale": "en-US", 
+  "icons": {
+    "120": "/style/icons/Video.png", 
+    "60": "/style/icons/60/Video.png"
+  }, 
+  "description": "Gaia Video", 
+  "activities": {
+    "view": {
+      "returnValue": true, 
+      "href": "view.html", 
+      "disposition": "inline", 
+      "filters": {
+        "type": [
+          "video/webm", 
+          "video/mp4", 
+          "video/3gpp", 
+          "video/youtube", 
+          "video/ogg"
+        ]
+      }
+    }, 
+    "open": {
+      "returnValue": true, 
+      "href": "view.html", 
+      "disposition": "inline", 
+      "filters": {
+        "type": [
+          "video/webm", 
+          "video/mp4", 
+          "video/3gpp", 
+          "video/youtube", 
+          "video/ogg"
+        ]
+      }
+    }, 
+    "pick": {
+      "href": "/index.html#pick", 
+      "returnValue": true, 
+      "disposition": "inline", 
+      "filters": {
+        "type": [
+          "video/*", 
+          "video/webm", 
+          "video/mp4", 
+          "video/3gpp", 
+          "video/ogg"
+        ]
+      }
+    }
+  }, 
+  "launch_path": "/index.html", 
+  "permissions": {
+    "audio-channel-content": {}, 
+    "device-storage:pictures": {
+      "access": "readwrite"
+    }, 
+    "settings": {
+      "access": "readonly"
+    }, 
+    "device-storage:videos": {
+      "access": "readwrite"
+    }, 
+    "storage": {}, 
+    "deprecated-hwvideo": {}, 
+    "systemXHR": {}
+  }, 
+  "type": "certified", 
+  "locales": {
+    "fr": {
+      "name": "Vid\u00e9o", 
+      "description": "Lecteur vid\u00e9o de Gaia"
+    }, 
+    "de": {
+      "name": "Video", 
+      "description": "Video f\u00fcr Gaia"
+    }, 
+    "hr": {
+      "name": "Video", 
+      "description": "Gaia video"
+    }, 
+    "zh-TW": {
+      "name": "\u5f71\u7247\u5eab", 
+      "description": "Gaia \u5f71\u7247\u5eab"
+    }, 
+    "en-US": {
+      "name": "Video", 
+      "description": "Gaia Video"
+    }, 
+    "hu": {
+      "name": "Vide\u00f3", 
+      "description": "Gaia vide\u00f3"
+    }, 
+    "ar": {
+      "name": "\u0641\u064a\u062f\u064a\u0648", 
+      "description": "Gaia \u0641\u064a\u062f\u064a\u0648"
+    }, 
+    "pt-BR": {
+      "name": "V\u00eddeos", 
+      "description": "V\u00eddeos do Gaia"
+    }, 
+    "es": {
+      "name": "V\u00eddeo", 
+      "description": "V\u00eddeo de Gaia"
+    }, 
+    "pl": {
+      "name": "Filmy", 
+      "description": "Gaia Video"
+    }
+  }, 
+  "developer": {
+    "url": "https://github.com/mozilla-b2g/gaia", 
+    "name": "The Gaia Team"
+  }
+}

@@ -1,0 +1,4 @@
+TEARDOWN rtsp://172.2.2.2/1234 RTSP/1.0\r\n
+CSeq: 102\r\n
+Require: ermi\r\n 
+Session: 47112344\r\n\r\n 

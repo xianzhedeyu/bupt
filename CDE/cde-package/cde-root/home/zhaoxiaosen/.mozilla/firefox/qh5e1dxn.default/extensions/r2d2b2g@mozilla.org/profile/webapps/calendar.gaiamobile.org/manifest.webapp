@@ -1,0 +1,76 @@
+{
+  "name": "Calendar", 
+  "default_locale": "en-US", 
+  "icons": {
+    "120": "/style/icons/Calendar.png", 
+    "60": "/style/icons/60/Calendar.png"
+  }, 
+  "orientation": "portrait-primary", 
+  "description": "Gaia Calendar", 
+  "messages": [
+    {
+      "alarm": "/index.html"
+    }, 
+    {
+      "notification": "/index.html"
+    }
+  ], 
+  "launch_path": "/index.html", 
+  "permissions": {
+    "desktop-notification": {}, 
+    "settings": {
+      "access": "readonly"
+    }, 
+    "storage": {}, 
+    "systemXHR": {}, 
+    "alarms": {}, 
+    "browser": {}
+  }, 
+  "type": "certified", 
+  "locales": {
+    "fr": {
+      "name": "Agenda", 
+      "description": "Agenda de Gaia"
+    }, 
+    "de": {
+      "name": "Kalender", 
+      "description": "Kalender f\u00fcr Gaia"
+    }, 
+    "hr": {
+      "name": "Kalendar", 
+      "description": "Gaia kalendar"
+    }, 
+    "zh-TW": {
+      "name": "\u884c\u4e8b\u66c6", 
+      "description": "Gaia \u884c\u4e8b\u66c6"
+    }, 
+    "en-US": {
+      "name": "Calendar", 
+      "description": "Gaia Calendar"
+    }, 
+    "hu": {
+      "name": "Napt\u00e1r", 
+      "description": "Gaia napt\u00e1r"
+    }, 
+    "ar": {
+      "name": "Calendar", 
+      "description": "Gaia Calendar"
+    }, 
+    "pt-BR": {
+      "name": "Calend\u00e1rio", 
+      "description": "Calend\u00e1rio do Gaia"
+    }, 
+    "es": {
+      "name": "Calendario", 
+      "description": "Calendario de Gaia"
+    }, 
+    "pl": {
+      "name": "Kalendarz", 
+      "description": "Gaia Calendar"
+    }
+  }, 
+  "developer": {
+    "url": "https://github.com/mozilla-b2g/gaia", 
+    "name": "The Gaia Team"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "activities": {
+    "new": {
+      "disposition": "window", 
+      "filters": {
+        "type": "mail"
+      }
+    }, 
+    "share": {
+      "returnValue": true, 
+      "disposition": "window", 
+      "filters": {
+        "type": "image/*"
+      }
+    }, 
+    "view": {
+      "filters": {
+        "url": {
+          "regexp": "/^mailto:/", 
+          "required": true
+        }, 
+        "type": "url"
+      }
+    }
+  }, 
+  "name": "E-Mail", 
+  "default_locale": "en-US", 
+  "icons": {
+    "60": "/style/icons/60/Email.png", 
+    "79": "/style/icons/Email.png"
+  }, 
+  "orientation": "portrait-primary", 
+  "description": "Gaia E-Mail", 
+  "messages": [
+    {
+      "alarm": "/index.html"
+    }
+  ], 
+  "launch_path": "/index.html", 
+  "permissions": {
+    "device-storage:sdcard": {
+      "access": "readcreate"
+    }, 
+    "desktop-notification": {}, 
+    "contacts": {
+      "access": "readcreate"
+    }, 
+    "settings": {
+      "access": "readonly"
+    }, 
+    "storage": {}, 
+    "systemXHR": {}, 
+    "audio-channel-notification": {}, 
+    "alarms": {}, 
+    "tcp-socket": {}
+  }, 
+  "type": "certified", 
+  "locales": {
+    "fr": {
+      "name": "Courriel", 
+      "description": "Client de messagerie de Gaia"
+    }, 
+    "de": {
+      "name": "E-Mail", 
+      "description": "E-Mail f\u00fcr Gaia"
+    }, 
+    "hr": {
+      "name": "E-po\u0161ta", 
+      "description": "Gaia e-po\u0161ta"
+    }, 
+    "zh-TW": {
+      "name": "\u96fb\u5b50\u90f5\u4ef6", 
+      "description": "Gaia \u96fb\u5b50\u90f5\u4ef6"
+    }, 
+    "en-US": {
+      "name": "E-Mail", 
+      "description": "Gaia E-Mail"
+    }, 
+    "hu": {
+      "name": "Levelez\u0151", 
+      "description": "Gaia levelez\u0151"
+    }, 
+    "ar": {
+      "name": "E-Mail", 
+      "description": "Gaia E-Mail"
+    }, 
+    "pt-BR": {
+      "name": "E-Mail", 
+      "description": "E-Mail do Gaia"
+    }, 
+    "es": {
+      "name": "Correo", 
+      "description": "Correo de Gaia"
+    }, 
+    "pl": {
+      "name": "Poczta", 
+      "description": "Gaia E-Mail"
+    }
+  }, 
+  "developer": {
+    "url": "https://github.com/mozilla-b2g/gaia", 
+    "name": "The Gaia Team"
+  }
+}

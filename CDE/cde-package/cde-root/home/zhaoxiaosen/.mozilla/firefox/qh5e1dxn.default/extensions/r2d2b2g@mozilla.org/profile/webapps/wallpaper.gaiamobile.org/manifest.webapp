@@ -1,0 +1,81 @@
+{
+  "activities": {
+    "share": {
+      "href": "/share.html", 
+      "returnValue": true, 
+      "disposition": "inline", 
+      "filters": {
+        "type": "image/*", 
+        "number": 1
+      }
+    }, 
+    "pick": {
+      "href": "/pick.html", 
+      "returnValue": true, 
+      "disposition": "inline", 
+      "filters": {
+        "width": 320, 
+        "type": [
+          "image/*", 
+          "image/jpeg"
+        ], 
+        "height": 480
+      }
+    }
+  }, 
+  "orientation": "portrait-primary", 
+  "default_locale": "en-US", 
+  "icons": {
+    "64": "/style/icons/64/Wallpaper.png"
+  }, 
+  "description": "Gaia Wallpaper Picker", 
+  "name": "Wallpaper", 
+  "developer": {
+    "url": "https://github.com/mozilla-b2g/gaia", 
+    "name": "The Gaia Team"
+  }, 
+  "type": "certified", 
+  "locales": {
+    "fr": {
+      "name": "Fond d\u2019\u00e9cran", 
+      "description": "S\u00e9lecteur de fond d\u2019\u00e9cran de Gaia"
+    }, 
+    "de": {
+      "name": "Hintergrundbilder", 
+      "description": "Hintergrundbild f\u00fcr Gaia ausw\u00e4hlen"
+    }, 
+    "hr": {
+      "name": "Pozadina", 
+      "description": "Gaia odabir pozadinske slike"
+    }, 
+    "zh-TW": {
+      "name": "\u684c\u9762\u80cc\u666f", 
+      "description": "Gaia \u684c\u9762\u80cc\u666f\u6311\u9078\u5668"
+    }, 
+    "en-US": {
+      "name": "Wallpaper", 
+      "description": "Gaia Wallpaper Picker"
+    }, 
+    "hu": {
+      "name": "H\u00e1tt\u00e9r", 
+      "description": "Gaia h\u00e1tt\u00e9rv\u00e1laszt\u00f3"
+    }, 
+    "pt-BR": {
+      "name": "Papel de parede", 
+      "description": "Seletor de papel de parede do Gaia"
+    }, 
+    "es": {
+      "name": "Fondo de pantalla", 
+      "description": "Selecci\u00f3n de fondo de pantalla de Gaia"
+    }, 
+    "pl": {
+      "name": "T\u0142o ekranu", 
+      "description": "Wyb\u00f3r t\u0142a ekranu \u201eGaia\u201d"
+    }
+  }, 
+  "permissions": {
+    "settings": {
+      "access": "readwrite"
+    }
+  }
+}
