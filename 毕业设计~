@@ -12,6 +12,3 @@ RTSP/1.0 %d OK\r\n"
 CSeq: %d\r\n
 Session: %llu\r\n
 OnDemandSessionId: %s\r\n\r\n
-
-由于设备边缘设备和推流服务器的控制接口是基于RTSP协议，可以从VREP参数信息，例如下一跳服务器和部分可达路由来构造RTSP URL。
-资源管理模块作为数据层面设备广告的参数的合并节点。
