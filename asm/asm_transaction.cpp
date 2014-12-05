@@ -24,15 +24,21 @@ int pthread_Asm_TP(char * Asm_msg, int msg_len, int asm_sd) {
 
 int Asm_Setup(char * Asm_msg, int msg_len, int asm_sd) {
 	log(LVLDEBUG,SYS_INFO,"sm_setup msg :%s len:%d\n",Asm_msg,msg_len);
-	char as_addr[16] = "";
-	int as_port = AS_PORT;
+	char as_addr[40] = "";
+	int as_port = 0;
 	char sendbuf[1024];
 	char recvbuf[1024];
 	int as_sd = 0;
 	int buflen = 0;
 	int i = 0, ret = 0;
-	string buf = Asm_msg;
-	string rtspurl;
+	char* buf = Asm_msg;
+
+    R8_SETUP_MSG r8_setup_msg;
+    R8_SETUP_RES r8_setup_res;
+    S7_SETUP_MSG s7_setup_msg;
+    S7_SETUP_RES s7_setup_res;
+
+    INT64 asm2as
 }
 
 
