@@ -13,7 +13,7 @@
 #include <netinet/in.h>
 #include "public_def.h"
 
-//STB·¢¸øSMµÄSETUPÏûÏ¢ÖĞQAMµÄÏà¹ØĞÅÏ¢
+//STBå‘ç»™SMçš„SETUPæ¶ˆæ¯ä¸­QAMçš„ç›¸å…³ä¿¡æ¯
 typedef struct _QAM
 {
     INT64 bandwidth;
@@ -21,7 +21,7 @@ typedef struct _QAM
     char client[128];
     char modulation[128];
 }QAM;
-//½âÎöSTB·¢¸øSMµÄSETUPÏûÏ¢»ñÈ¡µÄ²ÎÊı
+//è§£æSTBå‘ç»™SMçš„SETUPæ¶ˆæ¯è·å–çš„å‚æ•°
 typedef struct _S1_SETUP_MSG
 {
 	char sm_ip[40];
@@ -34,8 +34,10 @@ typedef struct _S1_SETUP_MSG
 	char client_session_id[50];
 	QAM qam[QAM_NUM_MAX];
 	int qam_num;		
+    char app_id[256];
+    int app_type;
 }S1_SETUP_MSG;
-//SM·¢¸øSTBµÄSETUP RESPONSEÏûÏ¢ÖĞÓÃµ½µÄ²ÎÊı
+//SMå‘ç»™STBçš„SETUP RESPONSEæ¶ˆæ¯ä¸­ç”¨åˆ°çš„å‚æ•°
 typedef struct _S1_SETUP_RES
 {
 	int cseq;
@@ -45,24 +47,24 @@ typedef struct _S1_SETUP_RES
 	char client_session_id[50];
 	char emm_data[30];
 	char content_type[30];
-	//sdpÏûÏ¢²ÎÊı
-	int sdp_version;		//NGODÖĞÄ¬ÈÏÎª"0"
-	char email_add[5];		//NGODÖĞÄ¬ÈÏÎª"-"
-	INT64 ss_session;		//RTSP session ID of the Streaming Server,S1½Ó¿ÚÖĞÊ¹ÓÃ´Ë²ÎÊıÀ´·¢ËÍ¿ØÖÆÏûÏ¢C1
+	//sdpæ¶ˆæ¯å‚æ•°
+	int sdp_version;		//NGODä¸­é»˜è®¤ä¸º"0"
+	char email_add[5];		//NGODä¸­é»˜è®¤ä¸º"-"
+	INT64 ss_session;		//RTSP session ID of the Streaming Server,S1æ¥å£ä¸­ä½¿ç”¨æ­¤å‚æ•°æ¥å‘é€æ§åˆ¶æ¶ˆæ¯C1
 	char ntp[50];			//the time that the session setup message was created
 	char add_type[10];		//"IN"
 	char ip_version[10];	//"IP4"
 	char ss_ip[40];			//IP address of the RTSP server on the Streaming Server
-	char s[2];				//NGODÖĞÄ¬ÈÏÎª" "
+	char s[2];				//NGODä¸­é»˜è®¤ä¸º" "
 	int time[2];			//Describes the validity start/end times of the session. 0 indicates media is always available
-	char protocol[10];		//ÀıÈçrtsp, lscp, lscpu
+	char protocol[10];		//ä¾‹å¦‚rtsp, lscp, lscpu
 	char host[40];			//the IP address or fully qualified DNS name of the stream control port
 	int port;				//the TCP or UDP port number of the stream control port.
 	INT64 stream_handle;	//the RTSP session ID or LSCP stream handle to control this stream, depending on the <protocol> value.
-	char c[15];				//NGODÖĞÄ¬ÈÏÎª"IN IP4 0.0.0.0 "
-	char m[17];				//NGODÖĞÄ¬ÈÏÎª"video 0 udp MP2T"			
+	char c[15];				//NGODä¸­é»˜è®¤ä¸º"IN IP4 0.0.0.0 "
+	char m[17];				//NGODä¸­é»˜è®¤ä¸º"video 0 udp MP2T"			
 }S1_SETUP_RES;
-//STB·¢¸øSMµÄteardownÏûÏ¢ÖĞµÄ²ÎÊı
+//STBå‘ç»™SMçš„teardownæ¶ˆæ¯ä¸­çš„å‚æ•°
 typedef struct _S1_TEARDOWN_MSG
 {
 	char sm_ip[40];
@@ -75,7 +77,7 @@ typedef struct _S1_TEARDOWN_MSG
 	char ondemand_session_id[128];
 	char client_session_id[50];
 }S1_TEARDOWN_MSG;
-//SM·¢¸øSTBµÄteardown responseÏûÏ¢ÖĞµÄ²ÎÊı
+//SMå‘ç»™STBçš„teardown responseæ¶ˆæ¯ä¸­çš„å‚æ•°
 typedef struct _S1_TEARDOWN_RES
 {
 	int err_code;
@@ -84,7 +86,7 @@ typedef struct _S1_TEARDOWN_RES
 	char ondemand_session_id[128];
 	char client_session_id[50];
 }S1_TEARDOWN_RES;
-//´´½¨SM·¢¸øSTBµÄANNOUNCEÏûÏ¢ÖĞµÄ²ÎÊı
+//åˆ›å»ºSMå‘ç»™STBçš„ANNOUNCEæ¶ˆæ¯ä¸­çš„å‚æ•°
 typedef struct _S1_ANNOUNCE_MSG
 {
 	char sm_ip[40];
@@ -97,7 +99,7 @@ typedef struct _S1_ANNOUNCE_MSG
 	char npt[30];
 	char ondemand_session_id[128];	
 }S1_ANNOUNCE_MSG;
-//½âÎöSTB·¢¸øSMµÄAnnounce ResponseÏûÏ¢ÖĞµÄ²ÎÊı
+//è§£æSTBå‘ç»™SMçš„Announce Responseæ¶ˆæ¯ä¸­çš„å‚æ•°
 typedef struct _S1_ANNOUNCE_RES
 {
 	int err_code;
@@ -105,7 +107,7 @@ typedef struct _S1_ANNOUNCE_RES
 	INT64 session;
 	char ondemand_session_id[128];	
 }S1_ANNOUNCE_RES;
-//½âÎöSTB·¢¸øSMµÄPINGÏûÏ¢ÖĞµÄ²ÎÊı
+//è§£æSTBå‘ç»™SMçš„PINGæ¶ˆæ¯ä¸­çš„å‚æ•°
 typedef struct _S1_PING_MSG
 {
 	char sm_ip[40];
@@ -115,7 +117,7 @@ typedef struct _S1_PING_MSG
 	INT64 session;
 	char ondemand_session_id[128];	
 }S1_PING_MSG;
-//´´½¨SM·¢¸øSTBµÄPing ResponseÏûÏ¢ÖĞµÄ²ÎÊı
+//åˆ›å»ºSMå‘ç»™STBçš„Ping Responseæ¶ˆæ¯ä¸­çš„å‚æ•°
 typedef struct _S1_PING_RES
 {
 	int err_code;
@@ -126,21 +128,21 @@ typedef struct _S1_PING_RES
 
 
 
-//½âÎöSTB·¢¸øSMµÄSETUPÏûÏ¢
+//è§£æSTBå‘ç»™SMçš„SETUPæ¶ˆæ¯
 int rtsp_s1_setup_msg_parse(char *setup_msg,S1_SETUP_MSG *msg);
-//´´½¨SM·¢¸øSTBµÄSETUP RESPONSEÏûÏ¢
+//åˆ›å»ºSMå‘ç»™STBçš„SETUP RESPONSEæ¶ˆæ¯
 int rtsp_s1_setup_res_encode(S1_SETUP_RES res,char *setup_res);
-//½âÎöSTB·¢¸øSMµÄTEARDOWNÏûÏ¢
+//è§£æSTBå‘ç»™SMçš„TEARDOWNæ¶ˆæ¯
 int rtsp_s1_teardown_msg_parse(char *tear_msg,S1_TEARDOWN_MSG *tear);
-//´´½¨SM·¢¸øSTBµÄTEARDOWN RESPONSEÏûÏ¢
+//åˆ›å»ºSMå‘ç»™STBçš„TEARDOWN RESPONSEæ¶ˆæ¯
 int rtsp_s1_teardown_res_encode(S1_TEARDOWN_RES res,char *tear_res);
-//´´½¨SM·¢¸øSTBµÄANNOUNCEÏûÏ¢
+//åˆ›å»ºSMå‘ç»™STBçš„ANNOUNCEæ¶ˆæ¯
 int rtsp_s1_announce_msg_encode(S1_ANNOUNCE_MSG ann,char *ann_msg);
-//½âÎöSTB·¢¸øSMµÄAnnounce ResponseÏûÏ¢
+//è§£æSTBå‘ç»™SMçš„Announce Responseæ¶ˆæ¯
 int rtsp_s1_announce_res_parse(char *ann_res,S1_ANNOUNCE_RES *ann);
-//½âÎöSTB·¢¸øSMµÄPINGÏûÏ¢
+//è§£æSTBå‘ç»™SMçš„PINGæ¶ˆæ¯
 int rtsp_s1_ping_msg_parse(char *ping_msg,S1_PING_MSG *ping);
-//´´½¨SM·¢¸øSTBµÄPing ResponseÏûÏ¢
+//åˆ›å»ºSMå‘ç»™STBçš„Ping Responseæ¶ˆæ¯
 int rtsp_s1_ping_res_encode(S1_PING_RES ping,char *ping_res);
 
 

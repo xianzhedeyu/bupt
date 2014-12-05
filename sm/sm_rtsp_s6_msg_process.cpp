@@ -1,7 +1,7 @@
 #include "sm_rtsp_s6_msg_process.h"
 #include "sm_rtsp_public_function.h"
 
-//»ı¼«Ä£Ê½ÏÂ»ò±¯¹ÛÄ£Ê½ÏÂ´´½¨SM·¢¸øERMµÄSETUPĞÅÏ¢
+//ç§¯ææ¨¡å¼ä¸‹æˆ–æ‚²è§‚æ¨¡å¼ä¸‹åˆ›å»ºSMå‘ç»™ERMçš„SETUPä¿¡æ¯
 int rtsp_s6_setup_msg_encode(S6_SETUP_MSG msg,char *setup_msg)
 {
     char str[1024] = "";
@@ -10,7 +10,7 @@ int rtsp_s6_setup_msg_encode(S6_SETUP_MSG msg,char *setup_msg)
     char qam_info[256] = "";
     int i = 0;
     
-    //Ê×ÏÈÉú³ÉTransportÍ·
+    //é¦–å…ˆç”ŸæˆTransportå¤´
     for (i=0;i<msg.qam_num;i++)
     {
         sprintf(qam_info,"MP2T/DVBC/QAM;unicast;bandwidth=%llu;qam_name=%s;client=%s;modulation=%s",
@@ -22,7 +22,7 @@ int rtsp_s6_setup_msg_encode(S6_SETUP_MSG msg,char *setup_msg)
         }
         memset(qam_info,0x00,sizeof(qam_info));
     }
-    //Éú³ÉSETUPÏûÏ¢
+    //ç”ŸæˆSETUPæ¶ˆæ¯
     sprintf(str,"SETUP rtsp://%s RTSP/1.0\r\n"
             "CSeq: %d\r\n"
             "Require: %s\r\n"
@@ -39,7 +39,7 @@ int rtsp_s6_setup_msg_encode(S6_SETUP_MSG msg,char *setup_msg)
     strcpy(setup_msg,str);
     return 0;
 }
-//±¯¹ÛÄ£Ê½ÏÂ½âÎöERM×÷ÎªRTSP´úÀíÏòSM·¢ËÍµÄSETUPÏûÏ¢
+//æ‚²è§‚æ¨¡å¼ä¸‹è§£æERMä½œä¸ºRTSPä»£ç†å‘SMå‘é€çš„SETUPæ¶ˆæ¯
 int rtsp_s6_pes_setup_msg_parse(char *setup_msg,S6_SETUP_MSG1 *msg1)
 {
     char url[100] = "";
@@ -65,9 +65,9 @@ int rtsp_s6_pes_setup_msg_parse(char *setup_msg,S6_SETUP_MSG1 *msg1)
     char *inner_ptr = NULL;
 
     find = strstr(setup_msg,"\r\n");
-    strncpy(line,setup_msg,find-setup_msg);//»ñÈ¡ÏûÏ¢µÚÒ»ĞĞ
+    strncpy(line,setup_msg,find-setup_msg);//è·å–æ¶ˆæ¯ç¬¬ä¸€è¡Œ
     strcpy(substr,setup_msg+(find-setup_msg)+2);
-    //½âÎöÏûÏ¢µÚÒ»ĞĞ
+    //è§£ææ¶ˆæ¯ç¬¬ä¸€è¡Œ
     if (strstr(line,"SETUP"))
     {
         strcpy(_line,line+6);
@@ -76,30 +76,30 @@ int rtsp_s6_pes_setup_msg_parse(char *setup_msg,S6_SETUP_MSG1 *msg1)
         if (findend == NULL)
         {
             printf("RTSP_VERSION is not matched!\n");
-            return -1;//°æ±¾ºÅ²»Ïà·û£¬·µ»Ø´íÎó
+            return -1;//ç‰ˆæœ¬å·ä¸ç›¸ç¬¦ï¼Œè¿”å›é”™è¯¯
         }
-        strncpy(url,_line+(find-_line),(findend-find));//½ØÈ¡URL
+        strncpy(url,_line+(find-_line),(findend-find));//æˆªå–URL
         trim(url);
         parse_url(url,ip,NULL,NULL);
         getlocalip("eth0",localip);
-        if (strcmp(ip,localip) != 0)   //²é¿´ÏûÏ¢ÖĞURLµØÖ·ÊÇ·ñºÍ×Ô¼ºÆ¥Åä
+        if (strcmp(ip,localip) != 0)   //æŸ¥çœ‹æ¶ˆæ¯ä¸­URLåœ°å€æ˜¯å¦å’Œè‡ªå·±åŒ¹é…
         {
             printf("Host IP is not matched!\n");
-            return -1;//ÏûÏ¢ÖĞURLµØÖ·²»ºÍ×Ô¼ºµØÖ·Æ¥Åä£¬·µ»Ø´íÎó
+            return -1;//æ¶ˆæ¯ä¸­URLåœ°å€ä¸å’Œè‡ªå·±åœ°å€åŒ¹é…ï¼Œè¿”å›é”™è¯¯
         }
     }
     else
     {
         printf("Method is wrong!\n");
-        return -1;//Ã»ÓĞÕÒµ½"SETUP"ÏûÏ¢Í·,·µ»Ø´íÎó
+        return -1;//æ²¡æœ‰æ‰¾åˆ°"SETUP"æ¶ˆæ¯å¤´,è¿”å›é”™è¯¯
     }
     while (1)
     {
         find = strstr(substr,"\r\n");
-        strncpy(line,substr,find-substr);//»ñÈ¡ÏÂÒ»¸öÏûÏ¢Í·ĞÅÏ¢
-        strcpy(_substr,substr+(find-substr)+2);//±£´æÎ´parseµÄÏûÏ¢
+        strncpy(line,substr,find-substr);//è·å–ä¸‹ä¸€ä¸ªæ¶ˆæ¯å¤´ä¿¡æ¯
+        strcpy(_substr,substr+(find-substr)+2);//ä¿å­˜æœªparseçš„æ¶ˆæ¯
 
-        //°´ĞĞ½âÎöÏûÏ¢
+        //æŒ‰è¡Œè§£ææ¶ˆæ¯
         {
             header= NULL;
             header_value = NULL;
@@ -117,7 +117,7 @@ int rtsp_s6_pes_setup_msg_parse(char *setup_msg,S6_SETUP_MSG1 *msg1)
             {
                 strcpy(msg1->session_group,header_value);
             }
-            else if (strcmp(header,RTSP_HEADER_TRANSPORT) == 0)   //½âÎöTransportÍ·
+            else if (strcmp(header,RTSP_HEADER_TRANSPORT) == 0)   //è§£æTransportå¤´
             {
                 int i = 0;
                 subline = strtok_r(header_value,",",&out_ptr);
@@ -169,7 +169,7 @@ int rtsp_s6_pes_setup_msg_parse(char *setup_msg,S6_SETUP_MSG1 *msg1)
             }
         }
 
-        if (strcmp(_substr,"\r\n") != 0)   //ÅĞ¶ÏÏûÏ¢ÊÇ·ñµ½½áÎ²£¨ÒòÏûÏ¢½áÎ²ÓĞÁ½¸ö"\r\n"£¬°´ĞĞ½âÎöÏûÏ¢Ê±»áÁôÏÂÒ»¸ö"\r\n"£©
+        if (strcmp(_substr,"\r\n") != 0)   //åˆ¤æ–­æ¶ˆæ¯æ˜¯å¦åˆ°ç»“å°¾ï¼ˆå› æ¶ˆæ¯ç»“å°¾æœ‰ä¸¤ä¸ª"\r\n"ï¼ŒæŒ‰è¡Œè§£ææ¶ˆæ¯æ—¶ä¼šç•™ä¸‹ä¸€ä¸ª"\r\n"ï¼‰
         {
             memset(substr,0x00,strlen(substr));
             strcpy(substr,_substr);
@@ -185,14 +185,14 @@ int rtsp_s6_pes_setup_msg_parse(char *setup_msg,S6_SETUP_MSG1 *msg1)
     free(substr);
     return 0;
 }
-//±¯¹ÛÄ£Ê½ÏÂSMÏòERM·¢ËÍµÄSETUP ResponseÏûÏ¢
+//æ‚²è§‚æ¨¡å¼ä¸‹SMå‘ERMå‘é€çš„SETUP Responseæ¶ˆæ¯
 int rtsp_s6_pes_setup_res_encode(S6_SETUP_RES1 res1,char *res1_msg)
 {
     char str[1024] = "";
 
     if (res1.err_code == 200)
     {
-        //Éú³ÉSETUPÏûÏ¢
+        //ç”ŸæˆSETUPæ¶ˆæ¯
         sprintf(str,"RTSP/1.0 200 OK\r\n"
                 "CSeq: %d\r\n"
                 "Session: %llu\r\n"
@@ -209,7 +209,7 @@ int rtsp_s6_pes_setup_res_encode(S6_SETUP_RES1 res1,char *res1_msg)
 
     return 0;
 }
-//»ı¼«Ä£Ê½ÏÂ»ò±¯¹ÛÄ£Ê½ÏÂ½âÎöERMÏòSM·¢ËÍµÄResponseÏûÏ¢
+//ç§¯ææ¨¡å¼ä¸‹æˆ–æ‚²è§‚æ¨¡å¼ä¸‹è§£æERMå‘SMå‘é€çš„Responseæ¶ˆæ¯
 int rtsp_s6_setup_res_parse(char *msg,S6_SETUP_RES *res)
 {
     char str[1024]="";
@@ -225,26 +225,26 @@ int rtsp_s6_setup_res_parse(char *msg,S6_SETUP_RES *res)
     char *ptr3 = NULL;
     char *ptr4 = NULL;
 
-    strncpy(str,msg,strlen(msg)-4);//È¥³ıÏûÏ¢×îºóµÄ¡°\r\n\r\n¡±
+    strncpy(str,msg,strlen(msg)-4);//å»é™¤æ¶ˆæ¯æœ€åçš„â€œ\r\n\r\nâ€
     //strcpy(str,msg);
     //printf("%s\n",str);
 
     line = strtok_r(str,"\r\n",&ptr);
     //printf("line:%s\n",line);
-    //½âÎöµÚÒ»ĞĞ
-    rtsp_version = strtok_r(line," ",&ptr1);//½âÎöRTSP°æ±¾ºÅ
+    //è§£æç¬¬ä¸€è¡Œ
+    rtsp_version = strtok_r(line," ",&ptr1);//è§£æRTSPç‰ˆæœ¬å·
    // if (strcmp(rtsp_version,RTSP_VERSION) != 0)
     //{
-      //  printf("RTSP_VERSION is not matched!\n");//Èç¹û°æ±¾ºÅ²»·û£¬·µ»Ø-1
+      //  printf("RTSP_VERSION is not matched!\n");//å¦‚æœç‰ˆæœ¬å·ä¸ç¬¦ï¼Œè¿”å›-1
         //return -1;
    // }
-    res->err_code = atoi(strtok_r(NULL," ",&ptr1));//½âÎöÏûÏ¢´íÎóÂë
+    res->err_code = atoi(strtok_r(NULL," ",&ptr1));//è§£ææ¶ˆæ¯é”™è¯¯ç 
     //if (res->err_code != RTSP_ResponseCode_OK)
     //{
-      //  printf("RTSP_ERR_CODE is wrong!\n");//´íÎóÂë²»·û£¬·µ»Ø-1
+      //  printf("RTSP_ERR_CODE is wrong!\n");//é”™è¯¯ç ä¸ç¬¦ï¼Œè¿”å›-1
         //return -1;
     //}
-    //°´ĞĞ½âÎöÊ£ÓàÏûÏ¢
+    //æŒ‰è¡Œè§£æå‰©ä½™æ¶ˆæ¯
     line = strtok_r(NULL,"\r\n",&ptr);
     while (NULL != line)
     {
@@ -332,7 +332,7 @@ int rtsp_s6_setup_res_parse(char *msg,S6_SETUP_RES *res)
 
     return 0;
 }
-//´´½¨SMÏòERM·¢ËÍµÄTEARDOWNÏûÏ¢
+//åˆ›å»ºSMå‘ERMå‘é€çš„TEARDOWNæ¶ˆæ¯
 int rtsp_s6_teardown_msg_encode(S6_TEARDOWN_MSG1 msg1,char *tear_msg)
 {
 	char str[1024] = "";
@@ -348,7 +348,7 @@ int rtsp_s6_teardown_msg_encode(S6_TEARDOWN_MSG1 msg1,char *tear_msg)
 	strcpy(tear_msg,str);
 	return 0;	
 }
-//½âÎöERM×÷Îª´úÀíÏòSM·¢ËÍµÄTEARDOWNÏûÏ¢
+//è§£æERMä½œä¸ºä»£ç†å‘SMå‘é€çš„TEARDOWNæ¶ˆæ¯
 int rtsp_s6_teardown_msg_parse(char *tear_msg,S6_TEARDOWN_MSG2 *msg2)
 {
 	char str[1024] = "";
@@ -362,8 +362,8 @@ int rtsp_s6_teardown_msg_parse(char *tear_msg,S6_TEARDOWN_MSG2 *msg2)
 	char *ptr1 = NULL;
 	char *ptr2 = NULL;
 	
-	strncpy(str,tear_msg,strlen(tear_msg)-4);//¸´ÖÆteardownÏûÏ¢£¨²»¸´ÖÆÏûÏ¢×îºóµÄ"\r\n\r\n"£©
-	//½âÎöÏûÏ¢µÚÒ»ĞĞ
+	strncpy(str,tear_msg,strlen(tear_msg)-4);//å¤åˆ¶teardownæ¶ˆæ¯ï¼ˆä¸å¤åˆ¶æ¶ˆæ¯æœ€åçš„"\r\n\r\n"ï¼‰
+	//è§£ææ¶ˆæ¯ç¬¬ä¸€è¡Œ
 	line = strtok_r(str,"\r\n",&ptr);
 	method = strtok_r(line," ",&ptr1);
 	if(strcmp(method,RTSP_METHOD_TEARDOWN))
@@ -373,7 +373,7 @@ int rtsp_s6_teardown_msg_parse(char *tear_msg,S6_TEARDOWN_MSG2 *msg2)
 	}
 	url = strtok_r(NULL," ",&ptr1);
 	trim(url);
-	parse_url(url,msg2->rtsp_ip,NULL,NULL);//½âÎö³öÏûÏ¢ÖĞµÄrtsp_ip
+	parse_url(url,msg2->rtsp_ip,NULL,NULL);//è§£æå‡ºæ¶ˆæ¯ä¸­çš„rtsp_ip
 	rtsp_version = strtok_r(NULL," ",&ptr1);
 	if(strcmp(rtsp_version,RTSP_VERSION))
 	{
@@ -381,7 +381,7 @@ int rtsp_s6_teardown_msg_parse(char *tear_msg,S6_TEARDOWN_MSG2 *msg2)
 		return -1;	
 	}
 	printf("%s\n",msg2->rtsp_ip);
-	//°´ĞĞ½âÎöÊ£ÓàÏûÏ¢
+	//æŒ‰è¡Œè§£æå‰©ä½™æ¶ˆæ¯
 	line = strtok_r(NULL,"\r\n",&ptr);	
 	while(line != NULL)
 	{	
@@ -418,7 +418,7 @@ int rtsp_s6_teardown_msg_parse(char *tear_msg,S6_TEARDOWN_MSG2 *msg2)
 	}
 	return 0;	
 }
-//´´½¨SM·¢¸øERMµÄTeardown Response
+//åˆ›å»ºSMå‘ç»™ERMçš„Teardown Response
 int rtsp_s6_teardown_res_encode(S6_TEARDOWN_RES1 res1,char *tear_res)
 {
 	char str[1024];
@@ -430,7 +430,7 @@ int rtsp_s6_teardown_res_encode(S6_TEARDOWN_RES1 res1,char *tear_res)
 	strcpy(tear_res,str);
 	return 0;
 }
-//½âÎöERM·¢¸øSMµÄTeardown Response
+//è§£æERMå‘ç»™SMçš„Teardown Response
 int rtsp_s6_teardown_res_parse(char *tear_res,S6_TEARDOWN_RES2 *res2)
 {
 	char str[1024];
@@ -444,7 +444,7 @@ int rtsp_s6_teardown_res_parse(char *tear_res,S6_TEARDOWN_RES2 *res2)
 	strncpy(str,tear_res,strlen(tear_res)-4);
 	line = strtok_r(str,"\r\n",&ptr);
 	strtok_r(line," ",&ptr1);
-	res2->err_code = atoi(strtok_r(NULL," ",&ptr1));//½âÎöerr_code
+	res2->err_code = atoi(strtok_r(NULL," ",&ptr1));//è§£æerr_code
 	//printf("%d\n",res2->err_code);
 	
 	line = strtok_r(NULL,"\r\n",&ptr);
@@ -475,7 +475,7 @@ int rtsp_s6_teardown_res_parse(char *tear_res,S6_TEARDOWN_RES2 *res2)
 	}	
     return 0;
 }
-//½âÎöERMÏòSM·¢ËÍµÄANNOUNCEÏûÏ¢
+//è§£æERMå‘SMå‘é€çš„ANNOUNCEæ¶ˆæ¯
 int rtsp_s6_announce_msg_parse(char * announce,S6_ANNOUNCE_MSG *ann)
 {
 	char str[1024] = "";
@@ -493,8 +493,8 @@ int rtsp_s6_announce_msg_parse(char * announce,S6_ANNOUNCE_MSG *ann)
 	char *ptr3 = NULL;
 	char *ptr4 = NULL;
 	
-	strncpy(str,announce,strlen(announce)-4);//¸´ÖÆannounceÏûÏ¢£¨²»¸´ÖÆÏûÏ¢×îºóµÄ"\r\n\r\n"£©
-	//½âÎöÏûÏ¢µÚÒ»ĞĞ
+	strncpy(str,announce,strlen(announce)-4);//å¤åˆ¶announceæ¶ˆæ¯ï¼ˆä¸å¤åˆ¶æ¶ˆæ¯æœ€åçš„"\r\n\r\n"ï¼‰
+	//è§£ææ¶ˆæ¯ç¬¬ä¸€è¡Œ
 	line = strtok_r(str,"\r\n",&ptr);
 	method = strtok_r(line," ",&ptr1);
 	if(strcmp(method,RTSP_METHOD_ANNOUNCE))
@@ -504,7 +504,7 @@ int rtsp_s6_announce_msg_parse(char * announce,S6_ANNOUNCE_MSG *ann)
 	}
 	url = strtok_r(NULL," ",&ptr1);
 	trim(url);
-	parse_url(url,ann->rtsp_ip,NULL,NULL);//½âÎö³öÏûÏ¢ÖĞµÄrtsp_ip
+	parse_url(url,ann->rtsp_ip,NULL,NULL);//è§£æå‡ºæ¶ˆæ¯ä¸­çš„rtsp_ip
 	rtsp_version = strtok_r(NULL," ",&ptr1);
 	if(strcmp(rtsp_version,RTSP_VERSION))
 	{
@@ -513,7 +513,7 @@ int rtsp_s6_announce_msg_parse(char * announce,S6_ANNOUNCE_MSG *ann)
 	}
 	printf("%s\n",ann->rtsp_ip);
 	
-	//°´ĞĞ½âÎöÊ£ÓàÏûÏ¢
+	//æŒ‰è¡Œè§£æå‰©ä½™æ¶ˆæ¯
 	line = strtok_r(NULL,"\r\n",&ptr);	
 	while(line != NULL)
 	{	
@@ -576,7 +576,7 @@ int rtsp_s6_announce_msg_parse(char * announce,S6_ANNOUNCE_MSG *ann)
 	}
 	return 0;	
 }
-//´´½¨SMÏòERM·¢ËÍµÄANNOUNCE RESPONSEÏûÏ¢
+//åˆ›å»ºSMå‘ERMå‘é€çš„ANNOUNCE RESPONSEæ¶ˆæ¯
 int rtsp_s6_announce_res_encode(S6_ANNOUNCE_RES res,char *ann_res)
 {
 	char str[1024];

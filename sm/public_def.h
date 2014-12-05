@@ -3,33 +3,44 @@
 
 typedef unsigned long long INT64;
 
-#define SM_IP "192.168.10.208"
+//#define SM_IP "192.168.10.208"
+//#define SM_PORT 6606
+//#define ERM_IP "192.168.10.77"
+//#define ERM_PORT 8888
+//#define ODRM_IP "192.168.10.208"
+//#define ODRM_PORT 6610
+//#define OC_IP "192.168.10.208"
+//#define OC_PORT 6612
+
+#define SM_IP "127.0.0.1"
 #define SM_PORT 6606
-#define ERM_IP "192.168.10.77"
+#define ERM_IP "127.0.0.1"
 #define ERM_PORT 8888
-#define ODRM_IP "192.168.10.208"
+#define ODRM_IP "127.0.0.1"
 #define ODRM_PORT 6610
-#define OC_IP "192.168.10.208"
+#define OC_IP "127.0.0.1"
 #define OC_PORT 6612
+#define ASM_IP "127.0.0.1"
+#define ASM_PORT 6608
+#define SM_MAXNUM 100	//å®šä¹‰SMæœ€å¤§çš„è¿›ç¨‹æ•°ã€çº¿ç¨‹æ•°
 
-#define SM_MAXNUM 100	//¶¨ÒåSM×î´óµÄ½ø³ÌÊı¡¢Ïß³ÌÊı
+//æ•°æ®åº“ç›¸å…³å‚æ•°
+#define ORA_NAME "scott"	//ç”¨æˆ·å
+#define ORA_PWD "bupt"		//å¯†ç 
+#define ORA_CONN "//192.168.10.183/smora"		//æ•°æ®åº“åœ°å€å’Œæ•°æ®åº“å
+#define ORA_MAXCONN SM_MAXNUM  	//çº¿ç¨‹æ± æœ€å¤§è¿æ¥æ•°
+#define ORA_MINCONN 20		//çº¿ç¨‹æ± åˆå»ºæ—¶çš„è¿æ¥æ•°	
+#define ORA_INCRCONN 10		//çº¿ç¨‹æ± é€’å¢è¿æ¥æ•°
 
-//Êı¾İ¿âÏà¹Ø²ÎÊı
-#define ORA_NAME "scott"	//ÓÃ»§Ãû
-#define ORA_PWD "bupt"		//ÃÜÂë
-#define ORA_CONN "//192.168.10.183/smora"		//Êı¾İ¿âµØÖ·ºÍÊı¾İ¿âÃû
-#define ORA_MAXCONN SM_MAXNUM  	//Ïß³Ì³Ø×î´óÁ¬½ÓÊı
-#define ORA_MINCONN 20		//Ïß³Ì³Ø³õ½¨Ê±µÄÁ¬½ÓÊı	
-#define ORA_INCRCONN 10		//Ïß³Ì³ØµİÔöÁ¬½ÓÊı
-
-#define RTSP_VERSION "RTSP/1.0" //RTSPĞ­Òé°æ±¾
-#define SESSION_GRUOP "SM1"  //»á»°×é£¨Ã¿¸öSMÒ»¸ö×é£©£¬Ö÷ÒªÓÃÀ´getpramaterÊ±»ñÈ¡session×éµÄĞÅÏ¢
+#define RTSP_VERSION "RTSP/1.0" //RTSPåè®®ç‰ˆæœ¬
+#define SESSION_GRUOP "SM1"  //ä¼šè¯ç»„ï¼ˆæ¯ä¸ªSMä¸€ä¸ªç»„ï¼‰ï¼Œä¸»è¦ç”¨æ¥getpramateræ—¶è·å–sessionç»„çš„ä¿¡æ¯
 
 #define RTSP_S1_REQUIRE "com.comcast.ngod.s1" 
 #define RTSP_S3_REQUIRE "com.comcast.ngod.s3"
 #define RTSP_S6_REQUIRE "com.comcast.ngod.s6"
+#define RTSP_S7_REQUIRE "com.comcast.ngod.s7"
 
-#define QAM_NUM_MAX 5  //¶¨ÒåQAMĞÅÏ¢µÄ×î´ó¸öÊı
+#define QAM_NUM_MAX 5  //å®šä¹‰QAMä¿¡æ¯çš„æœ€å¤§ä¸ªæ•°
 
 #define RTSP_ID_S1_SETUP      1
 #define RTSP_ID_S1_TEARDOWN   2
@@ -147,7 +158,14 @@ typedef unsigned long long INT64;
 #define RTSP_ResponseCode_ServerSetupFailed_InvalidRequest	                777//Server unable to parse request from ODRM
 #define RTSP_ResponseCode_ServerSetupFailed_InternalError	                778//Vendor-Specific Error occurred on server
 
-
+//ASM
+#define RTSP_ResponseCode_ASMSetupFailed_NoResponse	                    780//No response received from ODRM
+#define RTSP_ResponseCode_ASMSetupFailed_UnknownSOPGroup	                781//Specified SOP group is unknown to ODRM
+#define RTSP_ResponseCode_ASMSetupFailed_BandwidthNotAvailable	            782//No suitable SOP Bandwidth available
+#define RTSP_ResponseCode_ASMSetupFailed_StreamNotAvailable	            783//No streams available on any suitable server
+#define RTSP_ResponseCode_ASMSetupFailed_AssetNotAvailable	                784//Unable to locate specified Asset
+#define RTSP_ResponseCode_ASMSetupFailed_InvalidRequest	                785//Request received by ODRM was invalid
+#define RTSP_ResponseCode_ASMSetupFailed_InternalError	                    786//Vendor-specific error occurred on ODRM
 
 
 
@@ -160,13 +178,15 @@ typedef unsigned long long INT64;
 #define RTSP_ANNOUNCE_ClientSessionTerminated				5402
 #define RTSP_ANNOUNCE_InternalServerError				5502
 #define RTSP_ANNOUNCE_InbandStreamMarkerMismatch				5601
-#define RTSP_ANNOUNCE_BandwidthExceededLimit				5602//ngodÎÄµµÖĞ´ËÖµÎª5601£¬ÓëÉÏÖµÏàÍ¬¡££¨5602Îª×Ô¶¨ÒåÖµ£©
+#define RTSP_ANNOUNCE_BandwidthExceededLimit				5602//ngodæ–‡æ¡£ä¸­æ­¤å€¼ä¸º5601ï¼Œä¸ä¸Šå€¼ç›¸åŒã€‚ï¼ˆ5602ä¸ºè‡ªå®šä¹‰å€¼ï¼‰
 #define RTSP_ANNOUNCE_SessionInProgress				5700
 #define RTSP_ANNOUNCE_EncryptionEngineFailure				6000
 #define RTSP_ANNOUNCE_StreamBandwidthExceedsThatAvailable				6001
 #define RTSP_ANNOUNCE_DownstreamDestinationUnreachable				6004
 #define RTSP_ANNOUNCE_UnableToEncryptOneOrMoreComponents				6005
 #define RTSP_ANNOUNCE_ECMGSessionFailure				6006
+
+#define SS_PORT 7000
 
 #endif
 

@@ -1,17 +1,17 @@
 #include "sm_rtsp_s3_msg_process.h"
 #include "sm_rtsp_public_function.h"
 
-//´´½¨SM·¢¸øODRMµÄSETUPĞÅÏ¢
+//åˆ›å»ºSMå‘ç»™ODRMçš„SETUPä¿¡æ¯
 int rtsp_s3_setup_msg_encode(S3_SETUP_MSG msg,char *setup_msg)
 {
-    char sdp[1024] = "";//´æ´¢sdpÏûÏ¢
-    char sg_buff[100] = "";//´æ´¢sop_groupÏûÏ¢Í·
-    char transport[512] = "";//´æ´¢transportÏûÏ¢Í·
+    char sdp[1024] = "";//å­˜å‚¨sdpæ¶ˆæ¯
+    char sg_buff[100] = "";//å­˜å‚¨sop_groupæ¶ˆæ¯å¤´
+    char transport[512] = "";//å­˜å‚¨transportæ¶ˆæ¯å¤´
     char qam_info[100] = "";
     char str[1024] = "";
     int i = 0;
 
-    //Éú³Ésop_groupÏûÏ¢Í·
+    //ç”Ÿæˆsop_groupæ¶ˆæ¯å¤´
     while (strlen(msg.sop_group[i]) != 0) {
         strcat(sg_buff,"SopGroup: ");
         strcat(sg_buff,msg.sop_group[i]);
@@ -19,7 +19,7 @@ int rtsp_s3_setup_msg_encode(S3_SETUP_MSG msg,char *setup_msg)
         i++;
     }
 
-    //Éú³ÉTransportÏûÏ¢Í·
+    //ç”ŸæˆTransportæ¶ˆæ¯å¤´
     for (i=0;i<msg.qam_num;i++) {
         sprintf(qam_info,"MP2T/DVBC/UDP;unicast;client=%s;bandwidth=%llu;destination=%s;client_port=%d",
                 msg.qam[i].client,msg.qam[i].bandwidth,msg.qam[i].destination,msg.qam[i].client_port);
@@ -30,7 +30,7 @@ int rtsp_s3_setup_msg_encode(S3_SETUP_MSG msg,char *setup_msg)
         memset(qam_info,0x00,sizeof(qam_info));
     }
 
-    //Éú³ÉsdpÏûÏ¢
+    //ç”Ÿæˆsdpæ¶ˆæ¯
     sprintf(sdp,"v=%d\r\n"
             "o=%s %s %s %s %s %s\r\n"
             "s=%s\r\n"
@@ -61,7 +61,7 @@ int rtsp_s3_setup_msg_encode(S3_SETUP_MSG msg,char *setup_msg)
     return 0;
 }
 
-//½âÎöODRM·¢¸øSMµÄSETUP RESPONSEÏûÏ¢
+//è§£æODRMå‘ç»™SMçš„SETUP RESPONSEæ¶ˆæ¯
 int rtsp_s3_setup_res_parse(char *setup_res,S3_SETUP_RES *res)
 {
     char buff[2048] = "";
@@ -83,26 +83,26 @@ int rtsp_s3_setup_res_parse(char *setup_res,S3_SETUP_RES *res)
 
     strncpy(buff,setup_res,2048);
     find =  strstr(buff,"\r\n\r\n");
-    strncpy(str,buff,find - buff);//½«ÏûÏ¢ÖĞsdpÒÔÍâµÄÏûÏ¢´æÈëstr
-    strcpy(sdp,find+4);//½«ÏûÏ¢sdp²¿·Ö´æÈësdp
+    strncpy(str,buff,find - buff);//å°†æ¶ˆæ¯ä¸­sdpä»¥å¤–çš„æ¶ˆæ¯å­˜å…¥str
+    strcpy(sdp,find+4);//å°†æ¶ˆæ¯sdpéƒ¨åˆ†å­˜å…¥sdp
     //printf("str:\n%s\nsdp:\n%s\n",str,sdp);
 
 
 
     line = strtok_r(str,"\r\n",&ptr);
     //printf("line:%s\n",line);
-    //½âÎöµÚÒ»ĞĞ
-    rtsp_version = strtok_r(line," ",&ptr1);//½âÎöRTSP°æ±¾ºÅ
+    //è§£æç¬¬ä¸€è¡Œ
+    rtsp_version = strtok_r(line," ",&ptr1);//è§£æRTSPç‰ˆæœ¬å·
     if (strcmp(rtsp_version,RTSP_VERSION) != 0) {
-        //printf("RTSP_VERSION is not matched!\n");//Èç¹û°æ±¾ºÅ²»·û£¬·µ»Ø-1
+        //printf("RTSP_VERSION is not matched!\n");//å¦‚æœç‰ˆæœ¬å·ä¸ç¬¦ï¼Œè¿”å›-1
         return -1;
     }
-    res->err_code = atoi(strtok_r(NULL," ",&ptr1));//½âÎöÏûÏ¢´íÎóÂë
+    res->err_code = atoi(strtok_r(NULL," ",&ptr1));//è§£ææ¶ˆæ¯é”™è¯¯ç 
     if (res->err_code != RTSP_ResponseCode_OK) {
-        //printf("RTSP_ERR_CODE is wrong!\n");//´íÎóÂë²»·û£¬·µ»Ø-1
+        //printf("RTSP_ERR_CODE is wrong!\n");//é”™è¯¯ç ä¸ç¬¦ï¼Œè¿”å›-1
         return -1;
     }
-    //°´ĞĞ½âÎöÊ£ÓàÏûÏ¢
+    //æŒ‰è¡Œè§£æå‰©ä½™æ¶ˆæ¯
     line = strtok_r(NULL,"\r\n",&ptr);
     while (NULL != line) {
         // printf("line:%s\n",line);
@@ -162,7 +162,7 @@ int rtsp_s3_setup_res_parse(char *setup_res,S3_SETUP_RES *res)
         line = strtok_r(NULL,"\r\n",&ptr);
     }
 
-//½âÎöSDPÏûÏ¢
+//è§£æSDPæ¶ˆæ¯
     line = strtok_r(sdp,"\r\n",&ptr);
     while (NULL != line) {
         if (header = strtok_r(line,"=",&ptr1)) {
@@ -222,7 +222,7 @@ int rtsp_s3_setup_res_parse(char *setup_res,S3_SETUP_RES *res)
     return 0;
 }
 
-//´´½¨SM·¢¸øODRMµÄTEARDOWNÏûÏ¢
+//åˆ›å»ºSMå‘ç»™ODRMçš„TEARDOWNæ¶ˆæ¯
 int rtsp_s3_teardown_msg_encode(S3_TEARDOWN_MSG tear,char *tear_msg)
 {
 	char str[1024] = "";
@@ -239,7 +239,7 @@ int rtsp_s3_teardown_msg_encode(S3_TEARDOWN_MSG tear,char *tear_msg)
 	return 0;	
 }
 
-//½âÎöODRM·¢¸øSMµÄTEARDDOWN RESPONSEÏûÏ¢
+//è§£æODRMå‘ç»™SMçš„TEARDDOWN RESPONSEæ¶ˆæ¯
 int rtsp_s3_teardown_res_parse(char *tear_res,S3_TEARDOWN_RES *res)
 {
 	char str[1024];
@@ -254,7 +254,7 @@ int rtsp_s3_teardown_res_parse(char *tear_res,S3_TEARDOWN_RES *res)
 	strncpy(str,tear_res,strlen(tear_res)-4);
 	line = strtok_r(str,"\r\n",&ptr);
 	strtok_r(line," ",&ptr1);
-	res->err_code = atoi(strtok_r(NULL," ",&ptr1));//½âÎöerr_code
+	res->err_code = atoi(strtok_r(NULL," ",&ptr1));//è§£æerr_code
 	//printf("%d\n",res->err_code);
 	
 	line = strtok_r(NULL,"\r\n",&ptr);
@@ -295,7 +295,7 @@ int rtsp_s3_teardown_res_parse(char *tear_res,S3_TEARDOWN_RES *res)
 	
 }
 
-//½âÎöERMÏòSM·¢ËÍµÄANNOUNCEÏûÏ¢
+//è§£æERMå‘SMå‘é€çš„ANNOUNCEæ¶ˆæ¯
 int rtsp_s3_announce_msg_parse(char * announce,S3_ANNOUNCE_MSG *ann)
 {
 	char str[1024] = "";
@@ -313,8 +313,8 @@ int rtsp_s3_announce_msg_parse(char * announce,S3_ANNOUNCE_MSG *ann)
 	char *ptr3 = NULL;
 	char *ptr4 = NULL;
 	
-	strncpy(str,announce,strlen(announce)-4);//¸´ÖÆannounceÏûÏ¢£¨²»¸´ÖÆÏûÏ¢×îºóµÄ"\r\n\r\n"£©
-	//½âÎöÏûÏ¢µÚÒ»ĞĞ
+	strncpy(str,announce,strlen(announce)-4);//å¤åˆ¶announceæ¶ˆæ¯ï¼ˆä¸å¤åˆ¶æ¶ˆæ¯æœ€åçš„"\r\n\r\n"ï¼‰
+	//è§£ææ¶ˆæ¯ç¬¬ä¸€è¡Œ
 	line = strtok_r(str,"\r\n",&ptr);
 	method = strtok_r(line," ",&ptr1);
 	if(strcmp(method,RTSP_METHOD_ANNOUNCE))
@@ -324,7 +324,7 @@ int rtsp_s3_announce_msg_parse(char * announce,S3_ANNOUNCE_MSG *ann)
 	}
 	url = strtok_r(NULL," ",&ptr1);
 	trim(url);
-	parse_url(url,ann->sm_ip,&ann->sm_port,NULL);//½âÎö³öÏûÏ¢ÖĞµÄrtsp_ip
+	parse_url(url,ann->sm_ip,&ann->sm_port,NULL);//è§£æå‡ºæ¶ˆæ¯ä¸­çš„rtsp_ip
 	rtsp_version = strtok_r(NULL," ",&ptr1);
 	if(strcmp(rtsp_version,RTSP_VERSION))
 	{
@@ -333,7 +333,7 @@ int rtsp_s3_announce_msg_parse(char * announce,S3_ANNOUNCE_MSG *ann)
 	}
 	printf("%s %d\n",ann->sm_ip,ann->sm_port);
 	
-	//°´ĞĞ½âÎöÊ£ÓàÏûÏ¢
+	//æŒ‰è¡Œè§£æå‰©ä½™æ¶ˆæ¯
 	line = strtok_r(NULL,"\r\n",&ptr);	
 	while(line != NULL)
 	{	
@@ -397,7 +397,7 @@ int rtsp_s3_announce_msg_parse(char * announce,S3_ANNOUNCE_MSG *ann)
 	return 0;	
 }
 
-//´´½¨SMÏòODRM·¢ËÍµÄANNOUNCE RESPONSEÏûÏ¢
+//åˆ›å»ºSMå‘ODRMå‘é€çš„ANNOUNCE RESPONSEæ¶ˆæ¯
 int rtsp_s3_announce_res_encode(S3_ANNOUNCE_RES res,char *ann_res)
 {
 	char str[1024];
@@ -410,7 +410,7 @@ int rtsp_s3_announce_res_encode(S3_ANNOUNCE_RES res,char *ann_res)
 	return 0;
 }
 
-//´´½¨SMÏòODRM·¢ËÍµÄGET PARAMETERÏûÏ¢
+//åˆ›å»ºSMå‘ODRMå‘é€çš„GET PARAMETERæ¶ˆæ¯
 int rtsp_s3_get_parameter_msg_encode(S3_GET_PARAMETER_MSG msg,char *get_parameter)
 {
 	char str[1024] = "";
@@ -428,7 +428,7 @@ int rtsp_s3_get_parameter_msg_encode(S3_GET_PARAMETER_MSG msg,char *get_paramete
 	return 0;
 }
 
-//½âÎöODRM·¢¸øSMµÄGET_PARAMETER RESPONSEÏûÏ¢
+//è§£æODRMå‘ç»™SMçš„GET_PARAMETER RESPONSEæ¶ˆæ¯
 int rtsp_s3_get_parameter_res_parse(char *get_parameter_res,S3_GET_PARAMETER_RES *res)
 {
 	char buff[1024];
@@ -447,12 +447,12 @@ int rtsp_s3_get_parameter_res_parse(char *get_parameter_res,S3_GET_PARAMETER_RES
     find =  strstr(buff,"\r\n\r\n");
     strncpy(str,buff,find - buff);
     strcpy(parameter_val,find+4);
-    strncpy(res->parameter_val,parameter_val,strlen(parameter_val)-2);//È¥³ıparameter_value×îºóµÄ"\r\n"
+    strncpy(res->parameter_val,parameter_val,strlen(parameter_val)-2);//å»é™¤parameter_valueæœ€åçš„"\r\n"
     printf("%s\n",res->parameter_val);
 	
 	line = strtok_r(str,"\r\n",&ptr);
 	strtok_r(line," ",&ptr1);
-	res->err_code = atoi(strtok_r(NULL," ",&ptr1));//½âÎöerr_code
+	res->err_code = atoi(strtok_r(NULL," ",&ptr1));//è§£æerr_code
 	printf("%d\n",res->err_code);
 	
 	line = strtok_r(NULL,"\r\n",&ptr);
@@ -489,7 +489,7 @@ int rtsp_s3_get_parameter_res_parse(char *get_parameter_res,S3_GET_PARAMETER_RES
 	
 }
 
-//´´½¨SMÏòODRM·¢ËÍµÄSET PARAMETERÏûÏ¢
+//åˆ›å»ºSMå‘ODRMå‘é€çš„SET PARAMETERæ¶ˆæ¯
 int rtsp_s3_set_parameter_msg_encode(S3_SET_PARAMETER_MSG msg,char *set_parameter)
 {
 	char str[1024] = "";
@@ -506,7 +506,7 @@ int rtsp_s3_set_parameter_msg_encode(S3_SET_PARAMETER_MSG msg,char *set_paramete
 	return 0;
 }
 
-//½âÎöODRM·¢¸øSMµÄSET_PARAMETER RESPONSEÏûÏ¢
+//è§£æODRMå‘ç»™SMçš„SET_PARAMETER RESPONSEæ¶ˆæ¯
 int rtsp_s3_set_parameter_res_parse(char *set_parameter_res,S3_SET_PARAMETER_RES *res)
 {
 	char str[1024];
@@ -520,7 +520,7 @@ int rtsp_s3_set_parameter_res_parse(char *set_parameter_res,S3_SET_PARAMETER_RES
 	strncpy(str,set_parameter_res,1024);
 	line = strtok_r(str,"\r\n",&ptr);
 	strtok_r(line," ",&ptr1);
-	res->err_code = atoi(strtok_r(NULL," ",&ptr1));//½âÎöerr_code
+	res->err_code = atoi(strtok_r(NULL," ",&ptr1));//è§£æerr_code
 	printf("%d\n",res->err_code);
 	
 	line = strtok_r(NULL,"\r\n",&ptr);

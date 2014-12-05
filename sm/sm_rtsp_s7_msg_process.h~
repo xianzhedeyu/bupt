@@ -1,0 +1,17 @@
+#ifndef SM_RTSP_S7_MSG_PROCESS_H_INCLUDED
+#define SM_RTSP_S7_MSG_PROCESS_H_INCLUDED
+
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <sys/socket.h>
+#include <linux/if.h>
+#include <sys/types.h>
+#include <sys/ioctl.h>
+#include <netinet/in.h>
+#include "public_def.h"
+
+:x
+

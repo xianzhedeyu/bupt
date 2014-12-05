@@ -6,7 +6,7 @@ int CreateSock(int* pSock, int nPort)
 	struct sockaddr_in addrin;	
 	struct sockaddr *paddr = (struct sockaddr *)&addrin;
 	const int on = 1;
-//Ã»ÓĞÑÓ³Ù£¬Á¢¼´ÖÕÖ¹
+//æ²¡æœ‰å»¶è¿Ÿï¼Œç«‹å³ç»ˆæ­¢
 	struct linger lingerStruct;
 	  lingerStruct.l_onoff   =   1;
 	  lingerStruct.l_linger   =   0;
@@ -111,8 +111,8 @@ int rtsp_read(int fd, void *buffer, int nbytes)
 }
 
 /*
-UNIX ÓòÌ×½Ó×Ö½Ó¿Ú
-¸ºÔğ´«µİÃèÊö·û
+UNIX åŸŸå¥—æ¥å­—æ¥å£
+è´Ÿè´£ä¼ é€’æè¿°ç¬¦
 */
 
 int write_fd(int fd, void *ptr, int nbytes, int sendfd)

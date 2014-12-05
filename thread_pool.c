@@ -125,6 +125,3 @@ int tpool_add_work(void* (*routine)(void*), void* arg) {
 
     return 0;
 }
-
-
-

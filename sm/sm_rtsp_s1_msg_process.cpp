@@ -1,11 +1,11 @@
 #include "sm_rtsp_s1_msg_process.h"
 #include "sm_rtsp_public_function.h"
 
-//½âÎöSTB·¢¸øSMµÄSETUPÏûÏ¢
+//è§£æSTBå‘ç»™SMçš„SETUPæ¶ˆæ¯
 int rtsp_s1_setup_msg_parse(char *setup_msg,S1_SETUP_MSG *msg)
 {
 	char str[1024] = "";
-	strncpy(str,setup_msg,strlen(setup_msg) - 4);//¸´ÖÆsetupÏûÏ¢²¢È¥³ı×îºóµÄ"\r\n\r\n"
+	strncpy(str,setup_msg,strlen(setup_msg) - 4);//å¤åˆ¶setupæ¶ˆæ¯å¹¶å»é™¤æœ€åçš„"\r\n\r\n"
 	
 	//printf("%s\n",str);
 	char *line = NULL;
@@ -24,16 +24,16 @@ int rtsp_s1_setup_msg_parse(char *setup_msg,S1_SETUP_MSG *msg)
 	char *ptr7 = NULL;
 	char *method = NULL;
 	char *url = NULL;
-	int i = 0;//¼ÇÂ¼ÏûÏ¢ÖĞqamĞÅÏ¢¸öÊı
+	int i = 0;//è®°å½•æ¶ˆæ¯ä¸­qamä¿¡æ¯ä¸ªæ•°
 	
 	line = strtok_r(str,"\r\n",&ptr);
 	//printf("%s\n",line);
 	
-	//½âÎöÏûÏ¢µÚÒ»ĞĞ
+	//è§£ææ¶ˆæ¯ç¬¬ä¸€è¡Œ
 	method = strtok_r(line," ",&ptr1);
 	//printf("%s\n",method);
 	
-	if(strcmp(RTSP_METHOD_SETUP,method) != 0)//ÅĞ¶ÏÏûÏ¢·½·¨ÊÇ·ñÆ¥Åä
+	if(strcmp(RTSP_METHOD_SETUP,method) != 0)//åˆ¤æ–­æ¶ˆæ¯æ–¹æ³•æ˜¯å¦åŒ¹é…
 	{
 		//printf("Method is not matched!\n");
 		return -1;
@@ -67,7 +67,7 @@ int rtsp_s1_setup_msg_parse(char *setup_msg,S1_SETUP_MSG *msg)
 	//printf("rtsp_version:%s\n",msg->rtsp_version);
 	//printf("%s %d\n",msg->sm_ip,msg->sm_port);
 		
-	//°´ĞĞ½âÎöÊ£ÓàÏûÏ¢
+	//æŒ‰è¡Œè§£æå‰©ä½™æ¶ˆæ¯
 	line = strtok_r(NULL,"\r\n",&ptr);
 	while(line)
 	{
@@ -126,6 +126,15 @@ int rtsp_s1_setup_msg_parse(char *setup_msg,S1_SETUP_MSG *msg)
                 trim(msg->client_session_id);
                 //printf("clientsessionid:%s\n",msg->client_session_id);
             }
+            else if(strcmp(header, "app_id") == 0) {
+                header_val = strtok_r(NULL, ":", &ptr4);
+                trim(header_val);
+                strcpy(msg->app_id, header_val);
+            }
+            else if(strcmp(header, "app_type") == 0) {
+                header_val = strtok_r(NULL, ":", &ptr4);
+                msg->app_type = atoi(header_val);
+            }
         }	
 		line = strtok_r(NULL,"\r\n",&ptr);
 	}
@@ -135,7 +144,7 @@ int rtsp_s1_setup_msg_parse(char *setup_msg,S1_SETUP_MSG *msg)
 }
 
 
-//´´½¨SM·¢¸øSTBµÄSETUP RESPONSEÏûÏ¢
+//åˆ›å»ºSMå‘ç»™STBçš„SETUP RESPONSEæ¶ˆæ¯
 int rtsp_s1_setup_res_encode(S1_SETUP_RES res,char *setup_res)
 {
 	char sdp[1024];
@@ -165,7 +174,7 @@ int rtsp_s1_setup_res_encode(S1_SETUP_RES res,char *setup_res)
 	
 	return 0;	
 }
-//½âÎöSTB·¢¸øSMµÄTEARDOWNÏûÏ¢
+//è§£æSTBå‘ç»™SMçš„TEARDOWNæ¶ˆæ¯
 int rtsp_s1_teardown_msg_parse(char *tear_msg,S1_TEARDOWN_MSG *tear)
 {
 	char str[1024] = "";
@@ -179,8 +188,8 @@ int rtsp_s1_teardown_msg_parse(char *tear_msg,S1_TEARDOWN_MSG *tear)
 	char *ptr1 = NULL;
 	char *ptr2 = NULL;
 	
-	strncpy(str,tear_msg,strlen(tear_msg)-4);//¸´ÖÆteardownÏûÏ¢£¨²»¸´ÖÆÏûÏ¢×îºóµÄ"\r\n\r\n"£©
-	//½âÎöÏûÏ¢µÚÒ»ĞĞ
+	strncpy(str,tear_msg,strlen(tear_msg)-4);//å¤åˆ¶teardownæ¶ˆæ¯ï¼ˆä¸å¤åˆ¶æ¶ˆæ¯æœ€åçš„"\r\n\r\n"ï¼‰
+	//è§£ææ¶ˆæ¯ç¬¬ä¸€è¡Œ
 	line = strtok_r(str,"\r\n",&ptr);
 	method = strtok_r(line," ",&ptr1);
 	if(strcmp(method,RTSP_METHOD_TEARDOWN))
@@ -190,7 +199,7 @@ int rtsp_s1_teardown_msg_parse(char *tear_msg,S1_TEARDOWN_MSG *tear)
 	}
 	url = strtok_r(NULL," ",&ptr1);
 	trim(url);
-	parse_url(url,tear->sm_ip,&(tear->sm_port),NULL);//½âÎö³öÏûÏ¢ÖĞµÄsm_ipºÍsm_port
+	parse_url(url,tear->sm_ip,&(tear->sm_port),NULL);//è§£æå‡ºæ¶ˆæ¯ä¸­çš„sm_ipå’Œsm_port
 	rtsp_version = strtok_r(NULL," ",&ptr1);
 	if(strcmp(rtsp_version,RTSP_VERSION))
 	{
@@ -198,7 +207,7 @@ int rtsp_s1_teardown_msg_parse(char *tear_msg,S1_TEARDOWN_MSG *tear)
 		return -1;	
 	}
 	//printf("%s %d\n",tear->sm_ip,tear->sm_port);
-	//°´ĞĞ½âÎöÊ£ÓàÏûÏ¢
+	//æŒ‰è¡Œè§£æå‰©ä½™æ¶ˆæ¯
 	line = strtok_r(NULL,"\r\n",&ptr);	
 	while(line != NULL)
 	{	
@@ -241,7 +250,7 @@ int rtsp_s1_teardown_msg_parse(char *tear_msg,S1_TEARDOWN_MSG *tear)
 	}
 	return 0;	
 }
-//´´½¨SM·¢¸øSTBµÄTEARDOWN RESPONSEÏûÏ¢
+//åˆ›å»ºSMå‘ç»™STBçš„TEARDOWN RESPONSEæ¶ˆæ¯
 int rtsp_s1_teardown_res_encode(S1_TEARDOWN_RES res,char *tear_res)
 {
 	char str[1024];
@@ -254,7 +263,7 @@ int rtsp_s1_teardown_res_encode(S1_TEARDOWN_RES res,char *tear_res)
 	strcpy(tear_res,str);
 	return 0;	
 }
-//´´½¨SM·¢¸øSTBµÄANNOUNCEÏûÏ¢
+//åˆ›å»ºSMå‘ç»™STBçš„ANNOUNCEæ¶ˆæ¯
 int rtsp_s1_announce_msg_encode(S1_ANNOUNCE_MSG ann,char *ann_msg)
 {
 	char str[1024] = "";
@@ -272,7 +281,7 @@ int rtsp_s1_announce_msg_encode(S1_ANNOUNCE_MSG ann,char *ann_msg)
 	strcpy(ann_msg,str);
 	return 0;	
 }
-//½âÎöSTB·¢¸øSMµÄAnnounce ResponseÏûÏ¢
+//è§£æSTBå‘ç»™SMçš„Announce Responseæ¶ˆæ¯
 int rtsp_s1_announce_res_parse(char *ann_res,S1_ANNOUNCE_RES *ann)
 {
 	char str[1024];
@@ -286,7 +295,7 @@ int rtsp_s1_announce_res_parse(char *ann_res,S1_ANNOUNCE_RES *ann)
 	strncpy(str,ann_res,strlen(ann_res)-4);
 	line = strtok_r(str,"\r\n",&ptr);
 	strtok_r(line," ",&ptr1);
-	ann->err_code = atoi(strtok_r(NULL," ",&ptr1));//½âÎöerr_code
+	ann->err_code = atoi(strtok_r(NULL," ",&ptr1));//è§£æerr_code
 	printf("%d\n",ann->err_code);
 	
 	line = strtok_r(NULL,"\r\n",&ptr);
@@ -317,7 +326,7 @@ int rtsp_s1_announce_res_parse(char *ann_res,S1_ANNOUNCE_RES *ann)
 	}	
     return 0;	
 }
-//½âÎöSTB·¢¸øSMµÄPINGÏûÏ¢
+//è§£æSTBå‘ç»™SMçš„PINGæ¶ˆæ¯
 int rtsp_s1_ping_msg_parse(char *ping_msg,S1_PING_MSG *ping)
 {
 	char str[1024] = "";
@@ -331,8 +340,8 @@ int rtsp_s1_ping_msg_parse(char *ping_msg,S1_PING_MSG *ping)
 	char *ptr1 = NULL;
 	char *ptr2 = NULL;
 	
-	strncpy(str,ping_msg,strlen(ping_msg)-4);//¸´ÖÆteardownÏûÏ¢£¨²»¸´ÖÆÏûÏ¢×îºóµÄ"\r\n\r\n"£©
-	//½âÎöÏûÏ¢µÚÒ»ĞĞ
+	strncpy(str,ping_msg,strlen(ping_msg)-4);//å¤åˆ¶teardownæ¶ˆæ¯ï¼ˆä¸å¤åˆ¶æ¶ˆæ¯æœ€åçš„"\r\n\r\n"ï¼‰
+	//è§£ææ¶ˆæ¯ç¬¬ä¸€è¡Œ
 	line = strtok_r(str,"\r\n",&ptr);
 	method = strtok_r(line," ",&ptr1);
 	if(strcmp(method,RTSP_METHOD_PING))
@@ -342,7 +351,7 @@ int rtsp_s1_ping_msg_parse(char *ping_msg,S1_PING_MSG *ping)
 	}
 	url = strtok_r(NULL," ",&ptr1);
 	trim(url);
-	parse_url(url,ping->sm_ip,&(ping->sm_port),NULL);//½âÎö³öÏûÏ¢ÖĞµÄsm_ipºÍsm_port
+	parse_url(url,ping->sm_ip,&(ping->sm_port),NULL);//è§£æå‡ºæ¶ˆæ¯ä¸­çš„sm_ipå’Œsm_port
 	rtsp_version = strtok_r(NULL," ",&ptr1);
 	if(strcmp(rtsp_version,RTSP_VERSION))
 	{
@@ -350,7 +359,7 @@ int rtsp_s1_ping_msg_parse(char *ping_msg,S1_PING_MSG *ping)
 		return -1;	
 	}
 	printf("%s %d\n",ping->sm_ip,ping->sm_port);
-	//°´ĞĞ½âÎöÊ£ÓàÏûÏ¢
+	//æŒ‰è¡Œè§£æå‰©ä½™æ¶ˆæ¯
 	line = strtok_r(NULL,"\r\n",&ptr);	
 	while(line != NULL)
 	{	
@@ -383,7 +392,7 @@ int rtsp_s1_ping_msg_parse(char *ping_msg,S1_PING_MSG *ping)
 	return 0;	
 	
 }
-//´´½¨SM·¢¸øSTBµÄPing ResponseÏûÏ¢
+//åˆ›å»ºSMå‘ç»™STBçš„Ping Responseæ¶ˆæ¯
 int rtsp_s1_ping_res_encode(S1_PING_RES ping,char *ping_res)
 {
 	char str[1024];

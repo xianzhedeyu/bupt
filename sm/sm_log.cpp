@@ -50,19 +50,19 @@ int thelog(int lvl,int idnum,const char * func,int line,char *fmt, ...)
 			break;
 	}
 	long pos;
-	/*page[0] ´æ·ÅLVLSYS¼¶ÈÕÖ¾µÄÎÄ¼ş¸öÊı£¬page[1]~page[n]´æ·ÅÍ¨µÀÈÕÖ¾µÄÎÄ¼ş¸öÊı*/
-	/*¶øÍ¨µÀºÅ´Ó0 ¿ªÊ¼£¬ËùÒÔ´Ópage[idnum+1] ¿ªÊ¼´æ·ÅÍ¨µÀÈÕÖ¾*/
+	/*page[0] å­˜æ”¾LVLSYSçº§æ—¥å¿—çš„æ–‡ä»¶ä¸ªæ•°ï¼Œpage[1]~page[n]å­˜æ”¾é€šé“æ—¥å¿—çš„æ–‡ä»¶ä¸ªæ•°*/
+	/*è€Œé€šé“å·ä»0 å¼€å§‹ï¼Œæ‰€ä»¥ä»page[idnum+1] å¼€å§‹å­˜æ”¾é€šé“æ—¥å¿—*/
 	static int page[10]={0,0,0,0,0,0,0,0,0,0};
-	/*¼ÇÂ¼Ç°Ò»ÌìÊ±¼ä£¬ÎªÁËÖØÖÃpage[]*/
+	/*è®°å½•å‰ä¸€å¤©æ—¶é—´ï¼Œä¸ºäº†é‡ç½®page[]*/
 	static char lastfilenametime[12]="";
-	/*¼ÇÂ¼×î´óÍ¨µÀÊı*/
+	/*è®°å½•æœ€å¤§é€šé“æ•°*/
 	static int maxpage=1;
 	char timenowbuf[128];
 	char filenametime[12];
 	char logbuf[4096];
-	/*Í¨µÀÈÕÖ¾µÄÄ¿Â¼*/
+	/*é€šé“æ—¥å¿—çš„ç›®å½•*/
 	char logdir[128]="";
-	/*LVLSYS¼¶ÈÕÖ¾µÄÄ¿Â¼*/
+	/*LVLSYSçº§æ—¥å¿—çš„ç›®å½•*/
 	char syslogdir[128]="";
 	time_t tm_now;
 	FILE *fd;

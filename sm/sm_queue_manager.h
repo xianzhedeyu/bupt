@@ -4,11 +4,11 @@
 //#define SM_MAXNUM 100
 
 //#pragma pack(1)
-/*共享内存区的数据结构*/
+/*鍏变韩鍐呭瓨鍖虹殑鏁版嵁缁撴瀯*/
 typedef struct
 {
-	int data_flag;/*有无数据*/
-	int process_flag;/*进程标志*/
+	int data_flag;/*鏈夋棤鏁版嵁*/
+	int process_flag;/*杩涚▼鏍囧織*/
 	int data_len;
 	char data[1024];
 }SOCKET_DATA;

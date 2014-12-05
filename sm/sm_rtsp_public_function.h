@@ -19,23 +19,23 @@
 
 
 
-//²úÉúondemandsessionid
+//äº§ç”Ÿondemandsessionid
 int ondemandsessionid_generate(char *id);
-//Éú³ÉNTP TIME
+//ç”ŸæˆNTP TIME
 unsigned long NTP_time(time_t t);
-//½âÎöURLµØÖ·
+//è§£æURLåœ°å€
 int parse_url(char *url, char *ip,int *port,char *dir);
-//»ñÈ¡±¾µØÖ÷»úIPµØÖ·
+//è·å–æœ¬åœ°ä¸»æœºIPåœ°å€
 int getlocalip(char* eth,char* localip);
-//É¾³ı×Ö·û´®ÊÕÎ²¿Õ¸ñ
+//åˆ é™¤å­—ç¬¦ä¸²æ”¶å°¾ç©ºæ ¼
 char *trim(char *str);
-//»ñÈ¡ÏûÏ¢ÀàĞÍ
+//è·å–æ¶ˆæ¯ç±»å‹
 int rtsp_get_msg_type(char *msg);
-//´´½¨SM·¢¸øERMµÄ´íÎóresponseÏûÏ¢
+//åˆ›å»ºSMå‘ç»™ERMçš„é”™è¯¯responseæ¶ˆæ¯
 int rtsp_err_res_encode(int err_code,int cseq,char *err_msg);
-//²éÑ¯TeardownÏûÏ¢ÖĞReasonÍ·ÖĞ±àÂëºÅ¶ÔÓ¦µÄÃèÊö
+//æŸ¥è¯¢Teardownæ¶ˆæ¯ä¸­Reasonå¤´ä¸­ç¼–ç å·å¯¹åº”çš„æè¿°
 int rtsp_reason_description(int reason_code,char *description);
-//²éÑ¯AnnounceÏûÏ¢ÖĞNoticeÍ·ÖĞ±àÂëºÅ¶ÔÓ¦µÄÃèÊö
+//æŸ¥è¯¢Announceæ¶ˆæ¯ä¸­Noticeå¤´ä¸­ç¼–ç å·å¯¹åº”çš„æè¿°
 int rtsp_notice_description(int notice_code,char *description);
 
 

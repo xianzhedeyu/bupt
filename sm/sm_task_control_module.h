@@ -18,9 +18,9 @@
 #include <string.h>
 #include <stropts.h>
 #include <iostream>
-#include <occi.h>
+//#include <occi.h>
 using namespace std;
-using namespace oracle::occi;
+//using namespace oracle::occi;
 
 //#pragma pack(1)
 #define LOCKFILE "./lockfile"
@@ -31,30 +31,31 @@ using namespace oracle::occi;
 #define write_unlock(fd) lockfile((fd),F_UNLCK)
 typedef void Sigfunc(int);
 typedef struct {
-	int flag;/*标识该段内存数据是否为空*/
+	int flag;/*鏍囪瘑璇ユ鍐呭瓨鏁版嵁鏄惁涓虹┖*/
 	char *mmap_queue;/*sizeof(int)+sizeof(SOCKET_DATA)*/
 }mmap_queue_info;
 typedef struct {
-	char *Queue_addr;/*动态共享内存段节点指针*/
+	char *Queue_addr;/*鍔ㄦ�佸叡浜唴瀛樻鑺傜偣鎸囬拡*/
 }Queue_info;
 
 typedef struct{
-	int data_id;/*共享内存区的数据编号*/
+	int data_id;/*鍏变韩鍐呭瓨鍖虹殑鏁版嵁缂栧彿*/
 	int data_flag;
 	int pthread_flag;
 	int sd;
 	int data_len;
 	char data[1024];
 }pthread_queue;
-/*记录进程pid和对应的节点指针，在进程异常退出时负责标记*/
+/*璁板綍杩涚▼pid鍜屽搴旂殑鑺傜偣鎸囬拡锛屽湪杩涚▼寮傚父閫�鍑烘椂璐熻矗鏍囪*/
 typedef struct{
-	int pid;/*进程pid*/
-	char *pid_queue_addr;/*共享内存节点指针*/
+	int pid;/*杩涚▼pid*/
+	char *pid_queue_addr;/*鍏变韩鍐呭瓨鑺傜偣鎸囬拡*/
 }process_info;
 
 typedef struct{
 	int i;
-	StatelessConnectionPool *connPool;
+	//StatelessConnectionPool *connPool;
+    char *connPool;
 }pthread_args;
 
 int lockfile(int fd,int type);

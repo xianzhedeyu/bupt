@@ -13,7 +13,7 @@
 #include <netinet/in.h>
 #include "public_def.h"
 
-//SM·¢¸øODRMµÄSETUPÏûÏ¢ÖĞQAMµÄÏà¹ØĞÅÏ¢
+//SMå‘ç»™ODRMçš„SETUPæ¶ˆæ¯ä¸­QAMçš„ç›¸å…³ä¿¡æ¯
 typedef struct _S3_QAM
 {
     char client[128];
@@ -21,7 +21,7 @@ typedef struct _S3_QAM
     int client_port;
     INT64 bandwidth;
 }S3_QAM;
-//´´½¨SM·¢¸øODRMµÄSETUPĞÅÏ¢
+//åˆ›å»ºSMå‘ç»™ODRMçš„SETUPä¿¡æ¯
 typedef struct _S3_SETUP_MSG
 {
 	char odrm_ip[40];
@@ -38,26 +38,26 @@ typedef struct _S3_SETUP_MSG
 	char policy[128];
 	char inband_marker[256];
 	char content_type[30];
-	//sdpÏûÏ¢²ÎÊı
-	int sdp_version;		//NGODÖĞÄ¬ÈÏÎª"0"
-	char email_add[5];		//NGODÖĞÄ¬ÈÏÎª"-"
+	//sdpæ¶ˆæ¯å‚æ•°
+	int sdp_version;		//NGODä¸­é»˜è®¤ä¸º"0"
+	char email_add[5];		//NGODä¸­é»˜è®¤ä¸º"-"
 	char ntp[50];			//the time that the session setup message was created
 	char add_type[10];		//"IN"
 	char ip_version[10];	//"IP4"
-	char sm_ip[40];			//´´½¨»á»°µÄ·şÎñÆ÷µØÖ·£¬SM»òODRMµÄIP£¬´Ë´¦Ó¦ÎªSMµÄIP
-	char s[2];				//NGODÖĞÄ¬ÈÏÎª" "
+	char sm_ip[40];			//åˆ›å»ºä¼šè¯çš„æœåŠ¡å™¨åœ°å€ï¼ŒSMæˆ–ODRMçš„IPï¼Œæ­¤å¤„åº”ä¸ºSMçš„IP
+	char s[2];				//NGODä¸­é»˜è®¤ä¸º" "
 	int time[2];			//Describes the validity start/end times of the session. 0 indicates media is always available
 	//a=X-playlist-item
 	char provider_id[128];	//the CableLabs provider_id for the content asset	
 	char asset_id[40];		//the CableLabs asset_id for the content asset	
-	int start_npt;			// an 8-digit hex ASCII value, no ¡°0x¡± prefix and no leading zero
-	int stop_npt;			// an 8-digit hex ASCII value, no ¡°0x¡± prefix and no leading zero			
+	int start_npt;			// an 8-digit hex ASCII value, no â€œ0xâ€ prefix and no leading zero
+	int stop_npt;			// an 8-digit hex ASCII value, no â€œ0xâ€ prefix and no leading zero			
 	
-	char c[15];				//NGODÖĞÄ¬ÈÏÎª"IN IP4 0.0.0.0 "
-	char m[17];				//NGODÖĞÄ¬ÈÏÎª"video 0 udp MP2T"					
+	char c[15];				//NGODä¸­é»˜è®¤ä¸º"IN IP4 0.0.0.0 "
+	char m[17];				//NGODä¸­é»˜è®¤ä¸º"video 0 udp MP2T"					
 }S3_SETUP_MSG;
 
-//ODRM·¢¸øSMµÄSETUP RESPONSEÏûÏ¢ÖĞÓÃµ½µÄ²ÎÊı
+//ODRMå‘ç»™SMçš„SETUP RESPONSEæ¶ˆæ¯ä¸­ç”¨åˆ°çš„å‚æ•°
 typedef struct _S3_SETUP_RES
 {
 	int err_code;
@@ -77,25 +77,25 @@ typedef struct _S3_SETUP_RES
 	char content_type[50];
 	int content_length;
 	
-	//sdpÏûÏ¢²ÎÊı
-	int sdp_version;		//NGODÖĞÄ¬ÈÏÎª"0"
-	char email_add[5];		//NGODÖĞÄ¬ÈÏÎª"-"
-	INT64 ss_session;		//RTSP session ID of the Streaming Server,S1½Ó¿ÚÖĞÊ¹ÓÃ´Ë²ÎÊıÀ´·¢ËÍ¿ØÖÆÏûÏ¢C1
+	//sdpæ¶ˆæ¯å‚æ•°
+	int sdp_version;		//NGODä¸­é»˜è®¤ä¸º"0"
+	char email_add[5];		//NGODä¸­é»˜è®¤ä¸º"-"
+	INT64 ss_session;		//RTSP session ID of the Streaming Server,S1æ¥å£ä¸­ä½¿ç”¨æ­¤å‚æ•°æ¥å‘é€æ§åˆ¶æ¶ˆæ¯C1
 	char ntp[50];			//the time that the session setup message was created
 	char add_type[10];		//"IN"
 	char ip_version[10];	//"IP4"
 	char ss_ip[40];			//IP address of the RTSP server on the Streaming Server
-	char s[2];				//NGODÖĞÄ¬ÈÏÎª" "
+	char s[2];				//NGODä¸­é»˜è®¤ä¸º" "
 	int time[2];			//Describes the validity start/end times of the session. 0 indicates media is always available
-	char protocol[10];		//ÀıÈçrtsp, lscp, lscpu
+	char protocol[10];		//ä¾‹å¦‚rtsp, lscp, lscpu
 	char host[40];			//the IP address or fully qualified DNS name of the stream control port
 	int port;				//the TCP or UDP port number of the stream control port.
 	INT64 stream_handle;	//the RTSP session ID or LSCP stream handle to control this stream, depending on the <protocol> value.
-	char c[15];				//NGODÖĞÄ¬ÈÏÎª"IN IP4 0.0.0.0 "
-	char m[17];				//NGODÖĞÄ¬ÈÏÎª"video 0 udp MP2T"			
+	char c[15];				//NGODä¸­é»˜è®¤ä¸º"IN IP4 0.0.0.0 "
+	char m[17];				//NGODä¸­é»˜è®¤ä¸º"video 0 udp MP2T"			
 }S3_SETUP_RES;
 
-//SM¸øODRM·¢µÄteardownÏûÏ¢
+//SMç»™ODRMå‘çš„teardownæ¶ˆæ¯
 typedef struct _S3_TEARDOWN_MSG
 {
 	char odrm_ip[40];
@@ -107,7 +107,7 @@ typedef struct _S3_TEARDOWN_MSG
 	char ondemand_session_id[128];
 }S3_TEARDOWN_MSG;
 
-//ODRM·¢¸øSMµÄteardown response
+//ODRMå‘ç»™SMçš„teardown response
 typedef struct _S3_TEARDOWN_RES
 {
 	int err_code;
@@ -118,7 +118,7 @@ typedef struct _S3_TEARDOWN_RES
 	char stop_point_npt[50];
 }S3_TEARDOWN_RES;
 
-//ODRM¸øSM·¢µÄannounceÏûÏ¢
+//ODRMç»™SMå‘çš„announceæ¶ˆæ¯
 typedef struct _S3_ANNOUNCE_MSG
 {
 	char sm_ip[40];
@@ -132,7 +132,7 @@ typedef struct _S3_ANNOUNCE_MSG
 	char ondemand_session_id[128];
 }S3_ANNOUNCE_MSG;
 
-//SM¸øODRM·¢µÄANNOUNCE RESPONSE
+//SMç»™ODRMå‘çš„ANNOUNCE RESPONSE
 typedef struct _S3_ANNOUNCE_RES
 {
 	int err_code;
@@ -141,7 +141,7 @@ typedef struct _S3_ANNOUNCE_RES
 	char ondemand_session_id[128];
 }S3_ANNOUNCE_RES;
 
-//SM¸øODRM·¢µÄGET_PARAMETERÏûÏ¢
+//SMç»™ODRMå‘çš„GET_PARAMETERæ¶ˆæ¯
 typedef struct _S3_GET_PARAMETER_MSG
 {
 	char odrm_ip[40];
@@ -153,7 +153,7 @@ typedef struct _S3_GET_PARAMETER_MSG
 	int content_length;
 	char parameter[50];
 }S3_GET_PARAMETER_MSG;
-//ODRM·¢¸øSMµÄGET_PARAMETER RESPONSE
+//ODRMå‘ç»™SMçš„GET_PARAMETER RESPONSE
 typedef struct _S3_GET_PARAMETER_RES
 {
 	int err_code;
@@ -164,7 +164,7 @@ typedef struct _S3_GET_PARAMETER_RES
 	char parameter_val[300];
 }S3_GET_PARAMETER_RES;
 
-//SM¸øODRM·¢µÄSET_PARAMETERÏûÏ¢
+//SMç»™ODRMå‘çš„SET_PARAMETERæ¶ˆæ¯
 typedef struct _S3_SET_PARAMETER_MSG
 {
 	char odrm_ip[40];
@@ -176,7 +176,7 @@ typedef struct _S3_SET_PARAMETER_MSG
 	char content[50];
 }S3_SET_PARAMETER_MSG;
 
-//ODRM·¢¸øSMµÄSET_PARAMETER RESPONSE
+//ODRMå‘ç»™SMçš„SET_PARAMETER RESPONSE
 typedef struct _S3_SET_PARAMETER_RES
 {
 	int err_code;
@@ -185,25 +185,25 @@ typedef struct _S3_SET_PARAMETER_RES
 
 
 
-//´´½¨SM·¢¸øODRMµÄSETUPĞÅÏ¢
+//åˆ›å»ºSMå‘ç»™ODRMçš„SETUPä¿¡æ¯
 int rtsp_s3_setup_msg_encode(S3_SETUP_MSG msg,char *setup_msg);
-//´´½¨ODRM·¢¸øSMµÄSETUP RESPONSEÏûÏ¢
+//åˆ›å»ºODRMå‘ç»™SMçš„SETUP RESPONSEæ¶ˆæ¯
 int rtsp_s3_setup_res_parse(char *setup_res,S3_SETUP_RES *res);
-//´´½¨SM·¢¸øODRMµÄTEARDOWNÏûÏ¢
+//åˆ›å»ºSMå‘ç»™ODRMçš„TEARDOWNæ¶ˆæ¯
 int rtsp_s3_teardown_msg_encode(S3_TEARDOWN_MSG tear,char *tear_msg);
-//½âÎöODRM·¢¸øSMµÄTEARDDOWN RESPONSEÏûÏ¢
+//è§£æODRMå‘ç»™SMçš„TEARDDOWN RESPONSEæ¶ˆæ¯
 int rtsp_s3_teardown_res_parse(char *tear_res,S3_TEARDOWN_RES *res);
-//½âÎöERMÏòSM·¢ËÍµÄANNOUNCEÏûÏ¢
+//è§£æERMå‘SMå‘é€çš„ANNOUNCEæ¶ˆæ¯
 int rtsp_s3_announce_msg_parse(char * announce,S3_ANNOUNCE_MSG *ann);
-//´´½¨SMÏòERM·¢ËÍµÄANNOUNCE RESPONSEÏûÏ¢
+//åˆ›å»ºSMå‘ERMå‘é€çš„ANNOUNCE RESPONSEæ¶ˆæ¯
 int rtsp_s3_announce_res_encode(S3_ANNOUNCE_RES res,char *ann_res);
-//´´½¨SMÏòODRM·¢ËÍµÄGET PARAMETERÏûÏ¢
+//åˆ›å»ºSMå‘ODRMå‘é€çš„GET PARAMETERæ¶ˆæ¯
 int rtsp_s3_get_parameter_msg_encode(S3_GET_PARAMETER_MSG msg,char *get_parameter);
-//½âÎöODRM·¢¸øSMµÄGET_PARAMETER RESPONSEÏûÏ¢
+//è§£æODRMå‘ç»™SMçš„GET_PARAMETER RESPONSEæ¶ˆæ¯
 int rtsp_s3_get_parameter_res_parse(char *get_parameter_res,S3_GET_PARAMETER_RES *res);
-//´´½¨SMÏòODRM·¢ËÍµÄSET PARAMETERÏûÏ¢
+//åˆ›å»ºSMå‘ODRMå‘é€çš„SET PARAMETERæ¶ˆæ¯
 int rtsp_s3_set_parameter_msg_encode(S3_SET_PARAMETER_MSG msg,char *set_parameter);
-//½âÎöODRM·¢¸øSMµÄSET_PARAMETER RESPONSEÏûÏ¢
+//è§£æODRMå‘ç»™SMçš„SET_PARAMETER RESPONSEæ¶ˆæ¯
 int rtsp_s3_set_parameter_res_parse(char *set_parameter_res,S3_SET_PARAMETER_RES *res);
 
 

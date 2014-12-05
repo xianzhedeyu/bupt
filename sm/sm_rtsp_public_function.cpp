@@ -1,50 +1,50 @@
 #include "sm_rtsp_public_function.h"
 
-//²úÉúondemandsessionid
+//äº§ç”Ÿondemandsessionid
 int ondemandsessionid_generate(char *id)
 {
 	char buf[37];
 	uuid_t out;
-	uuid_generate(out);//²úÉúuuid
-	uuid_unparse(out,buf);//×ª»»¸ñÊ½
+	uuid_generate(out);//äº§ç”Ÿuuid
+	uuid_unparse(out,buf);//è½¬æ¢æ ¼å¼
 	strncpy(id,buf,37);
 	return 0;	
 }
-//Éú³ÉNTP TIME
+//ç”ŸæˆNTP TIME
 unsigned long NTP_time(time_t t)
 {
     return (unsigned long)t+2208988800U;
 }
 
-//½âÎöurlµØÖ·
+//è§£æurlåœ°å€
 int parse_url(char *url,char *ip,int *port,char *dir)
 {
     char *temp;
     char full[256] = "";
     char substr[248] = "";
     char token[248] = "";
-    strncpy(full,url,256);//¸´ÖÆURL
+    strncpy(full,url,256);//å¤åˆ¶URL
 
     if (strncmp(full,"rtsp://",7) == 0)
     {
-        strncpy(substr,full+7,248);//substrÈ¡rtsp://ºó×Ö·û´®
-        if (strchr(substr,':'))   //µ±urlÖĞ´æÔÚ¶Ë¿ÚºÅÊ±
+        strncpy(substr,full+7,248);//substrå–rtsp://åå­—ç¬¦ä¸²
+        if (strchr(substr,':'))   //å½“urlä¸­å­˜åœ¨ç«¯å£å·æ—¶
         {
-            strcpy(ip,strtok(substr,":"));//È¡µÃIP
+            strcpy(ip,strtok(substr,":"));//å–å¾—IP
             strncpy(token,strtok(NULL,":"),248);
             *port = atoi(strtok(token,"/"));
-            if (strchr(token,'/'))   //µ±urlÖĞ´æÔÚ¶Ë¿ÚºÅºÍÂ·¾¶Ê±
+            if (strchr(token,'/'))   //å½“urlä¸­å­˜åœ¨ç«¯å£å·å’Œè·¯å¾„æ—¶
             {
                 strcpy(dir,strtok(NULL,"/"));            
                 //printf("%s %d %s\n",ip,*port,dir);
             }
         }
-        else if (strchr(substr,'/'))   //µ±urlÖĞ²»´æÔÚ¶Ë¿ÚºÅµ«´æÔÚÂ·¾¶Ê±
+        else if (strchr(substr,'/'))   //å½“urlä¸­ä¸å­˜åœ¨ç«¯å£å·ä½†å­˜åœ¨è·¯å¾„æ—¶
         {
             strcpy(ip,strtok(substr,"/"));
             strcpy(dir,strtok(NULL,"/"));
             //printf("%s %s\n",ip,dir);
-        }else//µ±urlÖĞ²»´æÔÚ¶Ë¿ÚºÅºÍÂ·¾¶Ê±
+        }else//å½“urlä¸­ä¸å­˜åœ¨ç«¯å£å·å’Œè·¯å¾„æ—¶
         {
             strcpy(ip,substr);
             //printf("%s\n",ip);
@@ -53,7 +53,7 @@ int parse_url(char *url,char *ip,int *port,char *dir)
     return 0;
 }
 
-//»ñÈ¡±¾µØÖ÷»úIPµØÖ·
+//è·å–æœ¬åœ°ä¸»æœºIPåœ°å€
 int getlocalip(char* eth,char* localip)
 {
     int sockfd;
@@ -64,17 +64,17 @@ int getlocalip(char* eth,char* localip)
     char ipbuf[40];
     struct ifreq req;
     struct sockaddr_in *host;
-    bzero(&req, sizeof(struct ifreq));//ÖÃ×Ö½Ú×Ö·û´®reqµÄÇ°sizeof(struct ifreq)¸ö×Ö½ÚÎªÁã
+    bzero(&req, sizeof(struct ifreq));//ç½®å­—èŠ‚å­—ç¬¦ä¸²reqçš„å‰sizeof(struct ifreq)ä¸ªå­—èŠ‚ä¸ºé›¶
     strcpy(req.ifr_name, eth);
     ioctl(sockfd, SIOCGIFADDR, &req);
     host = (struct sockaddr_in*)&req.ifr_addr;
-    strcpy(ipbuf, (char*)inet_ntoa(host->sin_addr));//½«ÍøÂçµØÖ·×ª»»ÎªÒÔ'.'Ïà¸ôµÄ×Ö·û´®ĞÎÊ½
+    strcpy(ipbuf, (char*)inet_ntoa(host->sin_addr));//å°†ç½‘ç»œåœ°å€è½¬æ¢ä¸ºä»¥'.'ç›¸éš”çš„å­—ç¬¦ä¸²å½¢å¼
     close(sockfd);
     strcpy(localip,ipbuf);
     return 0;
 }
 
-//É¾³ı×Ö·û´®ÊÕÎ²¿Õ¸ñ
+//åˆ é™¤å­—ç¬¦ä¸²æ”¶å°¾ç©ºæ ¼
 char *trim(char *str)
 {
     char temp[256];
@@ -90,7 +90,7 @@ char *trim(char *str)
     return str;
 }
 
-//´´½¨´íÎóresponseÏûÏ¢
+//åˆ›å»ºé”™è¯¯responseæ¶ˆæ¯
 int rtsp_err_res_encode(int err_code,int cseq,char *err_msg)
 {
     char str[300];
@@ -156,25 +156,25 @@ int rtsp_err_res_encode(int err_code,int cseq,char *err_msg)
         strcat(str,"670 ERM Setup Failed - No Response\r\n");
         break;
     case RTSP_ResponseCode_ERMSetupFailed_InvalidRequest:
-        strcat(str,"671 ERM Setup Failed ¨C Invalid Request\r\n");
+        strcat(str,"671 ERM Setup Failed â€“ Invalid Request\r\n");
         break;
     case RTSP_ResponseCode_ERMSetupFailed_QAMBandwidthNotAvailable:
-        strcat(str,"672 ERM Setup Failed ¨C QAM Bandwidth Not Available\r\n");
+        strcat(str,"672 ERM Setup Failed â€“ QAM Bandwidth Not Available\r\n");
         break;
     case RTSP_ResponseCode_ERMSetupFailed_NetworkBandwidthNotAvailable:
-        strcat(str,"673 ERM Setup Failed ¨C Network Bandwidth Not Available\r\n");
+        strcat(str,"673 ERM Setup Failed â€“ Network Bandwidth Not Available\r\n");
         break;
     case RTSP_ResponseCode_ERMSetupFailed_ProgramNotAvailable:
-        strcat(str,"674 ERM Setup Failed ¨C Program Not Available\r\n");
+        strcat(str,"674 ERM Setup Failed â€“ Program Not Available\r\n");
         break;
     case RTSP_ResponseCode_ERMSetupFailed_ServiceGroupNotFound:
-        strcat(str,"675 ERM Setup Failed ¨C Service Group Not Found\r\n");
+        strcat(str,"675 ERM Setup Failed â€“ Service Group Not Found\r\n");
         break;
     case RTSP_ResponseCode_ERMSetupFailed_QAMGroupsNotFound:
-        strcat(str,"676 ERM Setup Failed ¨C QAM Groups Not Found\r\n");
+        strcat(str,"676 ERM Setup Failed â€“ QAM Groups Not Found\r\n");
         break;
     case RTSP_ResponseCode_ERMSetupFailed_QAMNotAvailable:
-        strcat(str,"677 ERM Setup Failed ¨C QAM Not Available\r\n");
+        strcat(str,"677 ERM Setup Failed â€“ QAM Not Available\r\n");
         break;
     case RTSP_ResponseCode_ERMSetupFailed_EdgeDeviceNotAvailable:
         strcat(str,"678 ERM Setup Failed - Edge Device Not Available\r\n");
@@ -192,7 +192,7 @@ int rtsp_err_res_encode(int err_code,int cseq,char *err_msg)
     return 0;
 }
 
-//²éÑ¯TeardownÏûÏ¢ÖĞReasonÍ·ÖĞ±àÂëºÅ¶ÔÓ¦µÄÃèÊö
+//æŸ¥è¯¢Teardownæ¶ˆæ¯ä¸­Reasonå¤´ä¸­ç¼–ç å·å¯¹åº”çš„æè¿°
 int rtsp_reason_description(int reason_code,char *description)
 {
     char str[300];
@@ -277,7 +277,7 @@ int rtsp_reason_description(int reason_code,char *description)
 
     return 0;
 }
-//²éÑ¯AnnounceÏûÏ¢ÖĞNoticeÍ·ÖĞ±àÂëºÅ¶ÔÓ¦µÄÃèÊö
+//æŸ¥è¯¢Announceæ¶ˆæ¯ä¸­Noticeå¤´ä¸­ç¼–ç å·å¯¹åº”çš„æè¿°
 int rtsp_notice_description(int notice_code,char *description)
 {
     char str[300];
@@ -336,7 +336,7 @@ int rtsp_notice_description(int notice_code,char *description)
     return 0;
 }
 
-//»ñÈ¡ÏûÏ¢ÀàĞÍ
+//è·å–æ¶ˆæ¯ç±»å‹
 int rtsp_get_msg_type(char *msg)
 {
 	if (!strlen(msg))

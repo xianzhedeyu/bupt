@@ -14,7 +14,7 @@
 #include "public_def.h"
 
 
-//SM·¢¸øERMµÄSETUPÏûÏ¢ÖĞQAMµÄÏà¹ØĞÅÏ¢
+//SMå‘ç»™ERMçš„SETUPæ¶ˆæ¯ä¸­QAMçš„ç›¸å…³ä¿¡æ¯
 typedef struct _QAM_INFO
 {
     INT64 bandwidth;
@@ -22,7 +22,7 @@ typedef struct _QAM_INFO
     char client[128];
     char modulation[128];
 }QAM_INFO;
-//SM·¢¸øERMµÄSETUPÏûÏ¢
+//SMå‘ç»™ERMçš„SETUPæ¶ˆæ¯
 typedef struct _S6_SETUP_MSG
 {
     char ip[40];
@@ -39,14 +39,14 @@ typedef struct _S6_SETUP_MSG
     int qam_num;
 }S6_SETUP_MSG;
 
-//ERM·¢¸øSMµÄSETUPÏûÏ¢ÖĞQAMµÄÏà¹ØĞÅÏ¢(½ö±¯¹ÛÄ£Ê½ÏÂÊ¹ÓÃ)
+//ERMå‘ç»™SMçš„SETUPæ¶ˆæ¯ä¸­QAMçš„ç›¸å…³ä¿¡æ¯(ä»…æ‚²è§‚æ¨¡å¼ä¸‹ä½¿ç”¨)
 typedef struct _QAM_Info1
 {
     char destination[40];
     int client_port;
     char client[128];
 }QAM_Info1;
-//ERM·¢¸øSMµÄsetupÏûÏ¢£¨½ö±¯¹ÛÄ£Ê½ÏÂÊ¹ÓÃ£©
+//ERMå‘ç»™SMçš„setupæ¶ˆæ¯ï¼ˆä»…æ‚²è§‚æ¨¡å¼ä¸‹ä½¿ç”¨ï¼‰
 typedef struct _S6_SETUP_MSG1
 {
 	//char rtsp_ip[16];
@@ -58,7 +58,7 @@ typedef struct _S6_SETUP_MSG1
 	QAM_Info1 qam_info1[QAM_NUM_MAX];
 	int qam_num;
 }S6_SETUP_MSG1;
-//SM·¢¸øERMµÄsetup responseÏûÏ¢(½ö±¯¹ÛÄ£Ê½ÏÂÊ¹ÓÃ)
+//SMå‘ç»™ERMçš„setup responseæ¶ˆæ¯(ä»…æ‚²è§‚æ¨¡å¼ä¸‹ä½¿ç”¨)
 typedef struct _S6_SETUP_RES1
 {
 	int err_code;
@@ -72,7 +72,7 @@ typedef struct _S6_SETUP_RES1
 	char embedded_encryptor[10];
 	char ondemandsessionid[256];	
 }S6_SETUP_RES1;
-//ERM·¢¸øSMµÄsetup responseÏûÏ¢
+//ERMå‘ç»™SMçš„setup responseæ¶ˆæ¯
 typedef struct _S6_SETUP_RES
 {
 	int err_code;
@@ -89,7 +89,7 @@ typedef struct _S6_SETUP_RES
 	char embedded_encryptor[10];
 	char ondemandsessionid[256];	
 }S6_SETUP_RES;
-//SM¸øERM·¢µÄteardownÏûÏ¢
+//SMç»™ERMå‘çš„teardownæ¶ˆæ¯
 typedef struct _S6_TEARDOWN_MSG1
 {
 	char rtsp_ip[40];
@@ -99,7 +99,7 @@ typedef struct _S6_TEARDOWN_MSG1
 	INT64 session;
 	char ondemandsessionid[128];
 }S6_TEARDOWN_MSG1;
-//ERM¸øSM·¢µÄteardownÏûÏ¢
+//ERMç»™SMå‘çš„teardownæ¶ˆæ¯
 typedef struct _S6_TEARDOWN_MSG2
 {
 	char rtsp_ip[40];
@@ -109,7 +109,7 @@ typedef struct _S6_TEARDOWN_MSG2
 	INT64 session;
 	char ondemandsessionid[128];
 }S6_TEARDOWN_MSG2;
-//SM¸øERM·¢µÄteardown response
+//SMç»™ERMå‘çš„teardown response
 typedef struct _S6_TEARDOWN_RES1
 {
 	int err_code;
@@ -117,7 +117,7 @@ typedef struct _S6_TEARDOWN_RES1
 	INT64 session;
 	char ondemandsessionid[128];
 }S6_TEARDOWN_RES1;
-//ERM¸øSM·¢µÄteardown response
+//ERMç»™SMå‘çš„teardown response
 typedef struct _S6_TEARDOWN_RES2
 {
 	int err_code;
@@ -125,7 +125,7 @@ typedef struct _S6_TEARDOWN_RES2
 	INT64 session;
 	char ondemandsessionid[128];
 }S6_TEARDOWN_RES2;
-//ERM¸øSM·¢µÄannounceÏûÏ¢
+//ERMç»™SMå‘çš„announceæ¶ˆæ¯
 typedef struct _S6_ANNOUNCE_MSG
 {
 	char rtsp_ip[40];
@@ -137,7 +137,7 @@ typedef struct _S6_ANNOUNCE_MSG
 	char npt[30];
 	char ondemandsessionid[128];
 }S6_ANNOUNCE_MSG;
-//SM¸øERM·¢µÄANNOUNCE RESPONSE
+//SMç»™ERMå‘çš„ANNOUNCE RESPONSE
 typedef struct _S6_ANNOUNCE_RES
 {
 	int err_code;
@@ -147,25 +147,25 @@ typedef struct _S6_ANNOUNCE_RES
 }S6_ANNOUNCE_RES;
 
 
-//»ı¼«Ä£Ê½ÏÂ»ò±¯¹ÛÄ£Ê½ÏÂ´´½¨SM·¢¸øERMµÄSETUPĞÅÏ¢
+//ç§¯ææ¨¡å¼ä¸‹æˆ–æ‚²è§‚æ¨¡å¼ä¸‹åˆ›å»ºSMå‘ç»™ERMçš„SETUPä¿¡æ¯
 int rtsp_s6_setup_msg_encode(S6_SETUP_MSG msg,char *setup_msg);
-//±¯¹ÛÄ£Ê½ÏÂ½âÎöERM×÷ÎªRTSP´úÀíÏòSM·¢ËÍµÄSETUPÏûÏ¢
+//æ‚²è§‚æ¨¡å¼ä¸‹è§£æERMä½œä¸ºRTSPä»£ç†å‘SMå‘é€çš„SETUPæ¶ˆæ¯
 int rtsp_s6_pes_setup_msg_parse(char *setup_msg,S6_SETUP_MSG1 *msg1);
-//±¯¹ÛÄ£Ê½ÏÂSMÏòERM·¢ËÍµÄResponseÏûÏ¢
+//æ‚²è§‚æ¨¡å¼ä¸‹SMå‘ERMå‘é€çš„Responseæ¶ˆæ¯
 int rtsp_s6_pes_setup_res_encode(S6_SETUP_RES1 res1,char *res_msg);
-//»ı¼«Ä£Ê½ÏÂ»ò±¯¹ÛÄ£Ê½ÏÂ½âÎöERMÏòSM·¢ËÍµÄResponseÏûÏ¢
+//ç§¯ææ¨¡å¼ä¸‹æˆ–æ‚²è§‚æ¨¡å¼ä¸‹è§£æERMå‘SMå‘é€çš„Responseæ¶ˆæ¯
 int rtsp_s6_setup_res_parse(char *msg,S6_SETUP_RES *res);
-//´´½¨SMÏòERM·¢ËÍµÄTEARDOWNÏûÏ¢
+//åˆ›å»ºSMå‘ERMå‘é€çš„TEARDOWNæ¶ˆæ¯
 int rtsp_s6_teardown_msg_encode(S6_TEARDOWN_MSG1 msg1,char *tear_msg);
-//½âÎöERM×÷Îª´úÀíÏòSM·¢ËÍµÄTEARDOWNÏûÏ¢
+//è§£æERMä½œä¸ºä»£ç†å‘SMå‘é€çš„TEARDOWNæ¶ˆæ¯
 int rtsp_s6_teardown_msg_parse(char *tear_msg,S6_TEARDOWN_MSG2 *msg2);
-//´´½¨SM·¢¸øERMµÄTeardown Response
+//åˆ›å»ºSMå‘ç»™ERMçš„Teardown Response
 int rtsp_s6_teardown_res_encode(S6_TEARDOWN_RES1 res1,char *tear_res);
-//½âÎöERM·¢¸øSMµÄTeardown Response
+//è§£æERMå‘ç»™SMçš„Teardown Response
 int rtsp_s6_teardown_res_parse(char *tear_res,S6_TEARDOWN_RES2 *res2);
-//½âÎöERMÏòSM·¢ËÍµÄANNOUNCEÏûÏ¢
+//è§£æERMå‘SMå‘é€çš„ANNOUNCEæ¶ˆæ¯
 int rtsp_s6_announce_msg_parse(char * announce,S6_ANNOUNCE_MSG *ann);
-//´´½¨SMÏòERM·¢ËÍµÄANNOUNCE RESPONSEÏûÏ¢
+//åˆ›å»ºSMå‘ERMå‘é€çš„ANNOUNCE RESPONSEæ¶ˆæ¯
 int rtsp_s6_announce_res_encode(S6_ANNOUNCE_RES res,char *ann_res);
 
 #endif

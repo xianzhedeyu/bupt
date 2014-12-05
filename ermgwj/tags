@@ -3,20 +3,14 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+!_TAG_PROGRAM_VERSION	5.8	//
 ANNOUNCE_MSG	erm_rtsp_s6_msg_process.h	/^}ANNOUNCE_MSG;$/;"	t	typeref:struct:_ANNOUNCE_MSG
-ANNOUNCE_MSG	test/ermi.h	/^}ANNOUNCE_MSG;$/;"	t	typeref:struct:_ANNOUNCE_MSG
-ASM_SRCS	Debug/sources.mk	/^ASM_SRCS := $/;"	m
 AcceptSock	erm_commnu_module.cpp	/^int AcceptSock(int * pSock, int nSock)$/;"	f
-AcceptSock	test/testsetup3.cpp	/^int AcceptSock(int * pSock, int nSock) {$/;"	f
-AcceptSock	test/testteardown3.cpp	/^int AcceptSock(int * pSock, int nSock) {$/;"	f
-AddFamily	erm_vrep_d6_msg_process.h	/^	int AddFamily;                               \/\/è·¯ç”±åœ°å€æ—                   $/;"	m	struct:_Routes
-AddFamily	ermi1.h	/^	int AddFamily;$/;"	m	struct:_Routes
+AddFamily	erm_vrep_d6_msg_process.h	/^	int AddFamily;                               \/\/Â·ÓÉµØÖ·×å                   $/;"	m	struct:_Routes
 AddInbandMarkerHeader	erm_rtsp_r6_msg_process.cpp	/^string AddInbandMarkerHeader(string InbandMarker)$/;"	f
 AddJitterBufferHeader	erm_rtsp_r6_msg_process.cpp	/^string AddJitterBufferHeader(int j)$/;"	f
-AddLen	erm_vrep_d6_msg_process.h	/^	short AddLen;                                  \/\/åœ°å€é•¿åº¦$/;"	m	struct:_Routes
-AddLen	erm_vrep_d6_msg_process.h	/^	short AddLen;                                  \/\/åœ°å€é•¿åº¦$/;"	m	struct:_Server
-AddLen	ermi1.h	/^	short AddLen;$/;"	m	struct:_Routes
+AddLen	erm_vrep_d6_msg_process.h	/^	short AddLen;                                  \/\/µØÖ·³¤¶È$/;"	m	struct:_Routes
+AddLen	erm_vrep_d6_msg_process.h	/^	short AddLen;                                  \/\/µØÖ·³¤¶È$/;"	m	struct:_Server
 AddOnDemandSessionIdHeader	erm_rtsp_r6_msg_process.cpp	/^string AddOnDemandSessionIdHeader(string onDemandSessionId)$/;"	f
 AddParameter	erm_rtsp_r6_msg_process.cpp	/^string AddParameter(string parameter)$/;"	f
 AddProvisionPortHeader	erm_rtsp_r6_msg_process.cpp	/^string AddProvisionPortHeader()$/;"	f
@@ -28,434 +22,149 @@ AddStartCheckingHeader	erm_rtsp_r6_msg_process.cpp	/^string AddStartCheckingHead
 AddStopCheckingHeader	erm_rtsp_r6_msg_process.cpp	/^string AddStopCheckingHeader()$/;"	f
 AddTransportHeader_QAM_UDP	erm_rtsp_r6_msg_process.cpp	/^string AddTransportHeader_QAM_UDP(Transport_QAM tqam,Transport_UDP tudp)$/;"	f
 AddTransportHeader_UDP	erm_rtsp_r6_msg_process.cpp	/^string AddTransportHeader_UDP(Transport_UDP tudp)$/;"	f
-Address	erm_vrep_d6_msg_process.h	/^	byte Address[256];                                 \/\/åœ°å€å€¼$/;"	m	struct:_Routes
-Address	erm_vrep_d6_msg_process.h	/^	byte Address[256];                                 \/\/åœ°å€å€¼host[":"port]$/;"	m	struct:_Server
-Address	ermi1.h	/^	byte Address[256];$/;"	m	struct:_Routes
-AddressDomain	ermi1.h	/^	byte AddressDomain[4];$/;"	m	struct:_OPEN
-AddressFamily	erm_vrep_d6_msg_process.h	/^	int AddressFamily;                           \/\/è¯¥æ”¯æŒè·¯ç”±ç±»å‹çš„åœ°å€æ—       $/;"	m	struct:_RouteTypesSupported
-AddressFamily	ermi1.h	/^	int AddressFamily;$/;"	m	struct:_RouteTypesSupported
+Address	erm_vrep_d6_msg_process.h	/^	byte Address[256];                                 \/\/µØÖ·Öµ$/;"	m	struct:_Routes
+Address	erm_vrep_d6_msg_process.h	/^	byte Address[256];                                 \/\/µØÖ·Öµhost[":"port]$/;"	m	struct:_Server
+AddressFamily	erm_vrep_d6_msg_process.h	/^	int AddressFamily;                           \/\/¸ÃÖ§³ÖÂ·ÓÉÀàĞÍµÄµØÖ·×å       $/;"	m	struct:_RouteTypesSupported
 Alternates	erm_vrep_d6_msg_process.h	/^	NHSAlternates Alternates;                      \/\/alternate servers$/;"	m	struct:_UPDATE
-Annex	erm_db_operate_module.h	/^	short Annex;						\/\/æè¿°QAM ITU-T annexçš„ç”±N6å»ºç«‹çš„å¸¸é‡http:\/\/zhidao.baidu.com\/question\/222860599.html$/;"	m	struct:_qaminfo
-Annex	erm_vrep_d6_msg_process.h	/^	byte Annex;                                    \/\/æè¿°QAM ITU-T annexçš„ç”±N6å»ºç«‹çš„å¸¸é‡$/;"	m	struct:_QAMParameters
-Annex	ermi_db_operate_module.h	/^	short Annex;						\/\/æè¿°QAM ITU-T annexçš„ç”±N6å»ºç«‹çš„å¸¸é‡http:\/\/zhidao.baidu.com\/question\/222860599.html$/;"	m	struct:_eqaminfo
-AppProtocol	erm_vrep_d6_msg_process.h	/^	int AppProtocol;                             \/\/åº”ç”¨åè®®                     $/;"	m	struct:_Routes
-AppProtocol	ermi1.h	/^	int AppProtocol;$/;"	m	struct:_Routes
-ApplicationProtocol	erm_vrep_d6_msg_process.h	/^	int ApplicationProtocol;                     \/\/åº”ç”¨åè®®                     $/;"	m	struct:_RouteTypesSupported
-ApplicationProtocol	ermi1.h	/^	int ApplicationProtocol;$/;"	m	struct:_RouteTypesSupported
-AttrFlag	erm_vrep_d6_msg_process.h	/^	byte AttrFlag;                                 \/\/å±æ€§æ ‡å¿—(é«˜ä½æ¯”ç‰¹ä¸º0è¡¨ç¤ºå·²çŸ¥å±æ€§ï¼Œ1è¡¨ç¤ºæœªçŸ¥å±æ€§ï¼Œå…¶ä»–ä½æ— æ•ˆ)$/;"	m	struct:_Attributes
-AttrFlag	ermi1.h	/^	byte AttrFlag;$/;"	m	struct:_Attributes
-AttrLen	erm_vrep_d6_msg_process.h	/^	short AttrLen;                                 \/\/å±æ€§å€¼çš„é•¿åº¦$/;"	m	struct:_Attributes
-AttrLen	ermi1.h	/^	short AttrLen;$/;"	m	struct:_Attributes
-AttrType	erm_vrep_d6_msg_process.h	/^	byte AttrType;                                 \/\/å±æ€§ä»£å·$/;"	m	struct:_Attributes
-AttrType	ermi1.h	/^	byte AttrType;$/;"	m	struct:_Attributes
-AttrValue	erm_vrep_d6_msg_process.h	/^	byte* AttrValue;                               \/\/å±æ€§å€¼(å€¼ä¸ºè¯¥ä½ç½®çš„å­—ç¬¦ä¸²ï¼Œå¯èƒ½æ— å®é™…æ„ä¹‰)$/;"	m	struct:_Attributes
-AttrValue	ermi1.h	/^	byte* AttrValue;$/;"	m	struct:_Attributes
-AttributeNum	erm_vrep_d6_msg_process.h	/^	int AttributeNum;                              \/\/å‚æ•°ä¸ªæ•°$/;"	m	struct:_UPDATE
-AttributeNum	ermi1.h	/^	int AttributeNum;$/;"	m	struct:_UPDATE
+Annex	erm_db_operate_module.h	/^	short Annex;						\/\/ÃèÊöQAM ITU-T annexµÄÓÉN6½¨Á¢µÄ³£Á¿$/;"	m	struct:_qaminfo
+Annex	erm_vrep_d6_msg_process.h	/^	byte Annex;                                    \/\/ÃèÊöQAM ITU-T annexµÄÓÉN6½¨Á¢µÄ³£Á¿$/;"	m	struct:_QAMParameters
+AppProtocol	erm_vrep_d6_msg_process.h	/^	int AppProtocol;                             \/\/Ó¦ÓÃĞ­Òé                     $/;"	m	struct:_Routes
+ApplicationProtocol	erm_vrep_d6_msg_process.h	/^	int ApplicationProtocol;                     \/\/Ó¦ÓÃĞ­Òé                     $/;"	m	struct:_RouteTypesSupported
+AttrFlag	erm_vrep_d6_msg_process.h	/^	byte AttrFlag;                                 \/\/ÊôĞÔ±êÖ¾(¸ßÎ»±ÈÌØÎª0±íÊ¾ÒÑÖªÊôĞÔ£¬1±íÊ¾Î´ÖªÊôĞÔ£¬ÆäËûÎ»ÎŞĞ§)$/;"	m	struct:_Attributes
+AttrLen	erm_vrep_d6_msg_process.h	/^	short AttrLen;                                 \/\/ÊôĞÔÖµµÄ³¤¶È$/;"	m	struct:_Attributes
+AttrType	erm_vrep_d6_msg_process.h	/^	byte AttrType;                                 \/\/ÊôĞÔ´úºÅ$/;"	m	struct:_Attributes
+AttrValue	erm_vrep_d6_msg_process.h	/^	byte* AttrValue;                               \/\/ÊôĞÔÖµ(ÖµÎª¸ÃÎ»ÖÃµÄ×Ö·û´®£¬¿ÉÄÜÎŞÊµ¼ÊÒâÒå)$/;"	m	struct:_Attributes
+AttributeNum	erm_vrep_d6_msg_process.h	/^	int AttributeNum;                              \/\/²ÎÊı¸öÊı$/;"	m	struct:_UPDATE
 Attributes	erm_vrep_d6_msg_process.h	/^}Attributes;$/;"	t	typeref:struct:_Attributes
-Attributes	ermi1.h	/^}Attributes;$/;"	t	typeref:struct:_Attributes
 CC	Makefile	/^CC=g++$/;"	m
-CC_DEPS	Debug/sources.mk	/^CC_DEPS := $/;"	m
-CC_SRCS	Debug/sources.mk	/^CC_SRCS := $/;"	m
-CPP_DEPS	Debug/sources.mk	/^CPP_DEPS := $/;"	m
-CPP_SRCS	Debug/sources.mk	/^CPP_SRCS := $/;"	m
-CXX_DEPS	Debug/sources.mk	/^CXX_DEPS := $/;"	m
-CXX_SRCS	Debug/sources.mk	/^CXX_SRCS := $/;"	m
-C_DEPS	Debug/sources.mk	/^C_DEPS := $/;"	m
-C_SRCS	Debug/sources.mk	/^C_SRCS := $/;"	m
-C_UPPER_DEPS	Debug/sources.mk	/^C_UPPER_DEPS := $/;"	m
-C_UPPER_SRCS	Debug/sources.mk	/^C_UPPER_SRCS := $/;"	m
 Capability	erm_vrep_d6_msg_process.h	/^}Capability;$/;"	t	typeref:struct:_Capability
-Capability	ermi1.h	/^}Capability;$/;"	t	typeref:struct:_Capability
 ChangeAscii2String	ermlog.cpp	/^void ChangeAscii2String(char *pStr, char *pAscii, int len)$/;"	f
-ChangeAscii2String	test/ermlog.cpp	/^void ChangeAscii2String(char *pStr, char *pAscii, int len)$/;"	f
-ChangeToTen	erm_qam_msg_monitor.cpp	/^int ChangeToTen(const char *s) {$/;"	f
-ChannelWidth	ermi1.h	/^	short ChannelWidth;$/;"	m	struct:_DOCSISCapability
-Channelwidth	erm_db_operate_module.h	/^	int Channelwidth;						\/\/QAMçš„Channel Width$/;"	m	struct:_qaminfo
-Channelwidth	erm_vrep_d6_msg_process.h	/^	short Channelwidth;                            \/\/QAMçš„Channel Width$/;"	m	struct:_QAMParameters
-Channelwidth	ermi_db_operate_module.h	/^	int Channelwidth;						\/\/QAMçš„Channel Width$/;"	m	struct:_eqaminfo
+ChangeToTen	erm_qam_msg_monitor.cpp	/^int ChangeToTen(const char  *s)  $/;"	f
+Channelwidth	erm_db_operate_module.h	/^	int Channelwidth;						\/\/QAMµÄChannel Width$/;"	m	struct:_qaminfo
+Channelwidth	erm_vrep_d6_msg_process.h	/^	short Channelwidth;                            \/\/QAMµÄChannel Width$/;"	m	struct:_QAMParameters
 ConnectSock	erm_commnu_module.cpp	/^int ConnectSock(int *pSock, int nPort, char * pAddr)$/;"	f
-ConnectSock	test/testermi1.cpp	/^int ConnectSock(int *pSock, int nPort, char * pAddr)$/;"	f
-ConnectSock	test/testgetparam.cpp	/^int ConnectSock(int *pSock, int nPort, char * pAddr)$/;"	f
-ConnectSock	test/testsetup2.cpp	/^int ConnectSock(int *pSock, int nPort, char * pAddr)$/;"	f
-ConnectSock	test/testsetup3.cpp	/^int ConnectSock(int *pSock, int nPort, char * pAddr) {$/;"	f
-ConnectSock	test/testteardown.cpp	/^int ConnectSock(int *pSock, int nPort, char * pAddr)$/;"	f
-ConnectSock	test/testteardown3.cpp	/^int ConnectSock(int *pSock, int nPort, char * pAddr) {$/;"	f
-Count	erm_vrep_d6_msg_process.h	/^	int Count;                                     \/\/åŠ¨æ€ç«¯å£çš„èŒƒå›´(ç«¯å£å’ŒèŠ‚ç›®å·é€’å¢åŠ ä¸€)$/;"	m	struct:_DynamicPorts
+Count	erm_vrep_d6_msg_process.h	/^	int Count;                                     \/\/¶¯Ì¬¶Ë¿ÚµÄ·¶Î§(¶Ë¿ÚºÍ½ÚÄ¿ºÅµİÔö¼ÓÒ»)$/;"	m	struct:_DynamicPorts
 CreateSock	erm_commnu_module.cpp	/^int CreateSock(int* pSock, int nPort)$/;"	f
-CreateSock	test/testsetup3.cpp	/^int CreateSock(int* pSock, int nPort) {$/;"	f
-CreateSock	test/testteardown3.cpp	/^int CreateSock(int* pSock, int nPort) {$/;"	f
-Create_mmap	erm_task_control_module.cpp	/^char *Create_mmap(char* mmapname, int memsize) {$/;"	f
+Create_mmap	erm_task_control_module.cpp	/^char *Create_mmap(char* mmapname,int memsize)$/;"	f
 DB_NAME	erm_db_operate_module.h	15;"	d
-DB_NAME	ermi_db_operate_module.h	16;"	d
-DB_create	erm_db_operate_module.cpp	/^int DB_create() {$/;"	f
-DB_exect	erm_db_operate_module.cpp	/^int DB_exect(sqlite3 *db, const char * sql, const int sql_type, const char * tablename)\/\/----sql_type:0 DDL ;1 DML;2 create table.--- execute sql \/\/$/;"	f
-DB_initializtion	erm_db_operate_module.cpp	/^int DB_initializtion() {$/;"	f
-DEPIControlAddr	ermi1.h	/^}DEPIControlAddr;$/;"	t	typeref:struct:_DEPIControlAddr
-DOCSISCapability	ermi1.h	/^}DOCSISCapability;$/;"	t	typeref:struct:_DOCSISCapability
-DOCSISMode	ermi1.h	/^	unsigned int DOCSISMode;$/;"	m	struct:_DOCSISCapability
-DPorts	erm_vrep_d6_msg_process.h	/^	DynamicPorts DPorts[256];                      \/\/UDP MAPä¸­çš„åŠ¨æ€ç«¯å£ä¸²$/;"	m	struct:_UPDATE
-DPortsNum	erm_vrep_d6_msg_process.h	/^	int DPortsNum;                                 \/\/åŠ¨æ€ç«¯å£ä¸ªæ•°$/;"	m	struct:_UPDATE
-DRRP_ID_ERMI1_KEEPALIVE	ermi_def.h	15;"	d
-DRRP_ID_ERMI1_KEEPALIVE	test/ermi_def.h	12;"	d
-DRRP_ID_ERMI1_NOTIFICATION	ermi_def.h	14;"	d
-DRRP_ID_ERMI1_NOTIFICATION	test/ermi_def.h	11;"	d
-DRRP_ID_ERMI1_NOTIFICATION_Cease	ermi_def.h	48;"	d
-DRRP_ID_ERMI1_NOTIFICATION_Cease	test/ermi_def.h	45;"	d
-DRRP_ID_ERMI1_NOTIFICATION_FiniteStateMachineError	ermi_def.h	47;"	d
-DRRP_ID_ERMI1_NOTIFICATION_FiniteStateMachineError	test/ermi_def.h	44;"	d
-DRRP_ID_ERMI1_NOTIFICATION_HoldTimerExpired	ermi_def.h	46;"	d
-DRRP_ID_ERMI1_NOTIFICATION_HoldTimerExpired	test/ermi_def.h	43;"	d
-DRRP_ID_ERMI1_NOTIFICATION_MessageHeaderError	ermi_def.h	43;"	d
-DRRP_ID_ERMI1_NOTIFICATION_MessageHeaderError	test/ermi_def.h	40;"	d
-DRRP_ID_ERMI1_NOTIFICATION_MessageHeaderError_BadMessageLength	ermi_def.h	51;"	d
-DRRP_ID_ERMI1_NOTIFICATION_MessageHeaderError_BadMessageLength	test/ermi_def.h	48;"	d
-DRRP_ID_ERMI1_NOTIFICATION_MessageHeaderError_BadMessageType	ermi_def.h	52;"	d
-DRRP_ID_ERMI1_NOTIFICATION_MessageHeaderError_BadMessageType	test/ermi_def.h	49;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError	ermi_def.h	44;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError	test/ermi_def.h	41;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError_BadDRRPIdentifier	ermi_def.h	56;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError_BadDRRPIdentifier	test/ermi_def.h	53;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError_BadPeerAddressDomain	ermi_def.h	55;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError_BadPeerAddressDomain	test/ermi_def.h	52;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError_CapabilityMismatch	ermi_def.h	60;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError_CapabilityMismatch	test/ermi_def.h	57;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError_UnacceptableHoldTime	ermi_def.h	58;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError_UnacceptableHoldTime	test/ermi_def.h	55;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError_UnsupportedCapability	ermi_def.h	59;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError_UnsupportedCapability	test/ermi_def.h	56;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError_UnsupportedOptionalParameter	ermi_def.h	57;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError_UnsupportedOptionalParameter	test/ermi_def.h	54;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError_UnsupportedVersionNumber	ermi_def.h	54;"	d
-DRRP_ID_ERMI1_NOTIFICATION_OPENMessageError_UnsupportedVersionNumber	test/ermi_def.h	51;"	d
-DRRP_ID_ERMI1_NOTIFICATION_UPDATEMessageError	ermi_def.h	45;"	d
-DRRP_ID_ERMI1_NOTIFICATION_UPDATEMessageError	test/ermi_def.h	42;"	d
-DRRP_ID_ERMI1_NOTIFICATION_UPDATEMessageError_AttributeFlagsError	ermi_def.h	65;"	d
-DRRP_ID_ERMI1_NOTIFICATION_UPDATEMessageError_AttributeFlagsError	test/ermi_def.h	62;"	d
-DRRP_ID_ERMI1_NOTIFICATION_UPDATEMessageError_AttributeLengthError	ermi_def.h	66;"	d
-DRRP_ID_ERMI1_NOTIFICATION_UPDATEMessageError_AttributeLengthError	test/ermi_def.h	63;"	d
-DRRP_ID_ERMI1_NOTIFICATION_UPDATEMessageError_InvalidAttribute	ermi_def.h	67;"	d
-DRRP_ID_ERMI1_NOTIFICATION_UPDATEMessageError_InvalidAttribute	test/ermi_def.h	64;"	d
-DRRP_ID_ERMI1_NOTIFICATION_UPDATEMessageError_MalformedAttributeList	ermi_def.h	62;"	d
-DRRP_ID_ERMI1_NOTIFICATION_UPDATEMessageError_MalformedAttributeList	test/ermi_def.h	59;"	d
-DRRP_ID_ERMI1_NOTIFICATION_UPDATEMessageError_MissingWellknownMandatoryAttribute	ermi_def.h	64;"	d
-DRRP_ID_ERMI1_NOTIFICATION_UPDATEMessageError_MissingWellknownMandatoryAttribute	test/ermi_def.h	61;"	d
-DRRP_ID_ERMI1_NOTIFICATION_UPDATEMessageError_nrecognizedWellknownAttribute	ermi_def.h	63;"	d
-DRRP_ID_ERMI1_NOTIFICATION_UPDATEMessageError_nrecognizedWellknownAttribute	test/ermi_def.h	60;"	d
-DRRP_ID_ERMI1_OPEN	ermi_def.h	12;"	d
-DRRP_ID_ERMI1_OPEN	test/ermi_def.h	9;"	d
-DRRP_ID_ERMI1_OPEN_CapabilityInformation	ermi_def.h	18;"	d
-DRRP_ID_ERMI1_OPEN_CapabilityInformation	test/ermi_def.h	15;"	d
-DRRP_ID_ERMI1_OPEN_CapabilityInformation_RouteTypesSupported	ermi_def.h	23;"	d
-DRRP_ID_ERMI1_OPEN_CapabilityInformation_RouteTypesSupported	test/ermi_def.h	20;"	d
-DRRP_ID_ERMI1_OPEN_CapabilityInformation_SendReceiveCapability	ermi_def.h	24;"	d
-DRRP_ID_ERMI1_OPEN_CapabilityInformation_SendReceiveCapability	test/ermi_def.h	21;"	d
-DRRP_ID_ERMI1_OPEN_ComponentName	ermi_def.h	20;"	d
-DRRP_ID_ERMI1_OPEN_ComponentName	test/ermi_def.h	17;"	d
-DRRP_ID_ERMI1_OPEN_StreamingZoneName	ermi_def.h	19;"	d
-DRRP_ID_ERMI1_OPEN_StreamingZoneName	test/ermi_def.h	16;"	d
-DRRP_ID_ERMI1_OPEN_VendorSpecificString	ermi_def.h	21;"	d
-DRRP_ID_ERMI1_OPEN_VendorSpecificString	test/ermi_def.h	18;"	d
-DRRP_ID_ERMI1_UPDATE	ermi_def.h	13;"	d
-DRRP_ID_ERMI1_UPDATE	test/ermi_def.h	10;"	d
-DRRP_ID_ERMI1_UPDATE_AvailableBandwidth	ermi_def.h	32;"	d
-DRRP_ID_ERMI1_UPDATE_AvailableBandwidth	test/ermi_def.h	29;"	d
-DRRP_ID_ERMI1_UPDATE_Cost	ermi_def.h	33;"	d
-DRRP_ID_ERMI1_UPDATE_Cost	test/ermi_def.h	30;"	d
-DRRP_ID_ERMI1_UPDATE_EdgeInput	ermi_def.h	34;"	d
-DRRP_ID_ERMI1_UPDATE_EdgeInput	test/ermi_def.h	31;"	d
-DRRP_ID_ERMI1_UPDATE_MaxMpegFlows	ermi_def.h	38;"	d
-DRRP_ID_ERMI1_UPDATE_MaxMpegFlows	test/ermi_def.h	35;"	d
-DRRP_ID_ERMI1_UPDATE_NextHopServer	ermi_def.h	29;"	d
-DRRP_ID_ERMI1_UPDATE_NextHopServer	test/ermi_def.h	26;"	d
-DRRP_ID_ERMI1_UPDATE_NextHopServerAlternates	ermi_def.h	39;"	d
-DRRP_ID_ERMI1_UPDATE_NextHopServerAlternates	test/ermi_def.h	36;"	d
-DRRP_ID_ERMI1_UPDATE_OutputPort	ermi_def.h	40;"	d
-DRRP_ID_ERMI1_UPDATE_OutputPort	test/ermi_def.h	37;"	d
-DRRP_ID_ERMI1_UPDATE_QAMNames	ermi_def.h	30;"	d
-DRRP_ID_ERMI1_UPDATE_QAMNames	test/ermi_def.h	27;"	d
-DRRP_ID_ERMI1_UPDATE_QAMParameters	ermi_def.h	35;"	d
-DRRP_ID_ERMI1_UPDATE_QAMParameters	test/ermi_def.h	32;"	d
-DRRP_ID_ERMI1_UPDATE_ReachableRoutes	ermi_def.h	28;"	d
-DRRP_ID_ERMI1_UPDATE_ReachableRoutes	test/ermi_def.h	25;"	d
-DRRP_ID_ERMI1_UPDATE_ServiceStatus	ermi_def.h	37;"	d
-DRRP_ID_ERMI1_UPDATE_ServiceStatus	test/ermi_def.h	34;"	d
-DRRP_ID_ERMI1_UPDATE_TotalBandwidth	ermi_def.h	31;"	d
-DRRP_ID_ERMI1_UPDATE_TotalBandwidth	test/ermi_def.h	28;"	d
-DRRP_ID_ERMI1_UPDATE_UDPMap	ermi_def.h	36;"	d
-DRRP_ID_ERMI1_UPDATE_UDPMap	test/ermi_def.h	33;"	d
-DRRP_ID_ERMI1_UPDATE_WithdrawnRoutes	ermi_def.h	27;"	d
-DRRP_ID_ERMI1_UPDATE_WithdrawnRoutes	test/ermi_def.h	24;"	d
-DepiControlAddr	ermi1.h	/^	DEPIControlAddr DepiControlAddr;$/;"	m	struct:_UPDATE
-Distroy_mmap	erm_task_control_module.cpp	/^int Distroy_mmap(void* mmap_addr, int size) {$/;"	f
-DocsisCapability	ermi1.h	/^	DOCSISCapability DocsisCapability;$/;"	m	struct:_UPDATE
+DB_create	erm_db_operate_module.cpp	/^int DB_create()$/;"	f
+DB_exect	erm_db_operate_module.cpp	/^int DB_exect(sqlite3 *db,const char * sql,const int sql_type,const char * tablename)\/\/----sql_type:0 DDL ;1 DML;2 create table.--- execute sql \/\/$/;"	f
+DB_initializtion	erm_db_operate_module.cpp	/^int DB_initializtion()$/;"	f
+DPorts	erm_vrep_d6_msg_process.h	/^	DynamicPorts DPorts[256];                      \/\/UDP MAPÖĞµÄ¶¯Ì¬¶Ë¿Ú´®$/;"	m	struct:_UPDATE
+DPortsNum	erm_vrep_d6_msg_process.h	/^	int DPortsNum;                                 \/\/¶¯Ì¬¶Ë¿Ú¸öÊı$/;"	m	struct:_UPDATE
+Distroy_mmap	erm_task_control_module.cpp	/^int Distroy_mmap(void* mmap_addr,int size)$/;"	f
 DynamicPorts	erm_vrep_d6_msg_process.h	/^}DynamicPorts;$/;"	t	typeref:struct:_DynamicPorts
-EANNOUNCE_MSG	ermi.h	/^}EANNOUNCE_MSG;$/;"	t	typeref:struct:_EANNOUNCE_MSG
-EDB_create	ermi_db_operate_module.cpp	/^int EDB_create() {$/;"	f
-EDB_exect	ermi_db_operate_module.cpp	/^int EDB_exect(sqlite3 *db, const char * sql, const int sql_type, const char * tablename)\/\/----sql_type:0 DDL ;1 DML;2 create table.--- execute sql \/\/$/;"	f
-EDB_initializtion	ermi_db_operate_module.cpp	/^int EDB_initializtion() {$/;"	f
-EGETPARAM_MSG	ermi.h	/^}EGETPARAM_MSG;$/;"	t	typeref:struct:_EGETPARAM_MSG
-EQAM_ADD	ermi_db_operate_module.cpp	/^int EQAM_ADD(int infocheck, const eqaminfo infocontent, int nextservercheck, const eqamnextserver nextservercontent, int udpcheck, const eqamudp udpcontent, int inputcheck, const eqaminput inputcontent)$/;"	f
-EQAM_DOWN_SELECT	ermi_db_operate_module.cpp	/^int EQAM_DOWN_SELECT(eqamselectinfo_down *qs) {$/;"	f
-EQAM_INF	ermi.h	/^}EQAM_INF;$/;"	t	typeref:struct:_EQAM_INF
-EQAM_SELECT	ermi_db_operate_module.cpp	/^int EQAM_SELECT(eqamselectinfo *qam_info, int qam_numb) {$/;"	f
-EQAM_SESSION_SELECT	ermi_db_operate_module.cpp	/^int EQAM_SESSION_SELECT(EGETPARAM_MSG getparam, string &res) {$/;"	f
-EQAM_SETUP_DOWN	ermi_db_operate_module.cpp	/^int EQAM_SETUP_DOWN(const eqamsdinfo &qma_sd) {$/;"	f
-ERMIJOB_H_	ErmiJob.h	9;"	d
 ERM_MAXNUM	erm_queuemanager.h	5;"	d
 ERM_RTSP_R6_MSG_PROCESS_H_INCLUDED	erm_rtsp_r6_msg_process.h	2;"	d
-ESETUP_MSG	ermi.h	/^}ESETUP_MSG;$/;"	t	typeref:struct:_ESETUP_MSG
-ESETUP_RESPONSE	ermi.h	/^}ESETUP_RESPONSE;$/;"	t	typeref:struct:_ESETUP_RESPONSE
-ETEARDOWN_MSG	ermi.h	/^}ETEARDOWN_MSG;$/;"	t	typeref:struct:_ETEARDOWN_MSG
-ETEARDOWN_MSG_RES	ermi.h	/^}ETEARDOWN_MSG_RES;$/;"	t	typeref:struct:_ETEARDOWN_MSG_RES
-EXECUTABLES	Debug/sources.mk	/^EXECUTABLES := $/;"	m
-E_ERM_INT64	ermi_def.h	/^typedef unsigned long long E_ERM_INT64;$/;"	t
-EdgeInput	erm_qam_msg_monitor.h	/^	Input EdgeInput[256];                          \/\/è¾¹ç¼˜è¾“å…¥ä¸²$/;"	m	struct:_stQAM_FIRST_UPDATA_INFO
-EdgeInput	erm_vrep_d6_msg_process.h	/^	Input EdgeInput[256];                          \/\/è¾¹ç¼˜è¾“å…¥ä¸²$/;"	m	struct:_UPDATE
+EdgeInput	erm_qam_msg_monitor.h	/^	Input EdgeInput[256];                          \/\/±ßÔµÊäÈë´®$/;"	m	struct:_stQAM_FIRST_UPDATA_INFO
+EdgeInput	erm_vrep_d6_msg_process.h	/^	Input EdgeInput[256];                          \/\/±ßÔµÊäÈë´®$/;"	m	struct:_UPDATE
 EdgeInputNum	erm_qam_msg_monitor.h	/^	int EdgeInputNum;$/;"	m	struct:_stQAM_FIRST_UPDATA_INFO
 EdgeInputNum	erm_vrep_d6_msg_process.h	/^	int EdgeInputNum;$/;"	m	struct:_UPDATE
-ErmiJob	ErmiJob.h	/^	ErmiJob(int n) :$/;"	f	class:ErmiJob
-ErmiJob	ErmiJob.h	/^class ErmiJob: public TPool::TJob {$/;"	c
-Ermi_GetParam	ermi_transaction.cpp	/^int Ermi_GetParam(char * Ermi_msg, int msg_len, int SM_sd) {$/;"	f
-Ermi_Setup	ermi_transaction.cpp	/^int Ermi_Setup(char * Ermi_msg, int msg_len, int SM_sd) {$/;"	f
-Ermi_Teardown	ermi_transaction.cpp	/^int Ermi_Teardown(char * Ermi_msg, int msg_len, int SM_sd) {$/;"	f
 FreeQueue	erm_queuemanager.cpp	/^int FreeQueue(SOCKET_DATA* r_data,SOCKET_DATA * mmap)$/;"	f
-Frequency	erm_db_operate_module.h	/^	int Frequency;						\/\/è°ƒåˆ¶é¢‘ç‡$/;"	m	struct:_qaminfo
-Frequency	erm_db_operate_module.h	/^  int Frequency;							\/\/out è°ƒåˆ¶é¢‘ç‡$/;"	m	struct:_qamselectinfo
-Frequency	erm_vrep_d6_msg_process.h	/^	int Frequency;                                 \/\/è°ƒåˆ¶é¢‘ç‡$/;"	m	struct:_QAMParameters
-Frequency	ermi1.h	/^	unsigned int Frequency;$/;"	m	struct:_QAMChannelConfig
-Frequency	ermi_db_operate_module.h	/^	int Frequency;						\/\/è°ƒåˆ¶é¢‘ç‡$/;"	m	struct:_eqaminfo
-Frequency	ermi_db_operate_module.h	/^  int Frequency;							\/\/out è°ƒåˆ¶é¢‘ç‡$/;"	m	struct:_eqamselectinfo
+Frequency	erm_db_operate_module.h	/^	int Frequency;						\/\/µ÷ÖÆÆµÂÊ$/;"	m	struct:_qaminfo
+Frequency	erm_db_operate_module.h	/^  int Frequency;							\/\/out µ÷ÖÆÆµÂÊ$/;"	m	struct:_qamselectinfo
+Frequency	erm_vrep_d6_msg_process.h	/^	int Frequency;                                 \/\/µ÷ÖÆÆµÂÊ$/;"	m	struct:_QAMParameters
 GenerateCommonRequest	erm_rtsp_r6_msg_process.cpp	/^string GenerateCommonRequest(string requestType,string rtspUrl,int CSeq)$/;"	f
 GetResponses	erm_rtsp_r6_msg_process.cpp	/^bool GetResponses(string response,int * Code,int *CSeq,_ERM_INT64 *Session,string * OnDemandSessionId)$/;"	f
 GroupName	erm_db_operate_module.h	/^	char GroupName[MAX_ROW][MAX_STRING];$/;"	m	struct:_qaminput
-GroupName	erm_vrep_d6_msg_process.h	/^	byte GroupName[256];                               \/\/è¯¥è¾“å…¥å¯¹åº”çš„Edge Input Groupå$/;"	m	struct:_Input
-GroupName	ermi_db_operate_module.h	/^	char GroupName[MAX_ROW][MAX_STRING];$/;"	m	struct:_eqaminput
-HandlUnkownAttr	erm_vrep_d6_msg_process.cpp	/^void HandlUnkownAttr(Attributes &attr) \/\/æœªçŸ¥å‚æ•°å¤„ç†$/;"	f
-Host	erm_vrep_d6_msg_process.h	/^	byte Host[256];                                    \/\/ä¸»æœºåœ°å€(ä¸»æœºåæˆ–RFC1123è§„å®šçš„IPv4æ ¼å¼åœ°å€æˆ–RFC2373è§„å®šçš„IPv6æ ¼å¼åœ°å€ï¼Œ$/;"	m	struct:_Input
-Host	ermi1.h	/^	byte Host[256];\/\/FQDN$/;"	m	struct:_DEPIControlAddr
-I	ermi1.h	/^	byte I;$/;"	m	struct:_QAMChannelConfig
-ID	erm_vrep_d6_msg_process.h	/^	byte ID[4];                                      \/\/VREPæ ‡è¯†(å¦‚æœNæ¥å£æ²¡æœ‰é…åˆ™è®¾ä¸ºè®¾å¤‡çš„IPv4åœ°å€)$/;"	m	struct:_OPEN
-ID	ermi1.h	/^	byte ID[4];$/;"	m	struct:_OPEN
+GroupName	erm_vrep_d6_msg_process.h	/^	byte GroupName[256];                               \/\/¸ÃÊäÈë¶ÔÓ¦µÄEdge Input GroupÃû$/;"	m	struct:_Input
+HandlUnkownAttr	erm_vrep_d6_msg_process.cpp	/^void HandlUnkownAttr(Attributes &attr)                          \/\/Î´Öª²ÎÊı´¦Àí$/;"	f
+Host	erm_vrep_d6_msg_process.h	/^	byte Host[256];                                    \/\/Ö÷»úµØÖ·(Ö÷»úÃû»òRFC1123¹æ¶¨µÄIPv4¸ñÊ½µØÖ·»òRFC2373¹æ¶¨µÄIPv6¸ñÊ½µØÖ·£¬$/;"	m	struct:_Input
+ID	erm_vrep_d6_msg_process.h	/^	byte ID[4];                                      \/\/VREP±êÊ¶(Èç¹ûN½Ó¿ÚÃ»ÓĞÅäÔòÉèÎªÉè±¸µÄIPv4µØÖ·)$/;"	m	struct:_OPEN
 INT64	erm_rtsp_s6_msg_process.h	/^typedef unsigned long long INT64;$/;"	t
-INT64	ermi.h	/^typedef unsigned long long INT64;$/;"	t
-INT64	test/ermi.h	/^typedef unsigned long long INT64;$/;"	t
 Input	erm_vrep_d6_msg_process.h	/^}Input;$/;"	t	typeref:struct:_Input
 Input_Host	erm_db_operate_module.h	/^	char Input_Host[MAX_ROW][MAX_STRING];$/;"	m	struct:_qaminput
-Input_Host	ermi_db_operate_module.h	/^	char Input_Host[MAX_ROW][MAX_STRING];$/;"	m	struct:_eqaminput
-InspectOPEN	erm_vrep_d6_msg_process.cpp	/^void InspectOPEN(OPEN &M_OPEN) \/\/OPENæ¶ˆæ¯æ£€æŸ¥$/;"	f
-InspectUPDATE	erm_vrep_d6_msg_process.cpp	/^void InspectUPDATE(UPDATE &M_UPDATE) {$/;"	f
-Interleaver	erm_db_operate_module.h	/^	short Interleaver;					\/\/ç”±N6å»ºç«‹çš„æè¿°FEC interleaverçš„å¸¸é‡$/;"	m	struct:_qaminfo
-Interleaver	erm_vrep_d6_msg_process.h	/^	byte Interleaver;                              \/\/ç”±N6å»ºç«‹çš„æè¿°FEC interleaverçš„å¸¸é‡$/;"	m	struct:_QAMParameters
-Interleaver	ermi1.h	/^	unsigned int Interleaver;$/;"	m	struct:_DOCSISCapability
-Interleaver	ermi_db_operate_module.h	/^	short Interleaver;					\/\/ç”±N6å»ºç«‹çš„æè¿°FEC interleaverçš„å¸¸é‡$/;"	m	struct:_eqaminfo
-J	ermi1.h	/^	byte J;$/;"	m	struct:_QAMChannelConfig
-J83	ermi1.h	/^	short J83;$/;"	m	struct:_DOCSISCapability
-J83_ChannelWidth	ermi1.h	/^	byte J83_ChannelWidth;$/;"	m	struct:_QAMChannelConfig
-LIBS	Debug/objects.mk	/^LIBS := -lpthread -lsqlite3$/;"	m
-LOCKDB	erm_task_control_module.h	21;"	d
-LOCKFILE	erm_task_control_module.h	20;"	d
-LOCKMODE	erm_task_control_module.h	22;"	d
-LVLDEBUG	ermain.cpp	/^int LVLDEBUG = LVLDEBUGON;$/;"	v
+InspectOPEN	erm_vrep_d6_msg_process.cpp	/^void InspectOPEN(OPEN &M_OPEN)                                 \/\/OPENÏûÏ¢¼ì²é$/;"	f
+InspectUPDATE	erm_vrep_d6_msg_process.cpp	/^void InspectUPDATE(UPDATE &M_UPDATE)$/;"	f
+Interleaver	erm_db_operate_module.h	/^	short Interleaver;					\/\/ÓÉN6½¨Á¢µÄÃèÊöFEC interleaverµÄ³£Á¿$/;"	m	struct:_qaminfo
+Interleaver	erm_vrep_d6_msg_process.h	/^	byte Interleaver;                              \/\/ÓÉN6½¨Á¢µÄÃèÊöFEC interleaverµÄ³£Á¿$/;"	m	struct:_QAMParameters
+LOCKDB	erm_task_control_module.h	19;"	d
+LOCKFILE	erm_task_control_module.h	18;"	d
+LOCKMODE	erm_task_control_module.h	20;"	d
+LVLDEBUG	ermain.cpp	/^int LVLDEBUG=LVLDEBUGON;$/;"	v
 LVLDEBUGOFF	ermlog.h	27;"	d
-LVLDEBUGOFF	test/ermlog.h	27;"	d
 LVLDEBUGON	ermlog.h	28;"	d
-LVLDEBUGON	test/ermlog.h	28;"	d
 LVLERR	ermlog.h	26;"	d
-LVLERR	test/ermlog.h	26;"	d
 LVLSYS	ermlog.h	25;"	d
-LVLSYS	test/ermlog.h	25;"	d
-Len	erm_vrep_d6_msg_process.h	/^	short Len;                                     \/\/æ¶ˆæ¯é•¿åº¦$/;"	m	struct:_UPDATE
-Len	erm_vrep_d6_msg_process.h	/^	short Len;                                     \/\/æ¶ˆæ¯é•¿åº¦(åŒ…æ‹¬è‡ªå·±)$/;"	m	struct:_OPEN
-Len	ermi1.h	/^	short Len;$/;"	m	struct:_OPEN
-Len	ermi1.h	/^	short Len;$/;"	m	struct:_UPDATE
-Length	ermi1.h	/^	short Length;$/;"	m	struct:_DEPIControlAddr
-Length	ermi1.h	/^	short Length;$/;"	m	struct:_Server
+Len	erm_vrep_d6_msg_process.h	/^	short Len;                                     \/\/ÏûÏ¢³¤¶È$/;"	m	struct:_UPDATE
+Len	erm_vrep_d6_msg_process.h	/^	short Len;                                     \/\/ÏûÏ¢³¤¶È(°üÀ¨×Ô¼º)$/;"	m	struct:_OPEN
 MAXBUF	erm_qam_msg_monitor.h	26;"	d
 MAXEPOLLSIZE	erm_qam_msg_monitor.h	25;"	d
 MAXFILELEN	ermlog.h	29;"	d
-MAXFILELEN	test/ermlog.h	29;"	d
 MAX_IP	erm_db_operate_module.h	14;"	d
-MAX_IP	ermi_db_operate_module.h	15;"	d
-MAX_RAND	threadpool/main.cc	39;"	d	file:
 MAX_ROW	erm_db_operate_module.h	12;"	d
-MAX_ROW	ermi_db_operate_module.h	13;"	d
-MAX_SIZE	threadpool/main.cc	38;"	d	file:
 MAX_STRING	erm_db_operate_module.h	13;"	d
-MAX_STRING	ermi_db_operate_module.h	14;"	d
-MMAPDIR	erm_task_control_module.h	23;"	d
-MSG_capability	ermi1.h	/^	byte MSG_capability[4];$/;"	m	struct:_Capability
-MSG_capabilityCode	ermi1.h	/^	short MSG_capabilityCode;$/;"	m	struct:_Capability
-MSG_capabilityLen	ermi1.h	/^	short MSG_capabilityLen;$/;"	m	struct:_Capability
-M_capability	erm_vrep_d6_msg_process.h	/^	byte M_capability[4];                            \/\/åŠŸèƒ½å€¼(Codeä¸º1æ—¶å…¶å€¼ä¸ºå¯¹åº”è·¯ç”±ç±»å‹æ•°ç»„çš„å…ƒç´ ä¸ªæ•°)$/;"	m	struct:_Capability
-M_capabilityCode	erm_vrep_d6_msg_process.h	/^	short M_capabilityCode;                        \/\/åŠŸèƒ½ä»£å·                    $/;"	m	struct:_Capability
-M_capabilityLen	erm_vrep_d6_msg_process.h	/^	short M_capabilityLen;                         \/\/è¯¥åŠŸèƒ½å€¼çš„é•¿åº¦$/;"	m	struct:_Capability
+MMAPDIR	erm_task_control_module.h	21;"	d
+M_capability	erm_vrep_d6_msg_process.h	/^	byte M_capability[4];                            \/\/¹¦ÄÜÖµ(CodeÎª1Ê±ÆäÖµÎª¶ÔÓ¦Â·ÓÉÀàĞÍÊı×éµÄÔªËØ¸öÊı)$/;"	m	struct:_Capability
+M_capabilityCode	erm_vrep_d6_msg_process.h	/^	short M_capabilityCode;                        \/\/¹¦ÄÜ´úºÅ                    $/;"	m	struct:_Capability
+M_capabilityLen	erm_vrep_d6_msg_process.h	/^	short M_capabilityLen;                         \/\/¸Ã¹¦ÄÜÖµµÄ³¤¶È$/;"	m	struct:_Capability
 MaxGroupBW	erm_db_operate_module.h	/^	int MaxGroupBW[MAX_ROW];$/;"	m	struct:_qaminput
-MaxGroupBW	erm_vrep_d6_msg_process.h	/^	int MaxGroupBW;                                \/\/è¾¹ç¼˜è¾“å…¥å¯æ‰¿è½½çš„æœ€å¤§ç»„å¸¦å®½(Kbps)$/;"	m	struct:_Input
-MaxGroupBW	ermi_db_operate_module.h	/^	int MaxGroupBW[MAX_ROW];$/;"	m	struct:_eqaminput
-MaxMpegFlows	erm_vrep_d6_msg_process.h	/^	int MaxMpegFlows;                              \/\/æ”¯æŒçš„æœ€å¤§å¹¶è¡Œæµä¸ªæ•°$/;"	m	struct:_UPDATE
-Modmode	erm_db_operate_module.h	/^	char Modmode[MAX_STRING];						\/\/è°ƒåˆ¶æ¨¡å¼$/;"	m	struct:_qaminfo
+MaxGroupBW	erm_vrep_d6_msg_process.h	/^	int MaxGroupBW;                                \/\/±ßÔµÊäÈë¿É³ĞÔØµÄ×î´ó×é´ø¿í(Kbps)$/;"	m	struct:_Input
+MaxMpegFlows	erm_vrep_d6_msg_process.h	/^	int MaxMpegFlows;                              \/\/Ö§³ÖµÄ×î´ó²¢ĞĞÁ÷¸öÊı$/;"	m	struct:_UPDATE
+Modmode	erm_db_operate_module.h	/^	char Modmode[MAX_STRING];						\/\/µ÷ÖÆÄ£Ê½$/;"	m	struct:_qaminfo
 Modmode	erm_db_operate_module.h	/^  char Modmode[MAX_STRING];				\/\/out$/;"	m	struct:_qamselectinfo
-Modmode	erm_vrep_d6_msg_process.h	/^	byte Modmode[256];                             \/\/è°ƒåˆ¶æ¨¡å¼$/;"	m	struct:_QAMParameters
-Modmode	ermi_db_operate_module.h	/^	char Modmode[MAX_STRING];						\/\/è°ƒåˆ¶æ¨¡å¼$/;"	m	struct:_eqaminfo
-Modmode	ermi_db_operate_module.h	/^  char Modmode[MAX_STRING];				\/\/out$/;"	m	struct:_eqamselectinfo
-Modulation	ermi1.h	/^	byte Modulation;$/;"	m	struct:_QAMChannelConfig
-Modulation	ermi1.h	/^	short Modulation;$/;"	m	struct:_DOCSISCapability
+Modmode	erm_vrep_d6_msg_process.h	/^	byte Modmode[256];                             \/\/µ÷ÖÆÄ£Ê½$/;"	m	struct:_QAMParameters
 NHSAlternates	erm_vrep_d6_msg_process.h	/^}NHSAlternates;$/;"	t	typeref:struct:_NHSAlternates
-NO_PROC	TThreadPool.h	/^const int  NO_PROC = -1;$/;"	m	namespace:ThreadPool
-NO_PROC	threadpool/TThreadPool.h	/^const int  NO_PROC = -1;$/;"	m	namespace:ThreadPool
-NetworkPrefix	ermi1.h	/^	byte NetworkPrefix[4];$/;"	m	struct:_DEPIControlAddr
-NextHopAddressDomain	ermi1.h	/^	unsigned int NextHopAddressDomain;$/;"	m	struct:_Server
-NextHopServer	erm_vrep_d6_msg_process.h	/^	Server  NextHopServer;                         \/\/ä¸‹ä¸€è·³æœåŠ¡å™¨$/;"	m	struct:_UPDATE
-NextHopServer	ermi1.h	/^	Server NextHopServer;$/;"	m	struct:_UPDATE
-Next_server_add	erm_db_operate_module.h	/^	char Next_server_add[MAX_STRING];				\/\/ä¸»ä¸‹ä¸€è·³æœåŠ¡åœ°å€$/;"	m	struct:_qamnextserver
-Next_server_add	ermi_db_operate_module.h	/^	char Next_server_add[MAX_STRING];				\/\/ä¸»ä¸‹ä¸€è·³æœåŠ¡åœ°å€$/;"	m	struct:_eqamnextserver
-Next_server_add_standby	erm_db_operate_module.h	/^	char Next_server_add_standby[MAX_ROW][MAX_STRING];		\/\/å¤‡ç”¨ä¸‹ä¸€è·³æœåŠ¡æ•°ç»„$/;"	m	struct:_qamnextserver
-Next_server_add_standby	ermi_db_operate_module.h	/^	char Next_server_add_standby[MAX_ROW][MAX_STRING];		\/\/å¤‡ç”¨ä¸‹ä¸€è·³æœåŠ¡æ•°ç»„$/;"	m	struct:_eqamnextserver
-Next_server_add_standby_numb	erm_db_operate_module.h	/^	int Next_server_add_standby_numb;		\/\/å¤‡ç”¨ä¸‹ä¸€è·³æœåŠ¡ä¸ªæ•°$/;"	m	struct:_qamnextserver
-Next_server_add_standby_numb	ermi_db_operate_module.h	/^	int Next_server_add_standby_numb;		\/\/å¤‡ç”¨ä¸‹ä¸€è·³æœåŠ¡ä¸ªæ•°$/;"	m	struct:_eqamnextserver
-NumAlternates	erm_vrep_d6_msg_process.h	/^	short NumAlternates;                           \/\/alternate serversçš„ä¸ªæ•°$/;"	m	struct:_NHSAlternates
-OBJS	Debug/sources.mk	/^OBJS := $/;"	m
+NextHopServer	erm_vrep_d6_msg_process.h	/^	Server  NextHopServer;                         \/\/ÏÂÒ»Ìø·şÎñÆ÷$/;"	m	struct:_UPDATE
+Next_server_add	erm_db_operate_module.h	/^	char Next_server_add[MAX_STRING];				\/\/Ö÷ÏÂÒ»Ìø·şÎñµØÖ·$/;"	m	struct:_qamnextserver
+Next_server_add_standby	erm_db_operate_module.h	/^	char Next_server_add_standby[MAX_ROW][MAX_STRING];		\/\/±¸ÓÃÏÂÒ»Ìø·şÎñÊı×é$/;"	m	struct:_qamnextserver
+Next_server_add_standby_numb	erm_db_operate_module.h	/^	int Next_server_add_standby_numb;		\/\/±¸ÓÃÏÂÒ»Ìø·şÎñ¸öÊı$/;"	m	struct:_qamnextserver
+NumAlternates	erm_vrep_d6_msg_process.h	/^	short NumAlternates;                           \/\/alternate serversµÄ¸öÊı$/;"	m	struct:_NHSAlternates
 OBJS	Makefile	/^OBJS=erm_commnu_module.o erm_queuemanager.o erm_task_control_module.o ermain.o ermlog.o \\$/;"	m
-OBJ_SRCS	Debug/sources.mk	/^OBJ_SRCS := $/;"	m
 OPEN	erm_vrep_d6_msg_process.h	/^}OPEN;$/;"	t	typeref:struct:_OPEN
-OPEN	ermi1.h	/^}OPEN;$/;"	t	typeref:struct:_OPEN
-OPENOut	erm_vrep_d6_msg_process.cpp	/^void OPENOut(OPEN M_OPEN) {$/;"	f
-O_SRCS	Debug/sources.mk	/^O_SRCS := $/;"	m
-OutputPort	erm_vrep_d6_msg_process.h	/^	PortID OutputPort;                             \/\/QAMè¢«åˆ†é…çš„ç«¯å£$/;"	m	struct:_UPDATE
-PackageKeepalive	erm_vrep_d6_msg_process.cpp	/^bool PackageKeepalive(char* KeepMessage) {$/;"	f
-PackageNotification	erm_vrep_d6_msg_process.cpp	/^bool PackageNotification(short ECode, short ESubCode, char* Date, char* NotificationMessage) {$/;"	f
-PackageOpen	erm_vrep_d6_msg_process.cpp	/^bool PackageOpen(OPEN M_OPEN, char* OpenMessage) {$/;"	f
-ParameterNum	erm_vrep_d6_msg_process.h	/^	int ParameterNum;                              \/\/å‚æ•°ä¸ªæ•°$/;"	m	struct:_OPEN
-ParameterNum	ermi1.h	/^	int ParameterNum;$/;"	m	struct:_OPEN
-ParameterType	erm_vrep_d6_msg_process.h	/^	short ParameterType;                           \/\/å‚æ•°ç±»å‹$/;"	m	struct:_Parameters
-ParameterType	ermi1.h	/^	short ParameterType;$/;"	m	struct:_Parameters
-ParameterValue	erm_vrep_d6_msg_process.h	/^	byte ParameterValue[256];                      \/\/å‚æ•°å€¼(Typeä¸º1æ—¶å…¶å€¼ä¸ºè¯¥å‚æ•°åœ¨Capabilityæ•°ç»„ä¸­çš„ä½ç½®)$/;"	m	struct:_Parameters
-ParameterValue	ermi1.h	/^	byte ParameterValue[256];$/;"	m	struct:_Parameters
+OPENOut	erm_vrep_d6_msg_process.cpp	/^void OPENOut(OPEN M_OPEN)$/;"	f
+OutputPort	erm_vrep_d6_msg_process.h	/^	PortID OutputPort;                             \/\/QAM±»·ÖÅäµÄ¶Ë¿Ú$/;"	m	struct:_UPDATE
+PackageKeepalive	erm_vrep_d6_msg_process.cpp	/^bool PackageKeepalive(char* KeepMessage)$/;"	f
+PackageNotification	erm_vrep_d6_msg_process.cpp	/^bool PackageNotification(short ECode,short ESubCode,char* Date,char* NotificationMessage)$/;"	f
+PackageOpen	erm_vrep_d6_msg_process.cpp	/^bool PackageOpen(OPEN M_OPEN,char* OpenMessage)$/;"	f
+ParameterNum	erm_vrep_d6_msg_process.h	/^	int ParameterNum;                              \/\/²ÎÊı¸öÊı$/;"	m	struct:_OPEN
+ParameterType	erm_vrep_d6_msg_process.h	/^	short ParameterType;                           \/\/²ÎÊıÀàĞÍ$/;"	m	struct:_Parameters
+ParameterValue	erm_vrep_d6_msg_process.h	/^	byte ParameterValue[256];                      \/\/²ÎÊıÖµ(TypeÎª1Ê±ÆäÖµÎª¸Ã²ÎÊıÔÚCapabilityÊı×éÖĞµÄÎ»ÖÃ)$/;"	m	struct:_Parameters
 Parameters	erm_vrep_d6_msg_process.h	/^}Parameters;$/;"	t	typeref:struct:_Parameters
-Parse	erm_vrep_d6_msg_process.cpp	/^bool Parse(byte VREP[]) {$/;"	f
-ParseAttr	erm_vrep_d6_msg_process.cpp	/^bool ParseAttr(Attributes* M_attr, int ANum, UPDATE &M_UPDATE) \/\/å‚æ•°è§£æå‡½æ•°$/;"	f
-ParseEdgeInput	erm_vrep_d6_msg_process.cpp	/^void ParseEdgeInput(byte* Attr, short Len, Input* EdgeInput, int &Num) \/\/è§£æå‚æ•°EdgeInput$/;"	f
-ParseNHS	erm_vrep_d6_msg_process.cpp	/^void ParseNHS(byte* Attr, short Len, Server &M_NextHopServer) \/\/è§£æå‚æ•°NextHopServer$/;"	f
-ParseNHSA	erm_vrep_d6_msg_process.cpp	/^void ParseNHSA(byte* Attr, short Len, NHSAlternates &M_Alternates) \/\/è§£æå‚æ•°NextHopServerAlternates$/;"	f
-ParseNOTIFICATION	erm_vrep_d6_msg_process.cpp	/^bool ParseNOTIFICATION(byte VREP[]) {$/;"	f
-ParseOPEN	erm_vrep_d6_msg_process.cpp	/^bool ParseOPEN(byte* VREP, OPEN &M_OPEN) \/\/OPENæ¶ˆæ¯è§£æå‡½æ•°$/;"	f
-ParsePortID	erm_vrep_d6_msg_process.cpp	/^void ParsePortID(byte *Port, PortID &M_Port) {$/;"	f
-ParseQAMN	erm_vrep_d6_msg_process.cpp	/^void ParseQAMN(byte* Attr, short Len, byte QAMNames[256][256], int &Num) \/\/è§£æå‚æ•°QAMNames$/;"	f
-ParseQAMP	erm_vrep_d6_msg_process.cpp	/^void ParseQAMP(byte* Attr, short Len, QAMParameters &M_QAMP) \/\/è§£æå‚æ•°QAMParameters$/;"	f
-ParseRoutes	erm_vrep_d6_msg_process.cpp	/^void ParseRoutes(byte* Attr, short Len, Routes* routes, int &Num) \/\/è§£æå‚æ•°WithdrawnRouteså’ŒReachableRoutes$/;"	f
-ParseServiceStatus	erm_vrep_d6_msg_process.cpp	/^void ParseServiceStatus(byte* Attr, int &ServiceStatus) \/\/è§£æå‚æ•°ServiceStatus$/;"	f
-ParseUDPMap	erm_vrep_d6_msg_process.cpp	/^void ParseUDPMap(byte* Attr, short Len, StaticPorts* SPorts, DynamicPorts* DPorts, int &SNum, int &DNum) \/\/è§£æå‚æ•°UDPMap$/;"	f
-ParseUPDATE	erm_vrep_d6_msg_process.cpp	/^bool ParseUPDATE(byte VREP[], UPDATE &M_UPDATE) \/\/è§£æUPDATEæ¶ˆæ¯å‡½æ•°$/;"	f
+Parse	erm_vrep_d6_msg_process.cpp	/^bool Parse(byte VREP[])$/;"	f
+ParseAttr	erm_vrep_d6_msg_process.cpp	/^bool ParseAttr(Attributes* M_attr,int ANum,UPDATE &M_UPDATE)               \/\/²ÎÊı½âÎöº¯Êı$/;"	f
+ParseEdgeInput	erm_vrep_d6_msg_process.cpp	/^void ParseEdgeInput(byte* Attr,short Len,Input* EdgeInput,int &Num)    \/\/½âÎö²ÎÊıEdgeInput$/;"	f
+ParseNHS	erm_vrep_d6_msg_process.cpp	/^void ParseNHS(byte* Attr,short Len,Server &M_NextHopServer)        \/\/½âÎö²ÎÊıNextHopServer$/;"	f
+ParseNHSA	erm_vrep_d6_msg_process.cpp	/^void ParseNHSA(byte* Attr,short Len,NHSAlternates &M_Alternates)        \/\/½âÎö²ÎÊıNextHopServerAlternates$/;"	f
+ParseNOTIFICATION	erm_vrep_d6_msg_process.cpp	/^bool ParseNOTIFICATION(byte VREP[])$/;"	f
+ParseOPEN	erm_vrep_d6_msg_process.cpp	/^bool ParseOPEN(byte* VREP,OPEN &M_OPEN)                      \/\/OPENÏûÏ¢½âÎöº¯Êı$/;"	f
+ParsePortID	erm_vrep_d6_msg_process.cpp	/^void ParsePortID(byte *Port,PortID &M_Port)$/;"	f
+ParseQAMN	erm_vrep_d6_msg_process.cpp	/^void ParseQAMN(byte* Attr,short Len,byte QAMNames[256][256],int &Num)       \/\/½âÎö²ÎÊıQAMNames$/;"	f
+ParseQAMP	erm_vrep_d6_msg_process.cpp	/^void ParseQAMP(byte* Attr,short Len,QAMParameters &M_QAMP)         \/\/½âÎö²ÎÊıQAMParameters$/;"	f
+ParseRoutes	erm_vrep_d6_msg_process.cpp	/^void ParseRoutes(byte* Attr,short Len,Routes* routes,int &Num)            \/\/½âÎö²ÎÊıWithdrawnRoutesºÍReachableRoutes$/;"	f
+ParseServiceStatus	erm_vrep_d6_msg_process.cpp	/^void ParseServiceStatus(byte* Attr,int &ServiceStatus)                  \/\/½âÎö²ÎÊıServiceStatus                  $/;"	f
+ParseUDPMap	erm_vrep_d6_msg_process.cpp	/^void ParseUDPMap(byte* Attr,short Len,StaticPorts* SPorts,DynamicPorts* DPorts,int &SNum,int &DNum)     \/\/½âÎö²ÎÊıUDPMap$/;"	f
+ParseUPDATE	erm_vrep_d6_msg_process.cpp	/^bool ParseUPDATE(byte VREP[],UPDATE &M_UPDATE)                   \/\/½âÎöUPDATEÏûÏ¢º¯Êı$/;"	f
 ParseUrl	erm_rtsp_r6_msg_process.cpp	/^bool ParseUrl(string url, string* pPreSuffix, int* pPort,string* pSuffix)$/;"	f
 PopFromQueue	erm_queuemanager.cpp	/^int PopFromQueue(int num,SOCKET_DATA* r_data,SOCKET_DATA * mmap)$/;"	f
 PortID	erm_db_operate_module.h	/^	int PortID[MAX_ROW][3];$/;"	m	struct:_qaminput
 PortID	erm_vrep_d6_msg_process.h	/^}PortID;$/;"	t	typeref:struct:_PortID
-PortID	ermi1.h	/^	short PortID;$/;"	m	struct:_UPDATE
-PortID	ermi_db_operate_module.h	/^	int PortID[MAX_ROW][3];$/;"	m	struct:_eqaminput
-ProgramID	erm_vrep_d6_msg_process.h	/^	short ProgramID;                               \/\/ç«¯å£å¯¹åº”çš„èŠ‚ç›®å·$/;"	m	struct:_StaticPorts
+ProgramID	erm_vrep_d6_msg_process.h	/^	short ProgramID;                               \/\/¶Ë¿Ú¶ÔÓ¦µÄ½ÚÄ¿ºÅ$/;"	m	struct:_StaticPorts
 PushToQueue	erm_queuemanager.cpp	/^int PushToQueue(SOCKET_DATA* w_data,SOCKET_DATA* mmap)$/;"	f
-QAMChannelConfig	ermi1.h	/^}QAMChannelConfig;$/;"	t	typeref:struct:_QAMChannelConfig
-QAMID	ermi1.h	/^	short QAMID;$/;"	m	struct:_UPDATE
-QAMName	erm_vrep_d6_msg_process.h	/^	byte  QAMName[256][256];                       \/\/QAMåä¸²$/;"	m	struct:_UPDATE
-QAMNameNum	erm_vrep_d6_msg_process.h	/^	int QAMNameNum;                                \/\/QAMåä¸ªæ•°$/;"	m	struct:_UPDATE
-QAMP	erm_vrep_d6_msg_process.h	/^	QAMParameters QAMP;                            \/\/QAMå‚æ•°$/;"	m	struct:_UPDATE
+QAMName	erm_vrep_d6_msg_process.h	/^	byte  QAMName[256][256];                       \/\/QAMÃû´®$/;"	m	struct:_UPDATE
+QAMNameNum	erm_vrep_d6_msg_process.h	/^	int QAMNameNum;                                \/\/QAMÃû¸öÊı$/;"	m	struct:_UPDATE
+QAMP	erm_vrep_d6_msg_process.h	/^	QAMParameters QAMP;                            \/\/QAM²ÎÊı$/;"	m	struct:_UPDATE
 QAMParameters	erm_vrep_d6_msg_process.h	/^}QAMParameters;$/;"	t	typeref:struct:_QAMParameters
-QAM_ADD	erm_db_operate_module.cpp	/^int QAM_ADD(int infocheck, const qaminfo infocontent, int nextservercheck, const qamnextserver nextservercontent, int udpcheck, const qamudp udpcontent, int inputcheck, const qaminput inputcontent)$/;"	f
-QAM_DOWN_SELECT	erm_db_operate_module.cpp	/^int QAM_DOWN_SELECT(qamselectinfo_down *qs) {$/;"	f
-QAM_INF	test/ermi.h	/^}QAM_INF;$/;"	t	typeref:struct:_QAM_INF
+QAM_ADD	erm_db_operate_module.cpp	/^int QAM_ADD(int infocheck, const qaminfo infocontent, int nextservercheck, const qamnextserver  nextservercontent ,int udpcheck, const qamudp udpcontent,int inputcheck,const qaminput inputcontent)$/;"	f
+QAM_DOWN_SELECT	erm_db_operate_module.cpp	/^int QAM_DOWN_SELECT(qamselectinfo_down *qs)$/;"	f
 QAM_Info	erm_rtsp_s6_msg_process.h	/^}QAM_Info;$/;"	t	typeref:struct:_QAM_Info
-QAM_SELECT	erm_db_operate_module.cpp	/^int QAM_SELECT(qamselectinfo *qam_info, int qam_numb) {$/;"	f
-QAM_SETUP_DOWN	erm_db_operate_module.cpp	/^int QAM_SETUP_DOWN(const qamsdinfo qma_sd) {$/;"	f
-QamChannelConfig	ermi1.h	/^	QAMChannelConfig QamChannelConfig;	$/;"	m	struct:_UPDATE
-Qam_group_name	erm_db_operate_module.h	/^	char Qam_group_name[MAX_STRING];        		\/\/Qam groupåå­—                           $/;"	m	struct:_qaminfo
-Qam_group_name	ermi_db_operate_module.h	/^	char Qam_group_name[MAX_STRING];        		\/\/Qam groupåå­—                           $/;"	m	struct:_eqaminfo
-Qam_ip	erm_db_operate_module.h	/^	char Qam_ip[16];						\/\/Qamè®¾å¤‡ç®¡ç†IPåœ°å€$/;"	m	struct:_qaminfo
-Qam_ip	ermi_db_operate_module.h	/^	char Qam_ip[16];						\/\/Qamè®¾å¤‡ç®¡ç†IPåœ°å€$/;"	m	struct:_eqaminfo
-Qam_name	erm_db_operate_module.h	/^	char Qam_name[MAX_STRING];  					\/\/Qamåå­— $/;"	m	struct:_qaminput
-Qam_name	erm_db_operate_module.h	/^	char Qam_name[MAX_STRING];  					\/\/Qamåå­— $/;"	m	struct:_qamudp
-Qam_name	erm_db_operate_module.h	/^	char Qam_name[MAX_STRING];  					\/\/Qamåå­—$/;"	m	struct:_qamnextserver
-Qam_name	erm_db_operate_module.h	/^	char Qam_name[MAX_STRING];                  		\/\/Qamåå­—             $/;"	m	struct:_qaminfo
-Qam_name	ermi_db_operate_module.h	/^	char Qam_name[MAX_STRING];  					\/\/Qamåå­— $/;"	m	struct:_eqaminput
-Qam_name	ermi_db_operate_module.h	/^	char Qam_name[MAX_STRING];  					\/\/Qamåå­— $/;"	m	struct:_eqamudp
-Qam_name	ermi_db_operate_module.h	/^	char Qam_name[MAX_STRING];  					\/\/Qamåå­—$/;"	m	struct:_eqamnextserver
-Qam_name	ermi_db_operate_module.h	/^	char Qam_name[MAX_STRING];                  		\/\/Qamåå­—             $/;"	m	struct:_eqaminfo
-Queue_addr	erm_task_control_module.h	/^	char *Queue_addr;\/*åŠ¨æ€å…±äº«å†…å­˜æ®µèŠ‚ç‚¹æŒ‡é’ˆ*\/$/;"	m	struct:__anon2
-Queue_info	erm_task_control_module.h	/^}Queue_info;$/;"	t	typeref:struct:__anon2
-R6JOB_H_	R6Job.h	9;"	d
-R6Job	R6Job.h	/^	R6Job(int n) :$/;"	f	class:R6Job
-R6Job	R6Job.h	/^class R6Job: public TPool::TJob {$/;"	c
-RM	Debug/makefile	/^RM := rm -rf$/;"	m
-RRoutesNum	erm_vrep_d6_msg_process.h	/^	int RRoutesNum;                                \/\/å¯è¾¾è·¯ç”±ä¸ªæ•°$/;"	m	struct:_UPDATE
-RRoutesNum	ermi1.h	/^	int RRoutesNum;$/;"	m	struct:_UPDATE
-RTSP_ERMI_ResponseCode_AggregateOperationNotAllowed	ermi_def.h	84;"	d
-RTSP_ERMI_ResponseCode_AggregateOperationNotAllowed	test/ermi_def.h	81;"	d
-RTSP_ERMI_ResponseCode_BadRequest	ermi_def.h	71;"	d
-RTSP_ERMI_ResponseCode_BadRequest	test/ermi_def.h	68;"	d
-RTSP_ERMI_ResponseCode_DestinationUnreachable	ermi_def.h	86;"	d
-RTSP_ERMI_ResponseCode_DestinationUnreachable	test/ermi_def.h	83;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_EdgeDeviceNotAvailable	ermi_def.h	96;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_EdgeDeviceNotAvailable	test/ermi_def.h	93;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_InvalidRequest	ermi_def.h	89;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_InvalidRequest	test/ermi_def.h	86;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_NetworkBandwidthNotAvailable	ermi_def.h	91;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_NetworkBandwidthNotAvailable	test/ermi_def.h	88;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_ProgramNotAvailable	ermi_def.h	92;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_ProgramNotAvailable	test/ermi_def.h	89;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_QAMBandwidthNotAvailable	ermi_def.h	90;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_QAMBandwidthNotAvailable	test/ermi_def.h	87;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_QAMGroupsNotFound	ermi_def.h	94;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_QAMGroupsNotFound	test/ermi_def.h	91;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_QAMNotAvailable	ermi_def.h	95;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_QAMNotAvailable	test/ermi_def.h	92;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_ServiceGroupNotFound	ermi_def.h	93;"	d
-RTSP_ERMI_ResponseCode_ERMSetupFailed_ServiceGroupNotFound	test/ermi_def.h	90;"	d
-RTSP_ERMI_ResponseCode_Forbidden	ermi_def.h	72;"	d
-RTSP_ERMI_ResponseCode_Forbidden	test/ermi_def.h	69;"	d
-RTSP_ERMI_ResponseCode_GatewayTimeout	ermi_def.h	87;"	d
-RTSP_ERMI_ResponseCode_GatewayTimeout	test/ermi_def.h	84;"	d
-RTSP_ERMI_ResponseCode_Gone	ermi_def.h	77;"	d
-RTSP_ERMI_ResponseCode_Gone	test/ermi_def.h	74;"	d
-RTSP_ERMI_ResponseCode_InvalidParameter	ermi_def.h	80;"	d
-RTSP_ERMI_ResponseCode_InvalidParameter	test/ermi_def.h	77;"	d
-RTSP_ERMI_ResponseCode_InvalidRange	ermi_def.h	83;"	d
-RTSP_ERMI_ResponseCode_InvalidRange	test/ermi_def.h	80;"	d
-RTSP_ERMI_ResponseCode_MethodNotAllowed	ermi_def.h	74;"	d
-RTSP_ERMI_ResponseCode_MethodNotAllowed	test/ermi_def.h	71;"	d
-RTSP_ERMI_ResponseCode_NotAcceptable	ermi_def.h	75;"	d
-RTSP_ERMI_ResponseCode_NotAcceptable	test/ermi_def.h	72;"	d
-RTSP_ERMI_ResponseCode_NotEnoughBandwidth	ermi_def.h	81;"	d
-RTSP_ERMI_ResponseCode_NotEnoughBandwidth	test/ermi_def.h	78;"	d
-RTSP_ERMI_ResponseCode_NotFound	ermi_def.h	73;"	d
-RTSP_ERMI_ResponseCode_NotFound	test/ermi_def.h	70;"	d
-RTSP_ERMI_ResponseCode_OK	ermi_def.h	70;"	d
-RTSP_ERMI_ResponseCode_OK	test/ermi_def.h	67;"	d
-RTSP_ERMI_ResponseCode_RTSPVersionNotSupported	ermi_def.h	88;"	d
-RTSP_ERMI_ResponseCode_RTSPVersionNotSupported	test/ermi_def.h	85;"	d
-RTSP_ERMI_ResponseCode_RequestEntityTooLarge	ermi_def.h	78;"	d
-RTSP_ERMI_ResponseCode_RequestEntityTooLarge	test/ermi_def.h	75;"	d
-RTSP_ERMI_ResponseCode_RequestTimeOut	ermi_def.h	76;"	d
-RTSP_ERMI_ResponseCode_RequestTimeOut	test/ermi_def.h	73;"	d
-RTSP_ERMI_ResponseCode_SessionNotFound	ermi_def.h	82;"	d
-RTSP_ERMI_ResponseCode_SessionNotFound	test/ermi_def.h	79;"	d
-RTSP_ERMI_ResponseCode_UnsupportedMediaType	ermi_def.h	79;"	d
-RTSP_ERMI_ResponseCode_UnsupportedMediaType	test/ermi_def.h	76;"	d
-RTSP_ERMI_ResponseCode_UnsupportedTransport	ermi_def.h	85;"	d
-RTSP_ERMI_ResponseCode_UnsupportedTransport	test/ermi_def.h	82;"	d
+QAM_SELECT	erm_db_operate_module.cpp	/^int QAM_SELECT(qamselectinfo *qam_info,int qam_numb)$/;"	f
+QAM_SETUP_DOWN	erm_db_operate_module.cpp	/^int QAM_SETUP_DOWN(const qamsdinfo qma_sd)$/;"	f
+Qam_group_name	erm_db_operate_module.h	/^	char Qam_group_name[MAX_STRING];        		\/\/Qam groupÃû×Ö                           $/;"	m	struct:_qaminfo
+Qam_ip	erm_db_operate_module.h	/^	char Qam_ip[16];						\/\/QamÉè±¸¹ÜÀíIPµØÖ·$/;"	m	struct:_qaminfo
+Qam_name	erm_db_operate_module.h	/^	char Qam_name[MAX_STRING];  					\/\/QamÃû×Ö $/;"	m	struct:_qaminput
+Qam_name	erm_db_operate_module.h	/^	char Qam_name[MAX_STRING];  					\/\/QamÃû×Ö $/;"	m	struct:_qamudp
+Qam_name	erm_db_operate_module.h	/^	char Qam_name[MAX_STRING];  					\/\/QamÃû×Ö$/;"	m	struct:_qamnextserver
+Qam_name	erm_db_operate_module.h	/^	char Qam_name[MAX_STRING];                  		\/\/QamÃû×Ö             $/;"	m	struct:_qaminfo
+Queue_addr	erm_task_control_module.h	/^	char *Queue_addr;\/*åŠ¨æ€å…±äº«å†…å­˜æ®µèŠ‚ç‚¹æŒ‡é’ˆ*\/$/;"	m	struct:__anon3
+Queue_info	erm_task_control_module.h	/^}Queue_info;$/;"	t	typeref:struct:__anon3
+RRoutesNum	erm_vrep_d6_msg_process.h	/^	int RRoutesNum;                                \/\/¿É´ïÂ·ÓÉ¸öÊı$/;"	m	struct:_UPDATE
 RTSP_ID_S6_SETUP	public_def.h	3;"	d
 RTSP_ID_S6_TEARDOWN	public_def.h	4;"	d
-RTSP_METHOD_ANNOUNCE	ermi_def.h	8;"	d
 RTSP_METHOD_ANNOUNCE	public_def.h	11;"	d
-RTSP_METHOD_ANNOUNCE	test/ermi_def.h	5;"	d
-RTSP_METHOD_GET_PARAMETERS	ermi_def.h	9;"	d
 RTSP_METHOD_GET_PARAMETERS	public_def.h	12;"	d
-RTSP_METHOD_GET_PARAMETERS	test/ermi_def.h	6;"	d
-RTSP_METHOD_SETUP	ermi_def.h	6;"	d
 RTSP_METHOD_SETUP	public_def.h	9;"	d
-RTSP_METHOD_SETUP	test/ermi_def.h	3;"	d
-RTSP_METHOD_TEARDOWN	ermi_def.h	7;"	d
 RTSP_METHOD_TEARDOWN	public_def.h	10;"	d
-RTSP_METHOD_TEARDOWN	test/ermi_def.h	4;"	d
 RTSP_S6_H_INCLUDED	erm_rtsp_s6_msg_process.h	2;"	d
 RTSP_S6_ResponseCode_AggregateOperationNotAllowed	public_def.h	87;"	d
 RTSP_S6_ResponseCode_BadRequest	public_def.h	74;"	d
@@ -484,108 +193,43 @@ RTSP_S6_ResponseCode_RequestTimeOut	public_def.h	79;"	d
 RTSP_S6_ResponseCode_SessionNotFound	public_def.h	85;"	d
 RTSP_S6_ResponseCode_UnsupportedMediaType	public_def.h	82;"	d
 RTSP_S6_ResponseCode_UnsupportedTransport	public_def.h	88;"	d
-RTSP_ermi_H_INCLUDED	ermi.h	2;"	d
-RTSP_ermi_H_INCLUDED	test/ermi.h	2;"	d
-ReachableRoutes	erm_vrep_d6_msg_process.h	/^	Routes ReachableRoutes[256];                   \/\/å¯è¾¾è·¯ç”±ä¸²$/;"	m	struct:_UPDATE
-ReachableRoutes	ermi1.h	/^	Routes ReachableRoutes[256];$/;"	m	struct:_UPDATE
+ReachableRoutes	erm_vrep_d6_msg_process.h	/^	Routes ReachableRoutes[256];                   \/\/¿É´ïÂ·ÓÉ´®$/;"	m	struct:_UPDATE
 RouteTypesSupported	erm_vrep_d6_msg_process.h	/^}RouteTypesSupported;$/;"	t	typeref:struct:_RouteTypesSupported
-RouteTypesSupported	ermi1.h	/^}RouteTypesSupported;$/;"	t	typeref:struct:_RouteTypesSupported
 Routes	erm_vrep_d6_msg_process.h	/^}Routes;$/;"	t	typeref:struct:_Routes
-Routes	ermi1.h	/^}Routes;$/;"	t	typeref:struct:_Routes
 SETUP_MSG	erm_rtsp_s6_msg_process.h	/^}SETUP_MSG;$/;"	t	typeref:struct:_SETUP_MSG
-SETUP_MSG	test/ermi.h	/^}SETUP_MSG;$/;"	t	typeref:struct:_SETUP_MSG
 SETUP_RESPONSE	erm_rtsp_s6_msg_process.h	/^}SETUP_RESPONSE;$/;"	t	typeref:struct:_SETUP_RESPONSE
-SETUP_RESPONSE	test/ermi.h	/^}SETUP_RESPONSE;$/;"	t	typeref:struct:_SETUP_RESPONSE
-SOCKET_DATA	erm_queuemanager.h	/^}SOCKET_DATA;$/;"	t	typeref:struct:__anon6
-SPorts	erm_vrep_d6_msg_process.h	/^	StaticPorts SPorts[256];                       \/\/UDP MAPä¸­çš„é™æ€ç«¯å£ä¸²$/;"	m	struct:_UPDATE
-SPortsNum	erm_vrep_d6_msg_process.h	/^	int SPortsNum;                                 \/\/é™æ€ç«¯å£ä¸ªæ•°$/;"	m	struct:_UPDATE
-SUBDIRS	Debug/sources.mk	/^SUBDIRS := \\$/;"	m
+SOCKET_DATA	erm_queuemanager.h	/^}SOCKET_DATA;$/;"	t	typeref:struct:__anon1
+SPorts	erm_vrep_d6_msg_process.h	/^	StaticPorts SPorts[256];                       \/\/UDP MAPÖĞµÄ¾²Ì¬¶Ë¿Ú´®$/;"	m	struct:_UPDATE
+SPortsNum	erm_vrep_d6_msg_process.h	/^	int SPortsNum;                                 \/\/¾²Ì¬¶Ë¿Ú¸öÊı$/;"	m	struct:_UPDATE
 SYS_INFO	ermlog.h	30;"	d
-SYS_INFO	test/ermlog.h	30;"	d
-S_UPPER_SRCS	Debug/sources.mk	/^S_UPPER_SRCS := $/;"	m
-S_pItem	erm_task_control_module.cpp	/^SOCKET_DATA S_pItem[ERM_MAXNUM];$/;"	v
+S_pItem	erm_task_control_module.cpp	/^SOCKET_DATA  S_pItem[ERM_MAXNUM];$/;"	v
 Server	erm_vrep_d6_msg_process.h	/^}Server;$/;"	t	typeref:struct:_Server
-Server	ermi1.h	/^	byte Server[256];$/;"	m	struct:_Server
-Server	ermi1.h	/^}Server;$/;"	t	typeref:struct:_Server
-ServiceStatus	erm_qam_msg_monitor.h	/^	int ServiceStatus;                             \/\/æœåŠ¡çŠ¶æ€$/;"	m	struct:_stQAM_FIRST_UPDATA_INFO
-ServiceStatus	erm_vrep_d6_msg_process.h	/^	int ServiceStatus;                             \/\/æœåŠ¡çŠ¶æ€$/;"	m	struct:_UPDATE
-ServiceStatus	ermi1.h	/^	int ServiceStatus;$/;"	m	struct:_UPDATE
+ServiceStatus	erm_qam_msg_monitor.h	/^	int ServiceStatus;                             \/\/·şÎñ×´Ì¬$/;"	m	struct:_stQAM_FIRST_UPDATA_INFO
+ServiceStatus	erm_vrep_d6_msg_process.h	/^	int ServiceStatus;                             \/\/·şÎñ×´Ì¬$/;"	m	struct:_UPDATE
 Sigfunc	erm_task_control_module.h	/^typedef void Sigfunc(int);$/;"	t
-Signal	erm_task_control_module.cpp	/^Sigfunc * Signal(int signo, Sigfunc *func) {$/;"	f
+Signal	erm_task_control_module.cpp	/^Sigfunc * Signal(int signo, Sigfunc *func){$/;"	f
 Start_time	erm_qam_msg_monitor.h	/^time_t Start_time;$/;"	m	struct:_stQAM_STATE_CHECK
-StartingPID	erm_vrep_d6_msg_process.h	/^	short StartingPID;                             \/\/èµ·å§‹ç«¯å£å¯¹åº”çš„èŠ‚ç›®å·$/;"	m	struct:_DynamicPorts
-StartingPort	erm_vrep_d6_msg_process.h	/^	short StartingPort;                            \/\/åŠ¨æ€ç«¯å£èŒƒå›´çš„èµ·å§‹ç«¯å£$/;"	m	struct:_DynamicPorts
+StartingPID	erm_vrep_d6_msg_process.h	/^	short StartingPID;                             \/\/ÆğÊ¼¶Ë¿Ú¶ÔÓ¦µÄ½ÚÄ¿ºÅ$/;"	m	struct:_DynamicPorts
+StartingPort	erm_vrep_d6_msg_process.h	/^	short StartingPort;                            \/\/¶¯Ì¬¶Ë¿Ú·¶Î§µÄÆğÊ¼¶Ë¿Ú$/;"	m	struct:_DynamicPorts
 StaticPorts	erm_vrep_d6_msg_process.h	/^}StaticPorts;$/;"	t	typeref:struct:_StaticPorts
-Streaming_zone_name	erm_db_operate_module.h	/^	char Streaming_zone_name[MAX_STRING];			\/\/æµåŸŸå$/;"	m	struct:_qamnextserver
-Streaming_zone_name	ermi_db_operate_module.h	/^	char Streaming_zone_name[MAX_STRING];			\/\/æµåŸŸå$/;"	m	struct:_eqamnextserver
-SubParametersLen	erm_vrep_d6_msg_process.h	/^	short SubParametersLen;                        \/\/å‚æ•°é•¿åº¦$/;"	m	struct:_Parameters
-SubParametersLen	ermi1.h	/^	short SubParametersLen;$/;"	m	struct:_Parameters
+Streaming_zone_name	erm_db_operate_module.h	/^	char Streaming_zone_name[MAX_STRING];			\/\/Á÷ÓòÃû$/;"	m	struct:_qamnextserver
+SubParametersLen	erm_vrep_d6_msg_process.h	/^	short SubParametersLen;                        \/\/²ÎÊı³¤¶È$/;"	m	struct:_Parameters
 SubnetMask	erm_db_operate_module.h	/^	char SubnetMask[MAX_ROW][MAX_STRING];$/;"	m	struct:_qaminput
-SubnetMask	erm_vrep_d6_msg_process.h	/^	byte SubnetMask[256];                              \/\/å­ç½‘æ©ç $/;"	m	struct:_Input
-SubnetMask	ermi_db_operate_module.h	/^	char SubnetMask[MAX_ROW][MAX_STRING];$/;"	m	struct:_eqaminput
+SubnetMask	erm_vrep_d6_msg_process.h	/^	byte SubnetMask[256];                              \/\/×ÓÍøÑÚÂë$/;"	m	struct:_Input
 TARGET	Makefile	/^TARGET=ERM$/;"	m
-TBench2Job	threadpool/main.cc	/^    TBench2Job ( int i ) : ThreadPool::TPool::TJob( i ) {}$/;"	f	class:TBench2Job
-TBench2Job	threadpool/main.cc	/^class TBench2Job : public ThreadPool::TPool::TJob$/;"	c	file:
-TBench2Thr	threadpool/main.cc	/^    TBench2Thr ( int i ) : TThread( i ) {}$/;"	f	class:TBench2Thr
-TBench2Thr	threadpool/main.cc	/^class TBench2Thr : public ThreadPool::TThread$/;"	c	file:
-TBenchJob	threadpool/main.cc	/^    TBenchJob ( int i, int s ) : ThreadPool::TPool::TJob( i ), _size(s) {}$/;"	f	class:TBenchJob
-TBenchJob	threadpool/main.cc	/^class TBenchJob : public ThreadPool::TPool::TJob$/;"	c	file:
-TCondition	TThread.h	/^    TCondition  () { pthread_cond_init(    & _cond, NULL ); }$/;"	f	class:ThreadPool::TCondition
-TCondition	TThread.h	/^class TCondition : public TMutex$/;"	c	namespace:ThreadPool
-TCondition	threadpool/TThread.h	/^    TCondition  () { pthread_cond_init(    & _cond, NULL ); }$/;"	f	class:ThreadPool::TCondition
-TCondition	threadpool/TThread.h	/^class TCondition : public TMutex$/;"	c	namespace:ThreadPool
-TEARDOWN_MSG	test/ermi.h	/^}TEARDOWN_MSG;$/;"	t	typeref:struct:_TEARDOWN_MSG
 TEARDOWN_MSG1	erm_rtsp_s6_msg_process.h	/^}TEARDOWN_MSG1;$/;"	t	typeref:struct:_TEARDOWN_MSG1
 TEARDOWN_MSG2	erm_rtsp_s6_msg_process.h	/^}TEARDOWN_MSG2;$/;"	t	typeref:struct:_TEARDOWN_MSG2
-TEARDOWN_MSG_RES	test/ermi.h	/^}TEARDOWN_MSG_RES;$/;"	t	typeref:struct:_TEARDOWN_MSG_RES
 TEARDOWN_RES1	erm_rtsp_s6_msg_process.h	/^}TEARDOWN_RES1;$/;"	t	typeref:struct:_TEARDOWN_RES1
 TEARDOWN_RES2	erm_rtsp_s6_msg_process.h	/^}TEARDOWN_RES2;$/;"	t	typeref:struct:_TEARDOWN_RES2
-THR_SEQUENTIAL	TThreadPool.cpp	16;"	d	file:
-THR_SEQUENTIAL	threadpool/TThreadPool.cpp	16;"	d	file:
-TJob	TThreadPool.h	/^        TJob ( const int  n = NO_PROC )$/;"	f	class:ThreadPool::TPool::TJob
-TJob	TThreadPool.h	/^    class TJob$/;"	c	class:ThreadPool::TPool
-TJob	threadpool/TThreadPool.h	/^        TJob ( const int  n = NO_PROC )$/;"	f	class:ThreadPool::TPool::TJob
-TJob	threadpool/TThreadPool.h	/^    class TJob$/;"	c	class:ThreadPool::TPool
-TMutex	TThread.h	/^    TMutex ()$/;"	f	class:ThreadPool::TMutex
-TMutex	TThread.h	/^class TMutex$/;"	c	namespace:ThreadPool
-TMutex	threadpool/TThread.h	/^    TMutex ()$/;"	f	class:ThreadPool::TMutex
-TMutex	threadpool/TThread.h	/^class TMutex$/;"	c	namespace:ThreadPool
-TPool	TThreadPool.cpp	/^TPool::TPool ( const unsigned int  max_p )$/;"	f	class:ThreadPool::TPool
-TPool	TThreadPool.h	/^class TPool$/;"	c	namespace:ThreadPool
-TPool	threadpool/TThreadPool.cpp	/^TPool::TPool ( const unsigned int  max_p )$/;"	f	class:ThreadPool::TPool
-TPool	threadpool/TThreadPool.h	/^class TPool$/;"	c	namespace:ThreadPool
-TPoolThr	TThreadPool.cpp	/^    TPoolThr ( const int n, TPool * p )$/;"	f	class:ThreadPool::TPoolThr
-TPoolThr	TThreadPool.cpp	/^class TPoolThr : public TThread$/;"	c	namespace:ThreadPool	file:
-TPoolThr	threadpool/TThreadPool.cpp	/^    TPoolThr ( const int n, TPool * p )$/;"	f	class:ThreadPool::TPoolThr
-TPoolThr	threadpool/TThreadPool.cpp	/^class TPoolThr : public TThread$/;"	c	namespace:ThreadPool	file:
-TSID	erm_vrep_d6_msg_process.h	/^	short TSID;                                    \/\/è¯¥QAMåœ¨PATè¡¨ä¸­ç”¨çš„TSID$/;"	m	struct:_QAMParameters
-TScopedLock	TThread.h	/^    explicit TScopedLock ( TMutex &  m )$/;"	f	class:ThreadPool::TScopedLock
-TScopedLock	TThread.h	/^class TScopedLock$/;"	c	namespace:ThreadPool
-TScopedLock	threadpool/TThread.h	/^    explicit TScopedLock ( TMutex &  m )$/;"	f	class:ThreadPool::TScopedLock
-TScopedLock	threadpool/TThread.h	/^class TScopedLock$/;"	c	namespace:ThreadPool
-TThread	TThread.cpp	/^TThread::TThread ( const int athread_no )$/;"	f	class:ThreadPool::TThread
-TThread	TThread.h	/^class TThread$/;"	c	namespace:ThreadPool
-TThread	threadpool/TThread.cpp	/^TThread::TThread ( const int athread_no )$/;"	f	class:ThreadPool::TThread
-TThread	threadpool/TThread.h	/^class TThread$/;"	c	namespace:ThreadPool
-ThreadPool	TThread.cpp	/^namespace ThreadPool$/;"	n	file:
-ThreadPool	TThread.h	/^namespace ThreadPool$/;"	n
-ThreadPool	TThreadPool.cpp	/^namespace ThreadPool$/;"	n	file:
-ThreadPool	TThreadPool.h	/^namespace ThreadPool$/;"	n
-ThreadPool	threadpool/TThread.cpp	/^namespace ThreadPool$/;"	n	file:
-ThreadPool	threadpool/TThread.h	/^namespace ThreadPool$/;"	n
-ThreadPool	threadpool/TThreadPool.cpp	/^namespace ThreadPool$/;"	n	file:
-ThreadPool	threadpool/TThreadPool.h	/^namespace ThreadPool$/;"	n
-Tp_Setup	erm_transaction.cpp	/^int Tp_Setup(char * R6_msg, int msg_len, int SM_sd) {$/;"	f
-Tp_Teardown	erm_transaction.cpp	/^int Tp_Teardown(char * R6_msg, int msg_len, int SM_sd) {$/;"	f
+TSID	erm_vrep_d6_msg_process.h	/^	short TSID;                                    \/\/¸ÃQAMÔÚPAT±íÖĞÓÃµÄTSID$/;"	m	struct:_QAMParameters
+Tp_Setup	erm_transaction.cpp	/^int Tp_Setup(char * R6_msg,int msg_len,int SM_sd)$/;"	f
+Tp_Teardown	erm_transaction.cpp	/^int Tp_Teardown(char * R6_msg,int msg_len,int SM_sd)$/;"	f
 Transport_QAM	erm_rtsp_r6_msg_process.h	/^} Transport_QAM;$/;"	t	typeref:struct:_Transport_QAM
 Transport_UDP	erm_rtsp_r6_msg_process.h	/^} Transport_UDP;$/;"	t	typeref:struct:_Transport_UDP
-UDPPort	erm_vrep_d6_msg_process.h	/^	short UDPPort;                                 \/\/UDPç«¯å£$/;"	m	struct:_StaticPorts
+UDPPort	erm_vrep_d6_msg_process.h	/^	short UDPPort;                                 \/\/UDP¶Ë¿Ú$/;"	m	struct:_StaticPorts
 UPDATE	erm_vrep_d6_msg_process.h	/^}UPDATE;$/;"	t	typeref:struct:_UPDATE
-UPDATE	ermi1.h	/^}UPDATE;$/;"	t	typeref:struct:_UPDATE
-UPDATEOut	erm_vrep_d6_msg_process.cpp	/^void UPDATEOut(UPDATE M_UPDATE) {$/;"	f
-USER_OBJS	Debug/objects.mk	/^USER_OBJS :=$/;"	m
-Udpport_ProgramID	erm_db_operate_module.h	/^	int Udpport_ProgramID[MAX_STRING][2];		\/\/UDPä¿¡æ¯åŠå¯¹åº”èŠ‚ç›®å·$/;"	m	struct:_qamudp
-Udpport_ProgramID	ermi_db_operate_module.h	/^	int Udpport_ProgramID[MAX_STRING][2];		\/\/UDPä¿¡æ¯åŠå¯¹åº”èŠ‚ç›®å·$/;"	m	struct:_eqamudp
+UPDATEOut	erm_vrep_d6_msg_process.cpp	/^void UPDATEOut(UPDATE M_UPDATE)$/;"	f
+Udpport_ProgramID	erm_db_operate_module.h	/^	int Udpport_ProgramID[MAX_STRING][2];		\/\/UDPĞÅÏ¢¼°¶ÔÓ¦½ÚÄ¿ºÅ$/;"	m	struct:_qamudp
 VREP_ID_D6_KEEPALIVE	public_def.h	18;"	d
 VREP_ID_D6_NOTIFICATION	public_def.h	17;"	d
 VREP_ID_D6_NOTIFICATION_Cease	public_def.h	51;"	d
@@ -631,106 +275,38 @@ VREP_ID_D6_UPDATE_ServiceStatus	public_def.h	40;"	d
 VREP_ID_D6_UPDATE_TotalBandwidth	public_def.h	34;"	d
 VREP_ID_D6_UPDATE_UDPMap	public_def.h	39;"	d
 VREP_ID_D6_UPDATE_WithdrawnRoutes	public_def.h	30;"	d
-Valid	erm_db_operate_module.h	/^	int Valid;								\/\/Qamè®¾å¤‡çš„æœ‰æ•ˆæ€§$/;"	m	struct:_qaminfo
-Valid	ermi_db_operate_module.h	/^	int Valid;								\/\/Qamè®¾å¤‡çš„æœ‰æ•ˆæ€§$/;"	m	struct:_eqaminfo
-WRoutesNum	erm_vrep_d6_msg_process.h	/^	int WRoutesNum;                                \/\/ä¸å¯è¾¾è·¯ç”±ä¸ªæ•°$/;"	m	struct:_UPDATE
-WRoutesNum	ermi1.h	/^	int WRoutesNum;$/;"	m	struct:_UPDATE
-WithdrawnRoutes	erm_vrep_d6_msg_process.h	/^	Routes	WithdrawnRoutes[256];                  \/\/ä¸å¯è¾¾è·¯ç”±ä¸²$/;"	m	struct:_UPDATE
-WithdrawnRoutes	ermi1.h	/^	Routes	WithdrawnRoutes[256];$/;"	m	struct:_UPDATE
-ZoneName	erm_vrep_d6_msg_process.h	/^	byte ZoneName[256];                                \/\/Streaming Zoneå$/;"	m	struct:_Server
-ZoneNameLen	erm_vrep_d6_msg_process.h	/^	short ZoneNameLen;                             \/\/Streaming Zoneåçš„é•¿åº¦$/;"	m	struct:_Server
+Valid	erm_db_operate_module.h	/^	int Valid;								\/\/QamÉè±¸µÄÓĞĞ§ĞÔ$/;"	m	struct:_qaminfo
+WRoutesNum	erm_vrep_d6_msg_process.h	/^	int WRoutesNum;                                \/\/²»¿É´ïÂ·ÓÉ¸öÊı$/;"	m	struct:_UPDATE
+WithdrawnRoutes	erm_vrep_d6_msg_process.h	/^	Routes	WithdrawnRoutes[256];                  \/\/²»¿É´ïÂ·ÓÉ´®$/;"	m	struct:_UPDATE
+ZoneName	erm_vrep_d6_msg_process.h	/^	byte ZoneName[256];                                \/\/Streaming ZoneÃû$/;"	m	struct:_Server
+ZoneNameLen	erm_vrep_d6_msg_process.h	/^	short ZoneNameLen;                             \/\/Streaming ZoneÃûµÄ³¤¶È$/;"	m	struct:_Server
 _ANNOUNCE_MSG	erm_rtsp_s6_msg_process.h	/^typedef struct _ANNOUNCE_MSG$/;"	s
-_ANNOUNCE_MSG	test/ermi.h	/^typedef struct _ANNOUNCE_MSG$/;"	s
-_Attributes	erm_vrep_d6_msg_process.h	/^typedef struct _Attributes                    \/\/UPDATEæ¶ˆæ¯å±æ€§ç»“æ„$/;"	s
-_Attributes	ermi1.h	/^typedef struct _Attributes$/;"	s
-_Capability	erm_vrep_d6_msg_process.h	/^typedef struct _Capability                    \/\/OPENæ¶ˆæ¯ä¸­çš„å‚æ•°Capability Information$/;"	s
-_Capability	ermi1.h	/^typedef struct _Capability$/;"	s
-_DEPIControlAddr	ermi1.h	/^typedef struct _DEPIControlAddr$/;"	s
-_DOCSISCapability	ermi1.h	/^typedef struct _DOCSISCapability$/;"	s
-_DynamicPorts	erm_vrep_d6_msg_process.h	/^typedef struct _DynamicPorts                \/\/UPDATEæ¶ˆæ¯UDP MAPè¡¨ä¸­çš„åŠ¨æ€ç«¯å£$/;"	s
-_EANNOUNCE_MSG	ermi.h	/^typedef struct _EANNOUNCE_MSG$/;"	s
-_EGETPARAM_MSG	ermi.h	/^typedef struct _EGETPARAM_MSG$/;"	s
-_EQAM_INF	ermi.h	/^typedef struct _EQAM_INF$/;"	s
+_Attributes	erm_vrep_d6_msg_process.h	/^typedef struct _Attributes                    \/\/UPDATEÏûÏ¢ÊôĞÔ½á¹¹$/;"	s
+_Capability	erm_vrep_d6_msg_process.h	/^typedef struct _Capability                    \/\/OPENÏûÏ¢ÖĞµÄ²ÎÊıCapability Information$/;"	s
+_DynamicPorts	erm_vrep_d6_msg_process.h	/^typedef struct _DynamicPorts                \/\/UPDATEÏûÏ¢UDP MAP±íÖĞµÄ¶¯Ì¬¶Ë¿Ú$/;"	s
 _ERMLOG_H	ermlog.h	2;"	d
-_ERMLOG_H	test/ermlog.h	2;"	d
 _ERM_INT64	erm_rtsp_r6_msg_process.h	/^typedef unsigned long long _ERM_INT64;$/;"	t
 _ERM_QUEUEMANAGER_H_	erm_queuemanager.h	3;"	d
-_ESETUP_MSG	ermi.h	/^typedef struct _ESETUP_MSG$/;"	s
-_ESETUP_RESPONSE	ermi.h	/^typedef struct _ESETUP_RESPONSE$/;"	s
-_ETEARDOWN_MSG	ermi.h	/^typedef struct _ETEARDOWN_MSG$/;"	s
-_ETEARDOWN_MSG_RES	ermi.h	/^typedef struct _ETEARDOWN_MSG_RES$/;"	s
-_Input	erm_vrep_d6_msg_process.h	/^typedef struct _Input                        \/\/UPDATEæ¶ˆæ¯è¾¹ç¼˜è¾“å…¥å±æ€§ç»“æ„(ç”¨äºæè¿°æ¨æµçš„ç›®çš„åœ°å€)$/;"	s
-_NHSAlternates	erm_vrep_d6_msg_process.h	/^typedef struct _NHSAlternates               \/\/UPDATEæ¶ˆæ¯NextHopServerAlternateså‚æ•°$/;"	s
-_OPEN	erm_vrep_d6_msg_process.h	/^typedef struct _OPEN                          \/\/OPENæ¶ˆæ¯$/;"	s
-_OPEN	ermi1.h	/^typedef struct _OPEN$/;"	s
-_Parameters	erm_vrep_d6_msg_process.h	/^typedef struct _Parameters                    \/\/OPENæ¶ˆæ¯å‚æ•°ç»“æ„$/;"	s
-_Parameters	ermi1.h	/^typedef struct _Parameters$/;"	s
+_Input	erm_vrep_d6_msg_process.h	/^typedef struct _Input                        \/\/UPDATEÏûÏ¢±ßÔµÊäÈëÊôĞÔ½á¹¹(ÓÃÓÚÃèÊöÍÆÁ÷µÄÄ¿µÄµØÖ·)$/;"	s
+_NHSAlternates	erm_vrep_d6_msg_process.h	/^typedef struct _NHSAlternates               \/\/UPDATEÏûÏ¢NextHopServerAlternates²ÎÊı$/;"	s
+_OPEN	erm_vrep_d6_msg_process.h	/^typedef struct _OPEN                          \/\/OPENÏûÏ¢$/;"	s
+_Parameters	erm_vrep_d6_msg_process.h	/^typedef struct _Parameters                    \/\/OPENÏûÏ¢²ÎÊı½á¹¹$/;"	s
 _PortID	erm_vrep_d6_msg_process.h	/^typedef struct _PortID$/;"	s
-_QAMChannelConfig	ermi1.h	/^typedef struct _QAMChannelConfig$/;"	s
-_QAMParameters	erm_vrep_d6_msg_process.h	/^typedef struct _QAMParameters               \/\/UPDATEæ¶ˆæ¯QAMå‚æ•°$/;"	s
-_QAM_INF	test/ermi.h	/^typedef struct _QAM_INF$/;"	s
+_QAMParameters	erm_vrep_d6_msg_process.h	/^typedef struct _QAMParameters               \/\/UPDATEÏûÏ¢QAM²ÎÊı$/;"	s
 _QAM_Info	erm_rtsp_s6_msg_process.h	/^typedef struct _QAM_Info$/;"	s
-_RouteTypesSupported	erm_vrep_d6_msg_process.h	/^typedef struct _RouteTypesSupported           \/\/OPENæ¶ˆæ¯ä¸­å‚æ•°Capability Informationä¸­çš„RouteTypesSupported$/;"	s
-_RouteTypesSupported	ermi1.h	/^typedef struct _RouteTypesSupported$/;"	s
-_Routes	erm_vrep_d6_msg_process.h	/^typedef struct _Routes                       \/\/UPDATEæ¶ˆæ¯è·¯ç”±ç»“æ„$/;"	s
-_Routes	ermi1.h	/^typedef struct _Routes$/;"	s
+_RouteTypesSupported	erm_vrep_d6_msg_process.h	/^typedef struct _RouteTypesSupported           \/\/OPENÏûÏ¢ÖĞ²ÎÊıCapability InformationÖĞµÄRouteTypesSupported$/;"	s
+_Routes	erm_vrep_d6_msg_process.h	/^typedef struct _Routes                       \/\/UPDATEÏûÏ¢Â·ÓÉ½á¹¹$/;"	s
 _SETUP_MSG	erm_rtsp_s6_msg_process.h	/^typedef struct _SETUP_MSG$/;"	s
-_SETUP_MSG	test/ermi.h	/^typedef struct _SETUP_MSG$/;"	s
 _SETUP_RESPONSE	erm_rtsp_s6_msg_process.h	/^typedef struct _SETUP_RESPONSE$/;"	s
-_SETUP_RESPONSE	test/ermi.h	/^typedef struct _SETUP_RESPONSE$/;"	s
-_Server	erm_vrep_d6_msg_process.h	/^typedef struct _Server                       \/\/UPDATEæ¶ˆæ¯ä¸»æœºç»“æ„(æè¿°ä¸‹ä¸€è·³åœ°å€ä¿¡æ¯)$/;"	s
-_Server	ermi1.h	/^typedef struct _Server$/;"	s
-_StaticPorts	erm_vrep_d6_msg_process.h	/^typedef struct _StaticPorts                 \/\/UPDATEæ¶ˆæ¯UDP MAPè¡¨ä¸­çš„é™æ€ç«¯å£$/;"	s
-_TEARDOWN_MSG	test/ermi.h	/^typedef struct _TEARDOWN_MSG$/;"	s
+_Server	erm_vrep_d6_msg_process.h	/^typedef struct _Server                       \/\/UPDATEÏûÏ¢Ö÷»ú½á¹¹(ÃèÊöÏÂÒ»ÌøµØÖ·ĞÅÏ¢)$/;"	s
+_StaticPorts	erm_vrep_d6_msg_process.h	/^typedef struct _StaticPorts                 \/\/UPDATEÏûÏ¢UDP MAP±íÖĞµÄ¾²Ì¬¶Ë¿Ú$/;"	s
 _TEARDOWN_MSG1	erm_rtsp_s6_msg_process.h	/^typedef struct _TEARDOWN_MSG1$/;"	s
 _TEARDOWN_MSG2	erm_rtsp_s6_msg_process.h	/^typedef struct _TEARDOWN_MSG2$/;"	s
-_TEARDOWN_MSG_RES	test/ermi.h	/^typedef struct _TEARDOWN_MSG_RES$/;"	s
 _TEARDOWN_RES1	erm_rtsp_s6_msg_process.h	/^typedef struct _TEARDOWN_RES1$/;"	s
 _TEARDOWN_RES2	erm_rtsp_s6_msg_process.h	/^typedef struct _TEARDOWN_RES2$/;"	s
 _Transport_QAM	erm_rtsp_r6_msg_process.h	/^typedef struct _Transport_QAM$/;"	s
 _Transport_UDP	erm_rtsp_r6_msg_process.h	/^typedef struct _Transport_UDP$/;"	s
-_UPDATE	erm_vrep_d6_msg_process.h	/^typedef struct _UPDATE                      \/\/UPDATEæ¶ˆæ¯$/;"	s
-_UPDATE	ermi1.h	/^typedef struct _UPDATE$/;"	s
-__TTHREADPOOL_HH	TThreadPool.h	2;"	d
-__TTHREADPOOL_HH	threadpool/TThreadPool.h	2;"	d
-__TTHREAD_HH	TThread.h	2;"	d
-__TTHREAD_HH	threadpool/TThread.h	2;"	d
-_cond	TThread.h	/^    pthread_cond_t  _cond;$/;"	m	class:ThreadPool::TCondition
-_cond	threadpool/TThread.h	/^    pthread_cond_t  _cond;$/;"	m	class:ThreadPool::TCondition
-_data_ptr	TThreadPool.cpp	/^    void *         _data_ptr;$/;"	m	class:ThreadPool::TPoolThr	file:
-_data_ptr	threadpool/TThreadPool.cpp	/^    void *         _data_ptr;$/;"	m	class:ThreadPool::TPoolThr	file:
-_del_job	TThreadPool.cpp	/^    bool           _del_job;$/;"	m	class:ThreadPool::TPoolThr	file:
-_del_job	threadpool/TThreadPool.cpp	/^    bool           _del_job;$/;"	m	class:ThreadPool::TPoolThr	file:
-_del_mutex	TThreadPool.cpp	/^    TMutex         _del_mutex;$/;"	m	class:ThreadPool::TPoolThr	file:
-_del_mutex	threadpool/TThreadPool.cpp	/^    TMutex         _del_mutex;$/;"	m	class:ThreadPool::TPoolThr	file:
-_end	TThreadPool.cpp	/^    bool           _end;$/;"	m	class:ThreadPool::TPoolThr	file:
-_end	threadpool/TThreadPool.cpp	/^    bool           _end;$/;"	m	class:ThreadPool::TPoolThr	file:
-_eqaminfo	ermi_db_operate_module.h	/^typedef struct _eqaminfo{$/;"	s
-_eqaminput	ermi_db_operate_module.h	/^typedef struct 	_eqaminput$/;"	s
-_eqamnextserver	ermi_db_operate_module.h	/^typedef struct _eqamnextserver                      \/\/$/;"	s
-_eqamsdinfo	ermi_db_operate_module.h	/^typedef struct _eqamsdinfo$/;"	s
-_eqamselectinfo	ermi_db_operate_module.h	/^typedef struct _eqamselectinfo$/;"	s
-_eqamselectinfo_down	ermi_db_operate_module.h	/^typedef struct _eqamselectinfo_down$/;"	s
-_eqamudp	ermi_db_operate_module.h	/^typedef struct _eqamudp$/;"	s
-_erm_task_control_module_h	erm_task_control_module.h	2;"	d
-_idle_cond	TThreadPool.h	/^    TCondition               _idle_cond;$/;"	m	class:ThreadPool::TPool
-_idle_cond	threadpool/TThreadPool.h	/^    TCondition               _idle_cond;$/;"	m	class:ThreadPool::TPool
-_idle_threads	TThreadPool.h	/^    std::list< TPoolThr * >  _idle_threads;$/;"	m	class:ThreadPool::TPool
-_idle_threads	threadpool/TThreadPool.h	/^    std::list< TPoolThr * >  _idle_threads;$/;"	m	class:ThreadPool::TPool
-_job	TThreadPool.cpp	/^    TPool::TJob *  _job;$/;"	m	class:ThreadPool::TPoolThr	file:
-_job	threadpool/TThreadPool.cpp	/^    TPool::TJob *  _job;$/;"	m	class:ThreadPool::TPoolThr	file:
-_job_no	TThreadPool.h	/^        const int  _job_no;$/;"	m	class:ThreadPool::TPool::TJob
-_job_no	threadpool/TThreadPool.h	/^        const int  _job_no;$/;"	m	class:ThreadPool::TPool::TJob
-_max_parallel	TThreadPool.h	/^    unsigned int             _max_parallel;$/;"	m	class:ThreadPool::TPool
-_max_parallel	threadpool/TThreadPool.h	/^    unsigned int             _max_parallel;$/;"	m	class:ThreadPool::TPool
-_mutex	TThread.h	/^    TMutex *  _mutex;$/;"	m	class:ThreadPool::TScopedLock
-_mutex	TThread.h	/^    pthread_mutex_t      _mutex;$/;"	m	class:ThreadPool::TMutex
-_mutex	threadpool/TThread.h	/^    TMutex *  _mutex;$/;"	m	class:ThreadPool::TScopedLock
-_mutex	threadpool/TThread.h	/^    pthread_mutex_t      _mutex;$/;"	m	class:ThreadPool::TMutex
-_mutex_attr	TThread.h	/^    pthread_mutexattr_t  _mutex_attr;$/;"	m	class:ThreadPool::TMutex
-_mutex_attr	threadpool/TThread.h	/^    pthread_mutexattr_t  _mutex_attr;$/;"	m	class:ThreadPool::TMutex
-_pool	TThreadPool.cpp	/^    TPool *        _pool;$/;"	m	class:ThreadPool::TPoolThr	file:
-_pool	threadpool/TThreadPool.cpp	/^    TPool *        _pool;$/;"	m	class:ThreadPool::TPoolThr	file:
+_UPDATE	erm_vrep_d6_msg_process.h	/^typedef struct _UPDATE                      \/\/UPDATEÏûÏ¢$/;"	s
 _qaminfo	erm_db_operate_module.h	/^typedef struct _qaminfo{$/;"	s
 _qaminput	erm_db_operate_module.h	/^typedef struct 	_qaminput$/;"	s
 _qamnextserver	erm_db_operate_module.h	/^typedef struct _qamnextserver                      \/\/$/;"	s
@@ -738,75 +314,32 @@ _qamsdinfo	erm_db_operate_module.h	/^typedef struct _qamsdinfo$/;"	s
 _qamselectinfo	erm_db_operate_module.h	/^typedef struct _qamselectinfo$/;"	s
 _qamselectinfo_down	erm_db_operate_module.h	/^typedef struct _qamselectinfo_down$/;"	s
 _qamudp	erm_db_operate_module.h	/^typedef struct _qamudp$/;"	s
-_run_thread	TThread.cpp	/^_run_thread ( void *arg )$/;"	f	namespace:ThreadPool
-_run_thread	threadpool/TThread.cpp	/^_run_thread ( void *arg )$/;"	f	namespace:ThreadPool
-_running	TThread.h	/^    bool       _running;$/;"	m	class:ThreadPool::TThread
-_running	threadpool/TThread.h	/^    bool       _running;$/;"	m	class:ThreadPool::TThread
-_size	threadpool/main.cc	/^    int   _size;$/;"	m	class:TBenchJob	file:
 _stQAM_CONNECT_INFO	erm_qam_msg_monitor.h	/^typedef struct _stQAM_CONNECT_INFO{$/;"	s
 _stQAM_FIRST_UPDATA_INFO	erm_qam_msg_monitor.h	/^typedef struct _stQAM_FIRST_UPDATA_INFO{$/;"	s
 _stQAM_STATE_CHECK	erm_qam_msg_monitor.h	/^typedef struct _stQAM_STATE_CHECK{$/;"	s
-_sync_mutex	TThreadPool.h	/^        TMutex     _sync_mutex;$/;"	m	class:ThreadPool::TPool::TJob
-_sync_mutex	threadpool/TThreadPool.h	/^        TMutex     _sync_mutex;$/;"	m	class:ThreadPool::TPool::TJob
-_thread_id	TThread.h	/^    pthread_t  _thread_id;$/;"	m	class:ThreadPool::TThread
-_thread_id	threadpool/TThread.h	/^    pthread_t  _thread_id;$/;"	m	class:ThreadPool::TThread
-_thread_no	TThread.h	/^    int        _thread_no;$/;"	m	class:ThreadPool::TThread
-_thread_no	threadpool/TThread.h	/^    int        _thread_no;$/;"	m	class:ThreadPool::TThread
-_threads	TThreadPool.h	/^    TPoolThr **              _threads;$/;"	m	class:ThreadPool::TPool
-_threads	threadpool/TThreadPool.h	/^    TPoolThr **              _threads;$/;"	m	class:ThreadPool::TPool
-_work_cond	TThreadPool.cpp	/^    TCondition     _work_cond;$/;"	m	class:ThreadPool::TPoolThr	file:
-_work_cond	threadpool/TThreadPool.cpp	/^    TCondition     _work_cond;$/;"	m	class:ThreadPool::TPoolThr	file:
-append_idle	TThreadPool.cpp	/^TPool::append_idle ( TPoolThr * t )$/;"	f	class:ThreadPool::TPool
-append_idle	threadpool/TThreadPool.cpp	/^TPool::append_idle ( TPoolThr * t )$/;"	f	class:ThreadPool::TPool
-attributes	erm_vrep_d6_msg_process.h	/^	Attributes attributes[256];                    \/\/å‚æ•°æŒ‡é’ˆ(æŒ‡å‘æ‰€æœ‰å‚æ•°çš„å­—ç¬¦ä¸²ï¼Œæ— å®é™…æ„ä¹‰)$/;"	m	struct:_UPDATE
-attributes	ermi1.h	/^	Attributes attributes[256];$/;"	m	struct:_UPDATE
+attributes	erm_vrep_d6_msg_process.h	/^	Attributes attributes[256];                    \/\/²ÎÊıÖ¸Õë(Ö¸ÏòËùÓĞ²ÎÊıµÄ×Ö·û´®£¬ÎŞÊµ¼ÊÒâÒå)$/;"	m	struct:_UPDATE
 available_bw	erm_db_operate_module.h	/^ int available_bw;							\/\/out$/;"	m	struct:_qamselectinfo
-available_bw	ermi_db_operate_module.h	/^ int available_bw;							\/\/out$/;"	m	struct:_eqamselectinfo
-availablebw	erm_db_operate_module.h	/^	int availablebw;							\/\/æ— ç”¨0ä»£è¡¨,å¯ç”¨å¸¦å®½å€¼$/;"	m	struct:_qamudp
-availablebw	erm_vrep_d6_msg_process.h	/^	int availablebw;                               \/\/å¯ç”¨å¸¦å®½$/;"	m	struct:_UPDATE
-availablebw	ermi_db_operate_module.h	/^	int availablebw;							\/\/æ— ç”¨0ä»£è¡¨,å¯ç”¨å¸¦å®½å€¼$/;"	m	struct:_eqamudp
-bandwidth	erm_rtsp_r6_msg_process.h	/^    string bandwidth;\/\/å¸¦å®½ä¿¡æ¯$/;"	m	struct:_Transport_QAM
+availablebw	erm_db_operate_module.h	/^	int availablebw;							\/\/ÎŞÓÃ0´ú±í,¿ÉÓÃ´ø¿íÖµ$/;"	m	struct:_qamudp
+availablebw	erm_vrep_d6_msg_process.h	/^	int availablebw;                               \/\/¿ÉÓÃ´ø¿í$/;"	m	struct:_UPDATE
+bandwidth	erm_rtsp_r6_msg_process.h	/^    string bandwidth;\/\/´ø¿íĞÅÏ¢$/;"	m	struct:_Transport_QAM
 bandwidth	erm_rtsp_s6_msg_process.h	/^    string bandwidth;$/;"	m	struct:_QAM_Info
-bench1	threadpool/main.cc	/^bench1 ( int argc, char ** argv )$/;"	f
-bench2	threadpool/main.cc	/^bench2 ( int argc, char ** argv )$/;"	f
-bit_rate	ermi.h	/^    string bit_rate;$/;"	m	struct:_EQAM_INF
-bit_rate	test/ermi.h	/^    string bit_rate;$/;"	m	struct:_QAM_INF
-broadcast	TThread.h	/^    void broadcast () { pthread_cond_broadcast( & _cond ); }$/;"	f	class:ThreadPool::TCondition
-broadcast	threadpool/TThread.h	/^    void broadcast () { pthread_cond_broadcast( & _cond ); }$/;"	f	class:ThreadPool::TCondition
 btoi	erm_vrep_d6_msg_process.h	3;"	d
-btoi	ermi1.h	3;"	d
 btos	erm_vrep_d6_msg_process.h	2;"	d
-btos	ermi1.h	2;"	d
 byte	erm_vrep_d6_msg_process.h	/^typedef unsigned char byte;$/;"	t
-byte	ermi1.h	/^typedef unsigned char byte;$/;"	t
-bytes2int	erm_vrep_d6_msg_process.cpp	/^static int bytes2int(byte* b) \/\/å­—èŠ‚æ•°ç»„(4ä½)è½¬åŒ–ä¸ºintå‹,æ•´å‹çš„ä½å­—èŠ‚ä½æ˜¯å­—èŠ‚æ•°ç»„çš„é«˜ä½$/;"	f	file:
-bytes2int2	erm_vrep_d6_msg_process.cpp	/^static unsigned int bytes2int2(byte* b) \/\/å­—èŠ‚æ•°ç»„(4ä½)è½¬åŒ–ä¸ºintå‹,æ•´å‹çš„é«˜å­—èŠ‚ä½æ˜¯å­—èŠ‚æ•°ç»„çš„é«˜ä½$/;"	f	file:
-cancel	TThread.cpp	/^TThread::cancel ()$/;"	f	class:ThreadPool::TThread
-cancel	threadpool/TThread.cpp	/^TThread::cancel ()$/;"	f	class:ThreadPool::TThread
-capability	erm_vrep_d6_msg_process.h	/^	Capability capability[256];                        \/\/åŠŸèƒ½(å‚æ•°çš„ä¸€ç§)é˜Ÿåˆ—$/;"	m	struct:_OPEN
-capability	ermi1.h	/^	Capability capability[256];$/;"	m	struct:_OPEN
+bytes2int	erm_vrep_d6_msg_process.cpp	/^static int bytes2int(byte* b)                \/\/×Ö½ÚÊı×é(4Î»)×ª»¯ÎªintĞÍ,ÕûĞÍµÄµÍ×Ö½ÚÎ»ÊÇ×Ö½ÚÊı×éµÄ¸ßÎ»$/;"	f	file:
+bytes2int2	erm_vrep_d6_msg_process.cpp	/^static unsigned int bytes2int2(byte* b)                \/\/×Ö½ÚÊı×é(4Î»)×ª»¯ÎªintĞÍ,ÕûĞÍµÄ¸ß×Ö½ÚÎ»ÊÇ×Ö½ÚÊı×éµÄ¸ßÎ»$/;"	f	file:
+capability	erm_vrep_d6_msg_process.h	/^	Capability capability[256];                        \/\/¹¦ÄÜ(²ÎÊıµÄÒ»ÖÖ)¶ÓÁĞ$/;"	m	struct:_OPEN
 cas_id	erm_rtsp_s6_msg_process.h	/^    string cas_id;$/;"	m	struct:_SETUP_MSG
-channelwidth	ermi.h	/^	string channelwidth;$/;"	m	struct:_ESETUP_RESPONSE
-child_exit	erm_task_control_module.cpp	/^void child_exit(int sig) {$/;"	f
-clen	ermi.h	/^	int clen;$/;"	m	struct:_EGETPARAM_MSG
-client	erm_rtsp_r6_msg_process.h	/^    string client;\/\/æ­¤å±æ€§å¼ºåˆ¶ï¼Œæ­¤å¤„æ— æ„ä¹‰ï¼Œè®¾ä¸ºâ€œFFFFFFFFFFFFâ€$/;"	m	struct:_Transport_QAM
-client	erm_rtsp_r6_msg_process.h	/^    string client;\/\/æ­¤å±æ€§å¼ºåˆ¶ï¼Œæ­¤å¤„æ— æ„ä¹‰ï¼Œè®¾ä¸ºâ€œFFFFFFFFFFFFâ€$/;"	m	struct:_Transport_UDP
+child_exit	erm_task_control_module.cpp	/^void child_exit(int sig)$/;"	f
+client	erm_rtsp_r6_msg_process.h	/^    string client;\/\/´ËÊôĞÔÇ¿ÖÆ£¬´Ë´¦ÎŞÒâÒå£¬ÉèÎª¡°FFFFFFFFFFFF¡±$/;"	m	struct:_Transport_QAM
+client	erm_rtsp_r6_msg_process.h	/^    string client;\/\/´ËÊôĞÔÇ¿ÖÆ£¬´Ë´¦ÎŞÒâÒå£¬ÉèÎª¡°FFFFFFFFFFFF¡±$/;"	m	struct:_Transport_UDP
 client	erm_rtsp_s6_msg_process.h	/^	string client;$/;"	m	struct:_SETUP_RESPONSE
 client	erm_rtsp_s6_msg_process.h	/^    string client;$/;"	m	struct:_QAM_Info
-client	ermi.h	/^	string client;$/;"	m	struct:_ESETUP_RESPONSE
-client	ermi.h	/^    string client;$/;"	m	struct:_EQAM_INF
-client	test/ermi.h	/^	string client;$/;"	m	struct:_SETUP_RESPONSE
-client	test/ermi.h	/^    string client;$/;"	m	struct:_QAM_INF
-client_port	erm_rtsp_r6_msg_process.h	/^    string client_port;\/\/ç›®çš„QAMçš„UDPç«¯å£$/;"	m	struct:_Transport_UDP
+client_port	erm_rtsp_r6_msg_process.h	/^    string client_port;\/\/Ä¿µÄQAMµÄUDP¶Ë¿Ú$/;"	m	struct:_Transport_UDP
 client_port	erm_rtsp_s6_msg_process.h	/^	int client_port;$/;"	m	struct:_SETUP_RESPONSE
-client_port	ermi.h	/^	int client_port;$/;"	m	struct:_ESETUP_RESPONSE
-client_port	test/ermi.h	/^	int client_port;$/;"	m	struct:_SETUP_RESPONSE
-cost	erm_db_operate_module.h	/^	int cost;							\/\/ä»£ä»·$/;"	m	struct:_qaminfo
+cost	erm_db_operate_module.h	/^	int cost;							\/\/´ú¼Û$/;"	m	struct:_qaminfo
 cost	erm_qam_msg_monitor.h	/^	short cost;                                    \/\/cost$/;"	m	struct:_stQAM_FIRST_UPDATA_INFO
 cost	erm_vrep_d6_msg_process.h	/^	short cost;                                    \/\/cost$/;"	m	struct:_UPDATE
-cost	ermi_db_operate_module.h	/^	int cost;							\/\/ä»£ä»·$/;"	m	struct:_eqaminfo
-create	TThread.cpp	/^TThread::create ( const bool  detached,$/;"	f	class:ThreadPool::TThread
-create	threadpool/TThread.cpp	/^TThread::create ( const bool  detached,$/;"	f	class:ThreadPool::TThread
 cseq	erm_rtsp_s6_msg_process.h	/^	int cseq;$/;"	m	struct:_ANNOUNCE_MSG
 cseq	erm_rtsp_s6_msg_process.h	/^	int cseq;$/;"	m	struct:_SETUP_RESPONSE
 cseq	erm_rtsp_s6_msg_process.h	/^	int cseq;$/;"	m	struct:_TEARDOWN_MSG1
@@ -814,153 +347,58 @@ cseq	erm_rtsp_s6_msg_process.h	/^	int cseq;$/;"	m	struct:_TEARDOWN_MSG2
 cseq	erm_rtsp_s6_msg_process.h	/^	int cseq;$/;"	m	struct:_TEARDOWN_RES1
 cseq	erm_rtsp_s6_msg_process.h	/^	int cseq;$/;"	m	struct:_TEARDOWN_RES2
 cseq	erm_rtsp_s6_msg_process.h	/^    int cseq;$/;"	m	struct:_SETUP_MSG
-cseq	ermi.h	/^	int cseq;$/;"	m	struct:_EANNOUNCE_MSG
-cseq	ermi.h	/^	int cseq;$/;"	m	struct:_EGETPARAM_MSG
-cseq	ermi.h	/^	int cseq;$/;"	m	struct:_ESETUP_RESPONSE
-cseq	ermi.h	/^	int cseq;$/;"	m	struct:_ETEARDOWN_MSG
-cseq	ermi.h	/^	int cseq;$/;"	m	struct:_ETEARDOWN_MSG_RES
-cseq	ermi.h	/^    int cseq;$/;"	m	struct:_ESETUP_MSG
-cseq	test/ermi.h	/^	int cseq;$/;"	m	struct:_ANNOUNCE_MSG
-cseq	test/ermi.h	/^	int cseq;$/;"	m	struct:_SETUP_RESPONSE
-cseq	test/ermi.h	/^	int cseq;$/;"	m	struct:_TEARDOWN_MSG
-cseq	test/ermi.h	/^	int cseq;$/;"	m	struct:_TEARDOWN_MSG_RES
-cseq	test/ermi.h	/^    int cseq;$/;"	m	struct:_SETUP_MSG
-ctype	ermi.h	/^	string ctype;$/;"	m	struct:_EGETPARAM_MSG
-data	erm_queuemanager.h	/^	char data[1024];$/;"	m	struct:__anon6
-data	erm_task_control_module.cpp	/^pthread_queue data[ERM_MAXNUM];$/;"	v
-data	erm_task_control_module.h	/^	char data[1024];$/;"	m	struct:__anon3
-data_flag	erm_queuemanager.h	/^	int data_flag;\/*æœ‰æ— æ•°æ®*\/$/;"	m	struct:__anon6
-data_flag	erm_task_control_module.h	/^	int data_flag;$/;"	m	struct:__anon3
-data_id	erm_task_control_module.h	/^	int data_id;\/*å…±äº«å†…å­˜åŒºçš„æ•°æ®ç¼–å·*\/$/;"	m	struct:__anon3
-data_len	erm_queuemanager.h	/^	int data_len;$/;"	m	struct:__anon6
-data_len	erm_task_control_module.h	/^	int data_len;$/;"	m	struct:__anon3
-del_mutex	TThreadPool.cpp	/^    TMutex & del_mutex  ()$/;"	f	class:ThreadPool::TPoolThr
-del_mutex	threadpool/TThreadPool.cpp	/^    TMutex & del_mutex  ()$/;"	f	class:ThreadPool::TPoolThr
-depi_mode	ermi.h	/^	string depi_mode;$/;"	m	struct:_ESETUP_RESPONSE
-depi_mode	ermi.h	/^    string depi_mode;$/;"	m	struct:_EQAM_INF
-depi_mode	test/ermi.h	/^    string depi_mode;$/;"	m	struct:_QAM_INF
-destination	erm_rtsp_r6_msg_process.h	/^    string destination;\/\/ç›®çš„QAMçš„IP$/;"	m	struct:_Transport_UDP
+data	erm_queuemanager.h	/^	char data[1024];$/;"	m	struct:__anon1
+data	erm_task_control_module.cpp	/^pthread_queue data[ERM_MAXNUM];	$/;"	v
+data	erm_task_control_module.h	/^	char data[1024];$/;"	m	struct:__anon4
+data_flag	erm_queuemanager.h	/^	int data_flag;\/*ÓĞÎŞÊı¾İ*\/$/;"	m	struct:__anon1
+data_flag	erm_task_control_module.h	/^	int data_flag;$/;"	m	struct:__anon4
+data_id	erm_task_control_module.h	/^	int data_id;\/*å…±äº«å†…å­˜åŒºçš„æ•°æ®ç¼–å·*\/$/;"	m	struct:__anon4
+data_len	erm_queuemanager.h	/^	int data_len;$/;"	m	struct:__anon1
+data_len	erm_task_control_module.h	/^	int data_len;$/;"	m	struct:__anon4
+destination	erm_rtsp_r6_msg_process.h	/^    string destination;\/\/Ä¿µÄQAMµÄIP$/;"	m	struct:_Transport_UDP
 destination	erm_rtsp_s6_msg_process.h	/^	string destination;$/;"	m	struct:_SETUP_RESPONSE
-destination	ermi.h	/^	string destination;	$/;"	m	struct:_ESETUP_RESPONSE
-destination	test/ermi.h	/^	string destination;	$/;"	m	struct:_SETUP_RESPONSE
-detach	TThread.cpp	/^TThread::detach ()$/;"	f	class:ThreadPool::TThread
-detach	threadpool/TThread.cpp	/^TThread::detach ()$/;"	f	class:ThreadPool::TThread
-done	TThreadPool.cpp	/^done ()$/;"	f	namespace:ThreadPool
-done	threadpool/TThreadPool.cpp	/^done ()$/;"	f	namespace:ThreadPool
-drrp_parameters	ermi1.h	/^}drrp_parameters;$/;"	t	typeref:struct:_Parameters
-drrp_parse	ermi1.cpp	/^bool drrp_parse(byte DRRP[]) {$/;"	f
 edge_input_group	erm_rtsp_s6_msg_process.h	/^	string edge_input_group;$/;"	m	struct:_SETUP_RESPONSE
-edge_input_group	test/ermi.h	/^	string edge_input_group;$/;"	m	struct:_SETUP_RESPONSE
 embeddedEncryptor	erm_rtsp_s6_msg_process.h	/^	string embeddedEncryptor;$/;"	m	struct:_SETUP_RESPONSE
 encrypt_control	erm_rtsp_s6_msg_process.h	/^    string encrypt_control;$/;"	m	struct:_SETUP_MSG
 encryption_type	erm_rtsp_s6_msg_process.h	/^    string encryption_type;$/;"	m	struct:_SETUP_MSG
-eqaminfo	ermi_db_operate_module.h	/^}eqaminfo;$/;"	t	typeref:struct:_eqaminfo
-eqaminput	ermi_db_operate_module.h	/^}eqaminput;$/;"	t	typeref:struct:_eqaminput
-eqamnextserver	ermi_db_operate_module.h	/^}eqamnextserver;$/;"	t	typeref:struct:_eqamnextserver
-eqamsdinfo	ermi_db_operate_module.h	/^}eqamsdinfo;$/;"	t	typeref:struct:_eqamsdinfo
-eqamselectinfo	ermi_db_operate_module.h	/^}eqamselectinfo;$/;"	t	typeref:struct:_eqamselectinfo
-eqamselectinfo_down	ermi_db_operate_module.h	/^}eqamselectinfo_down;$/;"	t	typeref:struct:_eqamselectinfo_down
-eqamudp	ermi_db_operate_module.h	/^}eqamudp;$/;"	t	typeref:struct:_eqamudp
-ermi_trim	ermi.cpp	/^string ermi_trim(string s)$/;"	f
-ermi_trim	test/ermi.cpp	/^string ermi_trim(string s)$/;"	f
-ermibytes2int	ermi1.cpp	/^static int ermibytes2int(byte* b) \/\/å­—èŠ‚æ•°ç»„(4ä½)è½¬åŒ–ä¸ºintå‹,æ•´å‹çš„ä½å­—èŠ‚ä½æ˜¯å­—èŠ‚æ•°ç»„çš„é«˜ä½$/;"	f	file:
-ermibytes2int2	ermi1.cpp	/^static unsigned int ermibytes2int2(byte* b) \/\/å­—èŠ‚æ•°ç»„(4ä½)è½¬åŒ–ä¸ºintå‹,æ•´å‹çš„é«˜å­—èŠ‚ä½æ˜¯å­—èŠ‚æ•°ç»„çš„é«˜ä½$/;"	f	file:
 error_code	erm_rtsp_s6_msg_process.h	/^	int error_code;$/;"	m	struct:_SETUP_RESPONSE
 error_code	erm_rtsp_s6_msg_process.h	/^	int error_code;$/;"	m	struct:_TEARDOWN_RES2
-error_code	ermi.h	/^	int error_code;$/;"	m	struct:_ESETUP_RESPONSE
-error_code	ermi.h	/^	int error_code;$/;"	m	struct:_ETEARDOWN_MSG_RES
-error_code	test/ermi.h	/^	int error_code;$/;"	m	struct:_SETUP_RESPONSE
-error_code	test/ermi.h	/^	int error_code;$/;"	m	struct:_TEARDOWN_MSG
-error_code	test/ermi.h	/^	int error_code;$/;"	m	struct:_TEARDOWN_MSG_RES
 event_date	erm_rtsp_s6_msg_process.h	/^	string event_date;$/;"	m	struct:_ANNOUNCE_MSG
-event_date	ermi.h	/^	string event_date;		$/;"	m	struct:_EANNOUNCE_MSG
-event_date	test/ermi.h	/^	string event_date;		$/;"	m	struct:_ANNOUNCE_MSG
-exit	TThread.cpp	/^TThread::exit ()$/;"	f	class:ThreadPool::TThread
-exit	threadpool/TThread.cpp	/^TThread::exit ()$/;"	f	class:ThreadPool::TThread
-find_qam_info	erm_qam_msg_monitor.cpp	/^int find_qam_info(int nTSN, int nAcceptSock) {$/;"	f
-flag	erm_task_control_module.h	/^	int flag;\/*æ ‡è¯†è¯¥æ®µå†…å­˜æ•°æ®æ˜¯å¦ä¸ºç©º*\/$/;"	m	struct:__anon1
+find_qam_info	erm_qam_msg_monitor.cpp	/^int find_qam_info(int nTSN, int nAcceptSock)$/;"	f
+flag	erm_task_control_module.h	/^	int flag;\/*æ ‡è¯†è¯¥æ®µå†…å­˜æ•°æ®æ˜¯å¦ä¸ºç©º*\/$/;"	m	struct:__anon2
 g_QAM_CONNECT_INFO_T	erm_qam_msg_monitor.cpp	/^stQAM_CONNECT_INFO g_QAM_CONNECT_INFO_T[100];$/;"	v
 g_stQAM_FIRST_UPDATA_INFO_T	erm_qam_msg_monitor.cpp	/^stQAM_FIRST_UPDATA_INFO g_stQAM_FIRST_UPDATA_INFO_T[100];$/;"	v
-get_idle	TThreadPool.cpp	/^TPool::get_idle ()$/;"	f	class:ThreadPool::TPool
-get_idle	threadpool/TThreadPool.cpp	/^TPool::get_idle ()$/;"	f	class:ThreadPool::TPool
 getfilelen	ermlog.cpp	/^long getfilelen(FILE *fd)$/;"	f
-getfilelen	test/ermlog.cpp	/^long getfilelen(FILE *fd)$/;"	f
-handle_message	erm_qam_msg_monitor.cpp	/^void *handle_message(void *arg) {$/;"	f
-hdl_undrrp_attr	ermi1.cpp	/^void hdl_undrrp_attr(Attributes &attr) \/\/æœªçŸ¥å‚æ•°å¤„ç†$/;"	f
-holdtime	erm_vrep_d6_msg_process.h	/^	short holdtime;                                \/\/EDç”³è¯·çš„HoldTimeå€¼$/;"	m	struct:_OPEN
-holdtime	ermi1.h	/^	short holdtime;$/;"	m	struct:_OPEN
+handle_message	erm_qam_msg_monitor.cpp	/^void *handle_message(void *arg)$/;"	f
+holdtime	erm_vrep_d6_msg_process.h	/^	short holdtime;                                \/\/EDÉêÇëµÄHoldTimeÖµ$/;"	m	struct:_OPEN
 inband_marker	erm_rtsp_s6_msg_process.h	/^    string inband_marker;$/;"	m	struct:_SETUP_MSG
-increment	ermi.h	/^	string increment;$/;"	m	struct:_ESETUP_RESPONSE
-init	TThreadPool.cpp	/^init ( const unsigned int  max_p )$/;"	f	namespace:ThreadPool
-init	threadpool/TThreadPool.cpp	/^init ( const unsigned int  max_p )$/;"	f	namespace:ThreadPool
-init_qam_info	erm_qam_msg_monitor.cpp	/^int init_qam_info() {$/;"	f
-input_add	erm_db_operate_module.h	/^ char input_add[MAX_IP];			\/\/out SS addr$/;"	m	struct:_qamselectinfo
-input_add	ermi_db_operate_module.h	/^ char input_add[MAX_IP];			\/\/out SS addr$/;"	m	struct:_eqamselectinfo
+init_qam_info	erm_qam_msg_monitor.cpp	/^int init_qam_info()$/;"	f
+input_add	erm_db_operate_module.h	/^ char input_add[MAX_IP];			\/\/out$/;"	m	struct:_qamselectinfo
 input_group	erm_db_operate_module.h	/^  char input_group[MAX_STRING];			\/\/out$/;"	m	struct:_qamselectinfo
-input_group	ermi_db_operate_module.h	/^  char input_group[MAX_STRING];			\/\/out$/;"	m	struct:_eqamselectinfo
-input_numb	erm_db_operate_module.h	/^	int input_numb;							\/\/è¾“å…¥åœ°å€ä¿¡æ¯ä¸ªæ•°$/;"	m	struct:_qaminput
-input_numb	ermi_db_operate_module.h	/^	int input_numb;							\/\/è¾“å…¥åœ°å€ä¿¡æ¯ä¸ªæ•°$/;"	m	struct:_eqaminput
-input_port	erm_db_operate_module.h	/^ int input_port;					\/\/out SS port$/;"	m	struct:_qamselectinfo
-input_port	ermi_db_operate_module.h	/^ int input_port;					\/\/out SS port$/;"	m	struct:_eqamselectinfo
-ins_drrp_open	ermi1.cpp	/^void ins_drrp_open(OPEN &MSG_OPEN) \/\/OPENæ¶ˆæ¯æ£€æŸ¥$/;"	f
-ins_drrp_update	ermi1.cpp	/^void ins_drrp_update(UPDATE &MSG_UPDATE) {$/;"	f
-interproxy	erm_task_control_module.cpp	/^int interproxy(int lockfd) {$/;"	f
-is_locked	TThread.h	/^    bool is_locked ()$/;"	f	class:ThreadPool::TMutex
-is_locked	threadpool/TThread.h	/^    bool is_locked ()$/;"	f	class:ThreadPool::TMutex
-j_83	ermi.h	/^	string j_83;$/;"	m	struct:_ESETUP_RESPONSE
-job_no	TThreadPool.h	/^        int  job_no () const { return _job_no; }$/;"	f	class:ThreadPool::TPool::TJob
-job_no	threadpool/TThreadPool.h	/^        int  job_no () const { return _job_no; }$/;"	f	class:ThreadPool::TPool::TJob
-job_number	threadpool/main.cc	/^int job_number = 0;$/;"	v
-join	TThread.cpp	/^TThread::join ()$/;"	f	class:ThreadPool::TThread
-join	threadpool/TThread.cpp	/^TThread::join ()$/;"	f	class:ThreadPool::TThread
-lock	TThread.h	/^    void  lock    () { pthread_mutex_lock(   & _mutex ); }$/;"	f	class:ThreadPool::TMutex
-lock	TThreadPool.h	/^        void lock   () { _sync_mutex.lock(); }$/;"	f	class:ThreadPool::TPool::TJob
-lock	threadpool/TThread.h	/^    void  lock    () { pthread_mutex_lock(   & _mutex ); }$/;"	f	class:ThreadPool::TMutex
-lock	threadpool/TThreadPool.h	/^        void lock   () { _sync_mutex.lock(); }$/;"	f	class:ThreadPool::TPool::TJob
-lockfile	erm_task_control_module.cpp	/^int lockfile(int fd, int type) {$/;"	f
+input_numb	erm_db_operate_module.h	/^	int input_numb;							\/\/ÊäÈëµØÖ·ĞÅÏ¢¸öÊı$/;"	m	struct:_qaminput
+input_port	erm_db_operate_module.h	/^ int input_port;					\/\/out$/;"	m	struct:_qamselectinfo
+interproxy	erm_task_control_module.cpp	/^int interproxy(int lockfd)$/;"	f
+lockfile	erm_task_control_module.cpp	/^int lockfile(int fd,int type)$/;"	f
 log	ermlog.h	31;"	d
-log	test/ermlog.h	31;"	d
-log_lock	ermain.cpp	/^pthread_mutex_t log_lock = PTHREAD_MUTEX_INITIALIZER;$/;"	v
-main	ermain.cpp	/^int main() {$/;"	f
-main	test/testermi1.cpp	/^int main()$/;"	f
-main	test/testgetparam.cpp	/^int main()$/;"	f
-main	test/testsetup.cpp	/^int main()$/;"	f
-main	test/testsetup2.cpp	/^int main()$/;"	f
-main	test/testsetup3.cpp	/^int main() {$/;"	f
-main	test/testteardown.cpp	/^int main()$/;"	f
-main	test/testteardown3.cpp	/^int main() {$/;"	f
-main	threadpool/main.cc	/^main ( int argc, char ** argv )$/;"	f
-max_parallel	TThreadPool.h	/^    unsigned int  max_parallel () const { return _max_parallel; }$/;"	f	class:ThreadPool::TPool
-max_parallel	threadpool/TThreadPool.h	/^    unsigned int  max_parallel () const { return _max_parallel; }$/;"	f	class:ThreadPool::TPool
-mmap_queue	erm_task_control_module.h	/^	char *mmap_queue;\/*sizeof(int)+sizeof(SOCKET_DATA)*\/$/;"	m	struct:__anon1
-mmap_queue_info	erm_task_control_module.h	/^}mmap_queue_info;$/;"	t	typeref:struct:__anon1
+log_lock	ermain.cpp	/^pthread_mutex_t log_lock=PTHREAD_MUTEX_INITIALIZER;$/;"	v
+main	ermain.cpp	/^int main()$/;"	f
+mmap_queue	erm_task_control_module.h	/^	char *mmap_queue;\/*sizeof(int)+sizeof(SOCKET_DATA)*\/$/;"	m	struct:__anon2
+mmap_queue_info	erm_task_control_module.h	/^}mmap_queue_info;$/;"	t	typeref:struct:__anon2
 modulation	erm_rtsp_s6_msg_process.h	/^	string modulation;$/;"	m	struct:_SETUP_RESPONSE
 modulation	erm_rtsp_s6_msg_process.h	/^    string modulation;$/;"	m	struct:_QAM_Info
-modulation	ermi.h	/^	string modulation;$/;"	m	struct:_ESETUP_RESPONSE
-modulation	test/ermi.h	/^	string modulation;$/;"	m	struct:_SETUP_RESPONSE
-nNUM	erm_qam_msg_monitor.h	/^	int nNUM; \/\/ä¸€ä¸ªçº¿ç¨‹å†…çš„qamæ•°$/;"	m	struct:_stQAM_CONNECT_INFO
+nNUM	erm_qam_msg_monitor.h	/^	int nNUM; \/\/Ò»¸öÏß³ÌÄÚµÄqamÊı$/;"	m	struct:_stQAM_CONNECT_INFO
 nTID	erm_qam_msg_monitor.h	/^	pthread_t nTID;$/;"	m	struct:_stQAM_CONNECT_INFO
-next_add	erm_db_operate_module.h	/^ char next_add[MAX_IP];			\/\/out QAM addr$/;"	m	struct:_qamselectinfo
+next_add	erm_db_operate_module.h	/^ char next_add[MAX_IP];			\/\/out$/;"	m	struct:_qamselectinfo
 next_add	erm_db_operate_module.h	/^ char next_add[MAX_IP];			\/\/out$/;"	m	struct:_qamselectinfo_down
-next_add	ermi_db_operate_module.h	/^ char next_add[MAX_IP];			\/\/out QAM addr$/;"	m	struct:_eqamselectinfo
-next_add	ermi_db_operate_module.h	/^ char next_add[MAX_IP];			\/\/out$/;"	m	struct:_eqamselectinfo_down
-next_port	erm_db_operate_module.h	/^ int next_port;					\/\/out QAM port$/;"	m	struct:_qamselectinfo
+next_port	erm_db_operate_module.h	/^ int next_port;					\/\/out$/;"	m	struct:_qamselectinfo
 next_port	erm_db_operate_module.h	/^ int next_port;					\/\/out$/;"	m	struct:_qamselectinfo_down
-next_port	ermi_db_operate_module.h	/^ int next_port;					\/\/out QAM port$/;"	m	struct:_eqamselectinfo
-next_port	ermi_db_operate_module.h	/^ int next_port;					\/\/out$/;"	m	struct:_eqamselectinfo_down
 nflag	erm_qam_msg_monitor.h	/^	int nflag;$/;"	m	struct:_stQAM_CONNECT_INFO
 nflag	erm_qam_msg_monitor.h	/^	int nflag;$/;"	m	struct:_stQAM_FIRST_UPDATA_INFO
 notice	erm_rtsp_s6_msg_process.h	/^	string notice;$/;"	m	struct:_ANNOUNCE_MSG
-notice	ermi.h	/^	string notice;$/;"	m	struct:_EANNOUNCE_MSG
-notice	test/ermi.h	/^	string notice;$/;"	m	struct:_ANNOUNCE_MSG
 npt	erm_rtsp_s6_msg_process.h	/^	string npt;$/;"	m	struct:_ANNOUNCE_MSG
 nsd	erm_qam_msg_monitor.h	/^	int nsd;$/;"	m	struct:_stQAM_FIRST_UPDATA_INFO
 nsock	erm_qam_msg_monitor.h	/^	int nsock[100];$/;"	m	struct:_stQAM_CONNECT_INFO
 onDemandSessionId	erm_rtsp_s6_msg_process.h	/^	string onDemandSessionId;	$/;"	m	struct:_SETUP_RESPONSE
-on_proc	TThread.h	/^    bool on_proc ( const int p ) const$/;"	f	class:ThreadPool::TThread
-on_proc	TThreadPool.h	/^        bool on_proc ( const int  p ) const$/;"	f	class:ThreadPool::TPool::TJob
-on_proc	threadpool/TThread.h	/^    bool on_proc ( const int p ) const$/;"	f	class:ThreadPool::TThread
-on_proc	threadpool/TThreadPool.h	/^        bool on_proc ( const int  p ) const$/;"	f	class:ThreadPool::TPool::TJob
 ondemand_session	erm_db_operate_module.h	/^ char ondemand_session[MAX_STRING]; \/\/in$/;"	m	struct:_qamselectinfo_down
 ondemand_session	erm_db_operate_module.h	/^char ondemand_session[MAX_STRING];$/;"	m	struct:_qamsdinfo
 ondemandsessionid	erm_rtsp_s6_msg_process.h	/^	char ondemandsessionid[128];$/;"	m	struct:_TEARDOWN_MSG1
@@ -969,128 +407,57 @@ ondemandsessionid	erm_rtsp_s6_msg_process.h	/^	char ondemandsessionid[128];$/;"	
 ondemandsessionid	erm_rtsp_s6_msg_process.h	/^	string ondemandsessionid;$/;"	m	struct:_ANNOUNCE_MSG
 ondemandsessionid	erm_rtsp_s6_msg_process.h	/^	string ondemandsessionid;$/;"	m	struct:_TEARDOWN_MSG2
 ondemandsessionid	erm_rtsp_s6_msg_process.h	/^    string ondemandsessionid;$/;"	m	struct:_SETUP_MSG
-p_lock	erm_task_control_module.cpp	/^pthread_mutex_t p_lock = PTHREAD_MUTEX_INITIALIZER;$/;"	v
-pack_drrp_keepalive	ermi1.cpp	/^bool pack_drrp_keepalive(char* KeepMessage) {$/;"	f
-pack_drrp_notification	ermi1.cpp	/^bool pack_drrp_notification(short ECode, short ESubCode, char* Date, char* NotificationMessage) {$/;"	f
-pack_drrp_open	ermi1.cpp	/^bool pack_drrp_open(OPEN MSG_OPEN, char* OpenMessage) {$/;"	f
-param	ermi.h	/^	string param;$/;"	m	struct:_EGETPARAM_MSG
-parameters	erm_vrep_d6_msg_process.h	/^	Parameters parameters[256];                        \/\/å‚æ•°é˜Ÿåˆ—$/;"	m	struct:_OPEN
-parameters	ermi1.h	/^	drrp_parameters parameters[256];$/;"	m	struct:_OPEN
-parametersLen	erm_vrep_d6_msg_process.h	/^	short parametersLen;                           \/\/æ¶ˆæ¯æ‰€å¸¦å‚æ•°çš„æ€»é•¿åº¦$/;"	m	struct:_OPEN
-parametersLen	ermi1.h	/^	short parametersLen;$/;"	m	struct:_OPEN
-parse_drrp_attr	ermi1.cpp	/^bool parse_drrp_attr(Attributes* MSG_attr, int ANum, UPDATE &MSG_UPDATE) \/\/å‚æ•°è§£æå‡½æ•°$/;"	f
-parse_drrp_nhs	ermi1.cpp	/^void parse_drrp_nhs(byte* Attr, short Len, Server &MSG_NextHopServer) \/\/è§£æå‚æ•°NextHopServer$/;"	f
-parse_drrp_notification	ermi1.cpp	/^bool parse_drrp_notification(byte DRRP[]) {$/;"	f
-parse_drrp_open	ermi1.cpp	/^bool parse_drrp_open(byte* DRRP, OPEN &MSG_OPEN) \/\/OPENæ¶ˆæ¯è§£æå‡½æ•°$/;"	f
-parse_drrp_route	ermi1.cpp	/^void parse_drrp_route(byte* Attr, short Len, Routes* routes, int &Num) \/\/è§£æå‚æ•°WithdrawnRouteså’ŒReachableRoutes$/;"	f
-parse_drrp_update	ermi1.cpp	/^bool parse_drrp_update(byte DRRP[], UPDATE &MSG_UPDATE) \/\/è§£æUPDATEæ¶ˆæ¯å‡½æ•°$/;"	f
-pid	erm_task_control_module.h	/^	int pid;\/*è¿›ç¨‹pid*\/$/;"	m	struct:__anon4
-pid_queue_addr	erm_task_control_module.h	/^	char *pid_queue_addr;\/*å…±äº«å†…å­˜èŠ‚ç‚¹æŒ‡é’ˆ*\/$/;"	m	struct:__anon4
+p_lock	erm_task_control_module.cpp	/^pthread_mutex_t p_lock=PTHREAD_MUTEX_INITIALIZER;$/;"	v
+parameters	erm_vrep_d6_msg_process.h	/^	Parameters parameters[256];                        \/\/²ÎÊı¶ÓÁĞ$/;"	m	struct:_OPEN
+parametersLen	erm_vrep_d6_msg_process.h	/^	short parametersLen;                           \/\/ÏûÏ¢Ëù´ø²ÎÊıµÄ×Ü³¤¶È$/;"	m	struct:_OPEN
+pid	erm_task_control_module.h	/^	int pid;\/*è¿›ç¨‹pid*\/$/;"	m	struct:__anon5
+pid_queue_addr	erm_task_control_module.h	/^	char *pid_queue_addr;\/*å…±äº«å†…å­˜èŠ‚ç‚¹æŒ‡é’ˆ*\/$/;"	m	struct:__anon5
 policy	erm_rtsp_s6_msg_process.h	/^    string policy;$/;"	m	struct:_SETUP_MSG
-portID	erm_vrep_d6_msg_process.h	/^	PortID portID;                                    \/\/ç‰©ç†ç«¯å£å·$/;"	m	struct:_Input
+portID	erm_vrep_d6_msg_process.h	/^	PortID portID;                                    \/\/ÎïÀí¶Ë¿ÚºÅ$/;"	m	struct:_Input
 portnumber	erm_vrep_d6_msg_process.h	/^        short portnumber;$/;"	m	struct:_PortID
-print_drrp_open	ermi1.cpp	/^void print_drrp_open(OPEN MSG_OPEN) {$/;"	f
-print_drrp_update	ermi1.cpp	/^void print_drrp_update(UPDATE MSG_UPDATE) {$/;"	f
 process_destory	erm_task_control_module.cpp	/^process_info process_destory[ERM_MAXNUM];$/;"	v
-process_flag	erm_queuemanager.h	/^	int process_flag;\/*è¿›ç¨‹æ ‡å¿—*\/$/;"	m	struct:__anon6
-process_info	erm_task_control_module.h	/^}process_info;$/;"	t	typeref:struct:__anon4
-process_manager	erm_task_control_module.cpp	/^int process_manager(int fr, int sr, int lockfd) {$/;"	f
-process_num	erm_task_control_module.cpp	/^int process_num = 0;$/;"	v
+process_flag	erm_queuemanager.h	/^	int process_flag;\/*½ø³Ì±êÖ¾*\/$/;"	m	struct:__anon1
+process_info	erm_task_control_module.h	/^}process_info;$/;"	t	typeref:struct:__anon5
+process_manager	erm_task_control_module.cpp	/^int process_manager(int fr,int sr,int lockfd)$/;"	f
+process_num	erm_task_control_module.cpp	/^int process_num=0;$/;"	v
 program_id	erm_db_operate_module.h	/^int program_id;$/;"	m	struct:_qamsdinfo
-pthread_Ermi	erm_task_control_module.cpp	/^void *pthread_Ermi(void *arg) {$/;"	f
-pthread_Ermi_TP	ermi_transaction.cpp	/^int pthread_Ermi_TP(char * Ermi_msg, int msg_len, int SM_sd) {$/;"	f
-pthread_R6	erm_task_control_module.cpp	/^void *pthread_R6(void *arg) {$/;"	f
-pthread_TP	erm_transaction.cpp	/^int pthread_TP(char * R6_msg, int msg_len, int SM_sd) {$/;"	f
-pthread_flag	erm_task_control_module.h	/^	int pthread_flag;$/;"	m	struct:__anon3
-pthread_num	erm_task_control_module.cpp	/^int pthread_num = 0;$/;"	v
-pthread_queue	erm_task_control_module.h	/^}pthread_queue;$/;"	t	typeref:struct:__anon3
+pthread_R6	erm_task_control_module.cpp	/^void *pthread_R6(void *arg)$/;"	f
+pthread_TP	erm_transaction.cpp	/^int pthread_TP(char * R6_msg,int msg_len,int SM_sd)$/;"	f
+pthread_flag	erm_task_control_module.h	/^	int pthread_flag;$/;"	m	struct:__anon4
+pthread_num	erm_task_control_module.cpp	/^int pthread_num=0;$/;"	v
+pthread_queue	erm_task_control_module.h	/^}pthread_queue;$/;"	t	typeref:struct:__anon4
 qam_add	erm_db_operate_module.h	/^ char qam_add[MAX_IP];			 \/\/out$/;"	m	struct:_qamselectinfo_down
 qam_add	erm_db_operate_module.h	/^char qam_add[MAX_IP];			 \/\/out$/;"	m	struct:_qamselectinfo
-qam_add	ermi_db_operate_module.h	/^ char qam_add[MAX_IP];			 \/\/out$/;"	m	struct:_eqamselectinfo_down
-qam_add	ermi_db_operate_module.h	/^char qam_add[MAX_IP];			 \/\/out$/;"	m	struct:_eqamselectinfo
-qam_destination	erm_rtsp_r6_msg_process.h	/^    string qam_destination;\/\/ç›®çš„QAMçš„é¢‘ç‡å’ŒèŠ‚ç›®å·$/;"	m	struct:_Transport_QAM
+qam_destination	erm_rtsp_r6_msg_process.h	/^    string qam_destination;\/\/Ä¿µÄQAMµÄÆµÂÊºÍ½ÚÄ¿ºÅ$/;"	m	struct:_Transport_QAM
 qam_destination	erm_rtsp_s6_msg_process.h	/^	string qam_destination;$/;"	m	struct:_SETUP_RESPONSE
-qam_destination	ermi.h	/^	string qam_destination;	$/;"	m	struct:_ESETUP_RESPONSE
-qam_destination	test/ermi.h	/^	string qam_destination;	$/;"	m	struct:_SETUP_RESPONSE
 qam_group	erm_db_operate_module.h	/^  char qam_group[MAX_STRING];$/;"	m	struct:_qamselectinfo
 qam_group	erm_rtsp_s6_msg_process.h	/^	string qam_group;$/;"	m	struct:_SETUP_RESPONSE
-qam_group	ermi.h	/^	string qam_group;$/;"	m	struct:_ESETUP_RESPONSE
-qam_group	ermi_db_operate_module.h	/^  char qam_group[MAX_STRING];$/;"	m	struct:_eqamselectinfo
-qam_group	test/ermi.h	/^	string qam_group;$/;"	m	struct:_SETUP_RESPONSE
-qam_id	ermi.h	/^    string qam_id;$/;"	m	struct:_EQAM_INF
-qam_id	test/ermi.h	/^    string qam_id;$/;"	m	struct:_QAM_INF
 qam_info	erm_rtsp_s6_msg_process.h	/^  QAM_Info qam_info[5];$/;"	m	struct:_SETUP_MSG
-qam_info_decode	erm_qam_msg_monitor.cpp	/^int qam_info_decode(unsigned char *d, unsigned char *s, int nDatalen) {$/;"	f
-qam_msg_process	erm_qam_msg_monitor.cpp	/^void qam_msg_process() {$/;"	f
+qam_info_decode	erm_qam_msg_monitor.cpp	/^int qam_info_decode(unsigned char *d, unsigned char *s , int nDatalen)$/;"	f
+qam_msg_process	erm_qam_msg_monitor.cpp	/^void qam_msg_process()$/;"	f
 qam_name	erm_db_operate_module.h	/^ char qam_name[MAX_STRING]; 	 \/\/in$/;"	m	struct:_qamselectinfo
 qam_name	erm_db_operate_module.h	/^ char qam_name[MAX_STRING];$/;"	m	struct:_qamselectinfo_down
 qam_name	erm_db_operate_module.h	/^char qam_name[MAX_STRING];$/;"	m	struct:_qamsdinfo
-qam_name	erm_rtsp_r6_msg_process.h	/^    string qam_name;\/\/QAMåå­—$/;"	m	struct:_Transport_QAM
+qam_name	erm_rtsp_r6_msg_process.h	/^    string qam_name;\/\/QAMÃû×Ö$/;"	m	struct:_Transport_QAM
 qam_name	erm_rtsp_s6_msg_process.h	/^	string qam_name;$/;"	m	struct:_SETUP_RESPONSE
 qam_name	erm_rtsp_s6_msg_process.h	/^    string qam_name;$/;"	m	struct:_QAM_Info
-qam_name	ermi.h	/^	string qam_name;$/;"	m	struct:_ESETUP_RESPONSE
-qam_name	ermi_db_operate_module.h	/^ char qam_name[MAX_STRING]; 	 \/\/in$/;"	m	struct:_eqamselectinfo
-qam_name	ermi_db_operate_module.h	/^ char qam_name[MAX_STRING];$/;"	m	struct:_eqamselectinfo_down
-qam_name	ermi_db_operate_module.h	/^char qam_name[MAX_STRING];$/;"	m	struct:_eqamsdinfo
-qam_name	test/ermi.h	/^	string qam_name;$/;"	m	struct:_SETUP_RESPONSE
 qam_num	erm_rtsp_s6_msg_process.h	/^    int qam_num;$/;"	m	struct:_SETUP_MSG
-qam_num	ermi.h	/^    int qam_num;$/;"	m	struct:_ESETUP_MSG
-qam_num	test/ermi.h	/^    int qam_num;$/;"	m	struct:_SETUP_MSG
 qam_session	erm_db_operate_module.h	/^ char qam_session[MAX_STRING];				\/\/out$/;"	m	struct:_qamselectinfo_down
 qam_session	erm_db_operate_module.h	/^char qam_session[MAX_STRING];$/;"	m	struct:_qamsdinfo
-qam_session	ermi_db_operate_module.h	/^ char qam_session[MAX_STRING];				\/\/out$/;"	m	struct:_eqamselectinfo_down
-qam_session	ermi_db_operate_module.h	/^char qam_session[MAX_STRING];$/;"	m	struct:_eqamsdinfo
-qaminf	ermi.h	/^    EQAM_INF qaminf[5];$/;"	m	struct:_ESETUP_MSG
-qaminf	test/ermi.h	/^    QAM_INF qaminf[5];$/;"	m	struct:_SETUP_MSG
 qaminfo	erm_db_operate_module.h	/^}qaminfo;$/;"	t	typeref:struct:_qaminfo
 qaminput	erm_db_operate_module.h	/^}qaminput;$/;"	t	typeref:struct:_qaminput
 qamnextserver	erm_db_operate_module.h	/^}qamnextserver;$/;"	t	typeref:struct:_qamnextserver
 qamsdinfo	erm_db_operate_module.h	/^}qamsdinfo;$/;"	t	typeref:struct:_qamsdinfo
 qamselectinfo	erm_db_operate_module.h	/^}qamselectinfo;$/;"	t	typeref:struct:_qamselectinfo
 qamselectinfo_down	erm_db_operate_module.h	/^}qamselectinfo_down;$/;"	t	typeref:struct:_qamselectinfo_down
-qamsort	ermi_db_operate_module.cpp	/^void qamsort(eqamselectinfo s[], int l, int r) \/\/ä½¿ç”¨å¿«æ’ï¼Œå°†æ‰€æœ‰EQAMæŒ‰å¸¦å®½æ’åº$/;"	f
 qamudp	erm_db_operate_module.h	/^}qamudp;$/;"	t	typeref:struct:_qamudp
-quit	TThreadPool.cpp	/^    void quit ()$/;"	f	class:ThreadPool::TPoolThr
-quit	threadpool/TThreadPool.cpp	/^    void quit ()$/;"	f	class:ThreadPool::TPoolThr
 read_fd	erm_commnu_module.cpp	/^int read_fd(int fd, void *ptr, int nbytes, int *recvfd)$/;"	f
 reason	erm_rtsp_s6_msg_process.h	/^	char reason[128];$/;"	m	struct:_TEARDOWN_MSG1
 reason	erm_rtsp_s6_msg_process.h	/^	string reason;$/;"	m	struct:_TEARDOWN_MSG2
-reason	test/ermi.h	/^	char reason[128];$/;"	m	struct:_TEARDOWN_MSG
-reason	test/ermi.h	/^	string reason;$/;"	m	struct:_TEARDOWN_MSG_RES
-recursion	threadpool/main.cc	/^recursion ( int level, TRNG & rng )$/;"	f
-request_bw	ermi_transaction.cpp	/^int request_bw=0xFFFFFFF;$/;"	v
 require	erm_rtsp_s6_msg_process.h	/^	char require[128];$/;"	m	struct:_TEARDOWN_MSG1
 require	erm_rtsp_s6_msg_process.h	/^    string require;$/;"	m	struct:_SETUP_MSG
-require	ermi.h	/^	char require[128];$/;"	m	struct:_ETEARDOWN_MSG
-require	ermi.h	/^	string require;$/;"	m	struct:_EGETPARAM_MSG
-require	ermi.h	/^    string require;$/;"	m	struct:_ESETUP_MSG
-require	test/ermi.h	/^	char require[128];$/;"	m	struct:_TEARDOWN_MSG
-require	test/ermi.h	/^    string require;$/;"	m	struct:_SETUP_MSG
-reset_running	TThread.h	/^    void reset_running () { _running = false; }$/;"	f	class:ThreadPool::TThread
-reset_running	threadpool/TThread.h	/^    void reset_running () { _running = false; }$/;"	f	class:ThreadPool::TThread
-routetypessupported	erm_vrep_d6_msg_process.h	/^	RouteTypesSupported routetypessupported[256];      \/\/æ”¯æŒçš„è·¯ç”±ç±»å‹(åŠŸèƒ½çš„ä¸€ç§)é˜Ÿåˆ—$/;"	m	struct:_OPEN
-routetypessupported	ermi1.h	/^	RouteTypesSupported routetypessupported[256];$/;"	m	struct:_OPEN
+routetypessupported	erm_vrep_d6_msg_process.h	/^	RouteTypesSupported routetypessupported[256];      \/\/Ö§³ÖµÄÂ·ÓÉÀàĞÍ(¹¦ÄÜµÄÒ»ÖÖ)¶ÓÁĞ$/;"	m	struct:_OPEN
 rtsp_close	erm_commnu_module.cpp	/^void rtsp_close(int s)$/;"	f
-rtsp_ermi_announce_res_encode	ermi.cpp	/^int rtsp_ermi_announce_res_encode(EANNOUNCE_MSG ann,char* resp_str)$/;"	f
-rtsp_ermi_announce_res_encode	test/ermi.cpp	/^int rtsp_ermi_announce_res_encode(ANNOUNCE_MSG ann,char* resp_str)$/;"	f
-rtsp_ermi_error_res_encode	ermi.cpp	/^string rtsp_ermi_error_res_encode(int error_code,int cseq)$/;"	f
-rtsp_ermi_error_res_encode	test/ermi.cpp	/^string rtsp_ermi_error_res_encode(int error_code,int cseq)$/;"	f
-rtsp_ermi_getparam_parse	ermi.cpp	/^int rtsp_ermi_getparam_parse(string str, EGETPARAM_MSG *resp_msg){$/;"	f
-rtsp_ermi_getparm_encode	ermi.cpp	/^int rtsp_ermi_getparm_encode(EGETPARAM_MSG getparamresp, string& resp){$/;"	f
-rtsp_ermi_response_parse	ermi.cpp	/^string rtsp_ermi_response_parse(string str)$/;"	f
-rtsp_ermi_response_parse	test/ermi.cpp	/^string rtsp_ermi_response_parse(string str)$/;"	f
-rtsp_ermi_setup_parse	ermi.cpp	/^int rtsp_ermi_setup_parse(string str,ESETUP_MSG * resp_msg)$/;"	f
-rtsp_ermi_setup_parse	test/ermi.cpp	/^int rtsp_ermi_setup_parse(string str,SETUP_MSG * resp_msg)$/;"	f
-rtsp_ermi_setup_response_encode	ermi.cpp	/^int rtsp_ermi_setup_response_encode(ESETUP_RESPONSE &res,char *resp_str)$/;"	f
-rtsp_ermi_setup_response_encode	test/ermi.cpp	/^int rtsp_ermi_setup_response_encode(SETUP_RESPONSE res,char *resp_str)$/;"	f
-rtsp_ermi_teardown_encode	ermi.cpp	/^int rtsp_ermi_teardown_encode(ETEARDOWN_MSG tear,char* resp_str)$/;"	f
-rtsp_ermi_teardown_encode	test/ermi.cpp	/^int rtsp_ermi_teardown_encode(TEARDOWN_MSG_RES tear,char* resp_str)$/;"	f
-rtsp_ermi_teardown_parse	ermi.cpp	/^int rtsp_ermi_teardown_parse(string str,ETEARDOWN_MSG *resp_msg)$/;"	f
-rtsp_ermi_teardown_parse	test/ermi.cpp	/^int rtsp_ermi_teardown_parse(string str,TEARDOWN_MSG *resp_msg)$/;"	f
-rtsp_ermi_teardown_res_encode	ermi.cpp	/^int rtsp_ermi_teardown_res_encode(ETEARDOWN_MSG_RES tear,char *resp_str)$/;"	f
-rtsp_ermi_teardown_res_encode	test/ermi.cpp	/^int rtsp_ermi_teardown_res_encode(TEARDOWN_MSG_RES tear,char *resp_str)$/;"	f
-rtsp_ermi_teardown_res_parse	ermi.cpp	/^int rtsp_ermi_teardown_res_parse(string str,ETEARDOWN_MSG_RES *resp_msg)$/;"	f
-rtsp_ermi_teardown_res_parse	test/ermi.cpp	/^int rtsp_ermi_teardown_res_parse(string str,TEARDOWN_MSG_RES *resp_msg)$/;"	f
 rtsp_r6_announce_msg_parse	erm_rtsp_r6_msg_process.cpp	/^bool rtsp_r6_announce_msg_parse(string str)$/;"	f
 rtsp_r6_get_parameter_msg_encode	erm_rtsp_r6_msg_process.cpp	/^string rtsp_r6_get_parameter_msg_encode(string rtspIP,Transport_QAM tqam,int CSeq,string parameter)$/;"	f
 rtsp_r6_get_parameter_response_parse	erm_rtsp_r6_msg_process.cpp	/^bool rtsp_r6_get_parameter_response_parse(string str)$/;"	f
@@ -1100,12 +467,6 @@ rtsp_r6_setup_start_checking_msg_encode	erm_rtsp_r6_msg_process.cpp	/^string rts
 rtsp_r6_setup_stop_checking_msg_encode	erm_rtsp_r6_msg_process.cpp	/^string rtsp_r6_setup_stop_checking_msg_encode(string rtspIP,int CSeq,_ERM_INT64 Session,Transport_QAM tqam,Transport_UDP tudp,int TrafficMismatch)$/;"	f
 rtsp_r6_teardown_msg_encode	erm_rtsp_r6_msg_process.cpp	/^string rtsp_r6_teardown_msg_encode(string rtspIP,Transport_QAM tqam,int CSeq,int reason,_ERM_INT64 Session,string onDemandSessionId)$/;"	f
 rtsp_read	erm_commnu_module.cpp	/^int rtsp_read(int fd, void *buffer, int nbytes)$/;"	f
-rtsp_read	test/testermi1.cpp	/^int rtsp_read(int fd, void *buffer, int nbytes)$/;"	f
-rtsp_read	test/testgetparam.cpp	/^int rtsp_read(int fd, void *buffer, int nbytes)$/;"	f
-rtsp_read	test/testsetup2.cpp	/^int rtsp_read(int fd, void *buffer, int nbytes)$/;"	f
-rtsp_read	test/testsetup3.cpp	/^int rtsp_read(int fd, void *buffer, int nbytes) {$/;"	f
-rtsp_read	test/testteardown.cpp	/^int rtsp_read(int fd, void *buffer, int nbytes)$/;"	f
-rtsp_read	test/testteardown3.cpp	/^int rtsp_read(int fd, void *buffer, int nbytes) {$/;"	f
 rtsp_s6__response_parse	erm_rtsp_s6_msg_process.cpp	/^string rtsp_s6__response_parse(string str)$/;"	f
 rtsp_s6_announce_res_encode	erm_rtsp_s6_msg_process.cpp	/^int rtsp_s6_announce_res_encode(ANNOUNCE_MSG ann,char* resp_str)$/;"	f
 rtsp_s6_error_res_encode	erm_rtsp_s6_msg_process.cpp	/^string rtsp_s6_error_res_encode(int error_code,int cseq)$/;"	f
@@ -1118,136 +479,43 @@ rtsp_s6_teardown_res_parse	erm_rtsp_s6_msg_process.cpp	/^int rtsp_s6_teardown_re
 rtsp_url	erm_rtsp_s6_msg_process.h	/^	char rtsp_url[128];$/;"	m	struct:_TEARDOWN_MSG1
 rtsp_url	erm_rtsp_s6_msg_process.h	/^	string rtsp_url;$/;"	m	struct:_TEARDOWN_MSG2
 rtsp_url	erm_rtsp_s6_msg_process.h	/^    string rtsp_url;$/;"	m	struct:_SETUP_MSG
-rtsp_url	ermi.h	/^	char rtsp_url[128];$/;"	m	struct:_ETEARDOWN_MSG
-rtsp_url	ermi.h	/^	string rtsp_url;$/;"	m	struct:_EGETPARAM_MSG
-rtsp_url	ermi.h	/^	string rtsp_url;$/;"	m	struct:_ETEARDOWN_MSG_RES
-rtsp_url	ermi.h	/^    string rtsp_url;$/;"	m	struct:_ESETUP_MSG
-rtsp_url	test/ermi.h	/^	char rtsp_url[128];$/;"	m	struct:_TEARDOWN_MSG
-rtsp_url	test/ermi.h	/^	string rtsp_url;$/;"	m	struct:_TEARDOWN_MSG_RES
-rtsp_url	test/ermi.h	/^    string rtsp_url;$/;"	m	struct:_SETUP_MSG
 rtsp_write	erm_commnu_module.cpp	/^int rtsp_write(int fd, void *buffer, int nbytes)$/;"	f
-rtsp_write	test/testermi1.cpp	/^int rtsp_write(int fd, void *buffer, int nbytes)$/;"	f
-rtsp_write	test/testgetparam.cpp	/^int rtsp_write(int fd, void *buffer, int nbytes)$/;"	f
-rtsp_write	test/testsetup2.cpp	/^int rtsp_write(int fd, void *buffer, int nbytes)$/;"	f
-rtsp_write	test/testsetup3.cpp	/^int rtsp_write(int fd, void *buffer, int nbytes) {$/;"	f
-rtsp_write	test/testteardown.cpp	/^int rtsp_write(int fd, void *buffer, int nbytes)$/;"	f
-rtsp_write	test/testteardown3.cpp	/^int rtsp_write(int fd, void *buffer, int nbytes) {$/;"	f
 rtspurl	erm_rtsp_s6_msg_process.h	/^	string rtspurl;$/;"	m	struct:_ANNOUNCE_MSG
-rtspurl	ermi.h	/^	string rtspurl;$/;"	m	struct:_EANNOUNCE_MSG
-rtspurl	test/ermi.h	/^	string rtspurl;$/;"	m	struct:_ANNOUNCE_MSG
-run	ErmiJob.h	/^	virtual void run(void *arg){cout << "ErmiErmiErmiErmiErmiErmi" << endl;\/*cout << *(int*)arg << endl;*\/pthread_Ermi(arg);};$/;"	f	class:ErmiJob
-run	R6Job.h	/^	virtual void run(void *arg){cout << "r6r6r6r6r6r6r6r6r6r6r6r6r6r6r6r6" << endl;cout << *(int*)arg << endl;pthread_R6(arg);};$/;"	f	class:R6Job
-run	TThreadPool.cpp	/^    void run ()$/;"	f	class:ThreadPool::TPoolThr
-run	TThreadPool.cpp	/^TPool::run ( TPool::TJob * job, void * ptr, const bool del )$/;"	f	class:ThreadPool::TPool
-run	TThreadPool.cpp	/^run ( TPool::TJob * job, void * ptr, const bool del )$/;"	f	namespace:ThreadPool
-run	threadpool/TThreadPool.cpp	/^    void run ()$/;"	f	class:ThreadPool::TPoolThr
-run	threadpool/TThreadPool.cpp	/^TPool::run ( TPool::TJob * job, void * ptr, const bool del )$/;"	f	class:ThreadPool::TPool
-run	threadpool/TThreadPool.cpp	/^run ( TPool::TJob * job, void * ptr, const bool del )$/;"	f	namespace:ThreadPool
-run	threadpool/main.cc	/^    virtual void run ( void * )$/;"	f	class:TBench2Job
-run	threadpool/main.cc	/^    virtual void run ( void * )$/;"	f	class:TBenchJob
-run	threadpool/main.cc	/^    virtual void run ()$/;"	f	class:TBench2Thr
-run_job	TThreadPool.cpp	/^    void run_job  ( TPool::TJob * j, void * p, const bool del = false )$/;"	f	class:ThreadPool::TPoolThr
-run_job	threadpool/TThreadPool.cpp	/^    void run_job  ( TPool::TJob * j, void * p, const bool del = false )$/;"	f	class:ThreadPool::TPoolThr
-sd	erm_task_control_module.h	/^	int sd;$/;"	m	struct:__anon3
-server	erm_vrep_d6_msg_process.h	/^	byte server[256][256];                         \/\/ä¸€ä¸²alternate servers$/;"	m	struct:_NHSAlternates
-server_port	erm_rtsp_r6_msg_process.h	/^    string server_port;\/\/æ¨æµæœåŠ¡å™¨çš„UDPç«¯å£$/;"	m	struct:_Transport_UDP
+sd	erm_task_control_module.h	/^	int sd;$/;"	m	struct:__anon4
+server	erm_vrep_d6_msg_process.h	/^	byte server[256][256];                         \/\/Ò»´®alternate servers$/;"	m	struct:_NHSAlternates
+server_port	erm_rtsp_r6_msg_process.h	/^    string server_port;\/\/ÍÆÁ÷·şÎñÆ÷µÄUDP¶Ë¿Ú$/;"	m	struct:_Transport_UDP
 session	erm_rtsp_s6_msg_process.h	/^	INT64 session;$/;"	m	struct:_ANNOUNCE_MSG
 session	erm_rtsp_s6_msg_process.h	/^	INT64 session;$/;"	m	struct:_SETUP_RESPONSE
 session	erm_rtsp_s6_msg_process.h	/^	INT64 session;$/;"	m	struct:_TEARDOWN_MSG1
 session	erm_rtsp_s6_msg_process.h	/^	INT64 session;$/;"	m	struct:_TEARDOWN_MSG2
 session	erm_rtsp_s6_msg_process.h	/^	INT64 session;$/;"	m	struct:_TEARDOWN_RES1
 session	erm_rtsp_s6_msg_process.h	/^	INT64 session;$/;"	m	struct:_TEARDOWN_RES2
-session	ermi.h	/^	INT64 session;	$/;"	m	struct:_ETEARDOWN_MSG_RES
-session	ermi.h	/^	INT64 session;$/;"	m	struct:_EANNOUNCE_MSG
-session	ermi.h	/^	INT64 session;$/;"	m	struct:_EGETPARAM_MSG
-session	ermi.h	/^	INT64 session;$/;"	m	struct:_ESETUP_RESPONSE
-session	ermi.h	/^	INT64 session;$/;"	m	struct:_ETEARDOWN_MSG
-session	test/ermi.h	/^	INT64 session;	$/;"	m	struct:_TEARDOWN_MSG_RES
-session	test/ermi.h	/^	INT64 session;$/;"	m	struct:_ANNOUNCE_MSG
-session	test/ermi.h	/^	INT64 session;$/;"	m	struct:_SETUP_RESPONSE
-session	test/ermi.h	/^	INT64 session;$/;"	m	struct:_TEARDOWN_MSG
 session_group	erm_rtsp_s6_msg_process.h	/^    string session_group;$/;"	m	struct:_SETUP_MSG
-set_thread_no	TThread.cpp	/^TThread::set_thread_no ( const int  no )$/;"	f	class:ThreadPool::TThread
-set_thread_no	threadpool/TThread.cpp	/^TThread::set_thread_no ( const int  no )$/;"	f	class:ThreadPool::TThread
-setnonblocking	erm_qam_msg_monitor.cpp	/^int setnonblocking(int sockfd) {$/;"	f
-signal	TThread.h	/^    void signal    () { pthread_cond_signal( & _cond ); }$/;"	f	class:ThreadPool::TCondition
-signal	threadpool/TThread.h	/^    void signal    () { pthread_cond_signal( & _cond ); }$/;"	f	class:ThreadPool::TCondition
-sleep	TThread.cpp	/^TThread::sleep ( const double sec )$/;"	f	class:ThreadPool::TThread
-sleep	threadpool/TThread.cpp	/^TThread::sleep ( const double sec )$/;"	f	class:ThreadPool::TThread
+setnonblocking	erm_qam_msg_monitor.cpp	/^int setnonblocking(int sockfd)$/;"	f
 slotnumber	erm_vrep_d6_msg_process.h	/^        short slotnumber;$/;"	m	struct:_PortID
 sockfd	erm_qam_msg_monitor.h	/^int sockfd;$/;"	m	struct:_stQAM_STATE_CHECK
-source	erm_rtsp_r6_msg_process.h	/^    string source;\/\/æ¨æµæœåŠ¡å™¨çš„IP$/;"	m	struct:_Transport_UDP
+source	erm_rtsp_r6_msg_process.h	/^    string source;\/\/ÍÆÁ÷·şÎñÆ÷µÄIP$/;"	m	struct:_Transport_UDP
 stQAM_CONNECT_INFO	erm_qam_msg_monitor.h	/^}stQAM_CONNECT_INFO;$/;"	t	typeref:struct:_stQAM_CONNECT_INFO
 stQAM_FIRST_UPDATA_INFO	erm_qam_msg_monitor.h	/^}stQAM_FIRST_UPDATA_INFO;$/;"	t	typeref:struct:_stQAM_FIRST_UPDATA_INFO
 stQAM_STATE_CHECK	erm_qam_msg_monitor.h	/^}stQAM_STATE_CHECK;$/;"	t	typeref:struct:_stQAM_STATE_CHECK
 subinterface	erm_vrep_d6_msg_process.h	/^        short subinterface;$/;"	m	struct:_PortID
-sync	TThreadPool.cpp	/^TPool::sync ( TJob * job )$/;"	f	class:ThreadPool::TPool
-sync	TThreadPool.cpp	/^sync ( TPool::TJob * job )$/;"	f	namespace:ThreadPool
-sync	threadpool/TThreadPool.cpp	/^TPool::sync ( TJob * job )$/;"	f	class:ThreadPool::TPool
-sync	threadpool/TThreadPool.cpp	/^sync ( TPool::TJob * job )$/;"	f	namespace:ThreadPool
-sync_all	TThreadPool.cpp	/^TPool::sync_all ()$/;"	f	class:ThreadPool::TPool
-sync_all	TThreadPool.cpp	/^sync_all ()$/;"	f	namespace:ThreadPool
-sync_all	threadpool/TThreadPool.cpp	/^TPool::sync_all ()$/;"	f	class:ThreadPool::TPool
-sync_all	threadpool/TThreadPool.cpp	/^sync_all ()$/;"	f	namespace:ThreadPool
 szQamname	erm_qam_msg_monitor.h	/^char szQamname[];$/;"	m	struct:_stQAM_STATE_CHECK
-taps	ermi.h	/^	string taps;$/;"	m	struct:_ESETUP_RESPONSE
 thelog	ermlog.cpp	/^int thelog(int lvl,int idnum,const char * func,int line,char *fmt, ...) $/;"	f
-thelog	test/ermlog.cpp	/^int thelog(int lvl,int idnum,const char * func,int line,char *fmt, ...) $/;"	f
-thread_no	TThread.h	/^    int thread_no () const { return _thread_no; }$/;"	f	class:ThreadPool::TThread
-thread_no	threadpool/TThread.h	/^    int thread_no () const { return _thread_no; }$/;"	f	class:ThreadPool::TThread
-thread_pool	TThreadPool.cpp	/^TPool * thread_pool = NULL;$/;"	m	namespace:ThreadPool::__anon5	file:
-thread_pool	threadpool/TThreadPool.cpp	/^TPool * thread_pool = NULL;$/;"	m	namespace:ThreadPool::__anon7	file:
-toByteArray	erm_vrep_d6_msg_process.cpp	/^static void toByteArray(int iSource, byte* Arr) {$/;"	f	file:
-toByteArray	ermi1.cpp	/^static void toByteArray(int iSource, byte* Arr) {$/;"	f	file:
-totalbw	erm_db_operate_module.h	/^	int totalbw;                   			\/\/æ€»å¸¦å®½$/;"	m	struct:_qaminfo
-totalbw	erm_vrep_d6_msg_process.h	/^	int totalbw;                                   \/\/æ€»å¸¦å®½$/;"	m	struct:_UPDATE
-totalbw	ermi1.h	/^	int totalbw;$/;"	m	struct:_UPDATE
-totalbw	ermi_db_operate_module.h	/^	int totalbw;                   			\/\/æ€»å¸¦å®½$/;"	m	struct:_eqaminfo
-trim	erm_rtsp_s6_msg_process.cpp	/^string trim(string s)$/;"	f
-tsid	erm_db_operate_module.h	/^	int tsid;							\/\/è¯¥QAMåœ¨PATè¡¨ä¸­ç”¨çš„TSID$/;"	m	struct:_qaminfo
-tsid	ermi_db_operate_module.h	/^	int tsid;							\/\/è¯¥QAMåœ¨PATè¡¨ä¸­ç”¨çš„TSID$/;"	m	struct:_eqaminfo
-type	erm_vrep_d6_msg_process.h	/^	byte type;                                     \/\/æ¶ˆæ¯ç±»åˆ«$/;"	m	struct:_OPEN
-type	erm_vrep_d6_msg_process.h	/^	byte type;                                     \/\/æ¶ˆæ¯ç±»å‹$/;"	m	struct:_UPDATE
-type	ermi1.h	/^	byte type;$/;"	m	struct:_OPEN
-type	ermi1.h	/^	byte type;$/;"	m	struct:_UPDATE
+toByteArray	erm_vrep_d6_msg_process.cpp	/^static void toByteArray(int iSource,byte* Arr)$/;"	f	file:
+totalbw	erm_db_operate_module.h	/^	int totalbw;                   			\/\/×Ü´ø¿í$/;"	m	struct:_qaminfo
+totalbw	erm_vrep_d6_msg_process.h	/^	int totalbw;                                   \/\/×Ü´ø¿í$/;"	m	struct:_UPDATE
+trim	erm_rtsp_s6_msg_process.cpp	/^string trim(string s) $/;"	f
+tsid	erm_db_operate_module.h	/^	int tsid;							\/\/¸ÃQAMÔÚPAT±íÖĞÓÃµÄTSID$/;"	m	struct:_qaminfo
+type	erm_vrep_d6_msg_process.h	/^	byte type;                                     \/\/ÏûÏ¢Àà±ğ$/;"	m	struct:_OPEN
+type	erm_vrep_d6_msg_process.h	/^	byte type;                                     \/\/ÏûÏ¢ÀàĞÍ$/;"	m	struct:_UPDATE
 udp_num	erm_db_operate_module.h	/^ int udp_num;					\/\/out$/;"	m	struct:_qamselectinfo
-udp_num	ermi_db_operate_module.h	/^ int udp_num;					\/\/out$/;"	m	struct:_eqamselectinfo
-udp_numb	erm_db_operate_module.h	/^	int udp_numb;							\/\/UDPä¸ªæ•°$/;"	m	struct:_qamudp
-udp_numb	ermi_db_operate_module.h	/^	int udp_numb;							\/\/UDPä¸ªæ•°$/;"	m	struct:_eqamudp
+udp_numb	erm_db_operate_module.h	/^	int udp_numb;							\/\/UDP¸öÊı$/;"	m	struct:_qamudp
 udp_port	erm_db_operate_module.h	/^int udp_port;$/;"	m	struct:_qamsdinfo
-udp_port	ermi_db_operate_module.h	/^int udp_port;$/;"	m	struct:_eqamsdinfo
 udp_program	erm_db_operate_module.h	/^ int udp_program[MAX_STRING][2];	\/\/out$/;"	m	struct:_qamselectinfo
-udp_program	ermi_db_operate_module.h	/^ int udp_program[MAX_STRING][2];	\/\/out$/;"	m	struct:_eqamselectinfo
 udp_state	erm_db_operate_module.h	/^int udp_state;	\/\/setup pre:1    setup ok:2   teardown pre:3  teardown ok:4$/;"	m	struct:_qamsdinfo
-udp_state	ermi_db_operate_module.h	/^int udp_state;	\/\/setup pre:1    setup ok:2   teardown pre:3  teardown ok:4$/;"	m	struct:_eqamsdinfo
-unlock	TThread.h	/^    void  unlock  () { pthread_mutex_unlock( & _mutex ); }$/;"	f	class:ThreadPool::TMutex
-unlock	TThreadPool.h	/^        void unlock () { _sync_mutex.unlock(); }$/;"	f	class:ThreadPool::TPool::TJob
-unlock	threadpool/TThread.h	/^    void  unlock  () { pthread_mutex_unlock( & _mutex ); }$/;"	f	class:ThreadPool::TMutex
-unlock	threadpool/TThreadPool.h	/^        void unlock () { _sync_mutex.unlock(); }$/;"	f	class:ThreadPool::TPool::TJob
 use_bw	erm_db_operate_module.h	/^ int use_bw;$/;"	m	struct:_qamselectinfo_down
 use_bw	erm_db_operate_module.h	/^int use_bw;$/;"	m	struct:_qamsdinfo
-use_bw	ermi_db_operate_module.h	/^ int use_bw;$/;"	m	struct:_eqamselectinfo_down
-use_bw	ermi_db_operate_module.h	/^int use_bw;$/;"	m	struct:_eqamsdinfo
-version	erm_vrep_d6_msg_process.h	/^	short version;                                 \/\/åè®®ç‰ˆæœ¬$/;"	m	struct:_OPEN
-version	ermi1.h	/^	short version;$/;"	m	struct:_OPEN
-wait	TThread.h	/^    void wait      () { pthread_cond_wait( & _cond, & _mutex ); }$/;"	f	class:ThreadPool::TCondition
-wait	threadpool/TThread.h	/^    void wait      () { pthread_cond_wait( & _cond, & _mutex ); }$/;"	f	class:ThreadPool::TCondition
+version	erm_vrep_d6_msg_process.h	/^	short version;                                 \/\/Ğ­Òé°æ±¾$/;"	m	struct:_OPEN
 write_fd	erm_commnu_module.cpp	/^int write_fd(int fd, void *ptr, int nbytes, int sendfd)$/;"	f
-write_lock	erm_task_control_module.h	24;"	d
-write_unlock	erm_task_control_module.h	25;"	d
-~ErmiJob	ErmiJob.h	/^	virtual ~ErmiJob() {$/;"	f	class:ErmiJob
-~R6Job	R6Job.h	/^	virtual ~R6Job() {$/;"	f	class:R6Job
-~TCondition	TThread.h	/^    ~TCondition () { pthread_cond_destroy( & _cond ); }$/;"	f	class:ThreadPool::TCondition
-~TCondition	threadpool/TThread.h	/^    ~TCondition () { pthread_cond_destroy( & _cond ); }$/;"	f	class:ThreadPool::TCondition
-~TJob	TThreadPool.h	/^        virtual ~TJob ()$/;"	f	class:ThreadPool::TPool::TJob
-~TJob	threadpool/TThreadPool.h	/^        virtual ~TJob ()$/;"	f	class:ThreadPool::TPool::TJob
-~TMutex	TThread.h	/^    ~TMutex ()$/;"	f	class:ThreadPool::TMutex
-~TMutex	threadpool/TThread.h	/^    ~TMutex ()$/;"	f	class:ThreadPool::TMutex
-~TPool	TThreadPool.cpp	/^TPool::~TPool ()$/;"	f	class:ThreadPool::TPool
-~TPool	threadpool/TThreadPool.cpp	/^TPool::~TPool ()$/;"	f	class:ThreadPool::TPool
-~TPoolThr	TThreadPool.cpp	/^    ~TPoolThr () {}$/;"	f	class:ThreadPool::TPoolThr
-~TPoolThr	threadpool/TThreadPool.cpp	/^    ~TPoolThr () {}$/;"	f	class:ThreadPool::TPoolThr
-~TScopedLock	TThread.h	/^    ~TScopedLock ()$/;"	f	class:ThreadPool::TScopedLock
-~TScopedLock	threadpool/TThread.h	/^    ~TScopedLock ()$/;"	f	class:ThreadPool::TScopedLock
-~TThread	TThread.cpp	/^TThread::~TThread ()$/;"	f	class:ThreadPool::TThread
-~TThread	threadpool/TThread.cpp	/^TThread::~TThread ()$/;"	f	class:ThreadPool::TThread
+write_lock	erm_task_control_module.h	22;"	d
+write_unlock	erm_task_control_module.h	23;"	d

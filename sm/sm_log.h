@@ -5,33 +5,33 @@
 #include <stdarg.h>
 #include<pthread.h>
 /*--------------------------------------------------------*/
-/* °æ±¾:v1.0
+/* ç‰ˆæœ¬:v1.0
 
- * ×÷Õß:Íõ´«»ª
+ * ä½œè€…:ç‹ä¼ å
 
- * ´´½¨Ê±¼ä:2008-08-21
+ * åˆ›å»ºæ—¶é—´:2008-08-21
 
- *ĞŞ¸Ä¼ÇÂ¼:
+ *ä¿®æ”¹è®°å½•:
 
- *³ÌĞòËµÃ÷:ÈÕÖ¾Ä£¿é£¬¸ºÔğ¼ÇÂ¼ÈÕÖ¾
- * 		ÈÕÖ¾ÎÄ¼şÃüÃû£º
- *		1.ÏµÍ³ĞÅÏ¢£ºSysteminfo-p0.log
- *		(Èç¹ûÎÄ¼ş³¬³¤Ôòp0Îªp1~pn)
- *		2.Í¨µÀĞÅÏ¢£º1turnk-2008-08-11-p0.log
- *		(1turnkÎª1Í¨µÀ£¬2turnkÎª2Í¨µÀ£¬ÒÀ´ÎÀàÍÆ£©
+ *ç¨‹åºè¯´æ˜:æ—¥å¿—æ¨¡å—ï¼Œè´Ÿè´£è®°å½•æ—¥å¿—
+ * 		æ—¥å¿—æ–‡ä»¶å‘½åï¼š
+ *		1.ç³»ç»Ÿä¿¡æ¯ï¼šSysteminfo-p0.log
+ *		(å¦‚æœæ–‡ä»¶è¶…é•¿åˆ™p0ä¸ºp1~pn)
+ *		2.é€šé“ä¿¡æ¯ï¼š1turnk-2008-08-11-p0.log
+ *		(1turnkä¸º1é€šé“ï¼Œ2turnkä¸º2é€šé“ï¼Œä¾æ¬¡ç±»æ¨ï¼‰
 
  ----------------------------------------------------------*/
 
 #define LVLSYS 0
 #define LVLERR 1
-#define LVLDEBUGOFF 3 /*µ÷ÊÔÈÕÖ¾¹Ø±Õ¿ª¹Ø*/
-#define LVLDEBUGON 2  /*µ÷ÊÔÈÕÖ¾¿ªÆô¿ª¹Ø*/
-#define MAXFILELEN (2150000000UL) /*Ò»·İÈÕÖ¾×î´ó³¤¶È~=2GB£¬µ¥Î»byte*/
-#define SYS_INFO -1 /*ÏµÍ³ÈÕÖ¾µÄ´òÓ¡±êÖ¾*/
+#define LVLDEBUGOFF 3 /*è°ƒè¯•æ—¥å¿—å…³é—­å¼€å…³*/
+#define LVLDEBUGON 2  /*è°ƒè¯•æ—¥å¿—å¼€å¯å¼€å…³*/
+#define MAXFILELEN (2150000000UL) /*ä¸€ä»½æ—¥å¿—æœ€å¤§é•¿åº¦~=2GBï¼Œå•ä½byte*/
+#define SYS_INFO -1 /*ç³»ç»Ÿæ—¥å¿—çš„æ‰“å°æ ‡å¿—*/
 #define sm_log(x,y,...) thelog(x,y,__FILE__,__LINE__,__VA_ARGS__)
 long getfilelen(FILE *fd); 
-/* lvl ÈÕÖ¾¼¶±ğ ·Ö£ºLVLSYS ,LVLDEBUG,LVLERR
- * idnum Í¨µÀºÅ,0 £º²»°´Í¨µÀ´òÓ¡ÈÕÖ¾.µ±¼¶±ğÎªLVLSYSÊ± Í¨³£ÎªidnumÎª0
+/* lvl æ—¥å¿—çº§åˆ« åˆ†ï¼šLVLSYS ,LVLDEBUG,LVLERR
+ * idnum é€šé“å·,0 ï¼šä¸æŒ‰é€šé“æ‰“å°æ—¥å¿—.å½“çº§åˆ«ä¸ºLVLSYSæ—¶ é€šå¸¸ä¸ºidnumä¸º0
  */
 int thelog(int lvl,int idnum,const char *,int line,char *fmt, ...); 
 void ChangeAscii2String(char *pStr, char *pAscii, int len);

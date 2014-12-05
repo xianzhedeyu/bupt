@@ -1,20 +1,20 @@
 /*
-°æ±¾:v1.0
+ç‰ˆæœ¬:v1.0
 
- * ×÷Õß:Íõ´«»ª
+ * ä½œè€…:ç‹ä¼ å
 
- * ´´½¨Ê±¼ä:2010-08-23
+ * åˆ›å»ºæ—¶é—´:2010-08-23
 
- *ĞŞ¸Ä¼ÇÂ¼:
+ *ä¿®æ”¹è®°å½•:
 
- *³ÌĞòËµÃ÷:
-	S6 ½ÓÈë½ø³Ì,½ø³Ì¹ÜÀí½ø³Ì£¬R6ÒµÎñ´¦ÀíÏß³Ì
+ *ç¨‹åºè¯´æ˜:
+	S6 æ¥å…¥è¿›ç¨‹,è¿›ç¨‹ç®¡ç†è¿›ç¨‹ï¼ŒR6ä¸šåŠ¡å¤„ç†çº¿ç¨‹
 
- *ÊäÈë²ÎÊı: ÎŞ
+ *è¾“å…¥å‚æ•°: æ— 
 
- *Êä³ö²ÎÊı: ÎŞ
+ *è¾“å‡ºå‚æ•°: æ— 
 
- *·µ»ØÖµ:ÎŞ
+ *è¿”å›å€¼:æ— 
 */
 
 #include<errno.h>
@@ -23,9 +23,9 @@
 #include"sm_communication_module.h"
 #include"sm_transaction.h"
 #include <iostream>
-#include <occi.h>
+//#include <occi.h>
 using namespace std;
-using namespace oracle::occi;
+//using namespace oracle::occi;
 
 
 int process_num=0;
@@ -117,8 +117,8 @@ int interproxy(int lockfd)
     int offset=sizeof(int);
     int mmapsize=sizeof(S_pItem)+offset;
     /*
-    *¹²ÏíÄÚ´æÇøµÄ¹ÜÀíÁĞ±í
-    *×Ó½ø³ÌÎŞ·¨·ÃÎÊ,ÎŞĞè¼ÓËø
+    *å…±äº«å†…å­˜åŒºçš„ç®¡ç†åˆ—è¡¨
+    *å­è¿›ç¨‹æ— æ³•è®¿é—®,æ— éœ€åŠ é”
     */
     mmap_queue_info queue_info[SM_MAXNUM];
     memset(&queue_info,0x00,sizeof(queue_info));
@@ -127,10 +127,10 @@ int interproxy(int lockfd)
 
     /****
 
-    *¹²ÏíÄÚ´æÇøÍ·²¿Æ«ÒÆÁ¿
-    *0´ú±í¿ÉÓÃ(¿ÕÏĞ)
-    *1´ú±íÓĞ×Ó½ø³ÌÔÚÕ¼ÓÃ
-    *2´ú±íÓĞÊı¾İ¿ÉÓÃ£¬·ÀÖ¹½ø³ÌÌáÇ°ÍË³ö
+    *å…±äº«å†…å­˜åŒºå¤´éƒ¨åç§»é‡
+    *0ä»£è¡¨å¯ç”¨(ç©ºé—²)
+    *1ä»£è¡¨æœ‰å­è¿›ç¨‹åœ¨å ç”¨
+    *2ä»£è¡¨æœ‰æ•°æ®å¯ç”¨ï¼Œé˜²æ­¢è¿›ç¨‹æå‰é€€å‡º
 
     ****/
     char buff[1024]="";
@@ -147,7 +147,7 @@ int interproxy(int lockfd)
 
     pid=fork();
     if (pid==0) {
-        close(fd[1]);
+        close(fd[1]);//é é 
         close(sock_sd[1]);
 	fprintf(stderr, "process manager start\n");
         process_manager(fd[0],sock_sd[0],lockfd);
@@ -201,21 +201,21 @@ int interproxy(int lockfd)
 
         memcpy(&find_data_flag,mmap_ptr,offset);
         /*
-        *Èç¹û¶ÓÁĞÂú£¬½ø³ÌÒ»¶¨´æÔÚ
-        *Èç¹û½ø³ÌËÀÍö£¬¶ÓÁĞÒ»¶¨Îª¿Õ
+        *å¦‚æœé˜Ÿåˆ—æ»¡ï¼Œè¿›ç¨‹ä¸€å®šå­˜åœ¨
+        *å¦‚æœè¿›ç¨‹æ­»äº¡ï¼Œé˜Ÿåˆ—ä¸€å®šä¸ºç©º
         */
-        if (find_data_flag==0||frist) { /*½ø³ÌÒÑ¾­ËÀÍö*/
+        if (find_data_flag==0||frist) { /*è¿›ç¨‹å·²ç»æ­»äº¡*/
             frist=0;
             sm_log(LVLDEBUG,SYS_INFO,"*******************************\n");
             write(fw,(char *)&msg,sizeof(msg));
         }
-        /*²åÈë¶ÓÁĞ*/
+        /*æ’å…¥é˜Ÿåˆ—*/
         write_fd(sw,(void*)&ret,sizeof(int),sd);
         find_data_flag=2;
-        memcpy(mmap_ptr,&find_data_flag,offset);/*Ô¤·À½ø³ÌÌáÇ°ËÀÍö*/
+        memcpy(mmap_ptr,&find_data_flag,offset);/*é¢„é˜²è¿›ç¨‹æå‰æ­»äº¡*/
         write_unlock(lockfd);
 
-        if (ret==-1) { /*½ÚµãÄÚÈİ´óÓÚ100,¼ì²é½Úµã¹ÜÀíÁĞ±í*/
+        if (ret==-1) { /*èŠ‚ç‚¹å†…å®¹å¤§äº100,æ£€æŸ¥èŠ‚ç‚¹ç®¡ç†åˆ—è¡¨*/
             sm_log(LVLDEBUG,SYS_INFO,"***full***\n");
             for (find_empty=0;find_empty<SM_MAXNUM;find_empty++) {
                 if (queue_info[find_empty].flag==0) {
@@ -237,7 +237,7 @@ int interproxy(int lockfd)
 
                 }
 
-                /*½ÚµãÓÃ¹ıÃ¿20¸ö£¬»ØÍ·¼ì²éÒ»ÏÂÄÚ´æÇø±êÊ¶*/
+                /*èŠ‚ç‚¹ç”¨è¿‡æ¯20ä¸ªï¼Œå›å¤´æ£€æŸ¥ä¸€ä¸‹å†…å­˜åŒºæ ‡è¯†*/
                 if (find_empty%20==0) {
                     for (find_tmp=0;find_tmp<SM_MAXNUM;find_tmp++) {
                         memcpy(&find_data_flag,queue_info[find_tmp].mmap_queue,offset);
@@ -245,7 +245,7 @@ int interproxy(int lockfd)
                             queue_info[find_tmp].flag=0;
                     }
                 }
-                /*ËùÓĞ½ÚµãÂú£¬Ñ­»·¼ì²é£¬Ö±µ½¿Õ½Úµã±»·¢ÏÖ*/
+                /*æ‰€æœ‰èŠ‚ç‚¹æ»¡ï¼Œå¾ªç¯æ£€æŸ¥ï¼Œç›´åˆ°ç©ºèŠ‚ç‚¹è¢«å‘ç°*/
                 if (find_empty>=SM_MAXNUM-1) {
                     sm_log(LVLDEBUG,SYS_INFO,"***all full***\n");
                     sleep(1);
@@ -320,12 +320,12 @@ int process_manager(int fr,int sr,int lockfd)
         mmap_buf=(SOCKET_DATA*)(mmap_ptr+offset);
         if (ret<=0) {
             exit(0);
-            /*Òì³£´¦Àí*/
+            /*å¼‚å¸¸å¤„ç†*/
         }
         if (process_num>SM_MAXNUM) {
             sm_log(LVLDEBUG,SYS_INFO,"Process num > %d\n",SM_MAXNUM);
-            /*²»»á²úÉú*/
-            /*Òì³£´¦Àí*/
+            /*ä¸ä¼šäº§ç”Ÿ*/
+            /*å¼‚å¸¸å¤„ç†*/
             //exit(0);
         }
         process_num++;
@@ -349,10 +349,11 @@ int process_manager(int fr,int sr,int lockfd)
             }
 
             close(pipefd[1]);
-            /*×èÈû¡¢µÈ´ı×Ó½ø³Ì¹Ø±Õ srÃèÊö·û*/
-            ret=read(pipefd[0],NULL,1); /*ÊÕµ½ĞÅºÅºó£¬Í£Ö¹×èÈû£¬·µ»ØwhileÑ­»·´´½¨ĞÂµÄ½ø³Ì*/
+            /*é˜»å¡ã€ç­‰å¾…å­è¿›ç¨‹å…³é—­ sræè¿°ç¬¦*/
+            ret=read(pipefd[0],NULL,1); /*æ”¶åˆ°ä¿¡å·åï¼Œåœæ­¢é˜»å¡ï¼Œè¿”å›whileå¾ªç¯åˆ›å»ºæ–°çš„è¿›ç¨‹*/
             close(pipefd[0]);
-        } else if (!pid) {
+        } 
+        else if (!pid) {
 
             fprintf(stderr, "child process %d runing\n",getpid());
 
@@ -360,23 +361,24 @@ int process_manager(int fr,int sr,int lockfd)
             close(pipefd[0]);
             close(fr);
             
-	fprintf(stderr, "db pool create....\n");
-            //´´½¨Êı¾İ¿âÏß³Ì³Ø
-            const string userName = ORA_NAME;
-        	const string password = ORA_PWD;
-        	const string connectString = ORA_CONN;
-        	unsigned int maxConn = ORA_MAXCONN;
-        	unsigned int minConn = ORA_MINCONN;
-        	unsigned int incrConn = ORA_INCRCONN;
-        	Environment *env = Environment::createEnvironment(Environment::DEFAULT);
-        	StatelessConnectionPool *connPool = env->createStatelessConnectionPool(userName,password,connectString,\
-                                                maxConn,minConn,incrConn,StatelessConnectionPool::HOMOGENEOUS);		
+	        //fprintf(stderr, "db pool create....\n");
+            ////åˆ›å»ºæ•°æ®åº“çº¿ç¨‹æ± 
+            //const string userName = ORA_NAME;
+        	//const string password = ORA_PWD;
+        	//const string connectString = ORA_CONN;
+        	//unsigned int maxConn = ORA_MAXCONN;
+        	//unsigned int minConn = ORA_MINCONN;
+        	//unsigned int incrConn = ORA_INCRCONN;
+        	//Environment *env = Environment::createEnvironment(Environment::DEFAULT);
+        	//StatelessConnectionPool *connPool = env->createStatelessConnectionPool(userName,password,connectString,\
+            //                                    maxConn,minConn,incrConn,StatelessConnectionPool::HOMOGENEOUS);		
 			pthread_args *p_args =(pthread_args *)malloc(sizeof(pthread_args));
-			p_args->connPool = connPool;
+			//p_args->connPool = connPool;
+			p_args->connPool = NULL;
 	fprintf(stderr, "db pool done....\n");
                        
             while (1) {
-                if (pthread_num>SM_MAXNUM) { /*Òì³££¬²»»á²úÉú*/
+                if (pthread_num>SM_MAXNUM) { /*å¼‚å¸¸ï¼Œä¸ä¼šäº§ç”Ÿ*/
                     sm_log(LVLDEBUG,SYS_INFO,"Pthread full\n");
                     usleep(1000);
                     continue;
@@ -388,14 +390,14 @@ int process_manager(int fr,int sr,int lockfd)
                     read_fd(sr,&c,sizeof(int),&sd);
                 }
                 if (c==-1) { /*full*/
-                	/*µ±Ç°¹²ÏíÄÚ´æÂúÊ±£¬Í¨¹ıpipe¸ø¸¸½ø³Ì·¢ËÍ¿ÕĞÅÏ¢*/
-                    write(pipefd[1],"",1);/*¿ÉÒÔÊ¡£¬Ö±½ÓÓÃpipeÆÆËé*/
+                	/*å½“å‰å…±äº«å†…å­˜æ»¡æ—¶ï¼Œé€šè¿‡pipeç»™çˆ¶è¿›ç¨‹å‘é€ç©ºä¿¡æ¯*/
+                    write(pipefd[1],"",1);/*å¯ä»¥çœï¼Œç›´æ¥ç”¨pipeç ´ç¢*/
                     close(pipefd[1]);
                     close(sr);
                     if (ret!=-1) {
                         write_lock(lockfd);
                         ret=PopFromQueue(c,&pItem,mmap_buf);
-                        memcpy(mmap_ptr,&find_data_flag,offset);/*ÔÚ×Ô¼º¸ºÔğµÄ¶ÓÁĞÉÏ×ö±ê¼Ç*/
+                        memcpy(mmap_ptr,&find_data_flag,offset);/*åœ¨è‡ªå·±è´Ÿè´£çš„é˜Ÿåˆ—ä¸Šåšæ ‡è®°*/
                         write_unlock(lockfd);
                         ret=-1;
                     }
@@ -407,9 +409,9 @@ int process_manager(int fr,int sr,int lockfd)
                     write_lock(lockfd);
                     ret=PopFromQueue(c,&pItem,mmap_buf);
                     /*
-                     *Êı¾İÒÑ¶Á
+                     *æ•°æ®å·²è¯»
                      */
-                    memcpy(mmap_ptr,&find_data_flag,offset);/*ÔÚ×Ô¼º¸ºÔğµÄ¶ÓÁĞÉÏ×ö±ê¼Ç*/
+                    memcpy(mmap_ptr,&find_data_flag,offset);/*åœ¨è‡ªå·±è´Ÿè´£çš„é˜Ÿåˆ—ä¸Šåšæ ‡è®°*/
                     write_unlock(lockfd);
                 }
                 if (ret!=-1) { /*have data*/
@@ -443,7 +445,7 @@ int process_manager(int fr,int sr,int lockfd)
                 } else { /*no data*/
                     if (pthread_num==0) { /*no pthread*/
                         /*
-                         *ÍË³öÇ°¼ì²é
+                         *é€€å‡ºå‰æ£€æŸ¥
                          */
                         write_lock(lockfd);
                         memcpy(&find_data_flag,mmap_ptr,offset);
@@ -452,16 +454,16 @@ int process_manager(int fr,int sr,int lockfd)
                             continue;
                         }
                         /*
-                         *±êÊ¶Îª¿Õ½Úµã
+                         *æ ‡è¯†ä¸ºç©ºèŠ‚ç‚¹
                          */
                         memset(mmap_ptr,0x00,sizeof(S_pItem)+offset);
-                        //memcpy(mmap_buf,&mmap_data_flag,offset);/*ÔÚ×Ô¼º¸ºÔğµÄ¶ÓÁĞÉÏ×ö±ê¼Ç*/
+                        //memcpy(mmap_buf,&mmap_data_flag,offset);/*åœ¨è‡ªå·±è´Ÿè´£çš„é˜Ÿåˆ—ä¸Šåšæ ‡è®°*/
                         write_unlock(lockfd);
                         close(lockfd);
-                        //¹Ø±ÕÊı¾İ¿âÁ¬½Ó³Ø
+                        //å…³é—­æ•°æ®åº“è¿æ¥æ± 
                         free(p_args);
-                        env->terminateStatelessConnectionPool(connPool);
-        				Environment::terminateEnvironment(env);
+                        //env->terminateStatelessConnectionPool(connPool);
+        				//Environment::terminateEnvironment(env);
                         sm_log(LVLDEBUG,SYS_INFO,"%d normal exit\n",getpid());
                         exit(0);
                     }

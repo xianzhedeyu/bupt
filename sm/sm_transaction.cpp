@@ -1,32 +1,16 @@
-/*
-°æ±¾:v1.0
-
- * ×÷Õß:ÀîÓÀÌÎ
-
- * ´´½¨Ê±¼ä:2011-05-16
-
- *ĞŞ¸Ä¼ÇÂ¼:
-
- *³ÌĞòËµÃ÷:
-	S1 S3 S6 ÒµÎñ´¦Àí
-
- *ÊäÈë²ÎÊı: ÎŞ
-
- *Êä³ö²ÎÊı: ÎŞ
-
- *·µ»ØÖµ:ÎŞ
-*/
 #include "sm_rtsp_s1_msg_process.h"
 #include "sm_rtsp_s3_msg_process.h"
 #include "sm_rtsp_s6_msg_process.h"
 #include "sm_rtsp_public_function.h"
+#include "sm_rtsp_s7_msg_process.h"
 #include "sm_communication_module.h"
 #include "sm_transaction.h"
 #include "sm_log.h"
 #include <iostream>
-#include <occi.h>
+#include <hiredis/hiredis.h>
+//#include <occi.h>
 using namespace std;
-using namespace oracle::occi;
+//using namespace oracle::occi;
 extern int LVLDEBUG;
 
 int pthread_TP(char *S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
@@ -47,59 +31,71 @@ int pthread_TP(char *S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
 
 int Tp_Setup(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
 {
+    redisContext *c;
+    redisReply *reply;
+    const char *hostname = "127.0.0.1";
+    int port = 6379;
+    struct timeval timeout = {1, 500000};
+    c = redisConnectWithTimeout(hostname, port, timeout);
+
     S1_SETUP_MSG s1_setup_msg;
     S1_SETUP_RES s1_setup_res;
-    S3_SETUP_MSG s3_setup_msg;
-    S3_SETUP_RES s3_setup_res;
-    S6_SETUP_MSG s6_setup_msg;
-    S6_SETUP_RES s6_setup_res;
+    //S3_SETUP_MSG s3_setup_msg;
+    //S3_SETUP_RES s3_setup_res;
+    //S6_SETUP_MSG s6_setup_msg;
+    //S6_SETUP_RES s6_setup_res;
+    S7_SETUP_RES s7_setup_res;
+    S7_SETUP_MSG s7_setup_msg;
 
     int erm_sd = -1;
     int odrm_sd = -1;
-    INT64 oc2sm_session = 0;//stbºÍsmÖ®¼äµÄsession id
-    int sm2erm_cseq = 0;//smºÍermÖ®¼äµÄcseq
-    int sm2odrm_cseq = 0;//smºÍodrmÖ®¼äµÄcseq
+    int asm_sd = -1;
+    INT64 oc2sm_session = 0;//stbå’Œsmä¹‹é—´çš„session id
+    int sm2erm_cseq = 0;//små’Œermä¹‹é—´çš„cseq
+    int sm2odrm_cseq = 0;//små’Œodrmä¹‹é—´çš„cseq
+    int sm2asm_cseq = 0;
     struct timeval now_tmp;
     int i = 0;
     int ret = -1;
     char ondemandsession[37] = "";
-    char sendbuf[1024] = "";//´æ´¢·¢ËÍÏûÏ¢µÄ»º³å
-    char recvbuf[1024] = "";//´æ´¢ÊÕµ½ÏûÏ¢µÄ»º³å
-    char sql_cmd[512] = "";//´æ´¢sqlÃüÁî
-    string cmd;
-//Á¬½ÓÊı¾İ¿â
-    Connection *conn = p_args->connPool->getAnyTaggedConnection();
-	Statement *stmt = conn->createStatement();
+    char sendbuf[1024] = "";//å­˜å‚¨å‘é€æ¶ˆæ¯çš„ç¼“å†²
+    char recvbuf[1024] = "";//å­˜å‚¨æ”¶åˆ°æ¶ˆæ¯çš„ç¼“å†²
+    //char sql_cmd[512] = "";//å­˜å‚¨sqlå‘½ä»¤
+    //string cmd;
+//è¿æ¥æ•°æ®åº“
+    //Connection *conn = p_args->connPool->getAnyTaggedConnection();
+	//Statement *stmt = conn->createStatement();
 	
-	ondemandsessionid_generate(ondemandsession);//²úÉúondemandsessionid
+	ondemandsessionid_generate(ondemandsession);//äº§ç”Ÿondemandsessionid
 	
 	gettimeofday(&now_tmp, 0);
 	srand((now_tmp.tv_sec * 1000) + (now_tmp.tv_usec / 1000));
-	oc2sm_session = 1 + (int) (10.0 * rand() / (100000 + 1.0));//Éú³ÉS1½Ó¿Úsession id
-	sm2erm_cseq = 1 + (int) (1.0 * rand() / (1000000 + 1.0));//Éú³ÉsmºÍermÖ®¼äµÄcseq
-	sm2odrm_cseq = 1 + (int) (1.0 * rand() / (1000000 + 1.0));//Éú³ÉsmºÍodrmÖ®¼äµÄcseq
+	oc2sm_session = 1 + (int) (10.0 * rand() / (100000 + 1.0));//ç”ŸæˆS1æ¥å£session id
+	//sm2erm_cseq = 1 + (int) (1.0 * rand() / (100000 + 1.0));//ç”Ÿæˆsmå’Œermä¹‹é—´çš„cseq
+	//sm2odrm_cseq = 1 + (int) (1.0 * rand() / (100000 + 1.0));//ç”Ÿæˆsmå’Œodrmä¹‹é—´çš„cseq
+    sm2asm_cseq = 1 + (int) (1.0 * rand() / (100000 + 1.0));
 //cout << ondemandsession	<< endl;
     
-//½âÎöÊÕµ½µÄs1_setup_msg
+//è§£ææ”¶åˆ°çš„s1_setup_msg
 	memset(&s1_setup_msg,0x00,sizeof(S1_SETUP_MSG));
 	fprintf(stderr, "parse s1 message..\n");
-    rtsp_s1_setup_msg_parse(S1_msg,&s1_setup_msg);//½âÎöÊÕµ½µÄs1_setup_msg
+    rtsp_s1_setup_msg_parse(S1_msg,&s1_setup_msg);//è§£ææ”¶åˆ°çš„s1_setup_msg
 	/*
-		¶Ôstb·¢À´µÄsetup msg½øĞĞ´íÎó´¦Àí
+		å¯¹stbå‘æ¥çš„setup msgè¿›è¡Œé”™è¯¯å¤„ç†
 	*/    
-
-//ÓëERM½¨Á¢»á»°
+/*
+//ä¸ERMå»ºç«‹ä¼šè¯
     memset(&s6_setup_msg,0x00,sizeof(S6_SETUP_MSG));
     strcpy(s6_setup_msg.ip,ERM_IP);
     s6_setup_msg.cseq = sm2erm_cseq;
     strcpy(s6_setup_msg.require,RTSP_S6_REQUIRE);
-    strcpy(s6_setup_msg.session_group,SESSION_GRUOP);//×Ô¼ºÉè¶¨¡¢Ö÷ÒªÓÃÀ´getpramaterÊ±»ñÈ¡session×éµÄĞÅÏ¢£¬Ã¿¸öSMÒ»¸ö×é
+    strcpy(s6_setup_msg.session_group,SESSION_GRUOP);//è‡ªå·±è®¾å®šã€ä¸»è¦ç”¨æ¥getpramateræ—¶è·å–sessionç»„çš„ä¿¡æ¯ï¼Œæ¯ä¸ªSMä¸€ä¸ªç»„
     strcpy(s6_setup_msg.encryption_type,"Session");//S2
     strcpy(s6_setup_msg.cas_id,"0x1234");//S2
     strcpy(s6_setup_msg.encrypt_control,"block_stream_until_encrypted=\"false\";encryption_scheme=\"AES\";key_length=128");//S2
     strcpy(s6_setup_msg.ondemandsessionid,ondemandsession);
     strcpy(s6_setup_msg.policy,"priority=1");//S2
-    strcpy(s6_setup_msg.inband_marker,"type=4;pidType=A;pidValue=01EE;dataType=T;insertDuration=10000;data=4002003030¡­");//´ı¶¨£¬²¿·Ö´ÓS2»ñµÃ£¬data´ÓÄÄÀ´£¿
+    strcpy(s6_setup_msg.inband_marker,"type=4;pidType=A;pidValue=01EE;dataType=T;insertDuration=10000;data=4002003030â€¦");//å¾…å®šï¼Œéƒ¨åˆ†ä»S2è·å¾—ï¼Œdataä»å“ªæ¥ï¼Ÿ
     s6_setup_msg.qam_num = s1_setup_msg.qam_num;
     for (i=0;i<s6_setup_msg.qam_num;i++) {
         s6_setup_msg.qam_info[i].bandwidth = 2700000;
@@ -108,16 +104,14 @@ int Tp_Setup(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
         strcpy(s6_setup_msg.qam_info[i].modulation,"qam64");
     }
 	fprintf(stderr, "connect to erm...\n");
-    ret=ConnectSock(&erm_sd,ERM_PORT,ERM_IP);//´´½¨ÓëERMµÄÁ¬½Ó
+    ret=ConnectSock(&erm_sd,ERM_PORT,ERM_IP);//åˆ›å»ºä¸ERMçš„è¿æ¥
     if (ret==-1) {
 	fprintf(stderr, "connect to erm error...\n");
         sm_log(LVLDEBUG,SYS_INFO,"Connect erm error\n");
-        /*
-        	´íÎó´¦Àí
-        */
+      	//é”™è¯¯å¤„ç†
         memset(sendbuf,0x00,1024);
-        rtsp_err_res_encode(RTSP_ResponseCode_ERMSetupFailed_NoResponse,s1_setup_msg.cseq,sendbuf);//ÏòSTB±¨´í£ºÁ¬½ÓERMÊ§°Ü
-        ret = rtsp_write(OC_sd,sendbuf,strlen(sendbuf)+1);//ÏòSTB·¢ËÍERRORÏûÏ¢
+        rtsp_err_res_encode(RTSP_ResponseCode_ERMSetupFailed_NoResponse,s1_setup_msg.cseq,sendbuf);//å‘STBæŠ¥é”™ï¼šè¿æ¥ERMå¤±è´¥
+        ret = rtsp_write(OC_sd,sendbuf,strlen(sendbuf)+1);//å‘STBå‘é€ERRORæ¶ˆæ¯
     	sm_log(LVLDEBUG,SYS_INFO,"setup send2oc msg:%s, len:%d\n",sendbuf,ret);        
         return -1;
     }
@@ -125,33 +119,32 @@ int Tp_Setup(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
 	fprintf(stderr, "connect to erm success...\n");
     memset(sendbuf,0x00,1024);		
 	fprintf(stderr, "msg to S6 encode\n");
-    rtsp_s6_setup_msg_encode(s6_setup_msg,sendbuf);//»ı¼«Ä£Ê½ÏÂ»ò±¯¹ÛÄ£Ê½ÏÂ´´½¨SM·¢¸øERMµÄSETUPĞÅÏ¢
+    rtsp_s6_setup_msg_encode(s6_setup_msg,sendbuf);//ç§¯ææ¨¡å¼ä¸‹æˆ–æ‚²è§‚æ¨¡å¼ä¸‹åˆ›å»ºSMå‘ç»™ERMçš„SETUPä¿¡æ¯
 	fprintf(stderr, "send msg to S6\n");
-    ret = rtsp_write(erm_sd,sendbuf,strlen(sendbuf)+1);//ÏòERM·¢ËÍSETUPÏûÏ¢
+    ret = rtsp_write(erm_sd,sendbuf,strlen(sendbuf)+1);//å‘ERMå‘é€SETUPæ¶ˆæ¯
     sm_log(LVLDEBUG,SYS_INFO,"setup send2erm msg:%s, len:%d\n",sendbuf,ret);
-//½ÓÊÕERM·¢»ØµÄSETUP RESPONSE
+//æ¥æ”¶ERMå‘å›çš„SETUP RESPONSE
 	memset(recvbuf,0x00,1024);    
-    ret = rtsp_read(erm_sd,recvbuf,1024) ;//½ÓÊÕERM·¢»ØµÄSETUP RESPONSE
+    ret = rtsp_read(erm_sd,recvbuf,1024) ;//æ¥æ”¶ERMå‘å›çš„SETUP RESPONSE
 	fprintf(stderr, "read msg from S6 done\n");
     sm_log(LVLDEBUG,SYS_INFO,"setup recv from erm res:%s, len:%d\n",recvbuf,ret);
-    //»ı¼«Ä£Ê½ÏÂ»ò±¯¹ÛÄ£Ê½ÏÂ½âÎöERMÏòSM·¢ËÍµÄResponseÏûÏ¢
+    //ç§¯ææ¨¡å¼ä¸‹æˆ–æ‚²è§‚æ¨¡å¼ä¸‹è§£æERMå‘SMå‘é€çš„Responseæ¶ˆæ¯
 	memset(&s6_setup_res,0x00,sizeof(S6_SETUP_RES));
 	rtsp_s6_setup_res_parse(recvbuf,&s6_setup_res);
 	fprintf(stderr, "parse msg from S6 done\n");
-	/*
-		¶Ôerm·¢À´µÄsetup response½øĞĞ´íÎó´¦Àí
-	*/
-	//½«ÓëERMµÄ»á»°ĞÅÏ¢Èë¿â
-	snprintf(sql_cmd,512,"INSERT INTO SM_S6 VALUES('%s',%llu,'%s','%s','%s','%s','%s','%s','%s','%s',%llu,'%s','%s',%d,'%s','%s','%s','%s','%s','%s')", \
-						 ondemandsession,s6_setup_res.session,s6_setup_msg.ip,s6_setup_msg.session_group,s6_setup_msg.encryption_type,\
-						 s6_setup_msg.cas_id,s6_setup_msg.encrypt_control,s6_setup_msg.policy,s6_setup_msg.inband_marker,s6_setup_res.embedded_encryptor,\
-						 s6_setup_msg.qam_info[0].bandwidth,s6_setup_res.client,s6_setup_res.destination,s6_setup_res.client_port,\
-						 s6_setup_res.qam_destination,s6_setup_res.qam_name,s6_setup_res.qam_group,s6_setup_res.modulation,s6_setup_res.edge_input_group,"SETUP");    
-	cmd = sql_cmd;
-	stmt->executeUpdate(cmd.c_str());
-	stmt->executeUpdate("commit");
-	
-//ÓëODRM½¨Á¢»á»°
+    //å¯¹ermå‘æ¥çš„setup responseè¿›è¡Œé”™è¯¯å¤„ç†
+	//å°†ä¸ERMçš„ä¼šè¯ä¿¡æ¯å…¥åº“
+	//snprintf(sql_cmd,512,"INSERT INTO SM_S6 VALUES('%s',%llu,'%s','%s','%s','%s','%s','%s','%s','%s',%llu,'%s','%s',%d,'%s','%s','%s','%s','%s','%s')", \
+	//					 ondemandsession,s6_setup_res.session,s6_setup_msg.ip,s6_setup_msg.session_group,s6_setup_msg.encryption_type,\
+	//					 s6_setup_msg.cas_id,s6_setup_msg.encrypt_control,s6_setup_msg.policy,s6_setup_msg.inband_marker,s6_setup_res.embedded_encryptor,\
+	//					 s6_setup_msg.qam_info[0].bandwidth,s6_setup_res.client,s6_setup_res.destination,s6_setup_res.client_port,\
+	//					 s6_setup_res.qam_destination,s6_setup_res.qam_name,s6_setup_res.qam_group,s6_setup_res.modulation,s6_setup_res.edge_input_group,"SETUP");    
+	//cmd = sql_cmd;
+	//stmt->executeUpdate(cmd.c_str());
+	//stmt->executeUpdate("commit");
+*/	
+/*
+//ä¸ODRMå»ºç«‹ä¼šè¯
 	memset(&s3_setup_msg,0x00,sizeof(S3_SETUP_MSG));
     strcpy(s3_setup_msg.odrm_ip,"ODRM_IP");
     s3_setup_msg.odrm_port = ODRM_PORT;
@@ -159,31 +152,31 @@ int Tp_Setup(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
     strcpy(s3_setup_msg.require,RTSP_S3_REQUIRE);
     strcpy(s3_setup_msg.ondemand_session_id,ondemandsession);
 
-    strcpy(s3_setup_msg.sop_group[0],"boston.spg1");//´ı¶¨
-    strcpy(s3_setup_msg.sop_group[1],"boston.spg2");//´ı¶¨
+    strcpy(s3_setup_msg.sop_group[0],"boston.spg1");//å¾…å®š
+    strcpy(s3_setup_msg.sop_group[1],"boston.spg2");//å¾…å®š
 
-    s3_setup_msg.qam_num = 1;//»ı¼«Ä£Ê½ÏÂERM·µ»ØÎ¨Ò»QAM
+    s3_setup_msg.qam_num = 1;//ç§¯ææ¨¡å¼ä¸‹ERMè¿”å›å”¯ä¸€QAM
     strcpy(s3_setup_msg.qam[0].client,s6_setup_res.client);
     strcpy(s3_setup_msg.qam[0].destination,s6_setup_res.destination);
     s3_setup_msg.qam[0].client_port = s6_setup_res.client_port;
-    s3_setup_msg.qam[0].bandwidth = 2700000; //ÓÉS2ÏûÏ¢ÖĞResource DescriptorsÖĞµÄTSDownstreamBandwidth»ñµÃ
+    s3_setup_msg.qam[0].bandwidth = 2700000; //ç”±S2æ¶ˆæ¯ä¸­Resource Descriptorsä¸­çš„TSDownstreamBandwidthè·å¾—
     	
     strcpy(s3_setup_msg.session_group,SESSION_GRUOP);
-    s3_setup_msg.start_point_slot = 1;//S2»ñµÃ
-    strcpy(s3_setup_msg.start_point_npt,"3000");//S2»ñµÃ
-    strcpy(s3_setup_msg.policy,"priority=1");//S2»ñµÃ
-    strcpy(s3_setup_msg.inband_marker,"type=4;pidType=A;pidValue=01EE;dataType=T;insertDuration=10000;data=4002003030");//´ı¶¨£¬²¿·Ö´ÓS2»ñµÃ£¬data´ÓÄÄÀ´£¿
+    s3_setup_msg.start_point_slot = 1;//S2è·å¾—
+    strcpy(s3_setup_msg.start_point_npt,"3000");//S2è·å¾—
+    strcpy(s3_setup_msg.policy,"priority=1");//S2è·å¾—
+    strcpy(s3_setup_msg.inband_marker,"type=4;pidType=A;pidValue=01EE;dataType=T;insertDuration=10000;data=4002003030");//å¾…å®šï¼Œéƒ¨åˆ†ä»S2è·å¾—ï¼Œdataä»å“ªæ¥ï¼Ÿ
 
     s3_setup_msg.sdp_version = 0;
     strcpy(s3_setup_msg.email_add,"-");
     
-    sprintf(s3_setup_msg.ntp,"%lu",NTP_time(time(NULL)));//Éú³É»á»°NTPÊ±¼ä
+    sprintf(s3_setup_msg.ntp,"%lu",NTP_time(time(NULL)));//ç”Ÿæˆä¼šè¯NTPæ—¶é—´
     strcpy(s3_setup_msg.add_type,"IN");
     strcpy(s3_setup_msg.ip_version,"IP4");
     strcpy(s3_setup_msg.sm_ip,SM_IP);
     strcpy(s3_setup_msg.s," ");
-    s3_setup_msg.time[0] = 0;//»á»°¿ªÊ¼Ê±¼ä
-    s3_setup_msg.time[1] = 0;//»á»°½áÊøÊ±¼ä 0 0±íÊ¾ÓÀÔ¶¿ÉÓÃ
+    s3_setup_msg.time[0] = 0;//ä¼šè¯å¼€å§‹æ—¶é—´
+    s3_setup_msg.time[1] = 0;//ä¼šè¯ç»“æŸæ—¶é—´ 0 0è¡¨ç¤ºæ°¸è¿œå¯ç”¨
     strcpy(s3_setup_msg.provider_id,"comcast.com");//S2
     strcpy(s3_setup_msg.asset_id,"abcd1234567890123456");//S2
     s3_setup_msg.start_npt = 1000;//S2
@@ -199,139 +192,242 @@ int Tp_Setup(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
     ret=ConnectSock(&odrm_sd,ODRM_PORT,ODRM_IP);
     if (ret==-1) {
         sm_log(LVLDEBUG,SYS_INFO,"Connect odrm error\n");
-        /*
-        	´íÎó´¦Àí
-        */
+      	//é”™è¯¯å¤„ç†
         memset(sendbuf,0x00,1024);
-        rtsp_err_res_encode(RTSP_ResponseCode_ODRMSetupFailed_NoResponse,s1_setup_msg.cseq,sendbuf);//ÏòSTB±¨´í£ºÁ¬½ÓODRMÊ§°Ü
-        ret = rtsp_write(OC_sd,sendbuf,strlen(sendbuf)+1);//ÏòSTB·¢ËÍERRORÏûÏ¢
+        rtsp_err_res_encode(RTSP_ResponseCode_ODRMSetupFailed_NoResponse,s1_setup_msg.cseq,sendbuf);//å‘STBæŠ¥é”™ï¼šè¿æ¥ODRMå¤±è´¥
+        ret = rtsp_write(OC_sd,sendbuf,strlen(sendbuf)+1);//å‘STBå‘é€ERRORæ¶ˆæ¯
     	sm_log(LVLDEBUG,SYS_INFO,"setup send2oc msg:%s, len:%d\n",sendbuf,ret);   
         return -1;
     }
-    ret = rtsp_write(odrm_sd,sendbuf,strlen(sendbuf)+1);//ÏòODRM·¢ËÍSETUPÏûÏ¢
+    ret = rtsp_write(odrm_sd,sendbuf,strlen(sendbuf)+1);//å‘ODRMå‘é€SETUPæ¶ˆæ¯
     sm_log(LVLDEBUG,SYS_INFO,"setup send2odrm msg:%s, len:%d\n",sendbuf,ret);
-//½ÓÊÕODRM·¢»ØµÄSETUP RESPONSE
+//æ¥æ”¶ODRMå‘å›çš„SETUP RESPONSE
     memset(recvbuf,0x00,1024);
-    ret = rtsp_read(odrm_sd,recvbuf,1024);//½ÓÊÕODRM·¢»ØµÄSETUP RESPONSE  
+    ret = rtsp_read(odrm_sd,recvbuf,1024);//æ¥æ”¶ODRMå‘å›çš„SETUP RESPONSE  
     sm_log(LVLDEBUG,SYS_INFO,"setup recv from odrm res:%s, len:%d\n",recvbuf,ret);
     memset(&s3_setup_res,0x00,sizeof(S3_SETUP_RES));
-    rtsp_s3_setup_res_parse(recvbuf,&s3_setup_res);//½âÎöODRM·¢¸øSMµÄSETUP RESPONSEÏûÏ¢ 
-	/*
-		¶Ôodrm·¢À´µÄsetup response½øĞĞ´íÎó´¦Àí
-	*/
-	//½«ÓëODRMµÄ»á»°ĞÅÏ¢Èë¿â
+    rtsp_s3_setup_res_parse(recvbuf,&s3_setup_res);//è§£æODRMå‘ç»™SMçš„SETUP RESPONSEæ¶ˆæ¯ 
+	//å¯¹odrmå‘æ¥çš„setup responseè¿›è¡Œé”™è¯¯å¤„ç†
+	//å°†ä¸ODRMçš„ä¼šè¯ä¿¡æ¯å…¥åº“
 	//snprintf(sql_cmd,512,"INSERT INTO SM_S6 VALUES('%s',%llu,'%s','%s','%s','%s','%s','%s','%s','%s',%llu,'%s','%s',%d,'%s','%s','%s','%s','%s','%s')", \
 	//					 ondemandsession,s6_setup_res.session,s6_setup_msg.ip,s6_setup_msg.session_group,s6_setup_msg.encryption_type,\
 	//					 s6_setup_msg.cas_id,s6_setup_msg.encrypt_control,s6_setup_msg.policy,s6_setup_msg.inband_marker,s6_setup_res.embedded_encryptor,\
 	//					 s6_setup_msg.qam_info[0].bandwidth,s6_setup_res.client,s6_setup_res.destination,s6_setup_res.client_port,\
 	//					 s6_setup_res.qam_destination,s6_setup_res.qam_name,s6_setup_res.qam_group,s6_setup_res.modulation,s6_setup_res.edge_input_group,"SETUP");    
-	memset(sql_cmd,0x00,sizeof(sql_cmd));
-	snprintf(sql_cmd,512,"INSERT INTO SM_S3 VALUES('%s',%llu,'%s',%d,'%s','%s','%s',%d,'%s','%s','%s','%s','%s',%d,'%s',%d,%llu,'%s',%d,%d,'%s','%s',%d,%d,%llu,'%s','%s','%s','%s',%d,%llu,'%s')",\
-						 ondemandsession,s3_setup_res.session,s3_setup_msg.odrm_ip,s3_setup_msg.odrm_port,s3_setup_res.sop_group,s3_setup_res.sop,\
-						 s3_setup_msg.session_group,s3_setup_msg.start_point_slot,s3_setup_msg.start_point_npt,s3_setup_msg.policy,s3_setup_msg.inband_marker,\
-						 s3_setup_res.client,s3_setup_res.destination,s3_setup_res.client_port,s3_setup_res.source,s3_setup_res.server_port,s3_setup_res.bandwidth,\
-						 s3_setup_msg.sm_ip,s3_setup_msg.time[0],s3_setup_msg.time[1],s3_setup_msg.provider_id,s3_setup_msg.asset_id,s3_setup_msg.start_npt,s3_setup_msg.stop_npt,\
-						 s3_setup_res.ss_session,s3_setup_res.ntp,s3_setup_res.ss_ip,s3_setup_res.protocol,s3_setup_res.host,s3_setup_res.port,s3_setup_res.stream_handle,"SETUP");    
-	cmd = sql_cmd;
-	stmt->executeUpdate(cmd.c_str());
-	stmt->executeUpdate("commit");
-    
+	//memset(sql_cmd,0x00,sizeof(sql_cmd));
+	//snprintf(sql_cmd,512,"INSERT INTO SM_S3 VALUES('%s',%llu,'%s',%d,'%s','%s','%s',%d,'%s','%s','%s','%s','%s',%d,'%s',%d,%llu,'%s',%d,%d,'%s','%s',%d,%d,%llu,'%s','%s','%s','%s',%d,%llu,'%s')",\
+	//					 ondemandsession,s3_setup_res.session,s3_setup_msg.odrm_ip,s3_setup_msg.odrm_port,s3_setup_res.sop_group,s3_setup_res.sop,\
+	//					 s3_setup_msg.session_group,s3_setup_msg.start_point_slot,s3_setup_msg.start_point_npt,s3_setup_msg.policy,s3_setup_msg.inband_marker,\
+	//					 s3_setup_res.client,s3_setup_res.destination,s3_setup_res.client_port,s3_setup_res.source,s3_setup_res.server_port,s3_setup_res.bandwidth,\
+	//					 s3_setup_msg.sm_ip,s3_setup_msg.time[0],s3_setup_msg.time[1],s3_setup_msg.provider_id,s3_setup_msg.asset_id,s3_setup_msg.start_npt,s3_setup_msg.stop_npt,\
+	//					 s3_setup_res.ss_session,s3_setup_res.ntp,s3_setup_res.ss_ip,s3_setup_res.protocol,s3_setup_res.host,s3_setup_res.port,s3_setup_res.stream_handle,"SETUP");    
+	//cmd = sql_cmd;
+	//stmt->executeUpdate(cmd.c_str());
+	//stmt->executeUpdate("commit");
+*/
+//ä¸ASMå»ºç«‹ä¼šè¯
+    if(s1_setup_msg.app_id != NULL){
+        memset(&s7_setup_msg,0x00,sizeof(S7_SETUP_MSG));
+        strcpy(s7_setup_msg.asm_ip,ASM_IP);
+        s7_setup_msg.asm_port = ASM_PORT;
+        s7_setup_msg.cseq = sm2asm_cseq;
+        strcpy(s7_setup_msg.require,RTSP_S7_REQUIRE);
+        strcpy(s7_setup_msg.session_group,SESSION_GRUOP);//è‡ªå·±è®¾å®šã€ä¸»è¦ç”¨æ¥getpramateræ—¶è·å–sessionç»„çš„ä¿¡æ¯ï¼Œæ¯ä¸ªSMä¸€ä¸ªç»„
+        strcpy(s7_setup_msg.ondemandsessionid,ondemandsession);
+        strcpy(s7_setup_msg.policy,"priority=1");//S2
+        strcpy(s7_setup_msg.app_id, s1_setup_msg.app_id);
+        s7_setup_msg.app_type = s1_setup_msg.app_type;
+        //strcpy(s7_setup_msg.ss.client, s3_setup_res.client);
+        strcpy(s7_setup_msg.ss.client, s1_setup_msg.qam[0].client);
+        //strcpy(s7_setup_msg.ss.destination, s3_setup_res.destination);
+        strcpy(s7_setup_msg.ss.destination, "127.0.0.1");
+        //s7_setup_msg.ss.client_port = s3_setup_res.client_port;
+        s7_setup_msg.ss.client_port = SS_PORT;
+        //s7_setup_msg.ss.bandwidth = s3_setup_res.bandwidth;      
+        s7_setup_msg.ss.bandwidth = 2700000;
 
-//ÏòSTB·¢ËÍsetup responseÏûÏ¢
-    //Éú³ÉËæ»úsessionºÅ
-	memset(&s1_setup_res,0x00,sizeof(S1_SETUP_RES));	
+        fprintf(stderr, "connect to asm...\n");
+        ret=ConnectSock(&asm_sd,ASM_PORT,ASM_IP);//åˆ›å»ºä¸ASMçš„è¿æ¥
+        if (ret==-1) {
+	    fprintf(stderr, "connect to asm error...\n");
+            sm_log(LVLDEBUG,SYS_INFO,"Connect asm error\n");
+            
+            //é”™è¯¯å¤„ç†
+            memset(sendbuf,0x00,1024);
+            rtsp_err_res_encode(RTSP_ResponseCode_ASMSetupFailed_NoResponse,s1_setup_msg.cseq,sendbuf);//å‘STBæŠ¥é”™ï¼šè¿æ¥ASMå¤±è´¥
+            ret = rtsp_write(OC_sd,sendbuf,strlen(sendbuf)+1);//å‘STBå‘é€ERRORæ¶ˆæ¯
+        	sm_log(LVLDEBUG,SYS_INFO,"setup send2oc msg:%s, len:%d\n",sendbuf,ret);        
+            return -1;
+        }
+
+        fprintf(stderr, "connect to asm success...\n");
+        memset(sendbuf,0x00,1024);		
+        fprintf(stderr, "msg to S7 encode\n");
+        rtsp_s7_setup_msg_encode(s7_setup_msg,sendbuf);
+        fprintf(stderr, "send msg to S7\n");
+        ret = rtsp_write(asm_sd,sendbuf,strlen(sendbuf)+1);
+        sm_log(LVLDEBUG,SYS_INFO,"setup send2asm msg:%s, len:%d\n",sendbuf,ret);
+//æ¥    æ”¶ASMå‘å›çš„SETUP RESPONSE
+        memset(recvbuf,0x00,1024);    
+        ret = rtsp_read(asm_sd,recvbuf,1024) ;
+        fprintf(stderr, "read msg from S7 done\n");
+        sm_log(LVLDEBUG,SYS_INFO,"setup recv from asm res:%s, len:%d\n",recvbuf,ret);
+   
+        memset(&s7_setup_res,0x00,sizeof(S7_SETUP_RES));
+        rtsp_s7_setup_res_parse(recvbuf,&s7_setup_res);
+        fprintf(stderr, "parse msg from S7 done\n");
+
+        char *numstr;
+        sprintf(numstr, "%llu", s7_setup_res.session);
+        reply = (redisReply*)redisCommand(c,"SET %s %s", ondemandsession, numstr);
+        freeReplyObject(reply);
+        redisFree(c);
+	    /*
+
+	    	å¯¹asmå‘æ¥çš„setup responseè¿›è¡Œé”™è¯¯å¤„ç†
+	    */
+	    //å°†ä¸ASMçš„ä¼šè¯ä¿¡æ¯å…¥åº“
+	    //snprintf(sql_cmd,512,"INSERT INTO SM_S7 VALUES('%s',%llu,'%s','%s','%s','%s','%s','%s','%s','%s',%llu,'%s','%s',%d,'%s','%s','%s','%s','%s','%s')", \
+	    //					 ondemandsession,s7_setup_res.session,s7_setup_msg.ip,s7_setup_msg.session_group,s7_setup_msg.encryption_type,\
+
+	    //					 s7_setup_msg.cas_id,s7_setup_msg.encrypt_control,s7_setup_msg.policy,s7_setup_msg.inband_marker,s7_setup_res.embedded_encryptor,\
+	    //					 s7_setup_msg.qam_info[0].bandwidth,s7_setup_res.client,s7_setup_res.destination,s7_setup_res.client_port,\
+	    //					 s7_setup_res.qam_destination,s7_setup_res.qam_name,s7_setup_res.qam_group,s7_setup_res.modulation,s7_setup_res.edge_input_group,"SETUP");    
+	//cmd = sql_cmd;
+	//stmt->executeUpdate(cmd.c_str());
+	//stmt->executeUpdate("commit");
+    }
+	
+//å‘STBå‘é€setup responseæ¶ˆæ¯
+    //ç”Ÿæˆéšæœºsessionå·
+    memset(&s1_setup_res,0x00,sizeof(S1_SETUP_RES));	
     s1_setup_res.cseq = s1_setup_msg.cseq;
     s1_setup_res.session = oc2sm_session;
-    strcpy(s1_setup_res.destination,s6_setup_res.qam_destination);
+    
+    strcpy(s1_setup_res.destination, "127.0.0.1");
     strcpy(s1_setup_res.ondemand_session_id,ondemandsession);
     strcpy(s1_setup_res.client_session_id,s1_setup_msg.client_session_id);
-    strcpy(s1_setup_res.emm_data,"40203F21A5");//´ı¶¨
+    strcpy(s1_setup_res.emm_data,"40203F21A5");//å¾…å®š
     s1_setup_res.sdp_version = 0;
     strcpy(s1_setup_res.email_add,"-");
-    s1_setup_res.ss_session = s3_setup_res.ss_session;
-    strcpy(s1_setup_res.ntp,s3_setup_res.ntp);
+    
     strcpy(s1_setup_res.add_type,"IN");
     strcpy(s1_setup_res.ip_version,"IP4");
-    strcpy(s1_setup_res.ss_ip,s3_setup_res.ss_ip);
+   
     strcpy(s1_setup_res.s," ");
-    s1_setup_res.time[0] = s3_setup_res.time[0];
-    s1_setup_res.time[1] = s3_setup_res.time[1];
-    strcpy(s1_setup_res.protocol,s3_setup_res.protocol);
-    strcpy(s1_setup_res.host,s3_setup_res.host);
-    s1_setup_res.port = s3_setup_res.port;
-    s1_setup_res.stream_handle = s3_setup_res.stream_handle;
+   
     strcpy(s1_setup_res.c,"IN IP4 0.0.0.0");
     strcpy(s1_setup_res.m,"video 0 udp MP2T");
+    if(s1_setup_msg.app_id == NULL) {
+        //strcpy(s1_setup_res.destination,s6_setup_res.qam_destination);
+        //s1_setup_res.ss_session = s3_setup_res.ss_session;
+        //strcpy(s1_setup_res.ntp,s3_setup_res.ntp);
+        //strcpy(s1_setup_res.ss_ip,s3_setup_res.ss_ip);
+        //s1_setup_res.time[0] = s3_setup_res.time[0];
+        //s1_setup_res.time[1] = s3_setup_res.time[1];
+        //strcpy(s1_setup_res.protocol,s3_setup_res.protocol);
+        //strcpy(s1_setup_res.host,s3_setup_res.host);
+        //s1_setup_res.port = s3_setup_res.port;
+        //s1_setup_res.stream_handle = s3_setup_res.stream_handle;
+    }
+    else{
+        //strcpy(s1_setup_res.destination,s6_setup_res.qam_destination);
+        strcpy(s1_setup_res.destination,"");
+        //s1_setup_res.ss_session = s3_setup_res.ss_session;
+        s1_setup_res.ss_session = -1;
+        strcpy(s1_setup_res.ntp,"");
+        strcpy(s1_setup_res.ss_ip,"");
+        s1_setup_res.time[0] = 0;
+        s1_setup_res.time[1] = 0;
+        //strcpy(s1_setup_res.protocol,s3_setup_res.protocol);
+        strcpy(s1_setup_res.protocol, "lscp");
+        strcpy(s1_setup_res.host,s7_setup_res.as.ip);
+        s1_setup_res.port = s7_setup_res.as.downPort;
+        s1_setup_res.stream_handle = s7_setup_res.stream_handle;
+    }
 
     memset(sendbuf,0x00,1024);
-    rtsp_s1_setup_res_encode(s1_setup_res,sendbuf);//´´½¨SM·¢¸øSTBµÄsetup responseÏûÏ¢
-    ret = rtsp_write(OC_sd,sendbuf,strlen(sendbuf)+1);//ÏòSTB·¢ËÍSETUPÏûÏ¢
+    rtsp_s1_setup_res_encode(s1_setup_res,sendbuf);//åˆ›å»ºSMå‘ç»™STBçš„setup responseæ¶ˆæ¯
+    ret = rtsp_write(OC_sd,sendbuf,strlen(sendbuf)+1);//å‘STBå‘é€SETUPæ¶ˆæ¯
     sm_log(LVLDEBUG,SYS_INFO,"setup send2oc msg:%s, len:%d\n",sendbuf,ret);
     	
-    //½«ÓëSTBµÄ»á»°ĞÅÏ¢Èë¿â
-    snprintf(sql_cmd,512,"INSERT INTO SM_S1 VALUES('%s','%s',%llu,'%s',%d,'%s','%s','%s','%s',%llu,'%s','%s',%d,%d,'%s','%s',%d,%llu,'%s')",\
-    					 ondemandsession,s1_setup_res.client_session_id,s1_setup_res.session,s1_setup_msg.sm_ip,s1_setup_msg.sm_port,\
-    					 s1_setup_msg.purchase_token,s1_setup_msg.server_id,s1_setup_res.emm_data,s1_setup_res.destination,\
-    					 s1_setup_res.ss_session,s1_setup_res.ntp,s1_setup_res.ss_ip,s1_setup_res.time[0],s1_setup_res.time[1],\
-    					 s1_setup_res.protocol,s1_setup_res.host,s1_setup_res.port,s1_setup_res.stream_handle,"SETUP");    
-	cmd = sql_cmd;
-	stmt->executeUpdate(cmd.c_str());
-    stmt->executeUpdate("commit");
+    //å°†ä¸STBçš„ä¼šè¯ä¿¡æ¯å…¥åº“
+    //snprintf(sql_cmd,512,"INSERT INTO SM_S1 VALUES('%s','%s',%llu,'%s',%d,'%s','%s','%s','%s',%llu,'%s','%s',%d,%d,'%s','%s',%d,%llu,'%s')",\
+    //					 ondemandsession,s1_setup_res.client_session_id,s1_setup_res.session,s1_setup_msg.sm_ip,s1_setup_msg.sm_port,\
+    //					 s1_setup_msg.purchase_token,s1_setup_msg.server_id,s1_setup_res.emm_data,s1_setup_res.destination,\
+    //					 s1_setup_res.ss_session,s1_setup_res.ntp,s1_setup_res.ss_ip,s1_setup_res.time[0],s1_setup_res.time[1],\
+    //					 s1_setup_res.protocol,s1_setup_res.host,s1_setup_res.port,s1_setup_res.stream_handle,"SETUP");    
+	//cmd = sql_cmd;
+	//stmt->executeUpdate(cmd.c_str());
+    //stmt->executeUpdate("commit");
 
-//¹Ø±ÕÊı¾İ¿âÁ¬½Ó
-	conn->terminateStatement(stmt);
-    p_args->connPool->releaseConnection(conn);
+//å…³//é—­æ•°æ®åº“è¿æ¥
+	//conn->terminateStatement(stmt);
+    //p_args->connPool->releaseConnection(conn);
     return 0;
 }
 
 int Tp_Teardown(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
 {
+    redisContext *c;
+    redisReply *reply;
+    const char *hostname = "127.0.0.1";
+    int port = 6379;
+    struct timeval timeout = {1, 500000};
+    c = redisConnectWithTimeout(hostname, port, timeout);
+
     S1_TEARDOWN_MSG s1_tear_msg;
     S1_TEARDOWN_RES s1_tear_res;
-    S3_TEARDOWN_MSG s3_tear_msg;
-    S3_TEARDOWN_RES s3_tear_res;
-    S6_TEARDOWN_MSG1 s6_tear_msg1;
-    S6_TEARDOWN_RES2 s6_tear_res2;
+    //S3_TEARDOWN_MSG s3_tear_msg;
+    //S3_TEARDOWN_RES s3_tear_res;
+    //S6_TEARDOWN_MSG1 s6_tear_msg1;
+    //S6_TEARDOWN_RES2 s6_tear_res2;
+    S7_TEARDOWN_MSG s7_tear_msg;
+    S7_TEARDOWN_RES s7_tear_res;
 
     int erm_sd = -1;
     int odrm_sd = -1;
+    int asm_sd = -1;
     int ret = -1;
     char sendbuf[1024] = "";
     char recvbuf[1024] = "";
-    char sql_cmd[256] = "";//´æ´¢sqlÃüÁî
-    string cmd;
+    //char sql_cmd[256] = "";//å­˜å‚¨sqlå‘½ä»¤
+    //string cmd;
     int oc2sm_session = 0;
-	int odrm2sm_session = 0;//odrmºÍsmÖ®¼äµÄsession id
-	int erm2sm_session = 0;//ermºÍsmÖ®¼äµÄsession id
-	int sm2erm_cseq = 0;
-	int sm2odrm_cseq = 0;
+	//int odrm2sm_session = 0;//odrmå’Œsmä¹‹é—´çš„session id
+	//int erm2sm_session = 0;//ermå’Œsmä¹‹é—´çš„session id
+    int asm2sm_session = 0;
+	//int sm2erm_cseq = 0;
+	//int sm2odrm_cseq = 0;
+    int sm2asm_cseq = 0;
 	struct timeval now_tmp;
 	
-//Á¬½ÓÊı¾İ¿â   
-    Connection *conn = p_args->connPool->getAnyTaggedConnection();
-	Statement *stmt = conn->createStatement();
+//è¿æ¥æ•°æ®åº“   
+    //Connection *conn = p_args->connPool->getAnyTaggedConnection();
+	//Statement *stmt = conn->createStatement();
 
-//Éú³ÉsessionºÍcseq	
+//ç”Ÿæˆsessionå’Œcseq	
 	gettimeofday(&now_tmp, 0);
 	srand((now_tmp.tv_sec * 1000) + (now_tmp.tv_usec / 1000));
-	oc2sm_session = 1 + (int) (10.0 * rand() / (100000 + 1.0));//Éú³ÉS1½Ó¿Úsession id
-	sm2erm_cseq = 1 + (int) (1.0 * rand() / (1000000 + 1.0));//Éú³ÉsmºÍermÖ®¼äµÄcseq
-	sm2odrm_cseq = 1 + (int) (1.0 * rand() / (1000000 + 1.0));//Éú³ÉsmºÍodrmÖ®¼äµÄcseq
+	oc2sm_session = 1 + (int) (10.0 * rand() / (100000 + 1.0));//ç”ŸæˆS1æ¥å£session id
+	//sm2erm_cseq = 1 + (int) (1.0 * rand() / (100000 + 1.0));//ç”Ÿæˆsmå’Œermä¹‹é—´çš„cseq
+	//sm2odrm_cseq = 1 + (int) (1.0 * rand() / (100000 + 1.0));//ç”Ÿæˆsmå’Œodrmä¹‹é—´çš„cseq
+    sm2asm_cseq = 1 + (int) (1.0 * rand() / (100000 + 1.0));
 
-//½âÎöSTB·¢¸øSMµÄTEARDOWNÏûÏ¢
-    rtsp_s1_teardown_msg_parse(S1_msg,&s1_tear_msg);//½âÎöSTB·¢¸øSMµÄTEARDOWNÏûÏ¢
+//è§£æSTBå‘ç»™SMçš„TEARDOWNæ¶ˆæ¯
+    rtsp_s1_teardown_msg_parse(S1_msg,&s1_tear_msg);//è§£æSTBå‘ç»™SMçš„TEARDOWNæ¶ˆæ¯
 
 
 	
-//³·ÏúÓëODRMµÄ»á»°
-	//Êı¾İ¿â²éÑ¯Ö¸¶¨ÒµÎñondemandsessionidµÄS3½Ó¿ÚµÄ»á»°ºÅ    
-    snprintf(sql_cmd,256,"SELECT SESSION_ID FROM SM_S3 WHERE ONDEMAND_SESSION_ID='%s'",s1_tear_msg.ondemand_session_id);
-    cmd = sql_cmd;
-    ResultSet *rs = stmt->executeQuery(cmd.c_str());
-    rs->next();
-    odrm2sm_session = (int)rs->getNumber(1);
+//æ’¤é”€ä¸ODRMçš„ä¼šè¯
+	//æ•°æ®åº“æŸ¥è¯¢æŒ‡å®šä¸šåŠ¡ondemandsessionidçš„S3æ¥å£çš„ä¼šè¯å·    
+    //snprintf(sql_cmd,256,"SELECT SESSION_ID FROM SM_S3 WHERE ONDEMAND_SESSION_ID='%s'",s1_tear_msg.ondemand_session_id);
+    //cmd = sql_cmd;
+    //ResultSet *rs = stmt->executeQuery(cmd.c_str());
+    //rs->next();
+    //odrm2sm_session = (int)rs->getNumber(1);
     //cout << odrm2sm_session << endl;
-    
+    /*
     strcpy(s3_tear_msg.odrm_ip,ODRM_IP);
     s3_tear_msg.odrm_port = ODRM_PORT;
     s3_tear_msg.cseq = sm2odrm_cseq;
@@ -344,33 +440,31 @@ int Tp_Teardown(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
     ret=ConnectSock(&odrm_sd,ODRM_PORT,ODRM_IP);
     if (ret==-1) {
         sm_log(LVLDEBUG,SYS_INFO,"Connect odrm error");
-        /*
-        	´íÎó´¦Àí
-        */
+       	//é”™è¯¯å¤„ç†
         return -1;
     }
-    ret = rtsp_write(odrm_sd,sendbuf,strlen(sendbuf)+1);//ÏòODRM·¢ËÍteardownÏûÏ¢
+    ret = rtsp_write(odrm_sd,sendbuf,strlen(sendbuf)+1);//å‘ODRMå‘é€teardownæ¶ˆæ¯
     sm_log(LVLDEBUG,SYS_INFO,"teardown send2odrm msg:%s, len:%d\n",sendbuf,ret);
-    ret = rtsp_read(odrm_sd,recvbuf,1024);//½ÓÊÕODRM·¢»ØµÄteardown response
+    ret = rtsp_read(odrm_sd,recvbuf,1024);//æ¥æ”¶ODRMå‘å›çš„teardown response
     sm_log(LVLDEBUG,SYS_INFO,"teardown recv from odrm res:%s, len:%d\n",recvbuf,ret);
-    //½âÎöodrm·¢À´ µÄteardown response
+    //è§£æodrmå‘æ¥ çš„teardown response
     rtsp_s3_teardown_res_parse(recvbuf,&s3_tear_res);
-	//ĞŞ¸ÄÊı¾İ¿â×´Ì¬
-	snprintf(sql_cmd,256,"UPDATE SM_S3 SET STATUS='TEARDOWN' WHERE ONDEMAND_SESSION_ID='%s'",s1_tear_msg.ondemand_session_id);    
-	cmd = sql_cmd;
-	stmt->executeUpdate(cmd.c_str());
-    stmt->executeUpdate("commit");    
-
+	//ä¿®æ”¹æ•°æ®åº“çŠ¶æ€
+	//snprintf(sql_cmd,256,"UPDATE SM_S3 SET STATUS='TEARDOWN' WHERE ONDEMAND_SESSION_ID='%s'",s1_tear_msg.ondemand_session_id);    
+	//cmd = sql_cmd;
+	//stmt->executeUpdate(cmd.c_str());
+    //stmt->executeUpdate("commit");    
+*/
 
     
-//³·ÏúÓëERMµÄ»á»°£¨»ı¼«Ä£Ê½£©
-	//Êı¾İ¿â²éÑ¯Ö¸¶¨ÒµÎñondemandsessionidµÄS3½Ó¿ÚµÄ»á»°ºÅ    
-    snprintf(sql_cmd,256,"SELECT SESSION_ID FROM SM_S6 WHERE ONDEMAND_SESSION_ID='%s'",s1_tear_msg.ondemand_session_id);
-    cmd = sql_cmd;
-    rs = stmt->executeQuery(cmd.c_str());
-    rs->next();
-    erm2sm_session = (int)rs->getNumber(1);
-    
+//æ’¤é”€ä¸ERMçš„ä¼šè¯ï¼ˆç§¯ææ¨¡å¼ï¼‰
+	//æ•°æ®åº“æŸ¥è¯¢æŒ‡å®šä¸šåŠ¡ondemandsessionidçš„S3æ¥å£çš„ä¼šè¯å·    
+    //snprintf(sql_cmd,256,"SELECT SESSION_ID FROM SM_S6 WHERE ONDEMAND_SESSION_ID='%s'",s1_tear_msg.ondemand_session_id);
+    //cmd = sql_cmd;
+    //rs = stmt->executeQuery(cmd.c_str());
+    //rs->next();
+    //erm2sm_session = (int)rs->getNumber(1);
+/*    
     strcpy(s6_tear_msg1.rtsp_ip,ERM_IP);
     s6_tear_msg1.cseq = sm2erm_cseq;
     s6_tear_msg1.reason = s1_tear_msg.reason;
@@ -378,49 +472,73 @@ int Tp_Teardown(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
     strcpy(s6_tear_msg1.ondemandsessionid,s1_tear_msg.ondemand_session_id);
     
     memset(sendbuf,0x00,1024);
-    rtsp_s6_teardown_msg_encode(s6_tear_msg1,sendbuf);//´´½¨ÏòSTB·¢ËÍµÄteardown response
+    rtsp_s6_teardown_msg_encode(s6_tear_msg1,sendbuf);//åˆ›å»ºå‘STBå‘é€çš„teardown response
     
     ret=ConnectSock(&erm_sd,ERM_PORT,ERM_IP);
     if (ret==-1) {
         sm_log(LVLDEBUG,SYS_INFO,"Connect erm error");
-        /*
-        	´íÎó´¦Àí
-        */
+       	//é”™è¯¯å¤„ç†
         return -1;
     }
-    ret = rtsp_write(erm_sd,sendbuf,strlen(sendbuf)+1);//ÏòERM·¢ËÍSETUPÏûÏ¢
+    ret = rtsp_write(erm_sd,sendbuf,strlen(sendbuf)+1);//å‘ERMå‘é€SETUPæ¶ˆæ¯
     sm_log(LVLDEBUG,SYS_INFO,"teardown send2erm msg:%s, len:%d\n",sendbuf,ret);
     memset(recvbuf,0x00,1024);
-    ret = rtsp_read(erm_sd,recvbuf,1024);//½ÓÊÕERM·¢»ØµÄSETUP RESPONSE
+    ret = rtsp_read(erm_sd,recvbuf,1024);//æ¥æ”¶ERMå‘å›çš„SETUP RESPONSE
     sm_log(LVLDEBUG,SYS_INFO,"teardown recv from erm res:%s, len:%d\n",recvbuf,ret);
-    //½âÎöERM·¢¸øSMµÄTeardown Response
+    //è§£æERMå‘ç»™SMçš„Teardown Response
 	rtsp_s6_teardown_res_parse(recvbuf,&s6_tear_res2);
-	   
-    //ĞŞ¸ÄÊı¾İ¿â×´Ì¬
-	snprintf(sql_cmd,256,"UPDATE SM_S6 SET STATUS='TEARDOWN' WHERE ONDEMAND_SESSION_ID='%s'",s1_tear_msg.ondemand_session_id);    
-	cmd = sql_cmd;
-	stmt->executeUpdate(cmd.c_str());
-    stmt->executeUpdate("commit"); 
+*/	   
+    //ä¿®æ”¹æ•°æ®åº“çŠ¶æ€
+	//snprintf(sql_cmd,256,"UPDATE SM_S6 SET STATUS='TEARDOWN' WHERE ONDEMAND_SESSION_ID='%s'",s1_tear_msg.ondemand_session_id);    
+	//cmd = sql_cmd;
+	//stmt->executeUpdate(cmd.c_str());
+    //stmt->executeUpdate("commit"); 
 
-//ÏòSTB·¢ËÍteardown response
-    s1_tear_res.err_code = 200;//×Ô¼ºÉèÖÃ£¬×¢Òâ³ö´í´¦Àí
+    reply = (redisReply*)redisCommand(c,"GET %s", (char*)s1_tear_msg.ondemand_session_id);
+    asm2sm_session = atoi(reply->str);
+    freeReplyObject(reply);
+    strcpy(s7_tear_msg.asm_ip, ASM_IP);
+    s7_tear_msg.asm_port = ASM_PORT;
+    s7_tear_msg.cseq = sm2asm_cseq;
+    strcpy(s7_tear_msg.require, RTSP_S7_REQUIRE);
+    s7_tear_msg.reason = s1_tear_msg.reason;
+    s7_tear_msg.session = asm2sm_session;
+    strcpy(s7_tear_msg.ondemandsessionid, s1_tear_msg.ondemand_session_id);
+
+    memset(sendbuf, 0x00, 1024);
+    rtsp_s7_teardown_msg_encode(s7_tear_msg, sendbuf);
+
+    ret = ConnectSock(&asm_sd, ASM_PORT, ASM_IP);
+    if(ret == -1) {
+        sm_log(LVLDEBUG,SYS_INFO,"Connect asm error");
+        return -1;
+    }
+    ret = rtsp_write(asm_sd,sendbuf,strlen(sendbuf)+1);
+    sm_log(LVLDEBUG,SYS_INFO,"teardown send2asm msg:%s, len:%d\n",sendbuf,ret);
+    memset(recvbuf,0x00,1024);
+    ret = rtsp_read(asm_sd,recvbuf,1024);
+    sm_log(LVLDEBUG,SYS_INFO,"teardown recv from asm res:%s, len:%d\n",recvbuf,ret);
+    rtsp_s7_teardown_res_parse(recvbuf, &s7_tear_res);
+
+//å‘STBå‘é€teardown response
+    s1_tear_res.err_code = 200;//è‡ªå·±è®¾ç½®ï¼Œæ³¨æ„å‡ºé”™å¤„ç†
     s1_tear_res.cseq = s1_tear_msg.cseq;
     s1_tear_res.session = oc2sm_session;
     strcpy(s1_tear_res.ondemand_session_id,s1_tear_msg.ondemand_session_id);
     strcpy(s1_tear_res.client_session_id,s1_tear_msg.client_session_id);
 	memset(sendbuf,0x00,1024);
     rtsp_s1_teardown_res_encode(s1_tear_res,sendbuf);
-    ret = rtsp_write(OC_sd,sendbuf,strlen(sendbuf)+1);//ÏòSTB·¢ËÍteardown responseÏûÏ¢
+    ret = rtsp_write(OC_sd,sendbuf,strlen(sendbuf)+1);//å‘STBå‘é€teardown responseæ¶ˆæ¯
     sm_log(LVLDEBUG,SYS_INFO,"teardown send2oc res:%s, len:%d\n",sendbuf,ret);
-    //ĞŞ¸ÄÊı¾İ¿â×´Ì¬
-	snprintf(sql_cmd,256,"UPDATE SM_S1 SET STATUS='TEARDOWN' WHERE ONDEMAND_SESSION_ID='%s'",s1_tear_msg.ondemand_session_id);    
-	cmd = sql_cmd;
-	stmt->executeUpdate(cmd.c_str());
-    stmt->executeUpdate("commit"); 
+    //ä¿®æ”¹æ•°æ®åº“çŠ¶æ€
+	//snprintf(sql_cmd,256,"UPDATE SM_S1 SET STATUS='TEARDOWN' WHERE ONDEMAND_SESSION_ID='%s'",s1_tear_msg.ondemand_session_id);    
+	//cmd = sql_cmd;
+	//stmt->executeUpdate(cmd.c_str());
+    //stmt->executeUpdate("commit"); 
 
-//¹Ø±ÕÊı¾İ¿âÁ¬½Ó
-	stmt->closeResultSet(rs);
-	conn->terminateStatement(stmt);
-    p_args->connPool->releaseConnection(conn);
+//å…³é—­æ•°æ®åº“è¿æ¥
+	//stmt->closeResultSet(rs);
+	//conn->terminateStatement(stmt);
+    //p_args->connPool->releaseConnection(conn);
     return 0;
 }
