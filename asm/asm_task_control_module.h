@@ -1,26 +1,32 @@
-#ifndef _erm_task_control_module_h
-#define _erm_task_control_module_h
-#include"asm_queuemanager.h"
+#ifndef SM_TASK_CONTROL_MODULE_H
+#define SM_TASK_CONTROL_MODULE_H
+
+#include "asm_queuemanager.h"
+#include "asmlog.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include<signal.h>
+#include <signal.h>
 #include <sys/wait.h>
-#include<unistd.h>
-#include<stdio.h>
-#include<pthread.h>
-#include<stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <pthread.h>
+#include <stdlib.h>
 
 #include <sys/mman.h>
 #include <string.h>
- #include <stropts.h>
+#include <stropts.h>
+#include <iostream>
+//#include <occi.h>
+using namespace std;
+//using namespace oracle::occi;
 
 //#pragma pack(1)
 #define LOCKFILE "./lockfile"
 #define LOCKDB "./lockdb"
 #define LOCKMODE (S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH)
-#define MMAPDIR "/home/orion/workspaces/c/erm/mmapdir"
+#define MMAPDIR "./mmapdir"
 #define write_lock(fd) lockfile((fd),F_WRLCK)
 #define write_unlock(fd) lockfile((fd),F_UNLCK)
 typedef void Sigfunc(int);
@@ -46,9 +52,16 @@ typedef struct{
 	char *pid_queue_addr;/*共享内存节点指针*/
 }process_info;
 
+typedef struct{
+	int i;
+	//StatelessConnectionPool *connPool;
+    char *connPool;
+}pthread_args;
+
 int lockfile(int fd,int type);
 int interproxy(int lockfd);
 int process_manager(int fr,int sr,int lockfd);
-void *pthread_R6(void *arg);
-void *pthread_Ermi(void *arg);
+void *pthread_SM(void *arg);
+
 #endif
+

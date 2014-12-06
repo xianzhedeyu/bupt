@@ -1,20 +1,4 @@
-/* 版本:v1.0
-
- * 作者:王传华
-
- * 创建时间:2010-08-23
-
- *修改记录:
-
- *程序说明:共享内存数据结构
-
- *输入参数: 无
-
- *输出参数: 无
-
- *返回值:无
-*/
-#include"erm_task_control_module.h"
+#include"asm_task_control_module.h"
 
 extern SOCKET_DATA S_pItem[ERM_MAXNUM];
 extern pthread_queue data[ERM_MAXNUM];

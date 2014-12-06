@@ -1,4 +1,0 @@
-RTSP/1.0 200 OK\r\n
-CSeq: 314\r\n
-Session: 47223344\r\n
-Transport: DOCSIS/QAM;unicast;bit_rate=3800000;qam_id=123;depi_mode=docsis_mpt;destination=172.2.2.2;modulation=256;taps=16;increment=8;J_83=Annex_B;channel_width=6\r\n\r\n

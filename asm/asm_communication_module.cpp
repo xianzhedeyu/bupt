@@ -1,5 +1,5 @@
-#include"erm_commnu_module.h"
-#include"ermlog.h"
+#include"asm_communication_module.h"
+#include"asmlog.h"
 
 int CreateSock(int* pSock, int nPort)
 {

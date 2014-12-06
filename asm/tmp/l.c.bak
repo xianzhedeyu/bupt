@@ -1,8 +1,0 @@
-SETUP rtsp://192.168.10.197/BBN.SZ.1011.1011 RTSP/1.0
-CSeq: 1
-ProvisionPort: 1
-Require: com.comcast.ngod.r6
-Transport: MP2T/DVBC/QAM;unicast;qam_destination=480000000.5;bandwidth=2700000;qam_name=BBN.SZ.1011.1011;client=FFFFFFFFFFFF,MP2T/DVBC/UDP;unicast;destination=192.168.10.243;client_port=261;source=0.0.0.0;server_port=0;client=FFFFFFFFFFFF
-ReportTrafficMismatch: 1
-InbandMarker:type=4;pidType=A;pidValue=01EE;dataType=T;insertDuration=10000;data=4002003030...
-JitterBuffer: 20

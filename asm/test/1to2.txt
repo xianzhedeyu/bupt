@@ -1,5 +1,0 @@
-SETUP rtsp://192.26.2.2 RTSP/1.0
-CSeq: 314
-Require: ermi
-Transport: DOCSIS/QAM;unicast;bit_rate=38000000;qam_id=456;depi_mode=docsis_mpt,DOCSIS/QAM;unicast;bit_rate=38000001;qam_id=123;depi_mode=docsis_mpt
-
