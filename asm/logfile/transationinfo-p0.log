@@ -92,4 +92,14 @@
 2014-12-06 20:06:19 IN asm_task_control_module.cpp-191L (-1220110528): DEBUG => interproxy read error2014-12-06 20:06:20 IN asm_task_control_module.cpp-182L (-1220110528): DEBUG => ++++++++++be accept
 2014-12-06 20:06:20 IN asm_task_control_module.cpp-184L (-1220110528): DEBUG => ==========af accept
 2014-12-06 20:06:20 IN asm_task_control_module.cpp-189L (-1220110528): DEBUG => **********af read buf: , len=-1
-2014-12-06 20:06:20 IN asm_task_control_module.cpp-191L (-1220110528): DEBUG => interproxy read error
+2014-12-06 20:06:20 IN asm_task_control_module.cpp-191L (-1220110528): DEBUG => interproxy read error2014-12-07 10:16:22 IN asm_task_control_module.cpp-182L (-1220298944): DEBUG => ++++++++++be accept
+2014-12-07 10:16:22 IN asm_task_control_module.cpp-184L (-1220298944): DEBUG => ==========af accept
+2014-12-07 10:16:22 IN asm_task_control_module.cpp-189L (-1220298944): DEBUG => **********af read buf: , len=-1
+2014-12-07 10:16:22 IN asm_task_control_module.cpp-191L (-1220298944): DEBUG => interproxy read error2014-12-07 10:16:22 IN asm_task_control_module.cpp-182L (-1220298944): DEBUG => ++++++++++be accept
+2014-12-07 10:16:23 IN asm_task_control_module.cpp-182L (-1220298944): DEBUG => ++++++++++be accept
+2014-12-07 10:16:23 IN asm_task_control_module.cpp-184L (-1220298944): DEBUG => ==========af accept
+2014-12-07 10:16:23 IN asm_task_control_module.cpp-189L (-1220298944): DEBUG => **********af read buf: , len=-1
+2014-12-07 10:16:23 IN asm_task_control_module.cpp-191L (-1220298944): DEBUG => interproxy read error2014-12-07 10:16:24 IN asm_task_control_module.cpp-182L (-1220298944): DEBUG => ++++++++++be accept
+2014-12-07 10:16:24 IN asm_task_control_module.cpp-184L (-1220298944): DEBUG => ==========af accept
+2014-12-07 10:16:24 IN asm_task_control_module.cpp-189L (-1220298944): DEBUG => **********af read buf: , len=-1
+2014-12-07 10:16:24 IN asm_task_control_module.cpp-191L (-1220298944): DEBUG => interproxy read error2014-12-07 10:30:12 IN asm_task_control_module.cpp-182L (-1220184256): DEBUG => ++++++++++be accept

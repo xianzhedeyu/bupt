@@ -14,12 +14,12 @@ int main() {
 	}
 	//DB_create();
 	//DB_initializtion();
-	pid = fork();
-	if (pid < 0) {
-		exit(1);
-	} else if (pid == 0) {
-//		as_msg_process();
-	}
+	//pid = fork();
+	//if (pid < 0) {
+	//	exit(1);
+	//} else if (pid == 0) {
+//	//	as_msg_process();
+	//}
 	interproxy(lockfd);
 	exit(0);
 }
