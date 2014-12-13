@@ -84,7 +84,6 @@ getLoadAvge(double load[],int n)
 		return -1;
 	}
 }
-/*
 int
 main(void)
 {
@@ -116,4 +115,3 @@ main(void)
 	}
 	return 0;
 }
-*/

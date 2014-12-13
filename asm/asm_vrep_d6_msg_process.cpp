@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <sys/socket.h>
 #include <string.h>
-#include "erm_vrep_d6_msg_process.h"
+#include "asm_vrep_d6_msg_process.h"
 #include "public_def.h"
 
 static int bytes2int(byte* b) //字节数组(4位)转化为int型,整型的低字节位是字节数组的高位
@@ -76,7 +76,7 @@ bool ParseOPEN(byte* VREP, OPEN &M_OPEN) //OPEN消息解析函数
 			fprintf(stderr, "M_capabilityCode:%d\n", M_OPEN.capability[CNum].M_capabilityCode);
 			M_OPEN.capability[CNum].M_capabilityLen = btos(VREP,begin+6);
 			fprintf(stderr, "M_capabilityLen:%d\n", M_OPEN.capability[CNum].M_capabilityLen);
-			if (M_OPEN.capability[CNum].M_capabilityCode == VREP_ID_D6_OPEN_CapabilityInformation_RouteTypesSupported) //如果属性是RouteTypesSupported，继续拆
+			if (M_OPEN.capability[CNum].M_capabilityCode == VREP_ID_D7_OPEN_CapabilityInformation_RouteTypesSupported) //如果属性是RouteTypesSupported，继续拆
 			{
 
 				restRTlen = M_OPEN.capability[CNum].M_capabilityLen;
@@ -93,7 +93,7 @@ bool ParseOPEN(byte* VREP, OPEN &M_OPEN) //OPEN消息解析函数
 				//byte* RT=(byte*)"Route Types Supported";
 				toByteArray(RTNum, M_OPEN.capability[CNum].M_capability); //此处值为Route Types Supported的个数
 			}
-			if (M_OPEN.capability[CNum].M_capabilityCode == VREP_ID_D6_OPEN_CapabilityInformation_SendReceiveCapability) //Send Receive Capability
+            else if (M_OPEN.capability[CNum].M_capabilityCode == VREP_ID_D7_OPEN_CapabilityInformation_SendReceiveCapability) //Send Receive Capability
 			{
 				byte* SendReceiveCapability;
 				SendReceiveCapability = VREP + begin + 8;
@@ -102,10 +102,29 @@ bool ParseOPEN(byte* VREP, OPEN &M_OPEN) //OPEN消息解析函数
 				M_OPEN.capability[CNum].M_capability[2] = SendReceiveCapability[2];
 				M_OPEN.capability[CNum].M_capability[3] = SendReceiveCapability[3]; //4字节
 			}
+            else if(M_OPEN.capability[CNum].M_capabilityCode == VREP_ID_D7_OPEN_CapabilityInformation_Memory)
+            {
+                byte* Memory;
+                Memory = VREP + begin + 8;
+                M_OPEN.capability[CNum].M_capability[0] = Memory[0];
+                M_OPEN.capability[CNum].M_capability[1] = Memory[1];
+                M_OPEN.capability[CNum].M_capability[2] = Memory[2];
+                M_OPEN.capability[CNum].M_capability[3] = Memory[3];
+            }
+            else if(M_OPEN.capability[CNum].M_capabilityCode == VREP_ID_D7_OPEN_CapabilityInformation_CPUS) 
+            {
+                byte* cpus;
+                cpus = VREP + begin + 8;
+                M_OPEN.capability[CNum].M_capability[0] = cpus[0];
+                M_OPEN.capability[CNum].M_capability[1] = cpus[1];
+                M_OPEN.capability[CNum].M_capability[2] = cpus[2];
+                M_OPEN.capability[CNum].M_capability[3] = cpus[3];
+            }
 			//	byte* CI=(byte*)"Capability Information";
 			toByteArray(CNum, M_OPEN.parameters[PNum].ParameterValue); //此处值为该Capability所在数组的位置
 			CNum++;
-		} else {
+		} 
+        else {
 			byte* ParameterValue = VREP + begin + 4;
 			//	byte M_ParameterValue[256];
 			for (i = 0; i < M_OPEN.parameters[PNum].SubParametersLen; i++) {
@@ -155,33 +174,6 @@ void InspectOPEN(OPEN &M_OPEN) //OPEN消息检查
 		cout << "There is a lack of Parameter 'Component Name' in this OPEN Message" << endl;
 }
 
-void HandlUnkownAttr(Attributes &attr) //未知参数处理
-{
-}
-void ParseRoutes(byte* Attr, short Len, Routes* routes, int &Num) //解析参数WithdrawnRoutes和ReachableRoutes
-{
-	//	Routes M_Routes[256];
-	short restlen = Len;
-	short sumlen = 0;
-	int RNum = 0; //
-	while (restlen > 0) {
-		int Rbegin = 6 * RNum + sumlen;
-		byte* M_Address;
-		routes[RNum].AddFamily = btoi(Attr,Rbegin);
-		routes[RNum].AppProtocol = btoi(Attr,Rbegin+2);
-		routes[RNum].AddLen = btos(Attr,Rbegin+4);
-		M_Address = Attr + Rbegin + 6;
-		for (int i = 0; i < routes[RNum].AddLen; i++) {
-			routes[RNum].Address[i] = M_Address[i];
-			//	cout<<(char)routes[RNum].Address[i];
-		}
-		sumlen += routes[RNum].AddLen;
-		restlen = restlen - (6 + routes[RNum].AddLen);//6＝flag＋type＋length
-		RNum++;
-	}
-	Num = RNum;
-
-}
 
 void ParseNHS(byte* Attr, short Len, Server &M_NextHopServer) //解析参数NextHopServer
 {
@@ -199,92 +191,6 @@ void ParseNHS(byte* Attr, short Len, Server &M_NextHopServer) //解析参数Next
 	}
 
 }
-void ParseQAMN(byte* Attr, short Len, byte QAMNames[256][256], int &Num) //解析参数QAMNames
-{
-	short QAMNameLen = 0;
-	short sumlen = 0;
-	int QNum = 0; //
-	while (sumlen < Len) {
-		QAMNameLen = btos(Attr,sumlen);
-		byte* QAMName = Attr + 2 + sumlen;
-		for (int i = 0; i < QAMNameLen; i++) {
-			QAMNames[QNum][i] = QAMName[i];
-		}
-		//cout<<endl;
-		sumlen = sumlen + (2 + QAMNameLen);
-		QNum++;
-	}
-	Num = QNum;
-}
-void ParseEdgeInput(byte* Attr, short Len, Input* EdgeInput, int &Num) //解析参数EdgeInput
-{
-	short sumlen = 0;
-	int INum = 0; //
-	while (sumlen < Len) {
-		int i = 0;
-		short HostLen = 0;
-		short GroupNameLen = 0;
-		byte M_SubnetMask[256];
-		for (i = 0; i < 4; i++) {
-			M_SubnetMask[i] = Attr[sumlen + i];
-		}
-		unsigned int temp = bytes2int2(M_SubnetMask);
-		struct in_addr addr1;
-		memcpy(&addr1, &temp, 4);
-		char *t = inet_ntoa(addr1);
-		for (int s = 0; s < strlen(t); s++) {
-			EdgeInput[INum].SubnetMask[s] = t[s];
-		}
-
-		HostLen = btos(Attr,sumlen+4);
-		for (i = 0; i < HostLen; i++) {
-			EdgeInput[INum].Host[i] = Attr[sumlen + 6 + i];
-		}
-		byte* M_PortID = Attr + sumlen + 6 + HostLen;
-		byte* M_MaxGroupBW = Attr + sumlen + 10 + HostLen;
-		ParsePortID(M_PortID, EdgeInput[INum].portID);
-		EdgeInput[INum].MaxGroupBW = bytes2int(M_MaxGroupBW);
-		GroupNameLen = btos(Attr,sumlen+14+HostLen);
-		for (i = 0; i < GroupNameLen; i++) {
-			EdgeInput[INum].GroupName[i] = Attr[sumlen + 16 + HostLen + i];
-		}
-
-		sumlen = sumlen + 16 + HostLen + GroupNameLen;
-		INum++;
-	}
-	Num = INum;
-}
-void ParseQAMP(byte* Attr, short Len, QAMParameters &M_QAMP) //解析参数QAMParameters
-{
-	M_QAMP.Frequency = bytes2int(Attr);
-	short M_Modmode = (short) Attr[4];
-	M_QAMP.Modmode[0] = 'Q';
-	M_QAMP.Modmode[1] = 'A';
-	M_QAMP.Modmode[2] = 'M';
-	M_QAMP.Modmode[3] = ' ';
-	switch (M_Modmode) {
-	case 1:
-		M_QAMP.Modmode[4] = '6';
-		M_QAMP.Modmode[5] = '4';
-		break;
-	case 2:
-		M_QAMP.Modmode[4] = '2';
-		M_QAMP.Modmode[5] = '5';
-		M_QAMP.Modmode[6] = '6';
-		break;
-	case 3:
-		M_QAMP.Modmode[4] = '1';
-		M_QAMP.Modmode[5] = '0';
-		M_QAMP.Modmode[6] = '2';
-		M_QAMP.Modmode[7] = '4';
-		break;
-	}
-	M_QAMP.Interleaver = Attr[5];
-	M_QAMP.TSID = btos(Attr,6);
-	M_QAMP.Annex = Attr[8];
-	M_QAMP.Channelwidth = (short) Attr[9];
-
-}
 void ParseServiceStatus(byte* Attr, int &ServiceStatus) //解析参数ServiceStatus
 {
 	byte M_ServiceStatus[4];
@@ -292,30 +198,6 @@ void ParseServiceStatus(byte* Attr, int &ServiceStatus) //解析参数ServiceSta
 		M_ServiceStatus[j] = Attr[j];
 	}
 	ServiceStatus = bytes2int(M_ServiceStatus);
-}
-void ParseUDPMap(byte* Attr, short Len, StaticPorts* SPorts, DynamicPorts* DPorts, int &SNum, int &DNum) //解析参数UDPMap
-{
-	int SPortNum = 0;
-	int DPortNum = 0;
-	int i = 0;
-	SPortNum = bytes2int(Attr);
-	byte* DPTemp = Attr + 4 + 4 * SPortNum;
-	byte* SPTemp = NULL;
-	DPortNum = bytes2int(DPTemp);
-	for (i = 0; i < SPortNum; i++) {
-		SPTemp = Attr + 4 + 4 * i;
-		SPorts[i].UDPPort = btos(SPTemp,0);
-		SPorts[i].ProgramID = btos(SPTemp,2);
-	}
-	for (i = 0; i < DPortNum; i++) {
-		DPTemp = Attr + 8 + 4 * SPortNum + 4 * i;
-		DPorts[i].StartingPort = btos(DPTemp,0);
-		DPorts[i].StartingPID = btos(DPTemp,2);
-		byte* temp = DPTemp + 4;
-		DPorts[i].Count = bytes2int(temp);
-	}
-	SNum = SPortNum;
-	DNum = DPortNum;
 }
 void ParseNHSA(byte* Attr, short Len, NHSAlternates &M_Alternates) //解析参数NextHopServerAlternates
 {
@@ -331,10 +213,8 @@ void ParseNHSA(byte* Attr, short Len, NHSAlternates &M_Alternates) //解析参�
 		sumlen = sumlen + 2 + ServerLen;
 	}
 }
-void ParsePortID(byte *Port, PortID &M_Port) {
-	M_Port.slotnumber = (short) Port[1];
-	M_Port.portnumber = (short) Port[2];
-	M_Port.subinterface = (short) Port[3];
+void HandlUnkownAttr(Attributes &attr) //未知参数处理
+{
 
 }
 bool ParseAttr(Attributes* M_attr, int ANum, UPDATE &M_UPDATE) //参数解析函数
@@ -343,65 +223,9 @@ bool ParseAttr(Attributes* M_attr, int ANum, UPDATE &M_UPDATE) //参数解析函
 		if (M_attr[i].AttrFlag >> 7)//只使用了这个字节中的最高位
 		{
 			HandlUnkownAttr(M_attr[i]); //未知参数处理
-			continue;
 		}
 		fprintf(stderr, "type:%d\n", M_attr[i].AttrType);
-
-		switch (M_attr[i].AttrType) {
-		case VREP_ID_D6_UPDATE_WithdrawnRoutes:
-			ParseRoutes(M_attr[i].AttrValue, M_attr[i].AttrLen, M_UPDATE.WithdrawnRoutes, M_UPDATE.WRoutesNum); //解析参数WithdrawnRoutes
-			break;
-		case VREP_ID_D6_UPDATE_ReachableRoutes:
-			ParseRoutes(M_attr[i].AttrValue, M_attr[i].AttrLen, M_UPDATE.ReachableRoutes, M_UPDATE.RRoutesNum); //解析参数ReachableRoutes
-			break;
-		case VREP_ID_D6_UPDATE_NextHopServer:
-			Server M_NextHopServer;
-			ParseNHS(M_attr[i].AttrValue, M_attr[i].AttrLen, M_NextHopServer); //解析参数NextHopServer
-			M_UPDATE.NextHopServer = M_NextHopServer;
-			break;
-		case VREP_ID_D6_UPDATE_QAMNames:
-			ParseQAMN(M_attr[i].AttrValue, M_attr[i].AttrLen, M_UPDATE.QAMName, M_UPDATE.QAMNameNum); //解析参数QAMNames
-			break;
-		case VREP_ID_D6_UPDATE_TotalBandwidth:
-			M_UPDATE.totalbw = bytes2int(M_attr[i].AttrValue); //解析参数TotalBandwidth
-			break;
-		case VREP_ID_D6_UPDATE_AvailableBandwidth:
-			M_UPDATE.availablebw = bytes2int(M_attr[i].AttrValue); //解析参数AvailableBandwidth
-			break;
-		case VREP_ID_D6_UPDATE_Cost:
-			M_UPDATE.cost = (short) M_attr[i].AttrValue[0]; //解析参数Cost
-			break;
-		case VREP_ID_D6_UPDATE_EdgeInput:
-			ParseEdgeInput(M_attr[i].AttrValue, M_attr[i].AttrLen, M_UPDATE.EdgeInput, M_UPDATE.EdgeInputNum); //解析参数EdgeInput
-			break;
-		case VREP_ID_D6_UPDATE_QAMParameters:
-			QAMParameters M_QAMP;
-			ParseQAMP(M_attr[i].AttrValue, M_attr[i].AttrLen, M_QAMP); //解析参数QAMParameters
-			M_UPDATE.QAMP = M_QAMP;
-			fprintf(stderr, "********M_UPDATE.QAMP.Annex=%d \n", (short) M_UPDATE.QAMP.Annex);
-			break;
-		case VREP_ID_D6_UPDATE_UDPMap:
-			ParseUDPMap(M_attr[i].AttrValue, M_attr[i].AttrLen, M_UPDATE.SPorts, M_UPDATE.DPorts, M_UPDATE.SPortsNum, M_UPDATE.DPortsNum); //解析参数UDPMap
-			break;
-		case VREP_ID_D6_UPDATE_ServiceStatus:
-			ParseServiceStatus(M_attr[i].AttrValue, M_UPDATE.ServiceStatus); //解析参数ServiceStatus
-			break;
-		case VREP_ID_D6_UPDATE_MaxMpegFlows:
-			M_UPDATE.MaxMpegFlows = bytes2int(M_attr[i].AttrValue); //解析参数MaxMpegFlows
-			break;
-		case VREP_ID_D6_UPDATE_NextHopServerAlternates:
-			NHSAlternates M_Alternates;
-			ParseNHSA(M_attr[i].AttrValue, M_attr[i].AttrLen, M_Alternates); //解析参数NextHopServerAlternates
-			M_UPDATE.Alternates = M_Alternates;
-			break;
-		case VREP_ID_D6_UPDATE_OutputPort:
-			ParsePortID(M_attr[i].AttrValue, M_UPDATE.OutputPort); //解析参数OutputPort
-			break;
-		default:
-			//TODO:未知代码参数处理
-			return false;
-			break;
-		}
+	    ParseServiceStatus(M_attr[i].AttrValue, M_UPDATE.ServiceStatus); //解析参数ServiceStatus
 	}
 	return true;
 }
@@ -440,7 +264,6 @@ bool ParseUPDATE(byte VREP[], UPDATE &M_UPDATE) //解析UPDATE消息函数
 		return false;
 }
 void InspectUPDATE(UPDATE &M_UPDATE) {
-	//判断强制参数及次序等格式
 }
 
 bool ParseNOTIFICATION(byte VREP[]) {
