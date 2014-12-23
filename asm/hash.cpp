@@ -21,7 +21,9 @@ void expand(List &list) {
 void insert(List &list, ASNode node) {
     struct in_addr addr;
     inet_aton(node.ip, &addr);
-
+    if((double)list.number / (double)list.length >= 0.75)
+	expand(list);
+ 
     unsigned int num = addr.s_addr;
     unsigned int k = num % list.length;
     while(strcmp(list.nodes[k].ip, " ") != 0) {
@@ -32,7 +34,7 @@ void insert(List &list, ASNode node) {
     list.nodes[k].memfree = node.memfree;
     list.nodes[k].weight = node.weight;
     list.nodes[k].port = node.port;
-    list.length++;
+    list.number++;
     if(list.nodes[k].weight < list.nodes[list.min].weight) {
         list.min = k;
     }

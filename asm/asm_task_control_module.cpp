@@ -1,4 +1,4 @@
-/*
+﻿/*
 版本:v1.0
 
  * 作者:王传华
@@ -147,7 +147,7 @@ int interproxy(int lockfd)
 
     pid=fork();
     if (pid==0) {
-        close(fd[1]);//靠靠
+        close(fd[1]);
         close(sock_sd[1]);
 	fprintf(stderr, "process manager start\n");
         process_manager(fd[0],sock_sd[0],lockfd);

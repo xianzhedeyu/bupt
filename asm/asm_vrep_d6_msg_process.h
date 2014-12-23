@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #define btos(b,p) (short)b[p+1]|(short)b[p]<<8;        //双字节转short
 #define btoi(b,p) (int)b[p+1]|(int)b[p]<<8;            //双字节转int
 using namespace std;
@@ -65,8 +65,8 @@ typedef struct _UPDATE                      //UPDATE消息
 	Attributes attributes[256];                    //参数指针(指向所有参数的字符串，无实际意义)
 	int AttributeNum;                              //参数个数
 	int ServiceStatus;                             //服务状态
-    double cpu;
-    double memory;
+    	double cpu;
+    	int memory;
 }UPDATE;
 
 static int bytes2int(byte* b);                //字节数组(4位)转化为int型
