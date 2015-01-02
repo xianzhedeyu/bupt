@@ -38,7 +38,6 @@ typedef struct _R8_SETUP_RES
 	char ondemandsessionid[128];
 	S7_SS ss;
 	AS_INFO as;
-    INT64 streamhandle;
 }R8_SETUP_RES;
 //asm发给sm的teardown消息
 typedef struct _R8_TEARDOWN_MSG

@@ -66,9 +66,17 @@ int rtsp_r8_setup_res_parse(char *setup_res_msg, R8_SETUP_RES *res) {
                 header_value = strtok_r(NULL, ":", &ptr2);
                 strcpy(res->ondemandsessionid, header_value);
             }
-            else if(strcmp(header, "streamhandle") == 0) {
+            else if(strcmp(header, "Protocol") == 0) {
                 header_value = strtok_r(NULL, ":", &ptr2);
-                res->streamhandle = atol(header_value);
+                strcpy(res->protocol, header_value);
+            }
+            else if(strcmp(header, "As_IP") == 0) {
+                header_value = strtok_r(NULL, ":", &ptr2);
+                strcpy(res->as.ip, header_value);
+            }
+            else if(strcmp(header, "As_Port") == 0) {
+                header_value = strtok_r(NULL, ":", &ptr2);
+                res->as.upPort = atoi(header_value);
             }
             else if(strcmp(header, RTSP_HEADER_TRANSPORT) == 0) {
                 header_value = strtok_r(NULL, ":", &ptr2);
@@ -87,13 +95,13 @@ int rtsp_r8_setup_res_parse(char *setup_res_msg, R8_SETUP_RES *res) {
                             subheader_value = strtok_r(NULL, "=", &ptr4);
                             res->ss.client_port = atoi(subheader_value);
                         }
-                        else if(strcmp(subheader, "source") == 0) {
-                            subheader_value = strtok_r(NULL, "=", &ptr4);
-                            strcpy(res->as.ip, subheader_value);
-                        }
                         else if(strcmp(subheader, "server_port") == 0) {
                             subheader_value = strtok_r(NULL, "=", &ptr4);
                             res->as.downPort = atoi(subheader_value);
+                        }
+                        else if(strcmp(subheader, "source") == 0) {
+                            subheader_value = strtok_r(NULL, "=", &ptr4);
+                            strcpy(res->as.ip, subheader_value);
                         }
                     }
                     subline = strtok_r(NULL, ";", &ptr3);

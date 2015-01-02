@@ -112,12 +112,11 @@ int Asm_Setup(char * Asm_msg, int msg_len, int sm_sd) {
     s7_setup_res.ss.bandwidth = s7_setup_msg.ss.bandwidth;
     strcpy(s7_setup_res.as.ip, r8_setup_res.as.ip);
     s7_setup_res.as.downPort = r8_setup_res.as.downPort;
-    s7_setup_res.streamhandle = r8_setup_res.streamhandle;
 
     memset(sendbuf, 0x00, 1024);
     rtsp_s7_setup_res_encode(s7_setup_res, sendbuf);
     ret = rtsp_write(sm_sd, sendbuf, strlen(sendbuf) + 1);
-    log(LVLDEBUG, SYS_INFO, "setup send to sm msg:%s, len:%d\n", sendbuf, ret);
+    log(LVLDEBUG, SYS_INFO, "setup response send to sm msg:%s, len:%d\n", sendbuf, ret);
 
     return 0;
 }

@@ -31,7 +31,7 @@ getCurrentCpuValue(){
             total+=(totalIdle-lastTotalIdle);
             percent/=total;
             percent*=100;
-	    percent=100-percent;//空闲CPU时间百分比
+	    //percent=100-percent;//空闲CPU时间百分比
 	   // percent2=(totalIdle-lastTotalIdle)/2;
 	   // percent2=100-percent2;
         }
@@ -62,7 +62,7 @@ getCurrentMemInfo(){
 	percent=freePhysMem+bufferPhysMem+sharedPhysMem;
 	percent/=totalPhysMem;
 //	printf("%lld %lld %lld %lld\n",totalPhysMem,freePhysMem,bufferPhysMem,sharedPhysMem);
-	return percent;
+	return (1 - percent);
 }
 
 /*getloadavg获得三个数值，
@@ -109,7 +109,7 @@ main(void)
 	//	bufferPhysMem=memInfo.bufferram;
 	//	mempercent=freePhysMem+sharedPhysMem+bufferPhysMem;
 		mempercent=getCurrentMemInfo();
-		printf("mem: %5.2f\n",mempercent);
+		printf("mem: %5.2f\n",mempercent * 100);
 		if(getLoadAvge(load,3)==0)
 			printf("load average: %f, %f, %f\n",load[0],load[1],load[2]);
 	}

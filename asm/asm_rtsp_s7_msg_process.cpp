@@ -10,12 +10,13 @@ int rtsp_s7_setup_res_encode(S7_SETUP_RES resmsg, char *setup_res_msg)
 		sprintf(str,"RTSP/1.0 %d OK\r\n"
 			"CSeq:%d\r\n"
 			"Session:%llu\r\n"
-            "protocol:%s\r\n"
+            "Protocol:%s\r\n"
 			"OnDemandSessionId:%s\r\n"
-            "streamhandle:%llu\r\n"
+            "As_IP:%s\r\n"
+            "AS_Port:%d\r\n"
 			"Transport:"
 			"MP2T/DVBC/UDP;unicast;client=%s;destination=%s;client_port=%d;source=%s;server_port=%d\r\n",
-			resmsg.err_code,resmsg.cseq,resmsg.session,resmsg.protocol,resmsg.ondemandsessionid,resmsg.ondemandsessionid,resmsg.ss.client, resmsg.ss.destination, resmsg.ss.client_port, resmsg.as.ip, resmsg.as.downPort);			
+			resmsg.err_code,resmsg.cseq,resmsg.session,resmsg.protocol,resmsg.ondemandsessionid, resmsg.as.ip, resmsg.as.upPort, resmsg.ss.client, resmsg.ss.destination, resmsg.ss.client_port, resmsg.as.ip, resmsg.as.downPort);			
 	}
 	strcpy(setup_res_msg,str);
 	return 0;

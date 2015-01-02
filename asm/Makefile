@@ -1,4 +1,4 @@
-TARGET=ASM
+TARGET=asm
 OBJS=asmain.o asm_communication_module.o asm_queuemanager.o asm_rtsp_public_function.o asm_rtsp_r8_msg_process.o asm_rtsp_s7_msg_process.o asm_task_control_module.o asm_transaction.o asmlog.o
 CC=g++
 %.o:%.cpp *.h
