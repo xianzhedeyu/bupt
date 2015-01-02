@@ -184,7 +184,7 @@ int interproxy(int lockfd)
         sm_log(LVLDEBUG,SYS_INFO,"==========af accept\n");
         readlen=rtsp_read(sd,buff,1024);
 
-        fprintf(stderr,"**********af read buf:%s , len=%d\n",buff,readlen);
+        fprintf(stderr,"**********af read buf:\n%slen=%d\n",buff,readlen);
 
         sm_log(LVLDEBUG,SYS_INFO,"**********af read buf:%s , len=%d\n",buff,readlen);
         if (readlen<=-1) {
@@ -271,7 +271,7 @@ void *pthread_SM(void *arg)
     memset(data[i].data,0x00,sizeof(data[i].data));
     pthread_mutex_unlock(&p_lock);
 
-    fprintf(stderr, "********pthread read buf=%s, buflen=%d\n",pItem.data,pItem.data_len);
+    fprintf(stderr, "********pthread read buf=\n%sbuflen=%d\n",pItem.data,pItem.data_len);
 
     sm_log(LVLDEBUG,SYS_INFO,"********pthread read buf=%s, buflen=%d\n",pItem.data,pItem.data_len);
 

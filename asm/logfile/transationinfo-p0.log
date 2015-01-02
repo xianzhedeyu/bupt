@@ -103,3 +103,43 @@
 2014-12-07 10:16:24 IN asm_task_control_module.cpp-184L (-1220298944): DEBUG => ==========af accept
 2014-12-07 10:16:24 IN asm_task_control_module.cpp-189L (-1220298944): DEBUG => **********af read buf: , len=-1
 2014-12-07 10:16:24 IN asm_task_control_module.cpp-191L (-1220298944): DEBUG => interproxy read error2014-12-07 10:30:12 IN asm_task_control_module.cpp-182L (-1220184256): DEBUG => ++++++++++be accept
+2015-01-01 15:40:08 IN asm_task_control_module.cpp-182L (-1220380864): DEBUG => ++++++++++be accept
+2015-01-01 15:40:16 IN asm_task_control_module.cpp-184L (-1220380864): DEBUG => ==========af accept
+2015-01-01 15:40:16 IN asm_task_control_module.cpp-189L (-1220380864): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:19493
+Require:com.comcast.ngod.s7
+OnDemandSessionId:3b9f3742-9c75-4e4f-b133-a664d7e960a9
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=335
+2015-01-01 15:40:16 IN asm_task_control_module.cpp-209L (-1220380864): DEBUG => *******************************
+2015-01-01 15:40:16 IN asm_task_control_module.cpp-182L (-1220380864): DEBUG => ++++++++++be accept
+2015-01-01 15:40:16 IN asm_task_control_module.cpp-360L (-1220380864): DEBUG => child process 3448 runing
+2015-01-01 15:40:16 IN asm_task_control_module.cpp-276L (-1230931136): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:19493
+Require:com.comcast.ngod.s7
+OnDemandSessionId:3b9f3742-9c75-4e4f-b133-a664d7e960a9
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=335
+2015-01-01 15:40:16 IN asm_transaction.cpp-33L (-1230931136): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:19493
+Require:com.comcast.ngod.s7
+OnDemandSessionId:3b9f3742-9c75-4e4f-b133-a664d7e960a9
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:335
+2015-01-01 15:40:16 IN asm_communication_module.cpp-72L (-1230931136): SYSINFO => connecting...127.0.0.1:7777
+2015-01-01 15:40:16 IN asm_task_control_module.cpp-285L (-1230931136): DEBUG => pthread exit

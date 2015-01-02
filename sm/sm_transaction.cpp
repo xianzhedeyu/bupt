@@ -234,7 +234,7 @@ int Tp_Setup(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
         strcpy(s7_setup_msg.require,RTSP_S7_REQUIRE);
         strcpy(s7_setup_msg.session_group,SESSION_GRUOP);//自己设定、主要用来getpramater时获取session组的信息，每个SM一个组
         strcpy(s7_setup_msg.ondemandsessionid,ondemandsession);
-        strcpy(s7_setup_msg.policy,"priority=1");//S2
+        strcpy(s7_setup_msg.policy,"priority=1");
         strcpy(s7_setup_msg.app_id, s1_setup_msg.app_id);
         s7_setup_msg.app_type = s1_setup_msg.app_type;
         //strcpy(s7_setup_msg.ss.client, s3_setup_res.client);
