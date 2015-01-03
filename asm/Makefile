@@ -5,7 +5,7 @@ CC=g++
 	$(CC) -c -g -I. $< -o $@ 
 
 $(TARGET):$(OBJS)
-	$(CC) -g $(OBJS) -o $(TARGET) -lpthread -luuid
+	$(CC) -g $(OBJS) -o $(TARGET) -lpthread -luuid -lhiredis -lm -lnsl
 	mkdir -p logfile
 	mkdir -p mmapdir
 clean:

@@ -276,10 +276,15 @@ int Tp_Setup(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
         memset(&s7_setup_res,0x00,sizeof(S7_SETUP_RES));
         rtsp_s7_setup_res_parse(recvbuf,&s7_setup_res);
         fprintf(stderr, "parse msg from S7 done\n");
+        printf("%s", recvbuf);
 
-        char *numstr;
-        sprintf(numstr, "%llu", s7_setup_res.session);
-        reply = (redisReply*)redisCommand(c,"SET %s %s", ondemandsession, numstr);
+        char value[50];
+        memset(value, 0x00, 50);
+        sprintf(value, "%llu", s7_setup_res.session);
+        char key[41];
+        memset(key, 0x00, 41);
+        sprintf(key, "%ssm", ondemandsession);
+        reply = (redisReply*)redisCommand(c,"SET %s %s", key, value);
         freeReplyObject(reply);
         redisFree(c);
 	    /*
@@ -494,7 +499,10 @@ int Tp_Teardown(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
 	//stmt->executeUpdate(cmd.c_str());
     //stmt->executeUpdate("commit"); 
 
-    reply = (redisReply*)redisCommand(c,"GET %s", (char*)s1_tear_msg.ondemand_session_id);
+    char key[41];
+    memset(key, 0x00, 41);
+    sprintf(key, "%ssm", s1_tear_msg.ondemand_session_id);
+    reply = (redisReply*)redisCommand(c,"GET %s", key);
     asm2sm_session = atoi(reply->str);
     freeReplyObject(reply);
     strcpy(s7_tear_msg.asm_ip, ASM_IP);
@@ -519,6 +527,7 @@ int Tp_Teardown(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
     ret = rtsp_read(asm_sd,recvbuf,1024);
     sm_log(LVLDEBUG,SYS_INFO,"teardown recv from asm res:%s, len:%d\n",recvbuf,ret);
     rtsp_s7_teardown_res_parse(recvbuf, &s7_tear_res);
+    printf("%s", recvbuf);
 
 //向STB发送teardown response
     s1_tear_res.err_code = 200;//自己设置，注意出错处理

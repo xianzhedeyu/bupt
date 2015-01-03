@@ -40,7 +40,6 @@ int rtsp_r8_setup_res_parse(char *setup_res_msg, R8_SETUP_RES *res) {
     strcpy(str, setup_res_msg);
 
     line = strtok_r(str, "\r\n", &ptr);
-    printf("line:%s\n", line);
     rtsp_version = strtok_r(line, " ", &ptr1);
     if(strcmp(rtsp_version, RTSP_VERSION) != 0) {
         printf("RTSP_VERSION is not matched!\n");
