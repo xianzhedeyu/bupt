@@ -33,6 +33,9 @@ int main()
     connect(sockfd, (struct sockaddr *)&servaddr, sizeof(servaddr));
     write(sockfd, str, strlen(str));
     read(sockfd, restr, 1024);
+    close(sockfd);
+    sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    connect(sockfd, (struct sockaddr *)&servaddr, sizeof(servaddr));
     printf("%s", restr);
     char ondemandsessionid[256];
     memset(ondemandsessionid, 0x00, 256);
@@ -46,6 +49,7 @@ int main()
             "OnDemandSessionId:%s\r\n"
             "client_session_id:054321\r\n\r\n",
             ondemandsessionid);
+    printf("%s\n", str);
     write(sockfd, str, strlen(str));
             
     return 0;
@@ -66,6 +70,7 @@ int getOnDemandSessionId(char *res, char *ondemandsessionid){
 
 	//按行解析剩余消息
 	line = strtok_r(NULL,"\r\n",&ptr);
+    
 	while(line)
 	{
 		if (header = strtok_r(line,":",&ptr2))
@@ -74,6 +79,7 @@ int getOnDemandSessionId(char *res, char *ondemandsessionid){
             {
                 header_val = strtok_r(NULL,":",&ptr2);
                 strcpy(id,header_val);
+                printf("%s\n", id);
                 break;
             }
         }	

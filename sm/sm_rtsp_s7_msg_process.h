@@ -16,6 +16,7 @@ typedef struct _AS_INFO
 {
 char ip[40];
 int downPort;
+int upPort;
 }AS_INFO;
 //sm发给asm的setup中ss的相关信息
 typedef struct _S7_SS
@@ -49,7 +50,6 @@ INT64 session;
 char ondemandsessionid[128];
 S7_SS ss;
 AS_INFO as;
-INT64 stream_handle;
 }S7_SETUP_RES;
 //sm发给asm的teardown消息
 typedef struct _S7_TEARDOWN_MSG

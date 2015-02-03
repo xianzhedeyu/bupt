@@ -7,10 +7,10 @@ LIBS=-lm -lnsl
 
 CC=g++
 %.o:%.cpp *.h 
-	$(CC) -c -g $< -o $@
+	$(CC) -c -g $< -o $@ `mysql_config --cflags --libs`
 
 $(TARGET):$(OBJS)
-	$(CC) -g $(OBJS) -o $(TARGET) -lpthread -luuid -lhiredis ${LIBS}
+	$(CC) -g $(OBJS) -o $(TARGET) -lpthread -luuid -lhiredis `mysql_config --cflags --libs` ${LIBS}
 	mkdir -p logfile
 	mkdir -p mmapdir
 

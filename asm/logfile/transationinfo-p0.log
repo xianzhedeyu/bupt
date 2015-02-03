@@ -649,3 +649,988 @@ AS_Port:6000
 Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
 , len:272
 2015-01-03 09:02:14 IN asm_task_control_module.cpp-285L (-1230640320): DEBUG => pthread exit
+2015-01-13 16:21:35 IN asm_task_control_module.cpp-182L (-1220794560): DEBUG => ++++++++++be accept
+2015-01-13 16:21:53 IN asm_task_control_module.cpp-184L (-1220794560): DEBUG => ==========af accept
+2015-01-13 16:21:53 IN asm_task_control_module.cpp-189L (-1220794560): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:16289
+Require:com.comcast.ngod.s7
+OnDemandSessionId:2278c2f2-bc7e-40a5-800a-7e17bf2c9f97
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=335
+2015-01-13 16:21:53 IN asm_task_control_module.cpp-209L (-1220794560): DEBUG => *******************************
+2015-01-13 16:21:53 IN asm_task_control_module.cpp-182L (-1220794560): DEBUG => ++++++++++be accept
+2015-01-13 16:21:53 IN asm_task_control_module.cpp-360L (-1220794560): DEBUG => child process 5774 runing
+2015-01-13 16:21:53 IN asm_task_control_module.cpp-276L (-1231344832): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:16289
+Require:com.comcast.ngod.s7
+OnDemandSessionId:2278c2f2-bc7e-40a5-800a-7e17bf2c9f97
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=335
+2015-01-13 16:21:53 IN asm_transaction.cpp-35L (-1231344832): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:16289
+Require:com.comcast.ngod.s7
+OnDemandSessionId:2278c2f2-bc7e-40a5-800a-7e17bf2c9f97
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:335
+2015-01-13 16:21:53 IN asm_communication_module.cpp-72L (-1231344832): SYSINFO => connecting...127.0.0.1:7777
+2015-01-13 16:21:53 IN asm_transaction.cpp-97L (-1231344832): DEBUG => setup send to as msg:
+SETUP rtsp://127.0.0.1:7777 RTSP/1.0
+CSeq:0
+Require:com.comcast.ngod.r8
+OnDemandSessionId:2278c2f2-bc7e-40a5-800a-7e17bf2c9f97
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000
+StreamControlProto:
+ApplicationId:001
+ApplicationType:1
+
+len:303
+2015-01-13 16:21:53 IN asm_transaction.cpp-103L (-1231344832): DEBUG => setup recv from as res:RTSP/1.0 200 OK
+CSeq:0
+Session:46805
+Protocol:RTSP
+OnDemandSessionId:2278c2f2-bc7e-40a5-800a-7e17bf2c9f97
+As_IP:127.0.0.1
+As_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+
+, len:271
+2015-01-13 16:21:53 IN asm_transaction.cpp-136L (-1231344832): DEBUG => setup response send to sm msg:RTSP/1.0 200 OK
+CSeq:16289
+Session:76133
+Protocol:RTSP
+OnDemandSessionId:2278c2f2-bc7e-40a5-800a-7e17bf2c9f97
+As_IP:127.0.0.1
+AS_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+, len:273
+2015-01-13 16:21:53 IN asm_task_control_module.cpp-285L (-1231344832): DEBUG => pthread exit
+2015-01-19 10:13:55 IN asm_task_control_module.cpp-182L (-1220151488): DEBUG => ++++++++++be accept
+2015-01-19 10:14:08 IN asm_task_control_module.cpp-184L (-1220151488): DEBUG => ==========af accept
+2015-01-19 10:14:08 IN asm_task_control_module.cpp-189L (-1220151488): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:13395
+Require:com.comcast.ngod.s7
+OnDemandSessionId:b09212b9-6a41-4a7a-a88a-6411a419f82f
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=335
+2015-01-19 10:14:08 IN asm_task_control_module.cpp-209L (-1220151488): DEBUG => *******************************
+2015-01-19 10:14:08 IN asm_task_control_module.cpp-182L (-1220151488): DEBUG => ++++++++++be accept
+2015-01-19 10:14:08 IN asm_task_control_module.cpp-360L (-1220151488): DEBUG => child process 3601 runing
+2015-01-19 10:14:08 IN asm_task_control_module.cpp-276L (-1230701760): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:13395
+Require:com.comcast.ngod.s7
+OnDemandSessionId:b09212b9-6a41-4a7a-a88a-6411a419f82f
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=335
+2015-01-19 10:14:08 IN asm_transaction.cpp-35L (-1230701760): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:13395
+Require:com.comcast.ngod.s7
+OnDemandSessionId:b09212b9-6a41-4a7a-a88a-6411a419f82f
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:335
+2015-01-19 10:14:08 IN asm_communication_module.cpp-72L (-1230701760): SYSINFO => connecting...127.0.0.1:7777
+2015-01-19 10:14:08 IN asm_transaction.cpp-97L (-1230701760): DEBUG => setup send to as msg:
+SETUP rtsp://127.0.0.1:7777 RTSP/1.0
+CSeq:0
+Require:com.comcast.ngod.r8
+OnDemandSessionId:b09212b9-6a41-4a7a-a88a-6411a419f82f
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000
+StreamControlProto:
+ApplicationId:001
+ApplicationType:1
+
+len:303
+2015-01-19 10:14:08 IN asm_transaction.cpp-103L (-1230701760): DEBUG => setup recv from as res:RTSP/1.0 200 OK
+CSeq:0
+Session:104949
+Protocol:RTSP
+OnDemandSessionId:b09212b9-6a41-4a7a-a88a-6411a419f82f
+As_IP:127.0.0.1
+As_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+
+, len:272
+2015-01-19 10:14:08 IN asm_transaction.cpp-136L (-1230701760): DEBUG => setup response send to sm msg:RTSP/1.0 200 OK
+CSeq:13395
+Session:136036
+Protocol:RTSP
+OnDemandSessionId:b09212b9-6a41-4a7a-a88a-6411a419f82f
+As_IP:127.0.0.1
+AS_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+, len:274
+2015-01-19 10:14:08 IN asm_task_control_module.cpp-285L (-1230701760): DEBUG => pthread exit
+2015-01-19 10:14:44 IN asm_task_control_module.cpp-184L (-1220151488): DEBUG => ==========af accept
+2015-01-19 10:14:44 IN asm_task_control_module.cpp-189L (-1220151488): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:16402
+Require:com.comcast.ngod.s7
+OnDemandSessionId:c36f4c2b-87b2-492e-9c10-a5450abbe43f
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=335
+2015-01-19 10:14:44 IN asm_task_control_module.cpp-182L (-1220151488): DEBUG => ++++++++++be accept
+2015-01-19 10:14:44 IN asm_task_control_module.cpp-276L (-1230701760): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:16402
+Require:com.comcast.ngod.s7
+OnDemandSessionId:c36f4c2b-87b2-492e-9c10-a5450abbe43f
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=335
+2015-01-19 10:14:44 IN asm_transaction.cpp-35L (-1230701760): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:16402
+Require:com.comcast.ngod.s7
+OnDemandSessionId:c36f4c2b-87b2-492e-9c10-a5450abbe43f
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:335
+2015-01-19 10:14:44 IN asm_communication_module.cpp-72L (-1230701760): SYSINFO => connecting...127.0.0.1:7777
+2015-01-19 10:14:44 IN asm_transaction.cpp-97L (-1230701760): DEBUG => setup send to as msg:
+SETUP rtsp://127.0.0.1:7777 RTSP/1.0
+CSeq:0
+Require:com.comcast.ngod.r8
+OnDemandSessionId:c36f4c2b-87b2-492e-9c10-a5450abbe43f
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000
+StreamControlProto:
+ApplicationId:001
+ApplicationType:1
+
+len:303
+2015-01-19 10:14:44 IN asm_transaction.cpp-103L (-1230701760): DEBUG => setup recv from as res:RTSP/1.0 200 OK
+CSeq:0
+Session:151497
+Protocol:RTSP
+OnDemandSessionId:c36f4c2b-87b2-492e-9c10-a5450abbe43f
+As_IP:127.0.0.1
+As_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+
+, len:272
+2015-01-19 10:14:44 IN asm_transaction.cpp-136L (-1230701760): DEBUG => setup response send to sm msg:RTSP/1.0 200 OK
+CSeq:16402
+Session:181581
+Protocol:RTSP
+OnDemandSessionId:c36f4c2b-87b2-492e-9c10-a5450abbe43f
+As_IP:127.0.0.1
+AS_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+, len:274
+2015-01-19 10:14:44 IN asm_task_control_module.cpp-285L (-1230701760): DEBUG => pthread exit
+2015-01-19 10:58:21 IN asm_task_control_module.cpp-182L (-1220843712): DEBUG => ++++++++++be accept
+2015-01-19 10:58:33 IN asm_task_control_module.cpp-184L (-1220843712): DEBUG => ==========af accept
+2015-01-19 10:58:33 IN asm_task_control_module.cpp-189L (-1220843712): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:6062
+Require:com.comcast.ngod.s7
+OnDemandSessionId:3f602ff9-48df-463a-b2c4-c26b03ac5a45
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=334
+2015-01-19 10:58:33 IN asm_task_control_module.cpp-209L (-1220843712): DEBUG => *******************************
+2015-01-19 10:58:33 IN asm_task_control_module.cpp-182L (-1220843712): DEBUG => ++++++++++be accept
+2015-01-19 10:58:33 IN asm_task_control_module.cpp-360L (-1220843712): DEBUG => child process 4487 runing
+2015-01-19 10:58:33 IN asm_task_control_module.cpp-276L (-1231393984): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:6062
+Require:com.comcast.ngod.s7
+OnDemandSessionId:3f602ff9-48df-463a-b2c4-c26b03ac5a45
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=334
+2015-01-19 10:58:33 IN asm_transaction.cpp-35L (-1231393984): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:6062
+Require:com.comcast.ngod.s7
+OnDemandSessionId:3f602ff9-48df-463a-b2c4-c26b03ac5a45
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:334
+2015-01-19 10:58:33 IN asm_communication_module.cpp-72L (-1231393984): SYSINFO => connecting...127.0.0.1:7777
+2015-01-19 10:58:33 IN asm_transaction.cpp-97L (-1231393984): DEBUG => setup send to as msg:
+SETUP rtsp://127.0.0.1:7777 RTSP/1.0
+CSeq:0
+Require:com.comcast.ngod.r8
+OnDemandSessionId:3f602ff9-48df-463a-b2c4-c26b03ac5a45
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000
+StreamControlProto:
+ApplicationId:001
+ApplicationType:1
+
+len:303
+2015-01-19 10:58:33 IN asm_transaction.cpp-103L (-1231393984): DEBUG => setup recv from as res:RTSP/1.0 200 OK
+CSeq:0
+Session:188425
+Protocol:RTSP
+OnDemandSessionId:3f602ff9-48df-463a-b2c4-c26b03ac5a45
+As_IP:127.0.0.1
+As_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+
+, len:272
+2015-01-19 10:58:33 IN asm_transaction.cpp-136L (-1231393984): DEBUG => setup response send to sm msg:RTSP/1.0 200 OK
+CSeq:6062
+Session:111867
+Protocol:RTSP
+OnDemandSessionId:3f602ff9-48df-463a-b2c4-c26b03ac5a45
+As_IP:127.0.0.1
+AS_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+, len:273
+2015-01-19 10:58:33 IN asm_task_control_module.cpp-285L (-1231393984): DEBUG => pthread exit
+2015-02-01 11:58:36 IN asm_task_control_module.cpp-182L (-1223661760): DEBUG => ++++++++++be accept
+2015-02-01 11:58:49 IN asm_task_control_module.cpp-184L (-1223661760): DEBUG => ==========af accept
+2015-02-01 11:58:49 IN asm_task_control_module.cpp-189L (-1223661760): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:4211
+Require:com.comcast.ngod.s7
+OnDemandSessionId:71381030-56e2-4c8b-8bf9-ad3668917c51
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=334
+2015-02-01 11:58:49 IN asm_task_control_module.cpp-209L (-1223661760): DEBUG => *******************************
+2015-02-01 11:58:49 IN asm_task_control_module.cpp-182L (-1223661760): DEBUG => ++++++++++be accept
+2015-02-01 11:58:49 IN asm_task_control_module.cpp-360L (-1223661760): DEBUG => child process 4027 runing
+2015-02-01 11:58:49 IN asm_task_control_module.cpp-276L (-1234212032): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:4211
+Require:com.comcast.ngod.s7
+OnDemandSessionId:71381030-56e2-4c8b-8bf9-ad3668917c51
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=334
+2015-02-01 11:58:49 IN asm_transaction.cpp-36L (-1234212032): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:4211
+Require:com.comcast.ngod.s7
+OnDemandSessionId:71381030-56e2-4c8b-8bf9-ad3668917c51
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:334
+2015-02-01 11:58:50 IN asm_task_control_module.cpp-73L (-1223661760): DEBUG => *********child process 4027 exit***********
+2015-02-01 20:44:59 IN asm_task_control_module.cpp-184L (-1223661760): DEBUG => ==========af accept
+2015-02-01 20:44:59 IN asm_task_control_module.cpp-189L (-1223661760): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:16652
+Require:com.comcast.ngod.s7
+OnDemandSessionId:d0ecad51-8279-4ba4-b3ef-4031335c69f6
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=335
+2015-02-01 20:44:59 IN asm_task_control_module.cpp-209L (-1223661760): DEBUG => *******************************
+2015-02-01 20:44:59 IN asm_task_control_module.cpp-182L (-1223661760): DEBUG => ++++++++++be accept
+2015-02-01 20:44:59 IN asm_task_control_module.cpp-360L (-1223661760): DEBUG => child process 11285 runing
+2015-02-01 20:44:59 IN asm_task_control_module.cpp-276L (-1234212032): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:16652
+Require:com.comcast.ngod.s7
+OnDemandSessionId:d0ecad51-8279-4ba4-b3ef-4031335c69f6
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=335
+2015-02-01 20:44:59 IN asm_transaction.cpp-36L (-1234212032): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:16652
+Require:com.comcast.ngod.s7
+OnDemandSessionId:d0ecad51-8279-4ba4-b3ef-4031335c69f6
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:335
+2015-02-01 20:45:00 IN asm_task_control_module.cpp-73L (-1223661760): DEBUG => *********child process 11285 exit***********
+2015-02-01 21:15:40 IN asm_task_control_module.cpp-182L (-1223710912): DEBUG => ++++++++++be accept
+2015-02-01 21:16:06 IN asm_task_control_module.cpp-184L (-1223710912): DEBUG => ==========af accept
+2015-02-01 21:16:06 IN asm_task_control_module.cpp-189L (-1223710912): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:4319
+Require:com.comcast.ngod.s7
+OnDemandSessionId:fc11e0bc-556c-4b2f-a4b0-73a7a0cdb431
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=334
+2015-02-01 21:16:06 IN asm_task_control_module.cpp-209L (-1223710912): DEBUG => *******************************
+2015-02-01 21:16:06 IN asm_task_control_module.cpp-182L (-1223710912): DEBUG => ++++++++++be accept
+2015-02-01 21:16:06 IN asm_task_control_module.cpp-360L (-1223710912): DEBUG => child process 12414 runing
+2015-02-01 21:16:06 IN asm_task_control_module.cpp-276L (-1234261184): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:4319
+Require:com.comcast.ngod.s7
+OnDemandSessionId:fc11e0bc-556c-4b2f-a4b0-73a7a0cdb431
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=334
+2015-02-01 21:16:07 IN asm_transaction.cpp-36L (-1234261184): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:4319
+Require:com.comcast.ngod.s7
+OnDemandSessionId:fc11e0bc-556c-4b2f-a4b0-73a7a0cdb431
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:334
+2015-02-01 21:16:07 IN asm_task_control_module.cpp-73L (-1223710912): DEBUG => *********child process 12414 exit***********
+2015-02-01 21:17:24 IN asm_task_control_module.cpp-184L (-1223710912): DEBUG => ==========af accept
+2015-02-01 21:17:24 IN asm_task_control_module.cpp-189L (-1223710912): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:11002
+Require:com.comcast.ngod.s7
+OnDemandSessionId:30c178a9-24c3-45be-8216-fdd5d6387223
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=335
+2015-02-01 21:17:24 IN asm_task_control_module.cpp-209L (-1223710912): DEBUG => *******************************
+2015-02-01 21:17:24 IN asm_task_control_module.cpp-182L (-1223710912): DEBUG => ++++++++++be accept
+2015-02-01 21:17:24 IN asm_task_control_module.cpp-360L (-1223710912): DEBUG => child process 12708 runing
+2015-02-01 21:17:24 IN asm_task_control_module.cpp-276L (-1234261184): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:11002
+Require:com.comcast.ngod.s7
+OnDemandSessionId:30c178a9-24c3-45be-8216-fdd5d6387223
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=335
+2015-02-01 21:17:24 IN asm_transaction.cpp-36L (-1234261184): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:11002
+Require:com.comcast.ngod.s7
+OnDemandSessionId:30c178a9-24c3-45be-8216-fdd5d6387223
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:335
+2015-02-01 21:17:25 IN asm_task_control_module.cpp-73L (-1223710912): DEBUG => *********child process 12708 exit***********
+2015-02-01 21:18:24 IN asm_task_control_module.cpp-182L (-1224034496): DEBUG => ++++++++++be accept
+2015-02-01 21:18:28 IN asm_task_control_module.cpp-184L (-1224034496): DEBUG => ==========af accept
+2015-02-01 21:18:28 IN asm_task_control_module.cpp-189L (-1224034496): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:18084
+Require:com.comcast.ngod.s7
+OnDemandSessionId:5d817f14-151f-49f0-b392-23436ed7948a
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=335
+2015-02-01 21:18:28 IN asm_task_control_module.cpp-209L (-1224034496): DEBUG => *******************************
+2015-02-01 21:18:28 IN asm_task_control_module.cpp-182L (-1224034496): DEBUG => ++++++++++be accept
+2015-02-01 21:18:28 IN asm_task_control_module.cpp-360L (-1224034496): DEBUG => child process 12999 runing
+2015-02-01 21:18:28 IN asm_task_control_module.cpp-276L (-1234584768): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:18084
+Require:com.comcast.ngod.s7
+OnDemandSessionId:5d817f14-151f-49f0-b392-23436ed7948a
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=335
+2015-02-01 21:18:28 IN asm_transaction.cpp-36L (-1234584768): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:18084
+Require:com.comcast.ngod.s7
+OnDemandSessionId:5d817f14-151f-49f0-b392-23436ed7948a
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:335
+2015-02-01 21:18:28 IN asm_task_control_module.cpp-73L (-1224034496): DEBUG => *********child process 12999 exit***********
+2015-02-01 21:19:28 IN asm_task_control_module.cpp-182L (-1223801024): DEBUG => ++++++++++be accept
+2015-02-01 21:19:32 IN asm_task_control_module.cpp-184L (-1223801024): DEBUG => ==========af accept
+2015-02-01 21:19:32 IN asm_task_control_module.cpp-189L (-1223801024): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:142
+Require:com.comcast.ngod.s7
+OnDemandSessionId:80961503-77a1-4fb4-9cd1-d694883ee1dd
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=333
+2015-02-01 21:19:32 IN asm_task_control_module.cpp-209L (-1223801024): DEBUG => *******************************
+2015-02-01 21:19:32 IN asm_task_control_module.cpp-182L (-1223801024): DEBUG => ++++++++++be accept
+2015-02-01 21:19:32 IN asm_task_control_module.cpp-360L (-1223801024): DEBUG => child process 13288 runing
+2015-02-01 21:19:32 IN asm_task_control_module.cpp-276L (-1234351296): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:142
+Require:com.comcast.ngod.s7
+OnDemandSessionId:80961503-77a1-4fb4-9cd1-d694883ee1dd
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=333
+2015-02-01 21:19:32 IN asm_transaction.cpp-36L (-1234351296): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:142
+Require:com.comcast.ngod.s7
+OnDemandSessionId:80961503-77a1-4fb4-9cd1-d694883ee1dd
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:333
+2015-02-01 21:19:32 IN asm_task_control_module.cpp-73L (-1223801024): DEBUG => *********child process 13288 exit***********
+2015-02-01 21:20:35 IN asm_task_control_module.cpp-182L (-1223702720): DEBUG => ++++++++++be accept
+2015-02-01 21:20:39 IN asm_task_control_module.cpp-184L (-1223702720): DEBUG => ==========af accept
+2015-02-01 21:20:39 IN asm_task_control_module.cpp-189L (-1223702720): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:10097
+Require:com.comcast.ngod.s7
+OnDemandSessionId:c727f463-3cd6-4415-8921-4315d8cdb85e
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=335
+2015-02-01 21:20:39 IN asm_task_control_module.cpp-209L (-1223702720): DEBUG => *******************************
+2015-02-01 21:20:39 IN asm_task_control_module.cpp-182L (-1223702720): DEBUG => ++++++++++be accept
+2015-02-01 21:20:39 IN asm_task_control_module.cpp-360L (-1223702720): DEBUG => child process 13580 runing
+2015-02-01 21:20:39 IN asm_task_control_module.cpp-276L (-1234252992): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:10097
+Require:com.comcast.ngod.s7
+OnDemandSessionId:c727f463-3cd6-4415-8921-4315d8cdb85e
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=335
+2015-02-01 21:20:39 IN asm_transaction.cpp-36L (-1234252992): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:10097
+Require:com.comcast.ngod.s7
+OnDemandSessionId:c727f463-3cd6-4415-8921-4315d8cdb85e
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:335
+2015-02-01 21:20:39 IN asm_task_control_module.cpp-73L (-1223702720): DEBUG => *********child process 13580 exit***********
+2015-02-01 21:22:29 IN asm_task_control_module.cpp-182L (-1223612608): DEBUG => ++++++++++be accept
+2015-02-01 21:22:33 IN asm_task_control_module.cpp-184L (-1223612608): DEBUG => ==========af accept
+2015-02-01 21:22:33 IN asm_task_control_module.cpp-189L (-1223612608): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:3693
+Require:com.comcast.ngod.s7
+OnDemandSessionId:865da49a-59ab-456d-a95a-25e14f057584
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=334
+2015-02-01 21:22:33 IN asm_task_control_module.cpp-209L (-1223612608): DEBUG => *******************************
+2015-02-01 21:22:33 IN asm_task_control_module.cpp-182L (-1223612608): DEBUG => ++++++++++be accept
+2015-02-01 21:22:33 IN asm_task_control_module.cpp-360L (-1223612608): DEBUG => child process 13871 runing
+2015-02-01 21:22:33 IN asm_task_control_module.cpp-276L (-1234162880): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:3693
+Require:com.comcast.ngod.s7
+OnDemandSessionId:865da49a-59ab-456d-a95a-25e14f057584
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=334
+2015-02-01 21:22:33 IN asm_transaction.cpp-36L (-1234162880): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:3693
+Require:com.comcast.ngod.s7
+OnDemandSessionId:865da49a-59ab-456d-a95a-25e14f057584
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:334
+2015-02-01 21:22:33 IN asm_communication_module.cpp-72L (-1234162880): SYSINFO => connecting...127.0.0.1:7777
+2015-02-01 21:22:33 IN asm_transaction.cpp-118L (-1234162880): DEBUG => setup send to as msg:
+SETUP rtsp://127.0.0.1:7777 RTSP/1.0
+CSeq:0
+Require:com.comcast.ngod.r8
+OnDemandSessionId:865da49a-59ab-456d-a95a-25e14f057584
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000
+StreamControlProto:
+ApplicationId:001
+ApplicationType:1
+
+len:303
+2015-02-01 21:22:33 IN asm_transaction.cpp-124L (-1234162880): DEBUG => setup recv from as res:RTSP/1.0 200 OK
+CSeq:0
+Session:149114
+Protocol:RTSP
+OnDemandSessionId:865da49a-59ab-456d-a95a-25e14f057584
+As_IP:127.0.0.1
+As_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+
+, len:272
+2015-02-01 21:22:33 IN asm_transaction.cpp-164L (-1234162880): DEBUG => setup response send to sm msg:RTSP/1.0 200 OK
+CSeq:3693
+Session:71931
+Protocol:RTSP
+OnDemandSessionId:865da49a-59ab-456d-a95a-25e14f057584
+As_IP:127.0.0.1
+AS_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+, len:272
+2015-02-01 21:22:33 IN asm_task_control_module.cpp-285L (-1234162880): DEBUG => pthread exit
+2015-02-01 21:29:52 IN asm_task_control_module.cpp-184L (-1223612608): DEBUG => ==========af accept
+2015-02-01 21:29:52 IN asm_task_control_module.cpp-189L (-1223612608): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:11824
+Require:com.comcast.ngod.s7
+OnDemandSessionId:3e234e1f-24aa-4eb7-9c8e-6f88c218a708
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=335
+2015-02-01 21:29:52 IN asm_task_control_module.cpp-182L (-1223612608): DEBUG => ++++++++++be accept
+2015-02-01 21:29:52 IN asm_task_control_module.cpp-276L (-1234162880): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:11824
+Require:com.comcast.ngod.s7
+OnDemandSessionId:3e234e1f-24aa-4eb7-9c8e-6f88c218a708
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=335
+2015-02-01 21:29:52 IN asm_transaction.cpp-36L (-1234162880): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:11824
+Require:com.comcast.ngod.s7
+OnDemandSessionId:3e234e1f-24aa-4eb7-9c8e-6f88c218a708
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:335
+2015-02-01 21:29:52 IN asm_communication_module.cpp-72L (-1234162880): SYSINFO => connecting...127.0.0.1:7777
+2015-02-01 21:29:52 IN asm_transaction.cpp-118L (-1234162880): DEBUG => setup send to as msg:
+SETUP rtsp://127.0.0.1:7777 RTSP/1.0
+CSeq:0
+Require:com.comcast.ngod.r8
+OnDemandSessionId:3e234e1f-24aa-4eb7-9c8e-6f88c218a708
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000
+StreamControlProto:
+ApplicationId:001
+ApplicationType:1
+
+len:303
+2015-02-01 21:29:52 IN asm_transaction.cpp-124L (-1234162880): DEBUG => setup recv from as res:RTSP/1.0 200 OK
+CSeq:0
+Session:18958
+Protocol:RTSP
+OnDemandSessionId:3e234e1f-24aa-4eb7-9c8e-6f88c218a708
+As_IP:127.0.0.1
+As_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+
+, len:271
+2015-02-01 21:29:52 IN asm_transaction.cpp-164L (-1234162880): DEBUG => setup response send to sm msg:RTSP/1.0 200 OK
+CSeq:11824
+Session:49438
+Protocol:RTSP
+OnDemandSessionId:3e234e1f-24aa-4eb7-9c8e-6f88c218a708
+As_IP:127.0.0.1
+AS_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+, len:273
+2015-02-01 21:29:52 IN asm_task_control_module.cpp-285L (-1234162880): DEBUG => pthread exit
+2015-02-01 21:33:32 IN asm_task_control_module.cpp-184L (-1223612608): DEBUG => ==========af accept
+2015-02-01 21:33:32 IN asm_task_control_module.cpp-189L (-1223612608): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:7703
+Require:com.comcast.ngod.s7
+OnDemandSessionId:6b1ea451-3a96-4075-b44a-e9eb22163825
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=334
+2015-02-01 21:33:32 IN asm_task_control_module.cpp-182L (-1223612608): DEBUG => ++++++++++be accept
+2015-02-01 21:33:32 IN asm_task_control_module.cpp-276L (-1234162880): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:7703
+Require:com.comcast.ngod.s7
+OnDemandSessionId:6b1ea451-3a96-4075-b44a-e9eb22163825
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=334
+2015-02-01 21:33:32 IN asm_transaction.cpp-36L (-1234162880): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:7703
+Require:com.comcast.ngod.s7
+OnDemandSessionId:6b1ea451-3a96-4075-b44a-e9eb22163825
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:334
+2015-02-01 21:33:32 IN asm_communication_module.cpp-72L (-1234162880): SYSINFO => connecting...127.0.0.1:7777
+2015-02-01 21:33:32 IN asm_transaction.cpp-118L (-1234162880): DEBUG => setup send to as msg:
+SETUP rtsp://127.0.0.1:7777 RTSP/1.0
+CSeq:0
+Require:com.comcast.ngod.r8
+OnDemandSessionId:6b1ea451-3a96-4075-b44a-e9eb22163825
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000
+StreamControlProto:
+ApplicationId:001
+ApplicationType:1
+
+len:303
+2015-02-01 21:33:32 IN asm_transaction.cpp-124L (-1234162880): DEBUG => setup recv from as res:RTSP/1.0 200 OK
+CSeq:0
+Session:107474
+Protocol:RTSP
+OnDemandSessionId:6b1ea451-3a96-4075-b44a-e9eb22163825
+As_IP:127.0.0.1
+As_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+
+, len:272
+2015-02-01 21:33:32 IN asm_transaction.cpp-164L (-1234162880): DEBUG => setup response send to sm msg:RTSP/1.0 200 OK
+CSeq:7703
+Session:29841
+Protocol:RTSP
+OnDemandSessionId:6b1ea451-3a96-4075-b44a-e9eb22163825
+As_IP:127.0.0.1
+AS_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+, len:272
+2015-02-01 21:33:32 IN asm_task_control_module.cpp-285L (-1234162880): DEBUG => pthread exit
+2015-02-01 21:34:41 IN asm_task_control_module.cpp-184L (-1223612608): DEBUG => ==========af accept
+2015-02-01 21:34:41 IN asm_task_control_module.cpp-189L (-1223612608): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:9519
+Require:com.comcast.ngod.s7
+OnDemandSessionId:dd1f29fe-bdce-4229-bbe4-f6393da9e327
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=334
+2015-02-01 21:34:41 IN asm_task_control_module.cpp-182L (-1223612608): DEBUG => ++++++++++be accept
+2015-02-01 21:34:41 IN asm_task_control_module.cpp-276L (-1234162880): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:9519
+Require:com.comcast.ngod.s7
+OnDemandSessionId:dd1f29fe-bdce-4229-bbe4-f6393da9e327
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=334
+2015-02-01 21:34:41 IN asm_transaction.cpp-36L (-1234162880): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:9519
+Require:com.comcast.ngod.s7
+OnDemandSessionId:dd1f29fe-bdce-4229-bbe4-f6393da9e327
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:334
+2015-02-01 21:34:41 IN asm_communication_module.cpp-72L (-1234162880): SYSINFO => connecting...127.0.0.1:7777
+2015-02-01 21:34:41 IN asm_transaction.cpp-118L (-1234162880): DEBUG => setup send to as msg:
+SETUP rtsp://127.0.0.1:7777 RTSP/1.0
+CSeq:0
+Require:com.comcast.ngod.r8
+OnDemandSessionId:dd1f29fe-bdce-4229-bbe4-f6393da9e327
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000
+StreamControlProto:
+ApplicationId:001
+ApplicationType:1
+
+len:303
+2015-02-01 21:34:41 IN asm_transaction.cpp-124L (-1234162880): DEBUG => setup recv from as res:RTSP/1.0 200 OK
+CSeq:0
+Session:132395
+Protocol:RTSP
+OnDemandSessionId:dd1f29fe-bdce-4229-bbe4-f6393da9e327
+As_IP:127.0.0.1
+As_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+
+, len:272
+2015-02-01 21:34:41 IN asm_transaction.cpp-164L (-1234162880): DEBUG => setup response send to sm msg:RTSP/1.0 200 OK
+CSeq:9519
+Session:132395
+Protocol:RTSP
+OnDemandSessionId:dd1f29fe-bdce-4229-bbe4-f6393da9e327
+As_IP:127.0.0.1
+AS_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+, len:273
+2015-02-01 21:34:41 IN asm_task_control_module.cpp-285L (-1234162880): DEBUG => pthread exit
+2015-02-01 21:36:25 IN asm_task_control_module.cpp-184L (-1223612608): DEBUG => ==========af accept
+2015-02-01 21:36:25 IN asm_task_control_module.cpp-189L (-1223612608): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:13877
+Require:com.comcast.ngod.s7
+OnDemandSessionId:0c70d967-b8db-4a39-920f-d34f5a4c9ff1
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=335
+2015-02-01 21:36:25 IN asm_task_control_module.cpp-182L (-1223612608): DEBUG => ++++++++++be accept
+2015-02-01 21:36:25 IN asm_task_control_module.cpp-276L (-1234162880): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:13877
+Require:com.comcast.ngod.s7
+OnDemandSessionId:0c70d967-b8db-4a39-920f-d34f5a4c9ff1
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=335
+2015-02-01 21:36:25 IN asm_transaction.cpp-36L (-1234162880): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:13877
+Require:com.comcast.ngod.s7
+OnDemandSessionId:0c70d967-b8db-4a39-920f-d34f5a4c9ff1
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:335
+2015-02-01 21:36:25 IN asm_communication_module.cpp-72L (-1234162880): SYSINFO => connecting...127.0.0.1:7777
+2015-02-01 21:36:25 IN asm_transaction.cpp-118L (-1234162880): DEBUG => setup send to as msg:
+SETUP rtsp://127.0.0.1:7777 RTSP/1.0
+CSeq:0
+Require:com.comcast.ngod.r8
+OnDemandSessionId:0c70d967-b8db-4a39-920f-d34f5a4c9ff1
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000
+StreamControlProto:
+ApplicationId:001
+ApplicationType:1
+
+len:303
+2015-02-01 21:36:25 IN asm_transaction.cpp-124L (-1234162880): DEBUG => setup recv from as res:RTSP/1.0 200 OK
+CSeq:0
+Session:2844
+Protocol:RTSP
+OnDemandSessionId:0c70d967-b8db-4a39-920f-d34f5a4c9ff1
+As_IP:127.0.0.1
+As_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+
+, len:270
+2015-02-01 21:36:25 IN asm_transaction.cpp-164L (-1234162880): DEBUG => setup response send to sm msg:RTSP/1.0 200 OK
+CSeq:13877
+Session:2844
+Protocol:RTSP
+OnDemandSessionId:0c70d967-b8db-4a39-920f-d34f5a4c9ff1
+As_IP:127.0.0.1
+AS_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+, len:272
+2015-02-01 21:36:25 IN asm_task_control_module.cpp-285L (-1234162880): DEBUG => pthread exit
+2015-02-02 10:10:32 IN asm_task_control_module.cpp-182L (-1223465152): DEBUG => ++++++++++be accept
+2015-02-02 10:10:46 IN asm_task_control_module.cpp-184L (-1223465152): DEBUG => ==========af accept
+2015-02-02 10:10:46 IN asm_task_control_module.cpp-189L (-1223465152): DEBUG => **********af read buf:SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:16188
+Require:com.comcast.ngod.s7
+OnDemandSessionId:11a38b6d-0e41-46d3-87a8-135a13281a77
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ , len=335
+2015-02-02 10:10:46 IN asm_task_control_module.cpp-209L (-1223465152): DEBUG => *******************************
+2015-02-02 10:10:46 IN asm_task_control_module.cpp-182L (-1223465152): DEBUG => ++++++++++be accept
+2015-02-02 10:10:46 IN asm_task_control_module.cpp-360L (-1223465152): DEBUG => child process 3059 runing
+2015-02-02 10:10:46 IN asm_task_control_module.cpp-276L (-1234015424): DEBUG => ********pthread read buf=SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:16188
+Require:com.comcast.ngod.s7
+OnDemandSessionId:11a38b6d-0e41-46d3-87a8-135a13281a77
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+, buflen=335
+2015-02-02 10:10:46 IN asm_transaction.cpp-36L (-1234015424): DEBUG => sm_setup msg :SETUP rtsp://127.0.0.1:6608 RTSP/1.0
+CSeq:16188
+Require:com.comcast.ngod.s7
+OnDemandSessionId:11a38b6d-0e41-46d3-87a8-135a13281a77
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;bandwidth=2700000
+StreamControlProto:priority=1
+ApplicationId:001
+ApplicationType:1
+
+ len:335
+2015-02-02 10:10:46 IN asm_communication_module.cpp-72L (-1234015424): SYSINFO => connecting...127.0.0.1:7777
+2015-02-02 10:10:46 IN asm_transaction.cpp-118L (-1234015424): DEBUG => setup send to as msg:
+SETUP rtsp://127.0.0.1:7777 RTSP/1.0
+CSeq:0
+Require:com.comcast.ngod.r8
+OnDemandSessionId:11a38b6d-0e41-46d3-87a8-135a13281a77
+SessionGroup:SM1
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000
+StreamControlProto:
+ApplicationId:001
+ApplicationType:1
+
+len:303
+2015-02-02 10:10:46 IN asm_transaction.cpp-124L (-1234015424): DEBUG => setup recv from as res:RTSP/1.0 200 OK
+CSeq:0
+Session:30377
+Protocol:RTSP
+OnDemandSessionId:11a38b6d-0e41-46d3-87a8-135a13281a77
+As_IP:127.0.0.1
+As_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+
+, len:271
+2015-02-02 10:10:46 IN asm_transaction.cpp-164L (-1234015424): DEBUG => setup response send to sm msg:RTSP/1.0 200 OK
+CSeq:16188
+Session:168637
+Protocol:RTSP
+OnDemandSessionId:11a38b6d-0e41-46d3-87a8-135a13281a77
+As_IP:127.0.0.1
+AS_Port:6000
+Transport:MP2T/DVBC/UDP;unicast;client=00AF123456DE;destination=127.0.0.1;client_port=7000;source=127.0.0.1;server_port=5000
+, len:274
+2015-02-02 10:10:46 IN asm_task_control_module.cpp-285L (-1234015424): DEBUG => pthread exit
+2015-02-02 10:10:46 IN asm_task_control_module.cpp-184L (-1223465152): DEBUG => ==========af accept
+2015-02-02 10:10:46 IN asm_task_control_module.cpp-189L (-1223465152): DEBUG => **********af read buf:TEARDOWN rtsp://:668472 RTSP/1.0
+CSeq:11230
+Require:com.comcast.ngod.s7
+Reason:200 User stop
+Session:0
+OnDemandSessionId:11a3b6d-0e41-466d3-87a8-135a13281a77
+
+ , len=167
+2015-02-02 10:10:46 IN asm_task_control_module.cpp-182L (-1223465152): DEBUG => ++++++++++be accept
+2015-02-02 10:10:46 IN asm_task_control_module.cpp-276L (-1234015424): DEBUG => ********pthread read buf=TEARDOWN rtsp://:668472 RTSP/1.0
+CSeq:11230
+Require:com.comcast.ngod.s7
+Reason:200 User stop
+Session:0
+OnDemandSessionId:11a3b6d-0e41-466d3-87a8-135a13281a77
+
+, buflen=167
+2015-02-02 10:10:47 IN asm_task_control_module.cpp-73L (-1223465152): DEBUG => *********child process 3059 exit***********

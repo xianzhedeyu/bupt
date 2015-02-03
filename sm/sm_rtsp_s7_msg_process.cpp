@@ -76,10 +76,10 @@ int rtsp_s7_setup_res_parse(char *setup_res_mag,S7_SETUP_RES *res)
                 header_value = strtok_r(NULL, ":", &ptr2);
                 strcpy(res->protocol, header_value);
             }
-            else if(strcmp(header, "streamhandle") == 0) {
-                header_value = strtok_r(NULL, ":", &ptr2);
-                res->stream_handle = atol(header_value);
-            }
+            //else if(strcmp(header, "streamhandle") == 0) {
+            //    header_value = strtok_r(NULL, ":", &ptr2);
+            //    res->stream_handle = atol(header_value);
+            //}
             else if(strcmp(header, RTSP_HEADER_TRANSPORT) == 0) {
                 header_value = strtok_r(NULL, ":", &ptr2);
                 subline = strtok_r(header_value, ";", &ptr3);

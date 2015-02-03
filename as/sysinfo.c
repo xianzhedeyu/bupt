@@ -97,7 +97,7 @@ main(void)
 	initCpuValue();
 	while(1)
 	{
-		sleep(1);
+		sleep(20);
 		cpupercent=getCurrentCpuValue();
 		printf("cpu: %5.2f\n",cpupercent);
 	//	printf("%5.2f %5.2f\n",cpupercent,percent2);
