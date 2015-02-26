@@ -3,6 +3,7 @@
 typedef unsigned long long INT64;
 
 #define ASM_MAXNUM 100
+#define VREP_SERVER 6621
 
 #define ASM_PORT 6608
 #define ASM_IP "127.0.0.1"

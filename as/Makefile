@@ -1,5 +1,5 @@
 TARGET=as
-OBJS=as.o as_rtsp_r8_msg_process.o as_rtsp_public_function.o aslog.o
+OBJS=as.o as_rtsp_r8_msg_process.o as_rtsp_public_function.o aslog.o as_vrep_d8_msg_process.o sysinfo.o
 CC=g++
 %.o:%.cpp *.h
 	$(CC) -c -g -I. $< -o $@

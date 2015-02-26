@@ -6,9 +6,64 @@
 #include "public_def.h"
 #include "as_rtsp_r8_msg_process.h"
 #include "as_rtsp_public_function.h"
+#include "as_vrep_d8_msg_process.h"
+#include "sysinfo.h"
 
+void report()
+{
+    int sockfd;
+    struct sockaddr_in servaddr;
+    sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    memset(&servaddr, 0x00, sizeof(servaddr));
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_port = htons(VREP_SERVER);
+    inet_pton(AF_INET, "127.0.0.1", &servaddr.sin_addr);
+    connect(sockfd, (struct sockaddr *)&servaddr, sizeof(servaddr));
+    OPEN open;
+    open.Len = 29;
+    open.holdtime = 45;
+    open.ID[0] = 0x00;
+    open.ID[1] = 0x01;
+    open.ID[2] = 0x02;
+    open.ID[3] = 0x03;
+    open.parametersLen = 12;
+    Parameter p2;
+    p2.ParameterType = 2;
+    p2.SubParametersLen = 2;
+    memcpy(p2.ParameterValue, "as", sizeof(p2.ParameterValue));
+    open.parameters[0] = p2;
+    Parameter p3;
+    p3.ParameterType = 3;
+    p3.SubParametersLen = 2;
+    memcpy(p3.ParameterValue, "as", sizeof(p3.ParameterValue));
+    open.parameters[1] = p3;
+    open.ParameterNum = 2;
+    char OpenMessage[50];
+    PackageOpen(open, OpenMessage);
+    int ret = write(sockfd, OpenMessage, open.Len);
+
+    while(1) {
+        double cpu = getCurrentCpuValue();
+        double memory = getCurrentMemInfo();
+        UPDATE update;
+        update.Len = 27;
+        update.cpu = cpu;
+        update.memory = memory;
+        char UpdateMessage[50];
+        PackageUpdate(update, UpdateMessage);
+        ret = write(sockfd, UpdateMessage, update.Len);
+        printf("%d\n", ret);
+        sleep(20);
+    }
+}
+    
 int main()
 {
+    pid_t child;
+    if((child = fork()) == 0)
+    {
+        report();
+    }
     pid_t pid;
     int listenfd, connfd;
     

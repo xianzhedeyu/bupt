@@ -84,34 +84,3 @@ getLoadAvge(double load[],int n)
 		return -1;
 	}
 }
-int
-main(void)
-{
-	double cpupercent=0;
-	double mempercent=0;
-	double load[3];
-//	long long totalPhysMem;
-//	long long freePhysMem;
-//	long long sharedPhysMem;
-//	long long bufferPhysMem;
-	initCpuValue();
-	while(1)
-	{
-		sleep(20);
-		cpupercent=getCurrentCpuValue();
-		printf("cpu: %5.2f\n",cpupercent);
-	//	printf("%5.2f %5.2f\n",cpupercent,percent2);
-	//	sysinfo(&memInfo);
-	//	totalPhysMem=memInfo.totalram;
-	//	totalPhysMem*=memInfo.mem_unit;
-	//	freePhysMem=memInfo.freeram;
-	//	sharedPhysMem=memInfo.sharedram;
-	//	bufferPhysMem=memInfo.bufferram;
-	//	mempercent=freePhysMem+sharedPhysMem+bufferPhysMem;
-		mempercent=getCurrentMemInfo();
-		printf("mem: %5.2f\n",mempercent * 100);
-		if(getLoadAvge(load,3)==0)
-			printf("load average: %f, %f, %f\n",load[0],load[1],load[2]);
-	}
-	return 0;
-}

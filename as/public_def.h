@@ -6,6 +6,7 @@ typedef unsigned long long INT64;
 
 #define ASM_PORT 6608
 #define ASM_IP "127.0.0.1"
+#define VREP_SERVER 6621
 #define AS_PORT 7777
 
 #define RTSP_S7_REQUIRE "com.comcast.ngod.s7"

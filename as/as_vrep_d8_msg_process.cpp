@@ -1,8 +1,9 @@
 #include <arpa/inet.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <sys/socket.h>
 #include <string.h>
-#include "asm_vrep_d6_msg_process.h"
+#include "as_vrep_d8_msg_process.h"
 #include "public_def.h"
 
 static int bytes2int(byte* b) //字节数组(4位)转化为int型,整型的低字节位是字节数组的高位
@@ -76,24 +77,7 @@ bool ParseOPEN(byte* VREP, OPEN &M_OPEN) //OPEN消息解析函数
 			fprintf(stderr, "M_capabilityCode:%d\n", M_OPEN.capability[CNum].M_capabilityCode);
 			M_OPEN.capability[CNum].M_capabilityLen = btos(VREP,begin+6);
 			fprintf(stderr, "M_capabilityLen:%d\n", M_OPEN.capability[CNum].M_capabilityLen);
-			if (M_OPEN.capability[CNum].M_capabilityCode == VREP_ID_D7_OPEN_CapabilityInformation_RouteTypesSupported) //如果属性是RouteTypesSupported，继续拆
-			{
-
-				restRTlen = M_OPEN.capability[CNum].M_capabilityLen;
-				while (restRTlen > 0) {
-					byte *M_AddressFamily;
-					byte *M_ApplicationProtocol;
-					M_AddressFamily = VREP + begin + 8 + M_OPEN.capability[CNum].M_capabilityLen - restRTlen;
-					M_ApplicationProtocol = VREP + begin + 10 + M_OPEN.capability[CNum].M_capabilityLen - restRTlen;
-					M_OPEN.routetypessupported[RTNum].AddressFamily = btoi(M_AddressFamily,0); //2字节
-					M_OPEN.routetypessupported[RTNum].ApplicationProtocol = btoi(M_ApplicationProtocol,0); //2字节
-					RTNum++;
-					restRTlen = restRTlen - 4;
-				}
-				//byte* RT=(byte*)"Route Types Supported";
-				toByteArray(RTNum, M_OPEN.capability[CNum].M_capability); //此处值为Route Types Supported的个数
-			}
-            else if (M_OPEN.capability[CNum].M_capabilityCode == VREP_ID_D7_OPEN_CapabilityInformation_SendReceiveCapability) //Send Receive Capability
+            if (M_OPEN.capability[CNum].M_capabilityCode == VREP_ID_D6_OPEN_CapabilityInformation_SendReceiveCapability) //Send Receive Capability
 			{
 				byte* SendReceiveCapability;
 				SendReceiveCapability = VREP + begin + 8;
@@ -102,24 +86,24 @@ bool ParseOPEN(byte* VREP, OPEN &M_OPEN) //OPEN消息解析函数
 				M_OPEN.capability[CNum].M_capability[2] = SendReceiveCapability[2];
 				M_OPEN.capability[CNum].M_capability[3] = SendReceiveCapability[3]; //4字节
 			}
-            else if(M_OPEN.capability[CNum].M_capabilityCode == VREP_ID_D7_OPEN_CapabilityInformation_Memory)
-            {
-                byte* Memory;
-                Memory = VREP + begin + 8;
-                M_OPEN.capability[CNum].M_capability[0] = Memory[0];
-                M_OPEN.capability[CNum].M_capability[1] = Memory[1];
-                M_OPEN.capability[CNum].M_capability[2] = Memory[2];
-                M_OPEN.capability[CNum].M_capability[3] = Memory[3];
-            }
-            else if(M_OPEN.capability[CNum].M_capabilityCode == VREP_ID_D7_OPEN_CapabilityInformation_CPUS) 
-            {
-                byte* cpus;
-                cpus = VREP + begin + 8;
-                M_OPEN.capability[CNum].M_capability[0] = cpus[0];
-                M_OPEN.capability[CNum].M_capability[1] = cpus[1];
-                M_OPEN.capability[CNum].M_capability[2] = cpus[2];
-                M_OPEN.capability[CNum].M_capability[3] = cpus[3];
-            }
+            //else if(M_OPEN.capability[CNum].M_capabilityCode == VREP_ID_D8_OPEN_CapabilityInformation_Memory)
+            //{
+            //    byte* Memory;
+            //    Memory = VREP + begin + 8;
+            //    M_OPEN.capability[CNum].M_capability[0] = Memory[0];
+            //    M_OPEN.capability[CNum].M_capability[1] = Memory[1];
+            //    M_OPEN.capability[CNum].M_capability[2] = Memory[2];
+            //    M_OPEN.capability[CNum].M_capability[3] = Memory[3];
+            //}
+            //else if(M_OPEN.capability[CNum].M_capabilityCode == VREP_ID_D8_OPEN_CapabilityInformation_CPUS) 
+            //{
+            //    byte* cpus;
+            //    cpus = VREP + begin + 8;
+            //    M_OPEN.capability[CNum].M_capability[0] = cpus[0];
+            //    M_OPEN.capability[CNum].M_capability[1] = cpus[1];
+            //    M_OPEN.capability[CNum].M_capability[2] = cpus[2];
+            //    M_OPEN.capability[CNum].M_capability[3] = cpus[3];
+            //}
 			//	byte* CI=(byte*)"Capability Information";
 			toByteArray(CNum, M_OPEN.parameters[PNum].ParameterValue); //此处值为该Capability所在数组的位置
 			CNum++;
@@ -152,7 +136,6 @@ void InspectOPEN(OPEN &M_OPEN) //OPEN消息检查
 {
 	int i = 0;
 	if (M_OPEN.Len < 17)
-		//TODO:发送错误消息
 		cout << "The OPEN Message Length is too short!" << M_OPEN.Len << endl;
 	for (i = 0; i < M_OPEN.ParameterNum; i++) {
 		if (M_OPEN.parameters[i].ParameterType != 2)
@@ -161,7 +144,6 @@ void InspectOPEN(OPEN &M_OPEN) //OPEN消息检查
 			break;
 	}
 	if (i == M_OPEN.ParameterNum)
-		//TODO:缺少必需属性的错误处理
 		cout << "There is a lack of Parameter 'StreamingZone' in this OPEN Message" << endl;
 	for (i = 0; i < M_OPEN.ParameterNum; i++) {
 		if (M_OPEN.parameters[i].ParameterType != 3)
@@ -170,62 +152,69 @@ void InspectOPEN(OPEN &M_OPEN) //OPEN消息检查
 			break;
 	}
 	if (i == M_OPEN.ParameterNum)
-		//TODO:缺少必需属性的错误处理
 		cout << "There is a lack of Parameter 'Component Name' in this OPEN Message" << endl;
 }
 
-
-void ParseNHS(byte* Attr, short Len, Server &M_NextHopServer) //解析参数NextHopServer
+void InspectUPDATE(UPDATE &M_UPDATE)
 {
-	M_NextHopServer.AddLen = btos(Attr,4);//开始是有四个保留字节
-	int i = 0;
-	byte* M_Address = Attr + 6;
-	for (i = 0; i < M_NextHopServer.AddLen; i++) {
-		M_NextHopServer.Address[i] = M_Address[i];
-	}
-
-	M_NextHopServer.ZoneNameLen = btos(Attr,M_NextHopServer.AddLen+6);
-	byte* M_ZoneName = Attr + M_NextHopServer.AddLen + 8;
-	for (i = 0; i < M_NextHopServer.ZoneNameLen; i++) {
-		M_NextHopServer.ZoneName[i] = M_ZoneName[i];
-	}
-
 }
-void ParseServiceStatus(byte* Attr, int &ServiceStatus) //解析参数ServiceStatus
-{
-	byte M_ServiceStatus[4];
-	for (int j = 0; j < 4; j++) {
-		M_ServiceStatus[j] = Attr[j];
-	}
-	ServiceStatus = bytes2int(M_ServiceStatus);
-}
-void ParseNHSA(byte* Attr, short Len, NHSAlternates &M_Alternates) //解析参数NextHopServerAlternates
-{
-	M_Alternates.NumAlternates = btos(Attr,0);
-	int ServerLen = 0;
-	short sumlen = 2;
-	for (int i = 0; i < M_Alternates.NumAlternates; i++) {
-		ServerLen = btos(Attr,sumlen);
-		byte* M_server = Attr + sumlen + 2;
-		for (int j = 0; j < ServerLen; j++) {
-			M_Alternates.server[i][j] = M_server[j];
-		}
-		sumlen = sumlen + 2 + ServerLen;
-	}
-}
-void HandlUnkownAttr(Attributes &attr) //未知参数处理
-{
 
+//void ParseNHS(byte* Attr, short Len, Server &M_NextHopServer) //解析参数NextHopServer
+//{
+//	M_NextHopServer.AddLen = btos(Attr,4);//开始是有四个保留字节
+//	int i = 0;
+//	byte* M_Address = Attr + 6;
+//	for (i = 0; i < M_NextHopServer.AddLen; i++) {
+//		M_NextHopServer.Address[i] = M_Address[i];
+//	}
+//
+//	M_NextHopServer.ZoneNameLen = btos(Attr,M_NextHopServer.AddLen+6);
+//	byte* M_ZoneName = Attr + M_NextHopServer.AddLen + 8;
+//	for (i = 0; i < M_NextHopServer.ZoneNameLen; i++) {
+//		M_NextHopServer.ZoneName[i] = M_ZoneName[i];
+//	}
+//
+//}
+//void ParseServiceStatus(byte* Attr, int &ServiceStatus) //解析参数ServiceStatus
+//{
+//	byte M_ServiceStatus[4];
+//	for (int j = 0; j < 4; j++) {
+//		M_ServiceStatus[j] = Attr[j];
+//	}
+//	ServiceStatus = bytes2int(M_ServiceStatus);
+//}
+//void ParseNHSA(byte* Attr, short Len, NHSAlternates &M_Alternates) //解析参数NextHopServerAlternates
+//{
+//	M_Alternates.NumAlternates = btos(Attr,0);
+//	int ServerLen = 0;
+//	short sumlen = 2;
+//	for (int i = 0; i < M_Alternates.NumAlternates; i++) {
+//		ServerLen = btos(Attr,sumlen);
+//		byte* M_server = Attr + sumlen + 2;
+//		for (int j = 0; j < ServerLen; j++) {
+//			M_Alternates.server[i][j] = M_server[j];
+//		}
+//		sumlen = sumlen + 2 + ServerLen;
+//	}
+//}
+void HandlUnkownAttr(Attributes &attr, UPDATE &M_UPDATE) //未知参数处理
+{
+    if((unsigned int)attr.AttrType == 247) {
+        M_UPDATE.memory = *(double*)attr.AttrValue;
+    }
+    if((unsigned int)attr.AttrType == 248) {
+        M_UPDATE.cpu = *(double*)attr.AttrValue;
+    }
 }
 bool ParseAttr(Attributes* M_attr, int ANum, UPDATE &M_UPDATE) //参数解析函数
 {
 	for (int i = 0; i < ANum; i++) {
 		if (M_attr[i].AttrFlag >> 7)//只使用了这个字节中的最高位
 		{
-			HandlUnkownAttr(M_attr[i]); //未知参数处理
+			HandlUnkownAttr(M_attr[i], M_UPDATE); //未知参数处理
 		}
 		fprintf(stderr, "type:%d\n", M_attr[i].AttrType);
-	    ParseServiceStatus(M_attr[i].AttrValue, M_UPDATE.ServiceStatus); //解析参数ServiceStatus
+	    //ParseServiceStatus(M_attr[i].AttrValue, M_UPDATE.ServiceStatus); //解析参数ServiceStatus
 	}
 	return true;
 }
@@ -235,21 +224,21 @@ bool ParseUPDATE(byte VREP[], UPDATE &M_UPDATE) //解析UPDATE消息函数
 	int ANum = 0;
 	M_Len = btos(VREP,0);
 	short restLen = M_Len - 3; //解析消息的剩余长度,初始为去掉头的长度
-	short len = 0; //取完的参数长度之和
+	cout << "reslen: " << restLen << endl;
+	short len = 0; //取完的参数值长度之和
 	while (restLen > 0) {
 		int begin = 3 + 4 * ANum + len; //起点指针
 		M_UPDATE.attributes[ANum].AttrFlag = VREP[begin];
 
 		M_UPDATE.attributes[ANum].AttrType = VREP[begin + 1];
 		M_UPDATE.attributes[ANum].AttrLen = btos(VREP,begin+2);
-		M_UPDATE.attributes[ANum].AttrValue = VREP + begin + 4;
-		printf("flag: %x\n", VREP[begin]);
-		printf("type: %x\n", VREP[begin + 1]);
-		printf("length: %x\n", M_UPDATE.attributes[ANum].AttrLen);
-		printf("val: %x\n",VREP + begin + 4);
-		cout << "reslen: " << restLen << endl;
+        M_UPDATE.attributes[ANum].AttrValue = (byte *)malloc(M_UPDATE.attributes[ANum].AttrLen);
+        for(int i = 0; i < M_UPDATE.attributes[ANum].AttrLen; i++) {
+		    M_UPDATE.attributes[ANum].AttrValue[i] = VREP[begin + 4 + i];
+        }
 		len += M_UPDATE.attributes[ANum].AttrLen;
 		restLen = restLen - (4 + M_UPDATE.attributes[ANum].AttrLen);
+		cout << "reslen: " << restLen << endl;
 		ANum++;
 	}
 
@@ -262,8 +251,6 @@ bool ParseUPDATE(byte VREP[], UPDATE &M_UPDATE) //解析UPDATE消息函数
 		return true;
 	else
 		return false;
-}
-void InspectUPDATE(UPDATE &M_UPDATE) {
 }
 
 bool ParseNOTIFICATION(byte VREP[]) {
@@ -389,9 +376,13 @@ bool PackageOpen(OPEN M_OPEN, char* OpenMessage) {
 	OpenMessage[1] = M_OPEN.Len & 0xFF;//长度低字节
 	OpenMessage[2] = 0x01;//OPEN类型
 	OpenMessage[3] = 0x02;//版本
-	//OpenMessage[4]=0x00;//保留
+	OpenMessage[4]=0x00;//保留
 	OpenMessage[5] = (M_OPEN.holdtime >> 8) & 0xFF;//holdtime高字节
 	OpenMessage[6] = M_OPEN.holdtime & 0xFF;//holdtime低字节
+	OpenMessage[7]=0x00;//保留
+	OpenMessage[8]=0x00;//保留
+	OpenMessage[9]=0x00;//保留
+	OpenMessage[10]=0x00;//保留
 	OpenMessage[11] = (char) M_OPEN.ID[0];//VREP ID
 	OpenMessage[12] = (char) M_OPEN.ID[1];
 	OpenMessage[13] = (char) M_OPEN.ID[2];
@@ -404,16 +395,44 @@ bool PackageOpen(OPEN M_OPEN, char* OpenMessage) {
 		OpenMessage[18 + sumlen] = M_OPEN.parameters[i].ParameterType & 0xFF;//参数类型低字节
 		OpenMessage[19 + sumlen] = (M_OPEN.parameters[i].SubParametersLen >> 8) & 0xFF;//参数长度高字节
 		OpenMessage[20 + sumlen] = M_OPEN.parameters[i].SubParametersLen & 0xFF;//参数长度低字节
-		for (int j = 0; j < M_OPEN.parameters[i].SubParametersLen; j++)
+        int j;
+		for (j = 0; j < M_OPEN.parameters[i].SubParametersLen; j++)
 			OpenMessage[21 + sumlen + j] = (char) M_OPEN.parameters[i].ParameterValue[j]; //参数值
 		sumlen = sumlen + 4 + M_OPEN.parameters[i].SubParametersLen;
 	}
-	OpenMessage[4] = 0x00;
-	OpenMessage[7] = 0x00;//added by orion
-	OpenMessage[8] = 0x00;
-	OpenMessage[9] = 0x00;
-	OpenMessage[10] = 0x00;
 	return true;
+}
+bool PackageUpdate(UPDATE M_UPDATE, char *UpdateMessage) {
+    UpdateMessage[0] = (M_UPDATE.Len >> 8) & 0xFF;
+    UpdateMessage[1] = M_UPDATE.Len & 0xFF;
+    UpdateMessage[2] = 0x02;
+    UpdateMessage[3] = 0x80;
+    UpdateMessage[4] = 0xF7;
+    UpdateMessage[5] = 0x00;
+    UpdateMessage[6] = 0x08;
+    char *cpu = (char*)&M_UPDATE.cpu;
+    UpdateMessage[7] = cpu[0];
+    UpdateMessage[8] = cpu[1];
+    UpdateMessage[9] = cpu[2];
+    UpdateMessage[10] = cpu[3];
+    UpdateMessage[11] = cpu[4];
+    UpdateMessage[12] = cpu[5];
+    UpdateMessage[13] = cpu[6];
+    UpdateMessage[14] = cpu[7];
+    UpdateMessage[15] = 0x80;
+    UpdateMessage[16] = 0xF8;
+    UpdateMessage[17] = 0x00;
+    UpdateMessage[18] = 0x08;
+    char *memory = (char*)&M_UPDATE.memory;
+    UpdateMessage[19] = memory[0];
+    UpdateMessage[20] = memory[1];
+    UpdateMessage[21] = memory[2];
+    UpdateMessage[22] = memory[3];
+    UpdateMessage[23] = memory[4];
+    UpdateMessage[24] = memory[5];
+    UpdateMessage[25] = memory[6];
+    UpdateMessage[26] = memory[7];
+    return true;
 }
 bool PackageKeepalive(char* KeepMessage) {
 	KeepMessage[0] = 0x00;
@@ -454,22 +473,13 @@ void OPENOut(OPEN M_OPEN) {
 			cout << "The number " << i + 1 << " parameter is:StreamingZone Name" << endl;
 		else if (M_OPEN.parameters[i].ParameterType == 3)
 			cout << "The number " << i + 1 << " parameter is:Component Name" << endl;
-		else if (M_OPEN.parameters[i].ParameterType == 4)
-			cout << "The number " << i + 1 << " parameter is:Vendor Specific String" << endl;
 		cout << "The number " << i + 1 << " parameter's length is:" << M_OPEN.parameters[i].SubParametersLen << endl;
 		if (M_OPEN.parameters[i].ParameterType == 1) {
 			//	cout<<"The number "<<i+1<<" parameter is:Capability Information"<<endl;
 			int position = bytes2int(M_OPEN.parameters[i].ParameterValue);
 			cout << "          This Capability's code is:" << M_OPEN.capability[position].M_capabilityCode << endl;
 			cout << "          This Capability's length is:" << M_OPEN.capability[position].M_capabilityLen << endl;
-			if (M_OPEN.capability[position].M_capabilityCode == 1) {
-				cout << "          This Capability is Route Types Supported" << endl;
-				int RTnums = bytes2int(M_OPEN.capability[position].M_capability);
-				for (int j = 0; j < RTnums; j++) {
-					cout << "          The number " << j + 1 << " Supported Route Type's AddressFamily is:" << M_OPEN.routetypessupported[j].AddressFamily << endl;
-					cout << "          The number " << j + 1 << " Supported Route Type's ApplicationProtocol is:" << M_OPEN.routetypessupported[j].ApplicationProtocol << endl;
-				}
-			} else {
+			if (M_OPEN.capability[position].M_capabilityCode == 2) {
 				int M_SendReceiveCapability = bytes2int(M_OPEN.capability[position].M_capability); //转化SendReceiveCapability值？？？？？？？？？？？？
 				cout << "          This Capability's value is:" << M_SendReceiveCapability << endl;
 			}
@@ -482,146 +492,4 @@ void UPDATEOut(UPDATE M_UPDATE) {
 	cout << "MessageLen is:" << M_UPDATE.Len << endl;
 	cout << "MessageType is: UPDATE" << endl;
 	cout << "Attributes Numbers is:" << M_UPDATE.AttributeNum << endl;
-	for (int i = 0; i < M_UPDATE.AttributeNum; i++) {
-		if (M_UPDATE.attributes[i].AttrFlag >> 7) {
-			cout << "Unknow Attributes" << endl;
-			continue;
-		}
-		int k = 0;
-		int j = 0;
-		switch (M_UPDATE.attributes[i].AttrType) {
-		case VREP_ID_D6_UPDATE_WithdrawnRoutes:
-			cout << "WithdrawnRoutes" << endl;
-			for (k = 0; k < M_UPDATE.WRoutesNum; k++) {
-				cout << "The number " << k + 1 << " Routes's AddFamily is:" << M_UPDATE.WithdrawnRoutes[k].AddFamily << endl;
-				cout << "The number " << k + 1 << " Routes's AppProtocol is:" << M_UPDATE.WithdrawnRoutes[k].AppProtocol << endl;
-				cout << "The number " << k + 1 << " Routes's AddLen is:" << M_UPDATE.WithdrawnRoutes[k].AddLen << endl;
-				cout << "The number " << k + 1 << " Routes's Address is:";
-				for (j = 0; j < M_UPDATE.WithdrawnRoutes[k].AddLen; j++) {
-					cout << (char) M_UPDATE.WithdrawnRoutes[k].Address[j];
-				}
-				cout << endl;
-			}
-			break;
-		case VREP_ID_D6_UPDATE_ReachableRoutes:
-			cout << "ReachableRoutes" << endl;
-			for (k = 0; k < M_UPDATE.RRoutesNum; k++) {
-				cout << "The number " << k + 1 << " Routes's AddFamily is:" << M_UPDATE.ReachableRoutes[k].AddFamily << endl;
-				cout << "The number " << k + 1 << " Routes's AppProtocol is:" << M_UPDATE.ReachableRoutes[k].AppProtocol << endl;
-				cout << "The number " << k + 1 << " Routes's AddLen is:" << M_UPDATE.ReachableRoutes[k].AddLen << endl;
-				cout << "The number " << k + 1 << " Routes's Address is:";
-				for (j = 0; j < M_UPDATE.ReachableRoutes[k].AddLen; j++) {
-					cout << (char) M_UPDATE.ReachableRoutes[k].Address[j];
-				}
-				cout << endl;
-			}
-			break;
-		case VREP_ID_D6_UPDATE_NextHopServer:
-			cout << "NextHopServer" << endl;
-			cout << "AddLen is:" << M_UPDATE.NextHopServer.AddLen << endl;
-			cout << "Address is:";
-			for (k = 0; k < M_UPDATE.NextHopServer.AddLen; k++) {
-				cout << (char) M_UPDATE.NextHopServer.Address[k];
-			}
-			cout << endl;
-			cout << "ZoneNameLen is:" << M_UPDATE.NextHopServer.ZoneNameLen << endl;
-			cout << "ZoneName is:";
-			for (k = 0; k < M_UPDATE.NextHopServer.ZoneNameLen; k++) {
-				cout << (char) M_UPDATE.NextHopServer.ZoneName[k];
-			}
-			cout << endl;
-			break;
-		case VREP_ID_D6_UPDATE_QAMNames:
-			cout << "QAMNames" << endl;
-			for (k = 0; k < M_UPDATE.QAMNameNum; k++) {
-				cout << "The number " << k + 1 << " QAMName is:";
-				for (j = 0; j < 256; j++) {
-					cout << M_UPDATE.QAMName[k][j];
-				}
-				cout << endl;
-			}
-			break;
-		case VREP_ID_D6_UPDATE_TotalBandwidth:
-			cout << "TotalBandwidth: ";
-			cout << M_UPDATE.totalbw << endl;
-			break;
-		case VREP_ID_D6_UPDATE_AvailableBandwidth:
-			cout << "AvailableBandwidth: ";
-			cout << M_UPDATE.availablebw << endl;
-			break;
-		case VREP_ID_D6_UPDATE_Cost:
-			cout << "Cost: ";
-			cout << M_UPDATE.cost << endl;
-			break;
-		case VREP_ID_D6_UPDATE_EdgeInput:
-			cout << "EdgeInput" << endl;
-			for (k = 0; k < M_UPDATE.EdgeInputNum; k++) {
-				cout << "The number " << k + 1 << " EdgeInput's SubnetMask is:";
-				//	for(j=0;j<strlen(M_UPDATE.EdgeInput[i].SubnetMask);j++)
-				//	{
-				cout << M_UPDATE.EdgeInput[i].SubnetMask;
-				//	if(j<3)
-				//		cout<<'.';
-				//	}
-				//	cout<<bytes2int(M_UPDATE.EdgeInput[i].SubnetMask);
-				cout << endl;
-				cout << "The number " << k + 1 << " EdgeInput's Host is:";
-				for (j = 0; j < 256; j++) {
-					cout << M_UPDATE.EdgeInput[k].Host[j];
-				}
-				cout << endl;
-				cout << "The number " << k + 1 << " EdgeInput's Port is:" << M_UPDATE.EdgeInput[k].portID.portnumber << endl;
-				cout << "The number " << k + 1 << " EdgeInput's MaxGroupBW is:" << M_UPDATE.EdgeInput[k].MaxGroupBW << endl;
-				cout << "The number " << k + 1 << " EdgeInput's GroupName is:";
-				for (j = 0; j < 256; j++) {
-					cout << M_UPDATE.EdgeInput[k].GroupName[j];
-				}
-				cout << endl;
-			}
-			break;
-		case VREP_ID_D6_UPDATE_QAMParameters:
-			cout << "QAMParameters" << endl;
-			cout << "QAM Frequency is:" << M_UPDATE.QAMP.Frequency << endl;
-			cout << "QAM Modmode is:" << M_UPDATE.QAMP.Modmode << endl;
-			cout << "QAM Interleaver is:" << (short) M_UPDATE.QAMP.Interleaver << endl;
-			cout << "QAM TSID is:" << M_UPDATE.QAMP.TSID << endl;
-			cout << "QAM Annex is:" << (short) M_UPDATE.QAMP.Annex << endl;
-			cout << "QAM Channelwidth is:" << M_UPDATE.QAMP.Channelwidth << endl;
-			break;
-		case VREP_ID_D6_UPDATE_UDPMap:
-			cout << "UDPMap" << endl;
-			cout << "There is " << M_UPDATE.SPortsNum << " StaticPorts" << endl;
-			cout << "There is " << M_UPDATE.DPortsNum << " DynamicPorts" << endl;
-			for (j = 0; j < M_UPDATE.SPortsNum; j++) {
-				cout << "The number " << j + 1 << " StaticPorts's UDPPort is:" << M_UPDATE.SPorts[j].UDPPort << endl;
-				cout << "The number " << j + 1 << " StaticPorts's ProgramID is:" << M_UPDATE.SPorts[j].ProgramID << endl;
-			}
-			for (j = 0; j < M_UPDATE.DPortsNum; j++) {
-				cout << "The number " << j + 1 << " DynamicPorts's StartingPort is:" << M_UPDATE.DPorts[j].StartingPort << endl;
-				cout << "The number " << j + 1 << " DynamicPorts's StartingPID is:" << M_UPDATE.DPorts[j].StartingPID << endl;
-				cout << "The number " << j + 1 << " DynamicPorts's Count is:" << M_UPDATE.DPorts[j].Count << endl;
-			}
-			break;
-		case VREP_ID_D6_UPDATE_ServiceStatus:
-			cout << "ServiceStatus:";
-			cout << M_UPDATE.ServiceStatus << endl;
-			break;
-		case VREP_ID_D6_UPDATE_MaxMpegFlows:
-			cout << "MaxMpegFlows:";
-			cout << M_UPDATE.MaxMpegFlows << endl;
-			break;
-		case VREP_ID_D6_UPDATE_NextHopServerAlternates:
-			cout << "NextHopServerAlternates" << endl;
-			break;
-		case VREP_ID_D6_UPDATE_OutputPort:
-			cout << "OutputPort" << endl;
-			cout << "slot number is:" << M_UPDATE.OutputPort.slotnumber << endl;
-			cout << "port number is:" << M_UPDATE.OutputPort.portnumber << endl;
-			cout << "sub interface is:" << M_UPDATE.OutputPort.subinterface << endl;
-			break;
-		default:
-			//TODO:未知代码参数处理
-			break;
-		}
-	}
 }

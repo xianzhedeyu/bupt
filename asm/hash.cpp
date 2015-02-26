@@ -22,7 +22,7 @@ void insert(List &list, ASNode node) {
     struct in_addr addr;
     inet_aton(node.ip, &addr);
     if((double)list.number / (double)list.length >= 0.75)
-	expand(list);
+	    expand(list);
  
     unsigned int num = addr.s_addr;
     unsigned int k = num % list.length;
@@ -30,10 +30,9 @@ void insert(List &list, ASNode node) {
         k++;
     }
     strcpy(list.nodes[k].ip, node.ip);
-    list.nodes[k].load = node.load;
-    list.nodes[k].memfree = node.memfree;
+    list.nodes[k].cpuload = node.cpuload;
+    list.nodes[k].memload = node.memload;
     list.nodes[k].weight = node.weight;
-    list.nodes[k].port = node.port;
     list.number++;
     if(list.nodes[k].weight < list.nodes[list.min].weight) {
         list.min = k;
@@ -43,26 +42,40 @@ int find(List list, const char* ip) {
     struct in_addr addr;
     inet_aton(ip, &addr);
     unsigned int f = addr.s_addr;
-    unsigned int l = f % 10;
+    int l = f % 10;
     while(strcmp(list.nodes[l].ip, ip) != 0) {
         if(l < list.length)
             l++;
-        else
-            l = 0;
+        else{
+            l = -1;
+            break;
+        }
     }
     return l;
 }
 void update(List &list, ASNode node, const char* ip) {
     int index = find(list, ip);
     strcpy(list.nodes[index].ip, node.ip);
-    list.nodes[index].load = node.load;
-    list.nodes[index].memfree = node.memfree;
+    list.nodes[index].cpuload = node.cpuload;
+    list.nodes[index].memload = node.memload;
     list.nodes[index].weight = node.weight;
-    list.nodes[index].port = node.port;
 
     if(list.nodes[index].weight < list.nodes[list.min].weight) {
         list.min = index;
     }
 }
-
-
+void init(List &list) 
+{
+    list.length = 10;
+    list.number = 0;
+    list.min = 0;
+    list.nodes = (ASNode *)malloc(10 * sizeof(ASNode));
+    int i = 0;
+    for(; i < 10; i++) 
+    {
+        list.nodes[i].cpuload = 0;
+        list.nodes[i].memload = 0;
+        list.nodes[i].weight = 0;
+        strcpy(list.nodes[i].ip, " ");
+    }
+}
