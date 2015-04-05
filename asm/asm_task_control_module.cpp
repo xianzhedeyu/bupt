@@ -1,23 +1,4 @@
-﻿/*
-版本:v1.0
-
- * 作者:王传华
-
- * 创建时间:2010-08-23
-
- *修改记录:
-
- *程序说明:
-	S6 接入进程,进程管理进程，R6业务处理线程
-
- *输入参数: 无
-
- *输出参数: 无
-
- *返回值:无
-*/
-
-#include<errno.h>
+﻿#include<errno.h>
 #include"public_def.h"
 #include"asm_task_control_module.h"
 #include"asm_communication_module.h"

@@ -453,6 +453,7 @@ bool PackageNotification(short ECode, short ESubCode, char* Date, char* Notifica
 }
 void OPENOut(OPEN M_OPEN) {
 	//屏幕输出
+    cout << "----------VREP---------\n" << endl;
 	cout << "MessageLen is:" << M_OPEN.Len << endl;
 	cout << "MessageType is: OPEN" << endl;
 	cout << "ProtocolVersion is:" << M_OPEN.version << endl;
@@ -488,7 +489,9 @@ void OPENOut(OPEN M_OPEN) {
 }
 void UPDATEOut(UPDATE M_UPDATE) {
 	//屏幕输出
+    cout << "------VREP-------" << endl;
 	cout << "MessageLen is:" << M_UPDATE.Len << endl;
 	cout << "MessageType is: UPDATE" << endl;
-	cout << "Attributes Numbers is:" << M_UPDATE.AttributeNum << endl;
+    cout << "cpu:" << M_UPDATE.cpu << endl;
+    cout << "memory:" << M_UPDATE.memory / 100 << endl;
 }

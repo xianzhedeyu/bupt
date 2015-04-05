@@ -33,12 +33,6 @@ int pthread_TP(char *S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
 
 int Tp_Setup(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
 {
-    //redisContext *c;
-    //redisReply *reply;
-    //const char *hostname = "127.0.0.1";
-    //int port = 6379;
-    //struct timeval timeout = {1, 500000};
-    //c = redisConnectWithTimeout(hostname, port, timeout);
     MYSQL *mysql;
 
     S1_SETUP_MSG s1_setup_msg;
@@ -98,6 +92,7 @@ int Tp_Setup(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
 	memset(&s1_setup_msg,0x00,sizeof(S1_SETUP_MSG));
 	fprintf(stderr, "parse s1 message..\n");
     rtsp_s1_setup_msg_parse(S1_msg,&s1_setup_msg);//解析收到的s1_setup_msg
+    printf("%s\n", s1_setup_msg.client_session_id);
 	/*
 		对stb发来的setup msg进行错误处理
 	*/    
@@ -463,9 +458,14 @@ int Tp_Teardown(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
 
     //解析STB发给SM的TEARDOWN消息
     rtsp_s1_teardown_msg_parse(S1_msg,&s1_tear_msg);//解析STB发给SM的TEARDOWN消息
+    printf("&&&&&&&&&&&&&&&&&\n");
+    printf("%s\n", S1_msg);
+    printf("$$$$$$$$$$$$$$$$$\n");
+    printf("%s\n", s1_tear_msg.ondemand_session_id);
 
     //撤销和ASM的会话
     snprintf(sql_cmd, 256, "select session, asm_ip, asm_port, session_group from SM_S7 where ondemandsession='%s' and status='SETUP'", s1_tear_msg.ondemand_session_id);
+    printf("%s\n", sql_cmd);
     mysql_query(mysql, sql_cmd);
     result = mysql_store_result(mysql);
     int num_fields = mysql_num_fields(result);
@@ -476,8 +476,8 @@ int Tp_Teardown(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
         strcpy(session_group, row[3]);
     }
 
-    strcpy(s7_tear_msg.asm_ip, asmip);
-    s7_tear_msg.asm_port = asmport;
+    strcpy(s7_tear_msg.asm_ip, "127.0.0.1");
+    s7_tear_msg.asm_port = ASM_PORT;
     s7_tear_msg.cseq = sm2asm_cseq;
     strcpy(s7_tear_msg.require, RTSP_S7_REQUIRE);
     s7_tear_msg.reason = s1_tear_msg.reason;
@@ -494,6 +494,7 @@ int Tp_Teardown(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
     }
     ret = rtsp_write(asm_sd,sendbuf,strlen(sendbuf)+1);
     sm_log(LVLDEBUG,SYS_INFO,"teardown send2asm msg:%s, len:%d\n",sendbuf,ret);
+    printf("teardown send2asm msg:%s, len:%d\n", sendbuf, ret);
     memset(recvbuf,0x00,1024);
     ret = rtsp_read(asm_sd,recvbuf,1024);
     sm_log(LVLDEBUG,SYS_INFO,"teardown recv from asm res:%s, len:%d\n",recvbuf,ret);
@@ -594,6 +595,7 @@ int Tp_Teardown(char * S1_msg,int msg_len,int OC_sd,pthread_args *p_args)
     rtsp_s1_teardown_res_encode(s1_tear_res,sendbuf);
     ret = rtsp_write(OC_sd,sendbuf,strlen(sendbuf)+1);//向STB发送teardown response消息
     sm_log(LVLDEBUG,SYS_INFO,"teardown send2oc res:%s, len:%d\n",sendbuf,ret);
+    printf("teardown send2oc res:%s, len:%d\n", sendbuf, ret);
     mysql_close(mysql);
     //修改数据库状态
 	//snprintf(sql_cmd,256,"UPDATE SM_S1 SET STATUS='TEARDOWN' WHERE ONDEMAND_SESSION_ID='%s'",s1_tear_msg.ondemand_session_id);    

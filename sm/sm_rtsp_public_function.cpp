@@ -75,19 +75,69 @@ int getlocalip(char* eth,char* localip)
 }
 
 //删除字符串收尾空格
-char *trim(char *str)
+//char *trim(char *str)
+//{
+//    char temp[256];
+//    char *p = str;
+//    char *p1;
+//    if (p)
+//    {
+//        p1 = p + strlen(str) - 1;
+//        while (*p && isspace(*p)) p++;
+//        while (p1 > p && isspace(*p1)) *p1-- = '\0';
+//    }
+//    strcpy(str,p);
+//    return str;
+//}
+char* strrev(char* s)
 {
-    char temp[256];
-    char *p = str;
-    char *p1;
-    if (p)
+    char* h = s;
+    char* t = s;
+    char ch;
+    while(*t != '\0')
+        t++;
+    t--;
+    while(h < t)
     {
-        p1 = p + strlen(str) - 1;
-        while (*p && isspace(*p)) p++;
-        while (p1 > p && isspace(*p1)) *p1-- = '\0';
+        ch = *h;
+        *h++ = *t;
+        *t-- = ch;
     }
-    strcpy(str,p);
-    return str;
+    return s;
+}
+char* rtrim_lc(char* s)
+{
+    char* s_s = (char*)malloc(strlen(s) + 1);
+    strcpy(s_s, s);
+
+    int s_len = strlen(s_s);
+    int i;
+    for(i = s_len - 1; i >= 0; i--)
+    {
+        if(s_s[i] == ' ' || s_s[i] == '\0')
+        {
+            s_s[i] = '\0';
+        }
+        else{
+            break;
+        }
+    }
+    char* d_s = (char*)malloc(strlen(s_s));
+    strcpy(d_s, s_s);
+    return d_s;
+}
+char* ltrim_lc(char *s)
+{
+    char* s_s = (char*)malloc(strlen(s) + 1);
+    strcpy(s_s, s);
+    char* s_rev = strrev(s_s);
+    s_rev = rtrim_lc(s_rev);
+    char* d_s = strrev(s_rev);
+    return d_s;
+}
+char* trim(char* str)
+{
+    return ltrim_lc(rtrim_lc(str));
 }
 
 //创建错误response消息

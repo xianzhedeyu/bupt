@@ -3,9 +3,11 @@
 #include <unistd.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include "semaphore.h"
 
 pthread_mutex_t mutex;
-List list;
+int sem_id;
+//List list;
 void* parse(void* argument) 
 {
     Argument element = *(Argument*)argument;
@@ -32,16 +34,18 @@ void* parse(void* argument)
                     asnode.memload = 0;
                     asnode.weight = 0;
                     strcpy(asnode.ip, element.ip);
+                    semaphore_p(sem_id);
                     pthread_mutex_lock(&mutex);
-                    insert(list, asnode);
+                    //insert(list, asnode);
+                    insert(asnode);
                     pthread_mutex_unlock(&mutex);
+                    semaphore_v(sem_id);
                     //PackageKeepalive(keepalive);
                     //write(element.connfd, keepalive, strlen(keepalive) + 1); 
 	            	//将M_OPEN写入数据库
 	            	break;
 	            case VREP_ID_D6_UPDATE:
 
-            printf("###################\n");
 	            	UPDATE M_UPDATE;
 	            	if (ParseUPDATE(VREP, M_UPDATE)) {
 	            		UPDATEOut(M_UPDATE);
@@ -51,9 +55,12 @@ void* parse(void* argument)
                     asnode.memload = M_UPDATE.memory;
                     asnode.weight = (asnode.cpuload + asnode.memload) / 2;
                     strcpy(asnode.ip, element.ip);
+                    semaphore_p(sem_id);
                     pthread_mutex_lock(&mutex);
-                    update(list, asnode, element.ip);
+                    //update(list, asnode, element.ip);
+                    update(asnode, element.ip);
                     pthread_mutex_unlock(&mutex);
+                    semaphore_v(sem_id);
                     PackageKeepalive(keepalive);
                     write(element.connfd, keepalive, strlen(keepalive) + 1);
                     break;
@@ -79,7 +86,10 @@ void as_msg_process() {
     int listenfd, connfd;
 
     pthread_mutex_init(&mutex, NULL);
-    init(list);
+    sem_id = semget((key_t)1234, 1, 0666 | IPC_CREAT);
+    set_semvalue(sem_id);
+
+    init();
 
     listenfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     struct sockaddr_in servaddr;

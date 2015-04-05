@@ -86,6 +86,12 @@ int rtsp_s1_setup_msg_parse(char *setup_msg,S1_SETUP_MSG *msg)
                 strcpy(msg->require,header_val);
                 //printf("require:%s\n",msg->require);
             }
+            else if(strcmp(header, RTSP_HEADER_CLIENTSESSIONID) == 0)
+            {
+                header_val = strtok_r(NULL, ":", &ptr4);
+                trim(header_val);
+                strcpy(msg->client_session_id,  header_val);
+            }
             else if (strcmp(header,RTSP_HEADER_TRANSPORT) == 0)
             {
                 header_val = strtok_r(NULL,":",&ptr4);
@@ -154,22 +160,24 @@ int rtsp_s1_setup_res_encode(S1_SETUP_RES res,char *setup_res)
 				"o=%s %llu %s %s %s %s\r\n"
 				"s=%s\r\n"
 				"t=%d %d\r\n"
-				"a=control:%s://%s:%d/%llu\r\n"
-				"c=%s\r\n"
-				"m=%s\r\n",
+                "a=tool:libavformat 55.21.101\r\n"
+                "m=video 5060 RTP/AVP 96\r\n"
+                "a=rtpmap:96 H264/90000\r\n"
+                "a=fmtp:96 packetization-mode=1\r\n"
+				"a=control:%s://%s:%d\r\n"
+                "a=control:%s://%s:%d\r\n"
+				"c=%s\r\n",
 			res.sdp_version,res.email_add,res.ss_session,res.ntp,res.add_type,res.ip_version,res.ss_ip,res.s,res.time[0],res.time[1],\
-			res.protocol,res.host,res.port,res.stream_handle,res.c,res.m);
+			res.protocol,res.host,res.port,res.protocol, res.host, res.port, res.c);
 	sprintf(str,"RTSP/1.0 200 OK\r\n" 
 				"CSeq: %d\r\n" 
 				"Session: %llu\r\n"
 				"Transport: MP2T/DVBC/QAM;unicast; destination=%s\r\n"
 				"OnDemandSessionId: %s\r\n"
 				"ClientSessionId: %s\r\n"
-				"EMMData: %s\r\n"
 				"Content-type: application/sdp\r\n"
-				"Content-length: %d\r\n\r\n"
 				"%s",
-			res.cseq,res.session,res.destination,res.ondemand_session_id,res.client_session_id,res.emm_data,strlen(sdp),sdp);
+			res.cseq,res.session,res.destination,res.ondemand_session_id,res.client_session_id,sdp);
 	strcpy(setup_res,str);
 	
 	return 0;	
@@ -237,8 +245,7 @@ int rtsp_s1_teardown_msg_parse(char *tear_msg,S1_TEARDOWN_MSG *tear)
 		{
 			header_value = strtok_r(NULL,":",&ptr2);
 			strcpy(tear->ondemand_session_id,header_value);
-			trim(tear->ondemand_session_id);
-			//printf("ondemandsessionid:%s\n",tear->ondemand_session_id);
+            strcpy(tear->ondemand_session_id, trim(tear->ondemand_session_id));
 		}else if(strcmp(header,RTSP_HEADER_CLIENTSESSIONID) == 0)
 		{
 			header_value = strtok_r(NULL,":",&ptr2);

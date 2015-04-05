@@ -52,7 +52,6 @@ void report()
         char UpdateMessage[50];
         PackageUpdate(update, UpdateMessage);
         ret = write(sockfd, UpdateMessage, update.Len);
-        printf("%d\n", ret);
         sleep(20);
     }
 }
@@ -106,10 +105,10 @@ int main()
                     res.err_code = 200;
                     res.cseq = msg.cseq;
                     strcpy(res.protocol, "RTSP");
-                    INT64 as2asm_session = 0;
                     struct timeval now_tmp;
                     gettimeofday(&now_tmp, 0);
                     srand((now_tmp.tv_sec * 1000) + (now_tmp.tv_usec / 1000));
+                    INT64 as2asm_session = 0;
                     as2asm_session = 1 + (int) (10.0 * rand() / (100000 + 1.0));;
                     res.session = as2asm_session;
                     strcpy(res.ondemandsessionid, msg.ondemandsessionid);
@@ -136,7 +135,7 @@ int main()
                      */
                     res.err_code = 200;
                     res.cseq = msg.cseq;
-                    res.session = msg.session;
+                    res.session = 12345678;
                     strcpy(res.ondemandsessionid, msg.ondemandsessionid);
                     char resmsg[1024];
                     memset(resmsg, 0x00, 1024);

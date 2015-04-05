@@ -13,11 +13,12 @@ int main()
 
     char qam[256];
     memset(qam, 0x00, sizeof(qam));
-    sprintf(qam, "MP2T/DVBC/UDP;unicast;client=%s;qam_name=%s;modulation=%s;bandwidth=%llu", "00AF123456DE", "qam1", "h.264", 2920263);
+    unsigned long long bandwidth = 2920263;
+    sprintf(qam, "MP2T/DVBC/UDP;unicast;client=%s;qam_name=%s;modulation=%s;bandwidth=%llu", "00AF123456DE", "qam1", "h.264", bandwidth);
     sprintf(str, "SETUP rtsp://127.0.0.1:6606 RTSP/1.0\r\n"
             "CSeq:313\r\n"
             "Require:com.comcast.s1\r\n"
-            "client_session_id:054321\r\n"
+            "ClientSessionId:054321\r\n"
             "app_id:001\r\n"
             "app_type:1\r\n"
             "Transport:%s\r\n\r\n",
@@ -32,11 +33,15 @@ int main()
     inet_pton(AF_INET, "127.0.0.1", &servaddr.sin_addr);
     connect(sockfd, (struct sockaddr *)&servaddr, sizeof(servaddr));
     write(sockfd, str, strlen(str));
-    read(sockfd, restr, 1024);
+    int n = read(sockfd, restr, 1024);
+    printf("\n%s\n", restr);
     close(sockfd);
+
+    char ch;
+    scanf("%c", &ch);
+
     sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     connect(sockfd, (struct sockaddr *)&servaddr, sizeof(servaddr));
-    printf("%s", restr);
     char ondemandsessionid[256];
     memset(ondemandsessionid, 0x00, 256);
     getOnDemandSessionId(restr, ondemandsessionid);
@@ -47,10 +52,12 @@ int main()
             "Reason:200\r\n"
             "Session:0\r\n"
             "OnDemandSessionId:%s\r\n"
-            "client_session_id:054321\r\n\r\n",
+            "ClientSessionId:054321\r\n\r\n",
             ondemandsessionid);
     printf("%s\n", str);
     write(sockfd, str, strlen(str));
+    read(sockfd, restr, 1024);
+    printf("\n%s\n", restr);
             
     return 0;
 }
@@ -79,7 +86,6 @@ int getOnDemandSessionId(char *res, char *ondemandsessionid){
             {
                 header_val = strtok_r(NULL,":",&ptr2);
                 strcpy(id,header_val);
-                printf("%s\n", id);
                 break;
             }
         }	

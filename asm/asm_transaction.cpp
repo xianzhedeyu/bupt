@@ -7,6 +7,8 @@
 #include "asm_rtsp_r8_msg_process.h"
 //#include <hiredis/hiredis.h>
 #include <mysql.h>
+#include "hash.h"
+#include "semaphore.h"
 
 extern int LVLDEBUG;
 int request_bw=0xFFFFFFF;
@@ -38,7 +40,7 @@ int Asm_Setup(char * Asm_msg, int msg_len, int asm_sd) {
 	int as_port = 0;
 	char sendbuf[1024];
 	char recvbuf[1024];
-	int as_sd = 0;
+	int as_sd;
 	int buflen = 0;
 	int i = 0, ret = 0;
 	char* buf = Asm_msg;
@@ -66,13 +68,12 @@ int Asm_Setup(char * Asm_msg, int msg_len, int asm_sd) {
     const char *passwd = "123456";
     unsigned int port = 0;
     const char *database = "cloud";
-    const char *socket = NULL;
+    const char *sock= NULL;
     unsigned long flag = 0;
-    if(!mysql_real_connect(mysql, dbhost, user, passwd, database, port, socket, flag)) {
+    if(!mysql_real_connect(mysql, dbhost, user, passwd, database, port, sock, flag)) {
             fprintf(stderr, "%d: %s\n", mysql_errno(mysql), mysql_error(mysql));
             return -1;
      }
-    printf("###################\n");
 
     INT64 asm2as_cseq = 0;
     struct timeval now_tmp;
@@ -81,15 +82,27 @@ int Asm_Setup(char * Asm_msg, int msg_len, int asm_sd) {
     asm2sm_session = 1 + (int) (10.0 * rand() / (100000 + 1.0));
     memset(&s7_setup_msg, 0x00, sizeof(S7_SETUP_MSG));
     fprintf(stderr, "parse s7 message...\n");
-    printf("###################\n");
     rtsp_s7_setup_msg_parse(Asm_msg, &s7_setup_msg);
 
     /*
      * 选择应用服务器
      */
+    int sem_id = semget((key_t)1234, 1, 0666 | IPC_CREAT);
+    semaphore_p(sem_id);
+    int fd = shm_open("asinfo", O_RDONLY, 0);
+    struct stat stat;
+    fstat(fd, &stat);
+    ASNode* list = (ASNode *)mmap(NULL, stat.st_size, PROT_READ, MAP_SHARED, fd, 0);
+    close(fd);
+    int fd_min = shm_open("min", O_RDONLY, 0);
+    fstat(fd_min, &stat);
+    int *min = (int *)mmap(NULL, stat.st_size, PROT_READ, MAP_SHARED, fd, 0);
+    
     memset(&r8_setup_msg, 0x00, sizeof(R8_SETUP_MSG));
     strcpy(r8_setup_msg.as_ip, "127.0.0.1");
-    r8_setup_msg.as_port = 7777;
+    //strcpy(r8_setup_msg.as_ip, list[min].ip);
+    semaphore_v(sem_id);
+    r8_setup_msg.as_port = AS_PORT;
     r8_setup_msg.cseq = asm2as_cseq;
     strcpy(r8_setup_msg.require, RTSP_R8_REQUIRE);
     strcpy(r8_setup_msg.session_group, s7_setup_msg.session_group);
@@ -103,7 +116,15 @@ int Asm_Setup(char * Asm_msg, int msg_len, int asm_sd) {
     r8_setup_msg.ss.bandwidth = s7_setup_msg.ss.bandwidth;
 
     fprintf(stderr, "connect to as ...\n");
-    ret = ConnectSock(&as_sd, 7777, "127.0.0.1");
+    //ret = ConnectSock(&as_sd, 7778, "127.0.0.1");
+    as_sd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    struct sockaddr_in servaddr;
+    memset(&servaddr, 0x00, sizeof(servaddr));
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_port = htons(AS_PORT);
+    //inet_pton(AF_INET, r8_setup_msg.as_ip, &servaddr.sin_addr);
+    inet_pton(AF_INET, "127.0.0.1", &servaddr.sin_addr);
+    ret = connect(as_sd, (struct sockaddr *)&servaddr, sizeof(servaddr));
     if(ret == -1) {
         fprintf(stderr, "connect to as error...\n");
         return -1;
@@ -201,9 +222,9 @@ int Asm_Teardown(char * Asm_msg, int msg_len, int asm_sd) {
     const char *passwd = "123456";
     unsigned int port = 0;
     const char *database = "cloud";
-    const char *socket = NULL;
+    const char *sock = NULL;
     unsigned long flag = 0;
-    if(!mysql_real_connect(mysql, dbhost, user, passwd, database, port, socket, flag)) {
+    if(!mysql_real_connect(mysql, dbhost, user, passwd, database, port, sock, flag)) {
             fprintf(stderr, "%d: %s\n", mysql_errno(mysql), mysql_error(mysql));
             return -1;
      }
@@ -224,6 +245,7 @@ int Asm_Teardown(char * Asm_msg, int msg_len, int asm_sd) {
     //as2asm_session = atoi(reply->str);
     //freeReplyObject(reply);
     snprintf(sql_cmd, 256, "select session, as_ip from ASM_R8 where ondemandsession='%s' and status='SETUP'", s7_teardown_msg.ondemandsessionid);
+    printf("%s\n", sql_cmd);
     mysql_query(mysql, sql_cmd);
     result = mysql_store_result(mysql);
     int num_fields = mysql_num_fields(result);
@@ -231,8 +253,9 @@ int Asm_Teardown(char * Asm_msg, int msg_len, int asm_sd) {
         as2asm_session = atol(row[0]);
         strcpy(as_addr, row[1]);
     }
-    strcpy(r8_teardown_msg.as_ip, as_addr);
-    r8_teardown_msg.as_port = 7777;
+    //strcpy(r8_teardown_msg.as_ip, as_addr);
+    strcpy(r8_teardown_msg.as_ip, "127.0.0.1");
+    r8_teardown_msg.as_port = AS_PORT;
     r8_teardown_msg.cseq = asm2as_cseq;
     strcpy(r8_teardown_msg.require, "com.comcast.rtsp.r8");
     r8_teardown_msg.reason = s7_teardown_msg.reason;
@@ -242,16 +265,25 @@ int Asm_Teardown(char * Asm_msg, int msg_len, int asm_sd) {
     memset(sendbuf, 0x00, 1024);
     rtsp_r8_teardown_msg_encode(r8_teardown_msg, sendbuf);
 
-    ret = ConnectSock(&as_sd, 7777, "127.0.0.1");
+    as_sd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    struct sockaddr_in servaddr;
+    memset(&servaddr, 0x00, sizeof(servaddr));
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_port = htons(AS_PORT);
+    //inet_pton(AF_INET, r8_setup_msg.as_ip, &servaddr.sin_addr);
+    inet_pton(AF_INET, "127.0.0.1", &servaddr.sin_addr);
+    ret = connect(as_sd, (struct sockaddr *)&servaddr, sizeof(servaddr));
     if(ret == -1) {
         fprintf(stderr, "connect to as error...\n");
         return -1;
     }
     ret = rtsp_write(as_sd, sendbuf, strlen(sendbuf) + 1);
     log(LVLDEBUG, SYS_INFO, "teardown send to as msg\n%slen:%d\n", sendbuf, ret);
+    printf("teardown send to as msg\n%s, len:%d\n", sendbuf, ret);
     memset(recvbuf, 0x00, 1024);
     ret = rtsp_read(as_sd, recvbuf, 1024);
     log(LVLDEBUG, SYS_INFO, "teardown res recv from as res:\n%slen%d\n", recvbuf, ret);
+    printf("teardown res recv from as res:\n%s, len%d\n", recvbuf, ret);
     printf("%s", recvbuf);
     rtsp_r8_teardown_res_parse(recvbuf, &r8_teardown_res);
     

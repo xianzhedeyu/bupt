@@ -123,10 +123,9 @@ int rtsp_r8_teardown_msg_encode(R8_TEARDOWN_MSG msg, char* teardown_msg) {
             "CSeq:%d\r\n"
             "Require:%s\r\n"
             "Reason:%d %s\r\n"
-            "Session:%llu\r\n"
             "OnDemandSessionId:%s\r\n\r\n",
-            msg.as_ip, msg.as_port, msg.cseq, msg.require, msg.reason, reason, msg.session, msg.ondemandsessionid);
-    strcpy(str, teardown_msg);
+            msg.as_ip, msg.as_port, msg.cseq, msg.require, msg.reason, reason, msg.ondemandsessionid);
+    strcpy(teardown_msg, str);
     return 0;
 }
 

@@ -1,11 +1,11 @@
 TARGET=asm
-OBJS=asmain.o asm_communication_module.o asm_queuemanager.o asm_rtsp_public_function.o asm_rtsp_r8_msg_process.o asm_rtsp_s7_msg_process.o asm_task_control_module.o asm_transaction.o asmlog.o asm_vrep_d8_msg_process.o as_msg_monitor.o hash.o
+OBJS=asmain.o asm_communication_module.o asm_queuemanager.o asm_rtsp_public_function.o asm_rtsp_r8_msg_process.o asm_rtsp_s7_msg_process.o asm_task_control_module.o asm_transaction.o asmlog.o asm_vrep_d8_msg_process.o as_msg_monitor.o hash.o semaphore.o
 CC=g++
 %.o:%.cpp *.h
 	$(CC) -c -g -I. $< -o $@ `mysql_config --cflags --libs`
 
 $(TARGET):$(OBJS)
-	$(CC) -g $(OBJS) -o $(TARGET) -lpthread -luuid -lhiredis -lm -lnsl `mysql_config --cflags --libs`
+	$(CC) -g $(OBJS) -o $(TARGET) -lrt -lpthread -luuid -lhiredis -lm -lnsl `mysql_config --cflags --libs`
 	mkdir -p logfile
 	mkdir -p mmapdir
 clean:
